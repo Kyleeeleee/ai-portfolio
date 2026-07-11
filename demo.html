@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Demo 在线体验 · 李林豪</title>
+<style>
+:root{--bg:#f5f5f7;--surface:#fff;--soft:#fbfbfd;--text:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--green:#248a3d;--orange:#bf5b00;--red:#c9342f;--purple:#7c5cfc;--radius:8px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.nav{height:52px;position:sticky;top:0;z-index:20;background:rgba(251,251,253,.8);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.nav-inner{width:min(1120px,calc(100% - 32px));height:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-size:14px;font-weight:700;white-space:nowrap}
+.nav a{font-size:12px;color:#424245;padding:8px 10px;border-radius:999px}
+.nav a:hover{background:rgba(0,0,0,.05)}
+.wrap{width:min(1120px,calc(100% - 32px));margin:0 auto;padding:46px 0 70px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
+.intro,.panel,.result,.side-card{background:var(--surface);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);box-shadow:0 18px 42px rgba(0,0,0,.06)}
+.intro{padding:34px}
+.kicker{color:var(--blue);font-size:14px;font-weight:760;margin-bottom:8px}
+h1{font-size:clamp(34px,5vw,64px);line-height:1.03;letter-spacing:0;font-weight:820}
+.subtitle{margin-top:16px;color:#424245;font-size:18px;font-weight:620}
+.desc{margin-top:14px;color:var(--muted);font-size:15px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.tab{border:1px solid rgba(0,0,0,.1);background:#fff;color:#424245;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:650;cursor:pointer}
+.tab.active{background:#1d1d1f;color:#fff;border-color:#1d1d1f}
+.panel{padding:26px}
+.panel h2,.result h2,.side-card h2{font-size:20px;margin-bottom:14px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:700;color:#424245;margin-bottom:7px}
+textarea,input,select{width:100%;border:1px solid var(--line);border-radius:var(--radius);background:#fff;color:var(--text);font:inherit;font-size:15px;padding:12px;outline:none}
+textarea{min-height:136px;resize:vertical}
+textarea:focus,input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.12)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.btn{border:0;border-radius:999px;min-height:42px;padding:0 18px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.secondary{background:rgba(0,0,0,.06);color:#1d1d1f}
+.status{font-size:13px;color:var(--muted)}
+.result{margin-top:22px;padding:26px}
+.output{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.summary{background:var(--soft);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:18px;min-height:168px}
+.summary h3{font-size:16px;margin-bottom:10px}
+.summary p,.summary li{font-size:14px;color:#424245}
+.summary ul{padding-left:18px}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.badge{font-size:12px;font-weight:700;border-radius:999px;padding:5px 9px;background:rgba(0,113,227,.1);color:var(--blue)}
+.badge.green{background:rgba(36,138,61,.12);color:var(--green)}
+.badge.orange{background:rgba(191,91,0,.12);color:var(--orange)}
+.badge.red{background:rgba(201,52,47,.12);color:var(--red)}
+.preview{min-height:260px;background:linear-gradient(135deg,#f8f8fa,#e8eef8);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.visual-card{background:rgba(255,255,255,.82);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:14px}
+.bars{display:grid;gap:8px}
+.bar{height:10px;background:#e5e5ea;border-radius:999px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--blue);border-radius:999px}
+.chat{display:grid;gap:10px}
+.bubble{max-width:86%;padding:10px 12px;border-radius:16px;font-size:14px}
+.bubble.user{justify-self:end;background:var(--blue);color:#fff;border-bottom-right-radius:5px}
+.bubble.bot{justify-self:start;background:#eef0f5;color:#1d1d1f;border-bottom-left-radius:5px}
+.table{width:100%;border-collapse:collapse;font-size:13px}
+.table th,.table td{border-bottom:1px solid rgba(0,0,0,.08);text-align:left;padding:8px;color:#424245}
+.side{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.side-card{padding:18px}
+.side-card p{font-size:14px;color:var(--muted)}
+.side-card strong{display:block;font-size:25px;line-height:1;margin-bottom:7px}
+.note{margin-top:18px;font-size:13px;color:var(--muted)}
+.footer{padding:28px 16px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid rgba(0,0,0,.08)}
+.footer a{color:var(--blue)}
+@media(max-width:860px){.hero,.output,.side{grid-template-columns:1fr}.wrap{padding-top:28px}.intro,.panel,.result{padding:22px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">李林豪 · AI 产品经理</a>
+    <div>
+      <a id="detailLink" href="projects.html">项目详情</a>
+      <a href="projects.html">全部 Demo</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="intro">
+      <div class="kicker">Online Demo</div>
+      <h1 id="title">AI Demo 在线体验</h1>
+      <p id="subtitle" class="subtitle">无需本地服务，直接在网页中体验产品流程。</p>
+      <p id="desc" class="desc"></p>
+      <div id="tabs" class="tabs"></div>
+    </div>
+
+    <form id="demoForm" class="panel">
+      <h2>体验输入</h2>
+      <div class="field">
+        <label id="textLabel" for="mainInput">输入内容</label>
+        <textarea id="mainInput"></textarea>
+      </div>
+      <div class="grid">
+        <div class="field">
+          <label id="selectLabel" for="mode">模式</label>
+          <select id="mode"></select>
+        </div>
+        <div class="field">
+          <label id="numberLabel" for="level">数量 / 强度</label>
+          <input id="level" type="number" min="1" max="20" value="5">
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" type="submit">生成模拟结果</button>
+        <button class="btn secondary" type="button" id="sampleBtn">填入示例</button>
+        <span class="status" id="status">前端静态模拟，不调用真实 API。</span>
+      </div>
+    </form>
+  </section>
+
+  <section class="result">
+    <h2>体验结果</h2>
+    <div class="output">
+      <div class="summary">
+        <h3 id="resultTitle">等待生成</h3>
+        <div id="resultText"><p>选择一个 demo，输入内容后点击生成。</p></div>
+        <div id="badges" class="badge-row"></div>
+      </div>
+      <div id="preview" class="preview"></div>
+    </div>
+    <p class="note">说明：这是部署在 GitHub Pages 的静态体验版，用来展示产品交互和结果结构；真实模型、上传、支付、工单等能力需要后端服务/API 支持。</p>
+  </section>
+
+  <section class="side">
+    <div class="side-card"><strong id="metric1">-</strong><p id="metric1Label">核心指标</p></div>
+    <div class="side-card"><strong id="metric2">-</strong><p id="metric2Label">处理流程</p></div>
+    <div class="side-card"><strong id="metric3">-</strong><p id="metric3Label">业务价值</p></div>
+  </section>
+</main>
+
+<footer class="footer">
+  AI 产品经理作品集 · 李林豪 · <a href="index.html">返回简历</a>
+</footer>
+
+<script>
+const demos = {
+  "01": {
+    title: "跨境电商AI商品图生成器",
+    subtitle: "输入商品描述，生成多场景电商素材方案",
+    desc: "模拟商品图生成的前置产品流程：解析卖点、匹配场景、输出拍摄/生成建议。",
+    inputLabel: "商品描述", selectLabel: "图片场景", numberLabel: "生成张数",
+    sample: "一款轻量化户外保温杯，磨砂黑色，适合露营、徒步和办公室通勤，目标用户是25-35岁都市白领。",
+    options: ["白底主图", "生活方式场景", "细节特写", "尺寸说明图", "模特手持图"],
+    metrics: ["5类", "场景模板", "成本下降"],
+    render(input, mode, level) {
+      return {
+        title: "商品图生成方案",
+        html: `<p>已识别商品核心卖点：便携、保温、户外、通勤。建议生成 ${level} 张「${mode}」。</p><ul><li>主视觉：突出磨砂黑材质和杯身线条</li><li>场景：露营桌面、办公室桌面、背包侧袋</li><li>Prompt：clean product photography, premium outdoor lifestyle, soft natural light</li></ul>`,
+        badges: ["Flux Pro", "电商素材", "批量生成"],
+        preview: "cards"
+      };
+    }
+  },
+  "02": {
+    title: "AI知识库问答助手",
+    subtitle: "RAG 检索问答 + 来源引用",
+    desc: "模拟企业知识库问答流程：问题理解、文档召回、答案生成、来源引用。",
+    inputLabel: "业务问题", selectLabel: "知识库类型", numberLabel: "召回段落数",
+    sample: "客户问：企业版知识库是否支持 PDF 上传和多轮追问？请给出产品答复。",
+    options: ["产品手册", "售后SOP", "合同条款", "培训资料"],
+    metrics: ["RAG", "来源引用", "多轮追问"],
+    render(input, mode, level) {
+      return {
+        title: "知识库回答",
+        html: `<p>根据「${mode}」召回 ${level} 个相关片段后，建议回答：</p><ul><li>支持 PDF、Word、TXT、Markdown 等格式上传。</li><li>问答结果会附带来源段落，便于人工复核。</li><li>支持围绕同一主题继续追问。</li></ul>`,
+        badges: ["向量检索", "关键词混合", "引用溯源"],
+        preview: "chat"
+      };
+    }
+  },
+  "03": {
+    title: "游戏NPC智能对话系统",
+    subtitle: "角色人设 + 情绪状态 + 多轮记忆",
+    desc: "模拟 NPC 对话引擎，展示角色模板、上下文记忆和 JSON 化输出。",
+    inputLabel: "玩家输入", selectLabel: "NPC 角色", numberLabel: "好感度",
+    sample: "我刚从北境回来，听说城里最近有奇怪的传闻，你知道些什么吗？",
+    options: ["导师", "跟班", "商人"],
+    metrics: ["3类", "情绪追踪", "API输出"],
+    render(input, mode, level) {
+      const attitude = level >= 7 ? "友好" : level >= 4 ? "中立" : "警惕";
+      return {
+        title: `${mode} NPC 回复`,
+        html: `<p>情绪状态：${attitude}。系统保留玩家上一轮意图，并生成可接入游戏引擎的结构化响应。</p><ul><li>回复：北境来的旅人，你最好去酒馆问问那个戴银戒指的人。</li><li>任务钩子：调查城中失踪商队</li><li>JSON 字段：dialogue / emotion / quest_hint</li></ul>`,
+        badges: [mode, attitude, "多轮记忆"],
+        preview: "chat"
+      };
+    }
+  },
+  "04": {
+    title: "AI自动巡检报告系统",
+    subtitle: "现场检查、自动评分、报告生成",
+    desc: "模拟巡检员录入现场问题后，系统自动生成评分和整改建议。",
+    inputLabel: "巡检记录", selectLabel: "行业模板", numberLabel: "问题数量",
+    sample: "门店后厨地面有积水，冷柜温度记录缺失，消防通道堆放纸箱，员工未佩戴工牌。",
+    options: ["餐饮门店", "零售门店", "物业园区"],
+    metrics: ["SOP", "自动评分", "PDF报告"],
+    render(input, mode, level) {
+      const score = Math.max(62, 96 - Number(level) * 4);
+      return {
+        title: "巡检评分报告",
+        html: `<p>${mode} 本次巡检评分为 <b>${score}</b> 分。</p><ul><li>高风险：消防通道堵塞，建议立即整改。</li><li>中风险：温度记录缺失，需补录并复核。</li><li>低风险：工牌佩戴不规范，纳入班前培训。</li></ul>`,
+        badges: [score >= 80 ? "通过" : "需整改", "问题分类", "整改建议"],
+        preview: "bars"
+      };
+    }
+  },
+  "05": {
+    title: "智能客服Agent",
+    subtitle: "意图识别、FAQ 检索、工单流转",
+    desc: "模拟客服机器人对话，自动判断意图、情绪和是否需要转人工。",
+    inputLabel: "客户消息", selectLabel: "业务场景", numberLabel: "客户情绪强度",
+    sample: "我昨天申请退款一直没有处理，订单号 A10293，现在很着急，请帮我看一下。",
+    options: ["电商售后", "SaaS客服", "教育咨询"],
+    metrics: ["意图识别", "工单创建", "转人工"],
+    render(input, mode, level) {
+      const urgent = Number(level) > 6;
+      return {
+        title: "客服 Agent 处理结果",
+        html: `<p>识别意图：退款进度查询。情绪：${urgent ? "负面偏高，建议升级人工" : "正常咨询"}。</p><ul><li>抽取实体：订单号 A10293</li><li>自动回复：已为您查询退款节点，并同步售后专员。</li><li>工单分类：${mode} / 售后 / 退款</li></ul>`,
+        badges: ["FAQ检索", urgent ? "转人工" : "自动处理", "对话摘要"],
+        preview: "chat"
+      };
+    }
+  },
+  "06": {
+    title: "Prompt测试对比平台",
+    subtitle: "多模型评测、成本、耗时对比",
+    desc: "模拟 Prompt A/B 测试，展示多模型输出质量和成本结构。",
+    inputLabel: "Prompt / 任务", selectLabel: "评测维度", numberLabel: "测试轮数",
+    sample: "请把一段客服投诉内容总结为：客户问题、情绪等级、建议处理动作。",
+    options: ["准确性", "格式稳定性", "成本效率", "响应速度"],
+    metrics: ["多模型", "成本分析", "A/B测试"],
+    render(input, mode, level) {
+      return {
+        title: "Prompt 评测报告",
+        html: `<p>围绕「${mode}」完成 ${level} 轮模拟评测。</p><ul><li>GPT：结构最好，成本中等。</li><li>Claude：语义解释更完整，耗时略高。</li><li>DeepSeek：成本最低，需加强格式约束。</li></ul>`,
+        badges: ["GPT", "Claude", "DeepSeek"],
+        preview: "table"
+      };
+    }
+  },
+  "07": {
+    title: "金融风控AI助手",
+    subtitle: "信贷审批、风险指标监控、财报风险扫描",
+    desc: "模拟企业授信初审流程，输出风险评分、审批建议和可解释理由。",
+    inputLabel: "企业/财报信息", selectLabel: "风控场景", numberLabel: "负债率 %",
+    sample: "某制造企业年营收 8600 万，净利润率 6%，负债率 58%，近一年有 1 次逾期，抵押覆盖率 130%，财报提到现金流承压。",
+    options: ["贷前准入", "授信复核", "财报扫描", "贷后预警"],
+    metrics: ["5类指标", "3档建议", "NLP扫描"],
+    render(input, mode, level) {
+      const debt = Number(level);
+      const risk = debt >= 70 ? "高风险" : debt >= 50 ? "中风险" : "低风险";
+      const cls = debt >= 70 ? "red" : debt >= 50 ? "orange" : "green";
+      return {
+        title: "风控审批建议",
+        html: `<p>场景：${mode}。综合判断为 <b>${risk}</b>。</p><ul><li>触发因素：负债率 ${debt}%，现金流承压，历史逾期记录。</li><li>正向因素：营收规模稳定，抵押覆盖率较高。</li><li>建议：${debt >= 70 ? "暂缓通过，补充现金流证明。" : debt >= 50 ? "进入人工复核，降低授信额度。" : "可通过初审，维持常规监控。"}</li></ul>`,
+        badges: [{ text: risk, cls }, "可解释审批", "风险标签"],
+        preview: "bars"
+      };
+    }
+  }
+};
+
+const params = new URLSearchParams(location.search);
+let current = demos[params.get("p")] ? params.get("p") : "01";
+const $ = (id) => document.getElementById(id);
+
+function setDemo(id) {
+  current = id;
+  const demo = demos[id];
+  $("title").textContent = demo.title;
+  $("subtitle").textContent = demo.subtitle;
+  $("desc").textContent = demo.desc;
+  $("textLabel").textContent = demo.inputLabel;
+  $("selectLabel").textContent = demo.selectLabel;
+  $("numberLabel").textContent = demo.numberLabel;
+  $("mainInput").value = demo.sample;
+  $("mode").innerHTML = demo.options.map((item) => `<option>${item}</option>`).join("");
+  $("level").value = id === "07" ? 58 : id === "03" ? 6 : 5;
+  $("metric1").textContent = demo.metrics[0];
+  $("metric2").textContent = demo.metrics[1];
+  $("metric3").textContent = demo.metrics[2];
+  $("metric1Label").textContent = "能力模块";
+  $("metric2Label").textContent = "产品流程";
+  $("metric3Label").textContent = "展示重点";
+  $("detailLink").href = `project_${id}.html`;
+  [...document.querySelectorAll(".tab")].forEach((tab) => tab.classList.toggle("active", tab.dataset.id === id));
+  history.replaceState(null, "", `demo.html?p=${id}`);
+  renderResult();
+}
+
+function buildTabs() {
+  $("tabs").innerHTML = Object.keys(demos).map((id) => `<button class="tab" type="button" data-id="${id}">${id}</button>`).join("");
+  $("tabs").addEventListener("click", (event) => {
+    if (event.target.matches(".tab")) setDemo(event.target.dataset.id);
+  });
+}
+
+function renderPreview(type, result) {
+  if (type === "chat") {
+    return `<div class="chat"><div class="bubble user">${$("mainInput").value.slice(0, 72)}</div><div class="bubble bot">已理解你的输入，并生成可执行的业务结果。</div><div class="bubble bot">下一步建议：进入复核、生成摘要或创建任务。</div></div>`;
+  }
+  if (type === "table") {
+    return `<table class="table"><thead><tr><th>模型</th><th>质量</th><th>耗时</th><th>成本</th></tr></thead><tbody><tr><td>GPT</td><td>92</td><td>1.8s</td><td>$0.012</td></tr><tr><td>Claude</td><td>90</td><td>2.2s</td><td>$0.015</td></tr><tr><td>DeepSeek</td><td>84</td><td>1.4s</td><td>$0.004</td></tr></tbody></table>`;
+  }
+  if (type === "bars") {
+    return `<div class="bars"><div class="visual-card"><b>综合评分</b><div class="bar"><span style="width:76%"></span></div></div><div class="visual-card"><b>规则命中</b><div class="bar"><span style="width:58%;background:var(--orange)"></span></div></div><div class="visual-card"><b>人工复核优先级</b><div class="bar"><span style="width:68%;background:var(--purple)"></span></div></div></div>`;
+  }
+  return `<div class="grid"><div class="visual-card"><b>主图</b><p>干净背景，突出产品轮廓。</p></div><div class="visual-card"><b>场景图</b><p>露营、办公、通勤三类场景。</p></div><div class="visual-card"><b>细节图</b><p>材质、容量、开盖结构。</p></div><div class="visual-card"><b>尺寸图</b><p>规格参数可视化。</p></div></div>`;
+}
+
+function renderResult() {
+  const demo = demos[current];
+  const result = demo.render($("mainInput").value, $("mode").value, $("level").value);
+  $("resultTitle").textContent = result.title;
+  $("resultText").innerHTML = result.html;
+  $("badges").innerHTML = result.badges.map((badge) => {
+    if (typeof badge === "string") return `<span class="badge">${badge}</span>`;
+    return `<span class="badge ${badge.cls || ""}">${badge.text}</span>`;
+  }).join("");
+  $("preview").innerHTML = renderPreview(result.preview, result);
+  $("status").textContent = "已生成静态模拟结果，可在线访问。";
+}
+
+buildTabs();
+$("sampleBtn").addEventListener("click", () => {
+  $("mainInput").value = demos[current].sample;
+  renderResult();
+});
+$("demoForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  $("status").textContent = "生成中...";
+  setTimeout(renderResult, 280);
+});
+setDemo(current);
+</script>
+</body>
+</html>
