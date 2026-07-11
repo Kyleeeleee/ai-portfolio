@@ -5,341 +5,429 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Demo 在线体验 · 李林豪</title>
 <style>
-:root{--bg:#f5f5f7;--surface:#fff;--soft:#fbfbfd;--text:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--green:#248a3d;--orange:#bf5b00;--red:#c9342f;--purple:#7c5cfc;--radius:8px}
+:root{--bg:#f5f5f7;--surface:#fff;--text:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--green:#248a3d;--orange:#bf5b00;--red:#c9342f;--purple:#7c5cfc;--cyan:#0a84ff;--radius:8px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.nav{height:52px;position:sticky;top:0;z-index:20;background:rgba(251,251,253,.8);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
-.nav-inner{width:min(1120px,calc(100% - 32px));height:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{font-size:14px;font-weight:700;white-space:nowrap}
-.nav a{font-size:12px;color:#424245;padding:8px 10px;border-radius:999px}
-.nav a:hover{background:rgba(0,0,0,.05)}
-.wrap{width:min(1120px,calc(100% - 32px));margin:0 auto;padding:46px 0 70px}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
-.intro,.panel,.result,.side-card{background:var(--surface);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);box-shadow:0 18px 42px rgba(0,0,0,.06)}
-.intro{padding:34px}
-.kicker{color:var(--blue);font-size:14px;font-weight:760;margin-bottom:8px}
-h1{font-size:clamp(34px,5vw,64px);line-height:1.03;letter-spacing:0;font-weight:820}
-.subtitle{margin-top:16px;color:#424245;font-size:18px;font-weight:620}
-.desc{margin-top:14px;color:var(--muted);font-size:15px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
-.tab{border:1px solid rgba(0,0,0,.1);background:#fff;color:#424245;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:650;cursor:pointer}
+button,input,textarea,select{font:inherit}
+.topbar{position:sticky;top:0;z-index:30;height:52px;background:rgba(251,251,253,.82);border-bottom:1px solid rgba(0,0,0,.08);backdrop-filter:saturate(180%) blur(20px)}
+.topbar-inner{width:min(1180px,calc(100% - 32px));height:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-size:14px;font-weight:750;white-space:nowrap}
+.top-actions{display:flex;gap:4px;align-items:center}.top-actions a{font-size:12px;color:#424245;padding:8px 10px;border-radius:999px}.top-actions a:hover{background:rgba(0,0,0,.06)}
+.wrap{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:34px 0 70px}
+.hero{display:grid;grid-template-columns:1fr auto;align-items:end;gap:18px;margin-bottom:20px}
+.kicker{font-size:14px;color:var(--blue);font-weight:760;margin-bottom:6px}
+h1{font-size:clamp(32px,5vw,62px);line-height:1.04;letter-spacing:0;font-weight:820}
+.subtitle{margin-top:12px;color:#424245;font-size:18px;font-weight:640;max-width:760px}
+.switcher{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.tab{border:1px solid rgba(0,0,0,.1);background:#fff;color:#424245;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer}
 .tab.active{background:#1d1d1f;color:#fff;border-color:#1d1d1f}
-.panel{padding:26px}
-.panel h2,.result h2,.side-card h2{font-size:20px;margin-bottom:14px}
-.field{margin-bottom:16px}
-.field label{display:block;font-size:13px;font-weight:700;color:#424245;margin-bottom:7px}
-textarea,input,select{width:100%;border:1px solid var(--line);border-radius:var(--radius);background:#fff;color:var(--text);font:inherit;font-size:15px;padding:12px;outline:none}
-textarea{min-height:136px;resize:vertical}
-textarea:focus,input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.12)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
-.btn{border:0;border-radius:999px;min-height:42px;padding:0 18px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
-.btn.primary{background:var(--blue);color:#fff}
-.btn.secondary{background:rgba(0,0,0,.06);color:#1d1d1f}
-.status{font-size:13px;color:var(--muted)}
-.result{margin-top:22px;padding:26px}
-.output{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.summary{background:var(--soft);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:18px;min-height:168px}
-.summary h3{font-size:16px;margin-bottom:10px}
-.summary p,.summary li{font-size:14px;color:#424245}
-.summary ul{padding-left:18px}
-.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.badge{font-size:12px;font-weight:700;border-radius:999px;padding:5px 9px;background:rgba(0,113,227,.1);color:var(--blue)}
-.badge.green{background:rgba(36,138,61,.12);color:var(--green)}
-.badge.orange{background:rgba(191,91,0,.12);color:var(--orange)}
-.badge.red{background:rgba(201,52,47,.12);color:var(--red)}
-.preview{min-height:260px;background:linear-gradient(135deg,#f8f8fa,#e8eef8);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px;justify-content:center}
-.visual-card{background:rgba(255,255,255,.82);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:14px}
-.bars{display:grid;gap:8px}
-.bar{height:10px;background:#e5e5ea;border-radius:999px;overflow:hidden}
-.bar span{display:block;height:100%;background:var(--blue);border-radius:999px}
-.chat{display:grid;gap:10px}
-.bubble{max-width:86%;padding:10px 12px;border-radius:16px;font-size:14px}
-.bubble.user{justify-self:end;background:var(--blue);color:#fff;border-bottom-right-radius:5px}
-.bubble.bot{justify-self:start;background:#eef0f5;color:#1d1d1f;border-bottom-left-radius:5px}
-.table{width:100%;border-collapse:collapse;font-size:13px}
-.table th,.table td{border-bottom:1px solid rgba(0,0,0,.08);text-align:left;padding:8px;color:#424245}
-.side{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
-.side-card{padding:18px}
-.side-card p{font-size:14px;color:var(--muted)}
-.side-card strong{display:block;font-size:25px;line-height:1;margin-bottom:7px}
-.note{margin-top:18px;font-size:13px;color:var(--muted)}
-.footer{padding:28px 16px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid rgba(0,0,0,.08)}
-.footer a{color:var(--blue)}
-@media(max-width:860px){.hero,.output,.side{grid-template-columns:1fr}.wrap{padding-top:28px}.intro,.panel,.result{padding:22px}.grid{grid-template-columns:1fr}}
+.demo-shell{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);box-shadow:0 18px 42px rgba(0,0,0,.06);overflow:hidden}
+.demo-head{min-height:58px;padding:14px 18px;border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fbfbfd}
+.demo-title{font-weight:780}.demo-sub{font-size:13px;color:var(--muted);margin-top:2px}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:750;background:rgba(0,113,227,.1);color:var(--blue);white-space:nowrap}.pill.green{background:rgba(36,138,61,.12);color:var(--green)}.pill.orange{background:rgba(191,91,0,.12);color:var(--orange)}.pill.red{background:rgba(201,52,47,.12);color:var(--red)}.pill.purple{background:rgba(124,92,252,.12);color:var(--purple)}
+.btn{border:0;border-radius:999px;min-height:38px;padding:0 16px;font-size:14px;font-weight:760;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.btn.primary{background:var(--blue);color:#fff}.btn.secondary{background:rgba(0,0,0,.06);color:#1d1d1f}.btn.dark{background:#1d1d1f;color:#fff}
+.field{display:grid;gap:7px}.field label{font-size:13px;font-weight:760;color:#424245}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:var(--radius);background:#fff;color:var(--text);font-size:15px;padding:11px 12px;outline:none}.field textarea{min-height:112px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.12)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stack{display:grid;gap:14px}.card{border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);background:#fff;padding:16px}.soft{background:#fbfbfd}.muted{color:var(--muted);font-size:14px}.mini{font-size:13px;color:var(--muted)}.section-label{font-size:12px;font-weight:820;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;margin-bottom:8px}.action-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.deliverable{border:1px solid rgba(0,0,0,.08);background:linear-gradient(135deg,#fbfbfd,#fff);border-radius:var(--radius);padding:14px}.deliverable b{display:block;font-size:14px}.deliverable p{margin-top:4px;color:var(--muted);font-size:13px}.logline{font-size:12px;color:var(--muted)}
+.bar{height:10px;background:#e5e5ea;border-radius:999px;overflow:hidden}.bar span{height:100%;display:block;background:var(--blue);border-radius:999px}.table{width:100%;border-collapse:collapse;font-size:13px}.table th,.table td{padding:9px 8px;text-align:left;border-bottom:1px solid rgba(0,0,0,.08);color:#424245}.table th{font-weight:780;color:#1d1d1f}
+.notice{margin-top:16px;color:var(--muted);font-size:13px;text-align:center}.footer{padding:28px 16px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid rgba(0,0,0,.08)}.footer a{color:var(--blue)}
+
+/* 01 image generator */
+.commerce{display:grid;grid-template-columns:360px 1fr;min-height:620px}.commerce-aside{background:#fbfbfd;border-right:1px solid rgba(0,0,0,.08);padding:18px;display:grid;align-content:start;gap:14px}.scene-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:18px;background:linear-gradient(135deg,#f7f8fb,#edf3f8)}.image-tile{min-height:210px;border-radius:14px;border:1px solid rgba(0,0,0,.08);background:#fff;overflow:hidden;display:grid;grid-template-rows:1fr auto}.image-art{position:relative;background:linear-gradient(145deg,#f7f7f9,#dfe8ef);display:flex;align-items:center;justify-content:center}.product{width:70px;height:126px;border-radius:28px 28px 18px 18px;background:linear-gradient(160deg,#17191f,#575d67);box-shadow:inset -8px 0 12px rgba(255,255,255,.12),0 16px 34px rgba(0,0,0,.18)}.image-art.outdoor{background:linear-gradient(145deg,#dbead9,#f7ecd9)}.image-art.office{background:linear-gradient(145deg,#e9eef8,#fff)}.image-art.detail{background:linear-gradient(145deg,#ece6df,#f9f9f9)}.tile-caption{padding:12px;font-size:13px;font-weight:740;color:#424245}
+
+/* 02 knowledge */
+.knowledge{display:grid;grid-template-columns:300px 1fr;min-height:620px}.kb-side{border-right:1px solid rgba(0,0,0,.08);background:#fbfbfd;padding:18px}.doc-item{padding:13px;border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);background:#fff;margin-bottom:10px}.doc-item b{font-size:14px}.doc-item p{font-size:12px;color:var(--muted);margin-top:4px}.kb-main{padding:18px;display:grid;grid-template-rows:1fr auto;gap:14px}.chat-list{display:grid;gap:12px;align-content:start}.bubble{max-width:82%;padding:12px 14px;border-radius:18px;font-size:14px}.bubble.user{justify-self:end;background:var(--blue);color:#fff;border-bottom-right-radius:5px}.bubble.bot{justify-self:start;background:#eef0f5;color:#1d1d1f;border-bottom-left-radius:5px}.citation{border-left:3px solid var(--blue);background:#fbfbfd;padding:10px 12px;border-radius:0 var(--radius) var(--radius) 0;margin-top:8px;font-size:13px;color:#424245}.ask-row{display:grid;grid-template-columns:1fr auto;gap:10px}
+
+/* 03 npc */
+.npc{min-height:620px;background:linear-gradient(180deg,#111827,#1f2937);color:#f9fafb;display:grid;grid-template-columns:1fr 340px}.npc-stage{position:relative;padding:28px;display:grid;align-content:end;overflow:hidden}.npc-stage:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(124,92,252,.35),transparent 34%),linear-gradient(180deg,transparent,rgba(0,0,0,.45))}.npc-card{position:relative;border:1px solid rgba(255,255,255,.18);background:rgba(17,24,39,.72);backdrop-filter:blur(18px);border-radius:16px;padding:18px;max-width:680px}.npc-name{font-size:22px;font-weight:820}.npc-dialogue{margin-top:12px;font-size:17px;color:#e5e7eb}.choice-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.choice{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:8px 12px;font-size:13px}.npc-panel{background:rgba(0,0,0,.22);border-left:1px solid rgba(255,255,255,.12);padding:18px}.npc-panel .field label{color:#d1d5db}.npc-panel input,.npc-panel textarea,.npc-panel select{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff}.npc-panel select option{color:#1d1d1f}
+
+/* 04 inspection */
+.inspect{display:grid;grid-template-columns:360px 1fr;min-height:620px}.inspect-form{background:#fbfbfd;border-right:1px solid rgba(0,0,0,.08);padding:18px}.score-ring{width:148px;height:148px;border-radius:50%;margin:8px auto 18px;background:conic-gradient(var(--green) 0 78%,#e5e5ea 78% 100%);display:grid;place-items:center}.score-ring span{width:104px;height:104px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:34px;font-weight:820}.report{padding:18px}.check-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.08)}.check-dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(36,138,61,.12);color:var(--green);font-size:13px}.check-dot.warn{background:rgba(191,91,0,.12);color:var(--orange)}.check-dot.bad{background:rgba(201,52,47,.12);color:var(--red)}
+
+/* 05 support */
+.support{display:grid;grid-template-columns:300px 1fr 310px;min-height:620px}.inbox{background:#fbfbfd;border-right:1px solid rgba(0,0,0,.08);padding:14px}.ticket{border:1px solid rgba(0,0,0,.08);background:#fff;border-radius:var(--radius);padding:12px;margin-bottom:10px}.ticket.active{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.12)}.ticket b{font-size:14px}.ticket p{font-size:12px;color:var(--muted);margin-top:4px}.support-chat{padding:18px;display:grid;grid-template-rows:1fr auto;gap:14px}.agent-panel{background:#fbfbfd;border-left:1px solid rgba(0,0,0,.08);padding:18px}
+
+/* 06 prompt lab */
+.promptlab{display:grid;grid-template-columns:360px 1fr;min-height:620px}.prompt-editor{background:#fbfbfd;border-right:1px solid rgba(0,0,0,.08);padding:18px}.model-grid{padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.model-card{border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:16px;background:#fff}.model-card h3{font-size:18px}.score{font-size:42px;font-weight:840;margin:12px 0 6px}.tokens{margin-top:12px;display:grid;gap:8px}
+
+/* 07 risk */
+.risk{display:grid;grid-template-columns:370px 1fr;min-height:620px;background:#f7f8fb}.risk-form{background:#fff;border-right:1px solid rgba(0,0,0,.08);padding:18px}.risk-dash{padding:18px;display:grid;gap:14px}.risk-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}.risk-metric{border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);background:#fff;padding:16px}.risk-metric strong{display:block;font-size:30px;line-height:1}.risk-metric span{font-size:13px;color:var(--muted)}.risk-main{display:grid;grid-template-columns:1fr 1fr;gap:14px}.risk-list li{margin-left:18px;color:#424245;font-size:14px;margin-bottom:8px}
+@media(max-width:940px){.hero{grid-template-columns:1fr}.switcher{justify-content:flex-start}.commerce,.knowledge,.npc,.inspect,.support,.promptlab,.risk{grid-template-columns:1fr}.commerce-aside,.kb-side,.inspect-form,.prompt-editor,.risk-form,.inbox,.agent-panel,.npc-panel{border-right:0;border-left:0;border-bottom:1px solid rgba(0,0,0,.08)}.support{grid-template-columns:1fr}.scene-grid,.model-grid,.risk-top,.risk-main{grid-template-columns:1fr}.ask-row{grid-template-columns:1fr}.npc{background:#111827}}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <div class="nav-inner">
+<nav class="topbar">
+  <div class="topbar-inner">
     <a class="brand" href="index.html">李林豪 · AI 产品经理</a>
-    <div>
+    <div class="top-actions">
       <a id="detailLink" href="projects.html">项目详情</a>
-      <a href="projects.html">全部 Demo</a>
+      <a href="projects.html">全部项目</a>
     </div>
   </div>
 </nav>
 
 <main class="wrap">
   <section class="hero">
-    <div class="intro">
-      <div class="kicker">Online Demo</div>
-      <h1 id="title">AI Demo 在线体验</h1>
-      <p id="subtitle" class="subtitle">无需本地服务，直接在网页中体验产品流程。</p>
-      <p id="desc" class="desc"></p>
-      <div id="tabs" class="tabs"></div>
+    <div>
+      <div class="kicker">Interactive Demo</div>
+      <h1 id="pageTitle">AI Demo 在线体验</h1>
+      <p id="pageSubtitle" class="subtitle">每个项目都有独立的产品界面和交互样式。</p>
     </div>
-
-    <form id="demoForm" class="panel">
-      <h2>体验输入</h2>
-      <div class="field">
-        <label id="textLabel" for="mainInput">输入内容</label>
-        <textarea id="mainInput"></textarea>
-      </div>
-      <div class="grid">
-        <div class="field">
-          <label id="selectLabel" for="mode">模式</label>
-          <select id="mode"></select>
-        </div>
-        <div class="field">
-          <label id="numberLabel" for="level">数量 / 强度</label>
-          <input id="level" type="number" min="1" max="20" value="5">
-        </div>
-      </div>
-      <div class="actions">
-        <button class="btn primary" type="submit">生成模拟结果</button>
-        <button class="btn secondary" type="button" id="sampleBtn">填入示例</button>
-        <span class="status" id="status">前端静态模拟，不调用真实 API。</span>
-      </div>
-    </form>
+    <div id="switcher" class="switcher"></div>
   </section>
 
-  <section class="result">
-    <h2>体验结果</h2>
-    <div class="output">
-      <div class="summary">
-        <h3 id="resultTitle">等待生成</h3>
-        <div id="resultText"><p>选择一个 demo，输入内容后点击生成。</p></div>
-        <div id="badges" class="badge-row"></div>
-      </div>
-      <div id="preview" class="preview"></div>
+  <section class="demo-shell">
+    <div class="demo-head">
+      <div><div id="demoTitle" class="demo-title"></div><div id="demoSub" class="demo-sub"></div></div>
+      <span id="demoStatus" class="pill green">Static online demo</span>
     </div>
-    <p class="note">说明：这是部署在 GitHub Pages 的静态体验版，用来展示产品交互和结果结构；真实模型、上传、支付、工单等能力需要后端服务/API 支持。</p>
+    <div id="demoRoot"></div>
   </section>
 
-  <section class="side">
-    <div class="side-card"><strong id="metric1">-</strong><p id="metric1Label">核心指标</p></div>
-    <div class="side-card"><strong id="metric2">-</strong><p id="metric2Label">处理流程</p></div>
-    <div class="side-card"><strong id="metric3">-</strong><p id="metric3Label">业务价值</p></div>
-  </section>
+  <p class="notice">这些是可部署到 GitHub Pages 的静态在线体验，用来展示产品流程和交互结构；真实模型推理、文件上传、支付、工单流转等能力需要后端服务/API。</p>
 </main>
 
-<footer class="footer">
-  AI 产品经理作品集 · 李林豪 · <a href="index.html">返回简历</a>
-</footer>
+<footer class="footer">AI 产品经理作品集 · 李林豪 · <a href="index.html">返回简历</a></footer>
 
 <script>
-const demos = {
-  "01": {
-    title: "跨境电商AI商品图生成器",
-    subtitle: "输入商品描述，生成多场景电商素材方案",
-    desc: "模拟商品图生成的前置产品流程：解析卖点、匹配场景、输出拍摄/生成建议。",
-    inputLabel: "商品描述", selectLabel: "图片场景", numberLabel: "生成张数",
-    sample: "一款轻量化户外保温杯，磨砂黑色，适合露营、徒步和办公室通勤，目标用户是25-35岁都市白领。",
-    options: ["白底主图", "生活方式场景", "细节特写", "尺寸说明图", "模特手持图"],
-    metrics: ["5类", "场景模板", "成本下降"],
-    render(input, mode, level) {
-      return {
-        title: "商品图生成方案",
-        html: `<p>已识别商品核心卖点：便携、保温、户外、通勤。建议生成 ${level} 张「${mode}」。</p><ul><li>主视觉：突出磨砂黑材质和杯身线条</li><li>场景：露营桌面、办公室桌面、背包侧袋</li><li>Prompt：clean product photography, premium outdoor lifestyle, soft natural light</li></ul>`,
-        badges: ["Flux Pro", "电商素材", "批量生成"],
-        preview: "cards"
-      };
-    }
-  },
-  "02": {
-    title: "AI知识库问答助手",
-    subtitle: "RAG 检索问答 + 来源引用",
-    desc: "模拟企业知识库问答流程：问题理解、文档召回、答案生成、来源引用。",
-    inputLabel: "业务问题", selectLabel: "知识库类型", numberLabel: "召回段落数",
-    sample: "客户问：企业版知识库是否支持 PDF 上传和多轮追问？请给出产品答复。",
-    options: ["产品手册", "售后SOP", "合同条款", "培训资料"],
-    metrics: ["RAG", "来源引用", "多轮追问"],
-    render(input, mode, level) {
-      return {
-        title: "知识库回答",
-        html: `<p>根据「${mode}」召回 ${level} 个相关片段后，建议回答：</p><ul><li>支持 PDF、Word、TXT、Markdown 等格式上传。</li><li>问答结果会附带来源段落，便于人工复核。</li><li>支持围绕同一主题继续追问。</li></ul>`,
-        badges: ["向量检索", "关键词混合", "引用溯源"],
-        preview: "chat"
-      };
-    }
-  },
-  "03": {
-    title: "游戏NPC智能对话系统",
-    subtitle: "角色人设 + 情绪状态 + 多轮记忆",
-    desc: "模拟 NPC 对话引擎，展示角色模板、上下文记忆和 JSON 化输出。",
-    inputLabel: "玩家输入", selectLabel: "NPC 角色", numberLabel: "好感度",
-    sample: "我刚从北境回来，听说城里最近有奇怪的传闻，你知道些什么吗？",
-    options: ["导师", "跟班", "商人"],
-    metrics: ["3类", "情绪追踪", "API输出"],
-    render(input, mode, level) {
-      const attitude = level >= 7 ? "友好" : level >= 4 ? "中立" : "警惕";
-      return {
-        title: `${mode} NPC 回复`,
-        html: `<p>情绪状态：${attitude}。系统保留玩家上一轮意图，并生成可接入游戏引擎的结构化响应。</p><ul><li>回复：北境来的旅人，你最好去酒馆问问那个戴银戒指的人。</li><li>任务钩子：调查城中失踪商队</li><li>JSON 字段：dialogue / emotion / quest_hint</li></ul>`,
-        badges: [mode, attitude, "多轮记忆"],
-        preview: "chat"
-      };
-    }
-  },
-  "04": {
-    title: "AI自动巡检报告系统",
-    subtitle: "现场检查、自动评分、报告生成",
-    desc: "模拟巡检员录入现场问题后，系统自动生成评分和整改建议。",
-    inputLabel: "巡检记录", selectLabel: "行业模板", numberLabel: "问题数量",
-    sample: "门店后厨地面有积水，冷柜温度记录缺失，消防通道堆放纸箱，员工未佩戴工牌。",
-    options: ["餐饮门店", "零售门店", "物业园区"],
-    metrics: ["SOP", "自动评分", "PDF报告"],
-    render(input, mode, level) {
-      const score = Math.max(62, 96 - Number(level) * 4);
-      return {
-        title: "巡检评分报告",
-        html: `<p>${mode} 本次巡检评分为 <b>${score}</b> 分。</p><ul><li>高风险：消防通道堵塞，建议立即整改。</li><li>中风险：温度记录缺失，需补录并复核。</li><li>低风险：工牌佩戴不规范，纳入班前培训。</li></ul>`,
-        badges: [score >= 80 ? "通过" : "需整改", "问题分类", "整改建议"],
-        preview: "bars"
-      };
-    }
-  },
-  "05": {
-    title: "智能客服Agent",
-    subtitle: "意图识别、FAQ 检索、工单流转",
-    desc: "模拟客服机器人对话，自动判断意图、情绪和是否需要转人工。",
-    inputLabel: "客户消息", selectLabel: "业务场景", numberLabel: "客户情绪强度",
-    sample: "我昨天申请退款一直没有处理，订单号 A10293，现在很着急，请帮我看一下。",
-    options: ["电商售后", "SaaS客服", "教育咨询"],
-    metrics: ["意图识别", "工单创建", "转人工"],
-    render(input, mode, level) {
-      const urgent = Number(level) > 6;
-      return {
-        title: "客服 Agent 处理结果",
-        html: `<p>识别意图：退款进度查询。情绪：${urgent ? "负面偏高，建议升级人工" : "正常咨询"}。</p><ul><li>抽取实体：订单号 A10293</li><li>自动回复：已为您查询退款节点，并同步售后专员。</li><li>工单分类：${mode} / 售后 / 退款</li></ul>`,
-        badges: ["FAQ检索", urgent ? "转人工" : "自动处理", "对话摘要"],
-        preview: "chat"
-      };
-    }
-  },
-  "06": {
-    title: "Prompt测试对比平台",
-    subtitle: "多模型评测、成本、耗时对比",
-    desc: "模拟 Prompt A/B 测试，展示多模型输出质量和成本结构。",
-    inputLabel: "Prompt / 任务", selectLabel: "评测维度", numberLabel: "测试轮数",
-    sample: "请把一段客服投诉内容总结为：客户问题、情绪等级、建议处理动作。",
-    options: ["准确性", "格式稳定性", "成本效率", "响应速度"],
-    metrics: ["多模型", "成本分析", "A/B测试"],
-    render(input, mode, level) {
-      return {
-        title: "Prompt 评测报告",
-        html: `<p>围绕「${mode}」完成 ${level} 轮模拟评测。</p><ul><li>GPT：结构最好，成本中等。</li><li>Claude：语义解释更完整，耗时略高。</li><li>DeepSeek：成本最低，需加强格式约束。</li></ul>`,
-        badges: ["GPT", "Claude", "DeepSeek"],
-        preview: "table"
-      };
-    }
-  },
-  "07": {
-    title: "金融风控AI助手",
-    subtitle: "信贷审批、风险指标监控、财报风险扫描",
-    desc: "模拟企业授信初审流程，输出风险评分、审批建议和可解释理由。",
-    inputLabel: "企业/财报信息", selectLabel: "风控场景", numberLabel: "负债率 %",
-    sample: "某制造企业年营收 8600 万，净利润率 6%，负债率 58%，近一年有 1 次逾期，抵押覆盖率 130%，财报提到现金流承压。",
-    options: ["贷前准入", "授信复核", "财报扫描", "贷后预警"],
-    metrics: ["5类指标", "3档建议", "NLP扫描"],
-    render(input, mode, level) {
-      const debt = Number(level);
-      const risk = debt >= 70 ? "高风险" : debt >= 50 ? "中风险" : "低风险";
-      const cls = debt >= 70 ? "red" : debt >= 50 ? "orange" : "green";
-      return {
-        title: "风控审批建议",
-        html: `<p>场景：${mode}。综合判断为 <b>${risk}</b>。</p><ul><li>触发因素：负债率 ${debt}%，现金流承压，历史逾期记录。</li><li>正向因素：营收规模稳定，抵押覆盖率较高。</li><li>建议：${debt >= 70 ? "暂缓通过，补充现金流证明。" : debt >= 50 ? "进入人工复核，降低授信额度。" : "可通过初审，维持常规监控。"}</li></ul>`,
-        badges: [{ text: risk, cls }, "可解释审批", "风险标签"],
-        preview: "bars"
-      };
-    }
-  }
+const demoMeta = {
+  "01": ["跨境电商AI商品图生成器", "商品卖点解析 + 多场景图片生成工作台"],
+  "02": ["AI知识库问答助手", "RAG 问答、来源引用和多轮追问界面"],
+  "03": ["游戏NPC智能对话系统", "角色人设、情绪状态和任务钩子"],
+  "04": ["AI自动巡检报告系统", "现场巡检、问题评分和整改报告"],
+  "05": ["智能客服Agent", "客服收件箱、意图识别和工单处理"],
+  "06": ["Prompt测试对比平台", "多模型评测、成本耗时和版本对比"],
+  "07": ["金融风控AI助手", "信贷审批、风险指标和解释型建议"]
 };
 
-const params = new URLSearchParams(location.search);
-let current = demos[params.get("p")] ? params.get("p") : "01";
+const state = {
+  "01": { desc: "轻量化户外保温杯，磨砂黑色，适合露营、徒步和办公室通勤", scene: "生活方式场景", count: 4 },
+  "02": { q: "企业版知识库是否支持 PDF 上传和多轮追问？", kb: "产品手册", recall: 4 },
+  "03": { role: "导师", msg: "我刚从北境回来，听说城里最近有奇怪的传闻。", mood: 6 },
+  "04": { type: "餐饮门店", issue: "后厨地面有积水，冷柜温度记录缺失，消防通道堆放纸箱。", count: 4 },
+  "05": { scene: "电商售后", msg: "我昨天申请退款一直没有处理，订单号 A10293，现在很着急。", emotion: 7 },
+  "06": { task: "把客服投诉内容总结为客户问题、情绪等级、建议处理动作。", metric: "格式稳定性", rounds: 5 },
+  "07": { company: "年营收8600万，净利润率6%，负债率58%，近一年1次逾期，抵押覆盖率130%，现金流承压。", scene: "授信复核", debt: 58 }
+};
+
+const runtime = { current: "01", runs: {}, npcChoice: "继续追问传闻" };
 const $ = (id) => document.getElementById(id);
+const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[char]));
 
-function setDemo(id) {
-  current = id;
-  const demo = demos[id];
-  $("title").textContent = demo.title;
-  $("subtitle").textContent = demo.subtitle;
-  $("desc").textContent = demo.desc;
-  $("textLabel").textContent = demo.inputLabel;
-  $("selectLabel").textContent = demo.selectLabel;
-  $("numberLabel").textContent = demo.numberLabel;
-  $("mainInput").value = demo.sample;
-  $("mode").innerHTML = demo.options.map((item) => `<option>${item}</option>`).join("");
-  $("level").value = id === "07" ? 58 : id === "03" ? 6 : 5;
-  $("metric1").textContent = demo.metrics[0];
-  $("metric2").textContent = demo.metrics[1];
-  $("metric3").textContent = demo.metrics[2];
-  $("metric1Label").textContent = "能力模块";
-  $("metric2Label").textContent = "产品流程";
-  $("metric3Label").textContent = "展示重点";
+function setValue(key, field, value) {
+  state[key][field] = value;
+}
+
+function runDemo(key) {
+  runtime.runs[key] = new Date().toLocaleString("zh-CN", { hour12: false });
+  renderDemo(key);
+}
+
+function runLabel(key) {
+  return runtime.runs[key] ? `已生成 · ${runtime.runs[key]}` : "待生成";
+}
+
+function deliverableCard(key, title, detail) {
+  return `<div class="deliverable"><b>${title}</b><p>${detail}</p><div class="action-row" style="margin-top:10px"><button class="btn secondary" onclick="downloadDeliverable('${key}')">下载交付物</button><span class="logline">${runLabel(key)}</span></div></div>`;
+}
+
+function field(key, name, label, value, type = "text") {
+  if (type === "textarea") {
+    return `<div class="field"><label>${label}</label><textarea oninput="setValue('${key}','${name}',this.value)">${escapeHtml(value)}</textarea></div>`;
+  }
+  return `<div class="field"><label>${label}</label><input type="${type}" value="${escapeHtml(value)}" oninput="setValue('${key}','${name}',this.value)"></div>`;
+}
+
+function selectField(key, name, label, value, options) {
+  return `<div class="field"><label>${label}</label><select onchange="setValue('${key}','${name}',this.value)">${options.map((item) => `<option ${item === value ? "selected" : ""}>${item}</option>`).join("")}</select></div>`;
+}
+
+function chooseNpc(choice) {
+  runtime.npcChoice = choice;
+  runtime.runs["03"] = new Date().toLocaleString("zh-CN", { hour12: false });
+  renderDemo("03");
+}
+
+function makeDeliverable(key) {
+  const generatedAt = runtime.runs[key] || new Date().toLocaleString("zh-CN", { hour12: false });
+  if (key === "01") {
+    const s = state["01"];
+    return {
+      name: "ai-commerce-image-brief.txt",
+      type: "text/plain",
+      body: `跨境电商AI商品图生成器 - 商品图Brief\n生成时间：${generatedAt}\n\n商品描述：${s.desc}\n生成场景：${s.scene}\n生成数量：${s.count}\n\n交付内容：\n1. 白底主图：突出商品轮廓和材质。\n2. 生活方式图：露营、办公室、通勤场景。\n3. 细节图：杯盖、杯身质感、容量标识。\n4. 尺寸说明图：高度、容量、使用卖点。\n\nPrompt模板：premium product photography, ${s.scene}, outdoor bottle, clean lighting, ecommerce hero shot`
+    };
+  }
+  if (key === "02") {
+    const s = state["02"];
+    return {
+      name: "knowledge-qa-answer.txt",
+      type: "text/plain",
+      body: `AI知识库问答助手 - 回答记录\n生成时间：${generatedAt}\n\n问题：${s.q}\n知识库：${s.kb}\n召回段落：Top ${s.recall}\n\n回答：企业版知识库支持 PDF、Word、TXT、Markdown 等格式上传，并支持多轮追问。回答会附带来源段落，便于人工复核。\n\n引用来源：${s.kb} · 第 3.2 节 · 文档上传与多轮问答能力`
+    };
+  }
+  if (key === "03") {
+    const s = state["03"];
+    const attitude = Number(s.mood) >= 7 ? "friendly" : Number(s.mood) >= 4 ? "neutral" : "guarded";
+    return {
+      name: "npc-dialogue-response.json",
+      type: "application/json",
+      body: JSON.stringify({
+        project: "游戏NPC智能对话系统",
+        generated_at: generatedAt,
+        role: s.role,
+        player_input: s.msg,
+        selected_action: runtime.npcChoice,
+        emotion: attitude,
+        dialogue: "北境来的旅人，你问得正是时候。昨夜港口的灯塔熄了三次，银戒商人却说那只是风。",
+        quest_hint: "调查失踪商队",
+        api_fields: ["dialogue", "emotion", "quest_hint", "relationship_delta"]
+      }, null, 2)
+    };
+  }
+  if (key === "04") {
+    const s = state["04"];
+    const score = Math.max(62, 96 - Number(s.count) * 4);
+    return {
+      name: "inspection-report.txt",
+      type: "text/plain",
+      body: `AI自动巡检报告系统 - 巡检报告\n生成时间：${generatedAt}\n\n行业模板：${s.type}\n巡检记录：${s.issue}\n综合评分：${score}\n\n整改清单：\n1. 消防通道需立即清理 - 今日闭店前\n2. 补录冷柜温度记录 - 24小时内\n3. 后厨地面积水处理 - 当班完成\n\n结论：${score >= 80 ? "通过，保留常规复查。" : "需整改后复核。"}`
+    };
+  }
+  if (key === "05") {
+    const s = state["05"];
+    const urgent = Number(s.emotion) >= 7;
+    return {
+      name: "support-agent-ticket.json",
+      type: "application/json",
+      body: JSON.stringify({
+        project: "智能客服Agent",
+        generated_at: generatedAt,
+        scene: s.scene,
+        customer_message: s.msg,
+        intent: "退款进度查询",
+        entities: { order_id: "A10293" },
+        sentiment: urgent ? "negative_high" : "normal",
+        action: urgent ? "create_ticket_and_handoff" : "auto_reply",
+        agent_summary: "客户询问退款进度，情绪偏急，建议同步售后专员并创建加急工单。"
+      }, null, 2)
+    };
+  }
+  if (key === "06") {
+    const s = state["06"];
+    return {
+      name: "prompt-evaluation.csv",
+      type: "text/csv",
+      body: `model,score,latency,cost,best_for\nGPT,92,1.8s,$0.012,主流程稳定输出\nClaude,90,2.2s,$0.015,复杂文本解释\nDeepSeek,84,1.4s,$0.004,低成本批量任务\n\nmetric,${s.metric}\nrounds,${s.rounds}\ntask,"${s.task.replace(/"/g, '""')}"`
+    };
+  }
+  const s = state["07"];
+  const debt = Number(s.debt);
+  const risk = debt >= 70 ? "高风险" : debt >= 50 ? "中风险" : "低风险";
+  const action = debt >= 70 ? "暂缓通过，补充现金流证明" : debt >= 50 ? "进入人工复核，降低授信额度" : "通过初审，维持常规监控";
+  return {
+    name: "fintech-risk-approval.txt",
+    type: "text/plain",
+    body: `金融风控AI助手 - 授信审批单\n生成时间：${generatedAt}\n\n场景：${s.scene}\n企业信息：${s.company}\n负债率：${debt}%\n风险等级：${risk}\n审批建议：${action}\n\n命中规则：\n1. 现金流承压：触发财报文本风险标签。\n2. 近一年逾期记录：进入复核规则。\n3. 抵押覆盖率较高：提供风险缓释。\n\n说明：本结果用于产品原型展示，不构成真实授信或投资建议。`
+  };
+}
+
+function downloadDeliverable(key) {
+  if (!runtime.runs[key]) runtime.runs[key] = new Date().toLocaleString("zh-CN", { hour12: false });
+  const file = makeDeliverable(key);
+  const blob = new Blob([file.body], { type: `${file.type};charset=utf-8` });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = file.name;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(link.href);
+  renderDemo(key);
+}
+
+function renderCommerce() {
+  const s = state["01"];
+  return `<div class="commerce">
+    <aside class="commerce-aside">
+      ${field("01", "desc", "商品描述", s.desc, "textarea")}
+      ${selectField("01", "scene", "生成场景", s.scene, ["白底主图", "生活方式场景", "细节特写", "尺寸说明图", "模特手持图"])}
+      ${field("01", "count", "生成数量", s.count, "number")}
+      <div class="action-row"><button class="btn primary" onclick="runDemo('01')">生成商品图方案</button><button class="btn secondary" onclick="downloadDeliverable('01')">导出Brief</button></div>
+      <div class="card soft"><div class="section-label">AI Prompt</div><p class="mini">premium product photography, ${escapeHtml(s.scene)}, outdoor bottle, clean lighting, ecommerce hero shot</p></div>
+      ${deliverableCard("01", "交付物", "商品图生成 Brief、场景清单、Prompt 模板和素材规格。")}
+    </aside>
+    <section class="scene-grid">
+      ${["outdoor", "office", "detail", ""].map((cls, index) => `<div class="image-tile"><div class="image-art ${cls}"><div class="product"></div></div><div class="tile-caption">${["露营场景主图", "办公室通勤图", "材质细节图", "尺寸说明图"][index]}</div></div>`).join("")}
+    </section>
+  </div>`;
+}
+
+function renderKnowledge() {
+  const s = state["02"];
+  return `<div class="knowledge">
+    <aside class="kb-side">
+      <div class="section-label">Knowledge Base</div>
+      ${["企业版产品手册.pdf", "RAG 功能说明.md", "售后问答 SOP.docx", "权限配置指南.txt"].map((doc, i) => `<div class="doc-item"><b>${doc}</b><p>已切片 ${24 + i * 7} 段 · 向量索引完成</p></div>`).join("")}
+    </aside>
+    <section class="kb-main">
+      <div class="chat-list">
+        <div class="bubble user">${escapeHtml(s.q)}</div>
+        <div class="bubble bot">支持。企业版知识库可上传 PDF、Word、TXT、Markdown 等格式，并支持围绕同一主题连续追问。</div>
+        <div class="citation">来源引用：${escapeHtml(s.kb)} · 第 3.2 节 · “文档上传与多轮问答能力”</div>
+        <div class="card soft"><b>召回策略</b><p class="mini">向量检索 Top ${escapeHtml(s.recall)} + 关键词补召回 + 来源段落重排</p></div>
+      </div>
+      <div class="ask-row">
+        <input value="${escapeHtml(s.q)}" oninput="setValue('02','q',this.value)">
+        <button class="btn primary" onclick="runDemo('02')">提问</button>
+      </div>
+      ${deliverableCard("02", "交付物", "问答结果、引用来源、召回策略和可复核回答记录。")}
+    </section>
+  </div>`;
+}
+
+function renderNpc() {
+  const s = state["03"];
+  const attitude = Number(s.mood) >= 7 ? "友好" : Number(s.mood) >= 4 ? "中立" : "警惕";
+  const line = runtime.npcChoice === "接受调查任务" ? "很好，拿着这枚铜徽。去港口仓库查失踪商队，别让守夜人发现你。" : "北境来的旅人，你问得正是时候。昨夜港口的灯塔熄了三次，银戒商人却说那只是风。";
+  return `<div class="npc">
+    <section class="npc-stage">
+      <div class="npc-card">
+        <div class="npc-name">${escapeHtml(s.role)} · 情绪 ${attitude}</div>
+        <p class="npc-dialogue">${line}</p>
+        <div class="choice-row"><button class="choice" onclick="chooseNpc('继续追问传闻')">继续追问传闻</button><button class="choice" onclick="chooseNpc('接受调查任务')">接受调查任务</button><button class="choice" onclick="downloadDeliverable('03')">查看 JSON 输出</button></div>
+      </div>
+    </section>
+    <aside class="npc-panel stack">
+      ${selectField("03", "role", "NPC 角色", s.role, ["导师", "跟班", "商人"])}
+      ${field("03", "msg", "玩家输入", s.msg, "textarea")}
+      ${field("03", "mood", "好感度", s.mood, "number")}
+      <div class="card" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)"><div class="section-label" style="color:#d1d5db">JSON</div><p class="mini" style="color:#e5e7eb">{ "emotion": "${attitude}", "quest_hint": "调查失踪商队" }</p></div>
+      <div class="action-row"><button class="btn primary" onclick="runDemo('03')">生成NPC回复</button><button class="btn secondary" onclick="downloadDeliverable('03')">导出JSON</button></div>
+    </aside>
+  </div>`;
+}
+
+function renderInspection() {
+  const s = state["04"];
+  const score = Math.max(62, 96 - Number(s.count) * 4);
+  return `<div class="inspect">
+    <aside class="inspect-form stack">
+      ${selectField("04", "type", "行业模板", s.type, ["餐饮门店", "零售门店", "物业园区"])}
+      ${field("04", "issue", "巡检记录", s.issue, "textarea")}
+      ${field("04", "count", "问题数量", s.count, "number")}
+      <div class="action-row"><button class="btn primary" onclick="runDemo('04')">生成巡检报告</button><button class="btn secondary" onclick="downloadDeliverable('04')">下载报告</button></div>
+    </aside>
+    <section class="report">
+      <div class="score-ring"><span>${score}</span></div>
+      <div class="grid-3">
+        <div class="card"><b>高风险</b><p class="muted">消防通道堆物</p></div>
+        <div class="card"><b>中风险</b><p class="muted">冷柜记录缺失</p></div>
+        <div class="card"><b>低风险</b><p class="muted">现场规范提醒</p></div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        ${[["bad", "消防通道需立即清理", "今日闭店前"], ["warn", "补录冷柜温度记录", "24小时内"], ["ok", "后厨地面积水处理", "当班完成"]].map((row) => `<div class="check-row"><span class="check-dot ${row[0] === "ok" ? "" : row[0]}">${row[0] === "bad" ? "!" : row[0] === "warn" ? "?" : "✓"}</span><span>${row[1]}</span><span class="pill ${row[0] === "bad" ? "red" : row[0] === "warn" ? "orange" : "green"}">${row[2]}</span></div>`).join("")}
+      </div>
+      <div style="margin-top:14px">${deliverableCard("04", "交付物", "巡检评分、风险分类、整改责任和完成期限。")}</div>
+    </section>
+  </div>`;
+}
+
+function renderSupport() {
+  const s = state["05"];
+  const urgent = Number(s.emotion) >= 7;
+  return `<div class="support">
+    <aside class="inbox">
+      <div class="section-label">Inbox</div>
+      ${["退款进度查询", "发票开具失败", "物流异常", "会员续费咨询"].map((name, i) => `<div class="ticket ${i === 0 ? "active" : ""}"><b>${name}</b><p>${i === 0 ? "负面情绪偏高 · 待处理" : "自动回复中"}</p></div>`).join("")}
+    </aside>
+    <section class="support-chat">
+      <div class="chat-list">
+        <div class="bubble user">${escapeHtml(s.msg)}</div>
+        <div class="bubble bot">已识别订单号 A10293，当前退款处于财务复核节点。我会先同步售后专员，并为你创建加急工单。</div>
+        <div class="bubble bot">工单摘要：退款进度查询 / ${escapeHtml(s.scene)} / ${urgent ? "建议转人工" : "可自动处理"}</div>
+      </div>
+      <div class="ask-row"><input value="${escapeHtml(s.msg)}" oninput="setValue('05','msg',this.value)"><button class="btn primary" onclick="runDemo('05')">发送</button></div>
+    </section>
+    <aside class="agent-panel stack">
+      ${selectField("05", "scene", "业务场景", s.scene, ["电商售后", "SaaS客服", "教育咨询"])}
+      ${field("05", "emotion", "情绪强度", s.emotion, "number")}
+      <div class="card"><div class="section-label">Agent Action</div><p class="muted">意图：退款查询<br>实体：A10293<br>动作：${urgent ? "创建工单并转人工" : "FAQ 自动回复"}</p></div>
+      ${deliverableCard("05", "交付物", "工单摘要、意图实体、情绪判断和转人工建议。")}
+    </aside>
+  </div>`;
+}
+
+function renderPromptLab() {
+  const s = state["06"];
+  const rows = [["GPT", 92, "1.8s", "$0.012"], ["Claude", 90, "2.2s", "$0.015"], ["DeepSeek", 84, "1.4s", "$0.004"]];
+  return `<div class="promptlab">
+    <aside class="prompt-editor stack">
+      ${field("06", "task", "Prompt / 任务", s.task, "textarea")}
+      ${selectField("06", "metric", "评测维度", s.metric, ["准确性", "格式稳定性", "成本效率", "响应速度"])}
+      ${field("06", "rounds", "测试轮数", s.rounds, "number")}
+      <div class="action-row"><button class="btn dark" onclick="runDemo('06')">运行评测</button><button class="btn secondary" onclick="downloadDeliverable('06')">导出CSV</button></div>
+    </aside>
+    <section class="model-grid">
+      ${rows.map((row) => `<div class="model-card"><h3>${row[0]}</h3><div class="score">${row[1]}</div><p class="muted">${escapeHtml(s.metric)}评分</p><div class="tokens"><div class="bar"><span style="width:${row[1]}%"></span></div><p class="mini">耗时 ${row[2]} · 成本 ${row[3]}</p></div></div>`).join("")}
+      <div class="card soft" style="grid-column:1/-1"><table class="table"><thead><tr><th>模型</th><th>优点</th><th>风险</th><th>建议</th></tr></thead><tbody><tr><td>GPT</td><td>结构稳定</td><td>成本中等</td><td>主流程</td></tr><tr><td>Claude</td><td>解释完整</td><td>耗时略高</td><td>复杂文本</td></tr><tr><td>DeepSeek</td><td>成本低</td><td>格式需约束</td><td>批量任务</td></tr></tbody></table></div>
+    </section>
+  </div>`;
+}
+
+function renderRisk() {
+  const s = state["07"];
+  const debt = Number(s.debt);
+  const risk = debt >= 70 ? ["高风险", "red", "暂缓通过"] : debt >= 50 ? ["中风险", "orange", "人工复核"] : ["低风险", "green", "通过初审"];
+  return `<div class="risk">
+    <aside class="risk-form stack">
+      ${selectField("07", "scene", "风控场景", s.scene, ["贷前准入", "授信复核", "财报扫描", "贷后预警"])}
+      ${field("07", "company", "企业/财报信息", s.company, "textarea")}
+      ${field("07", "debt", "负债率 %", s.debt, "number")}
+      <div class="action-row"><button class="btn primary" onclick="runDemo('07')">生成风控建议</button><button class="btn secondary" onclick="downloadDeliverable('07')">下载审批单</button></div>
+    </aside>
+    <section class="risk-dash">
+      <div class="risk-top">
+        <div class="risk-metric"><strong>${100 - debt}</strong><span>信用评分</span></div>
+        <div class="risk-metric"><strong>${debt}%</strong><span>负债率</span></div>
+        <div class="risk-metric"><strong>${risk[2]}</strong><span>审批建议</span></div>
+      </div>
+      <div class="risk-main">
+        <div class="card"><div class="section-label">Risk Level</div><span class="pill ${risk[1]}">${risk[0]}</span><div class="bar" style="margin-top:18px"><span style="width:${debt}%;background:${debt >= 70 ? "var(--red)" : debt >= 50 ? "var(--orange)" : "var(--green)"}"></span></div><p class="muted" style="margin-top:12px">综合考虑负债、现金流、逾期记录和抵押覆盖率。</p></div>
+        <div class="card"><div class="section-label">Explainability</div><ul class="risk-list"><li>现金流承压：触发财报文本风险标签。</li><li>近一年逾期 1 次：进入复核规则。</li><li>抵押覆盖率 130%：提供一定风险缓释。</li><li>建议降低授信额度并补充流水证明。</li></ul></div>
+      </div>
+      <div class="card soft"><table class="table"><thead><tr><th>指标</th><th>结果</th><th>规则</th></tr></thead><tbody><tr><td>营收规模</td><td>8600万</td><td>达标</td></tr><tr><td>净利润率</td><td>6%</td><td>观察</td></tr><tr><td>抵押覆盖</td><td>130%</td><td>正向</td></tr></tbody></table></div>
+      ${deliverableCard("07", "交付物", "授信审批建议、风险解释、命中规则和复核动作。")}
+    </section>
+  </div>`;
+}
+
+const renderers = { "01": renderCommerce, "02": renderKnowledge, "03": renderNpc, "04": renderInspection, "05": renderSupport, "06": renderPromptLab, "07": renderRisk };
+
+function renderSwitcher(active) {
+  $("switcher").innerHTML = Object.keys(demoMeta).map((id) => `<button class="tab ${id === active ? "active" : ""}" onclick="openDemo('${id}')">${id}</button>`).join("");
+}
+
+function renderDemo(id) {
+  runtime.current = id;
+  const meta = demoMeta[id];
+  $("pageTitle").textContent = meta[0];
+  $("pageSubtitle").textContent = meta[1];
+  $("demoTitle").textContent = meta[0];
+  $("demoSub").textContent = meta[1];
+  $("demoStatus").textContent = runtime.runs[id] ? `已生成 · ${runtime.runs[id]}` : "可在线体验";
+  $("demoStatus").className = runtime.runs[id] ? "pill green" : "pill";
   $("detailLink").href = `project_${id}.html`;
-  [...document.querySelectorAll(".tab")].forEach((tab) => tab.classList.toggle("active", tab.dataset.id === id));
+  $("demoRoot").innerHTML = renderers[id]();
+  renderSwitcher(id);
+}
+
+function openDemo(id) {
   history.replaceState(null, "", `demo.html?p=${id}`);
-  renderResult();
+  renderDemo(id);
 }
 
-function buildTabs() {
-  $("tabs").innerHTML = Object.keys(demos).map((id) => `<button class="tab" type="button" data-id="${id}">${id}</button>`).join("");
-  $("tabs").addEventListener("click", (event) => {
-    if (event.target.matches(".tab")) setDemo(event.target.dataset.id);
-  });
-}
-
-function renderPreview(type, result) {
-  if (type === "chat") {
-    return `<div class="chat"><div class="bubble user">${$("mainInput").value.slice(0, 72)}</div><div class="bubble bot">已理解你的输入，并生成可执行的业务结果。</div><div class="bubble bot">下一步建议：进入复核、生成摘要或创建任务。</div></div>`;
-  }
-  if (type === "table") {
-    return `<table class="table"><thead><tr><th>模型</th><th>质量</th><th>耗时</th><th>成本</th></tr></thead><tbody><tr><td>GPT</td><td>92</td><td>1.8s</td><td>$0.012</td></tr><tr><td>Claude</td><td>90</td><td>2.2s</td><td>$0.015</td></tr><tr><td>DeepSeek</td><td>84</td><td>1.4s</td><td>$0.004</td></tr></tbody></table>`;
-  }
-  if (type === "bars") {
-    return `<div class="bars"><div class="visual-card"><b>综合评分</b><div class="bar"><span style="width:76%"></span></div></div><div class="visual-card"><b>规则命中</b><div class="bar"><span style="width:58%;background:var(--orange)"></span></div></div><div class="visual-card"><b>人工复核优先级</b><div class="bar"><span style="width:68%;background:var(--purple)"></span></div></div></div>`;
-  }
-  return `<div class="grid"><div class="visual-card"><b>主图</b><p>干净背景，突出产品轮廓。</p></div><div class="visual-card"><b>场景图</b><p>露营、办公、通勤三类场景。</p></div><div class="visual-card"><b>细节图</b><p>材质、容量、开盖结构。</p></div><div class="visual-card"><b>尺寸图</b><p>规格参数可视化。</p></div></div>`;
-}
-
-function renderResult() {
-  const demo = demos[current];
-  const result = demo.render($("mainInput").value, $("mode").value, $("level").value);
-  $("resultTitle").textContent = result.title;
-  $("resultText").innerHTML = result.html;
-  $("badges").innerHTML = result.badges.map((badge) => {
-    if (typeof badge === "string") return `<span class="badge">${badge}</span>`;
-    return `<span class="badge ${badge.cls || ""}">${badge.text}</span>`;
-  }).join("");
-  $("preview").innerHTML = renderPreview(result.preview, result);
-  $("status").textContent = "已生成静态模拟结果，可在线访问。";
-}
-
-buildTabs();
-$("sampleBtn").addEventListener("click", () => {
-  $("mainInput").value = demos[current].sample;
-  renderResult();
-});
-$("demoForm").addEventListener("submit", (event) => {
-  event.preventDefault();
-  $("status").textContent = "生成中...";
-  setTimeout(renderResult, 280);
-});
-setDemo(current);
+const id = new URLSearchParams(location.search).get("p");
+openDemo(demoMeta[id] ? id : "01");
 </script>
 </body>
 </html>
