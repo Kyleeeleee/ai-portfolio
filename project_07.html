@@ -5,57 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🏦 金融风控AI助手 · 李林豪</title>
 <style>
-:root{--bg:#f5f5f7;--surface:#ffffff;--surface-soft:#fbfbfd;--text:#1d1d1f;--muted:#6e6e73;--subtle:#86868b;--line:#d2d2d7;--blue:#0071e3;--blue-deep:#0040dd;--green:#248a3d;--orange:#bf5b00;--red:#c9342f;--pink:#e056a0;--primary:var(--blue);--accent:var(--green);--card:var(--surface);--border:rgba(0,0,0,.08);--dim:var(--muted);--shadow:0 18px 42px rgba(0,0,0,.08);--radius:8px;--nav-h:52px}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{min-height:100vh;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,SF Pro Display,SF Pro Text,PingFang SC,Microsoft YaHei,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-a{color:inherit;text-decoration:none}
-.header{padding:96px 24px 50px;text-align:center;background:var(--bg);border-bottom:1px solid rgba(0,0,0,.06)}
-.header .back{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:0 13px;margin-bottom:22px;border:1px solid rgba(0,0,0,.08);border-radius:999px;background:rgba(255,255,255,.72);color:#424245;font-size:13px;font-weight:600;transition:background .2s,color .2s,transform .2s}
-.header .back:hover{background:#fff;color:#000;transform:translateY(-1px)}
-.header .emoji{font-size:44px;line-height:1;margin-bottom:14px}
-.header h1{width:min(920px,100%);margin:0 auto;font-size:clamp(38px,6.2vw,76px);line-height:.98;letter-spacing:0;font-weight:800;color:var(--text)}
-.header .gradient{background:none;-webkit-text-fill-color:currentColor;color:var(--text)}
-.header .subtitle,.header p{width:min(760px,100%);margin:18px auto 0;color:#424245;font-size:clamp(18px,2.1vw,26px);line-height:1.22;font-weight:650}
-.container{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:34px 0 72px}
-.card{background:var(--surface);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:26px;margin-bottom:16px;box-shadow:0 10px 30px rgba(0,0,0,.04)}
-.card h2{font-size:22px;line-height:1.15;margin-bottom:12px;font-weight:760;color:var(--text);display:flex;align-items:center;gap:.5rem}
-.card p{font-size:16px;color:#424245;line-height:1.72}
-.demo-gif{width:100%;display:block;border-radius:var(--radius);border:1px solid rgba(0,0,0,.08);margin-bottom:18px;background:#fff;box-shadow:var(--shadow)}
-.features{list-style:none;padding:0;display:grid;gap:8px}
-.features li{position:relative;padding:10px 12px 10px 34px;font-size:15px;color:#424245;background:var(--surface-soft);border:1px solid rgba(0,0,0,.06);border-radius:var(--radius)}
-.features li::before{content:"";position:absolute;left:14px;top:17px;width:7px;height:7px;border-radius:50%;background:var(--blue)}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;margin-bottom:0}
-.tag,.tag-green,.tag-pink,.tag-blue,.tag-orange{font-size:12px;line-height:1;padding:7px 10px;border-radius:999px;border:1px solid rgba(0,0,0,.08);font-weight:700;background:rgba(0,113,227,.1);color:var(--blue)}
-.tag-green{background:rgba(36,138,61,.12);color:var(--green)}
-.tag-pink{background:rgba(224,86,160,.12);color:var(--pink)}
-.tag-blue{background:rgba(0,113,227,.1);color:var(--blue)}
-.tag-orange{background:rgba(191,91,0,.12);color:var(--orange)}
-.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;font-size:13px;color:var(--muted)}
-.meta span{display:inline-flex;align-items:center;min-height:30px;padding:0 11px;border-radius:999px;background:var(--surface-soft);border:1px solid rgba(0,0,0,.06)}
-.meta a{color:var(--blue)!important;font-weight:700}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:var(--blue-deep);box-shadow:0 10px 24px rgba(0,113,227,.22)}
-.btn-outline{border:1px solid rgba(0,0,0,.1);color:#1d1d1f;background:rgba(0,0,0,.04);margin-left:.5rem}.btn-outline:hover{background:rgba(0,0,0,.07)}
-.nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding:18px 0;border-top:1px solid rgba(0,0,0,.08)}
-.nav a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:rgba(0,0,0,.06);color:#1d1d1f;font-size:14px;font-weight:700;transition:background .2s,transform .2s}
-.nav a:hover{background:rgba(0,0,0,.09);transform:translateY(-1px)}
-.footer{text-align:center;padding:28px 16px;color:var(--muted);font-size:13px;border-top:1px solid rgba(0,0,0,.08);margin-top:0;background:var(--bg)}
-.footer a{color:var(--blue);font-weight:700}
-.project-card{background:var(--surface);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;display:flex;transition:transform .2s,box-shadow .2s,border-color .2s;text-decoration:none;color:var(--text);box-shadow:0 10px 30px rgba(0,0,0,.04)}
-.project-card:hover{border-color:rgba(0,113,227,.28);transform:translateY(-2px);box-shadow:0 18px 42px rgba(0,0,0,.08)}
-.project-card .preview{width:300px;min-height:210px;flex-shrink:0;position:relative;overflow:hidden;background:var(--surface-soft)!important}
-.project-card .preview img{width:100%;height:100%;object-fit:cover;display:block}
-.project-card .body{padding:24px;flex:1;display:flex;flex-direction:column;justify-content:center}
-.project-card .body h3{font-size:22px;line-height:1.18;margin-bottom:9px;font-weight:760;color:var(--text)}
-.project-card .body p{font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:12px}
-.scene-tag{font-size:13px;color:var(--muted);margin-top:auto;font-weight:600}
-.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.metric{border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:16px;background:var(--surface-soft)}
-.metric b{display:block;font-size:13px;color:var(--muted);font-weight:600}
-.metric span{display:block;margin-top:8px;font-size:22px;line-height:1;font-weight:760;color:var(--text)}
-@media(max-width:768px){.header{padding:84px 18px 42px}.container{width:min(100% - 28px,1040px);padding-top:24px}.project-card{flex-direction:column}.project-card .preview{width:100%;min-height:190px}.card{padding:20px}.metric-grid{grid-template-columns:1fr}.nav{align-items:stretch;gap:10px}.nav a{justify-content:center}.header h1{font-size:clamp(34px,12vw,54px)}.header .subtitle,.header p{font-size:18px}}
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#8b5cf6;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
+.header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
+.header .back:hover{color:var(--primary)}
+.header .emoji{font-size:3rem;margin-bottom:.5rem}
+.header h1{font-size:2.2rem;font-weight:800;margin-bottom:.3rem}
+.header .subtitle{color:var(--dim);font-size:1rem}
+.container{max-width:860px;margin:0 auto;padding:2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
+.card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.card p{font-size:.9rem;color:var(--dim);line-height:1.8}
+.outcome-showcase{overflow:hidden;background:linear-gradient(135deg,#11182f,#17102c 52%,#11261f);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.22)}
+.showcase-top{display:grid;grid-template-columns:1.05fr 1.25fr;gap:24px;align-items:center}.eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.08em;color:var(--accent);font-weight:800;margin-bottom:.6rem}.showcase-copy h2{font-size:1.45rem;line-height:1.25;margin-bottom:.75rem}.showcase-copy p{color:var(--dim);font-size:.9rem;line-height:1.8;margin-bottom:1rem}.snapshot-cta{display:inline-block;padding:10px 24px;border-radius:8px;background:var(--primary);color:#fff;text-decoration:none;font-weight:700;font-size:.85rem}.snapshot-cta:hover{opacity:.9}.output-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.output-card{min-height:132px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.055);padding:12px;display:flex;flex-direction:column;justify-content:space-between}.output-card.featured{grid-column:span 2}.output-label{font-size:.78rem;color:var(--text);font-weight:750}.output-card small{font-size:.72rem;color:var(--dim)}.product-tile{height:58px;border-radius:10px;background:linear-gradient(135deg,#f8fafc,#d9e5ff);position:relative;overflow:hidden}.product-tile::before{content:"";position:absolute;inset:14px 22px;border-radius:10px;background:rgba(255,255,255,.88);box-shadow:0 10px 24px rgba(15,23,42,.22)}.product-tile::after{content:"";position:absolute;left:30%;right:30%;bottom:12px;height:22px;border-radius:8px 8px 12px 12px;background:linear-gradient(135deg,var(--primary),var(--accent))}.scene .product-tile{background:linear-gradient(135deg,#d7f6e7,#a9c7ff)}.detail .product-tile{background:linear-gradient(135deg,#1d253f,#5c4de2)}.size .product-tile{background:linear-gradient(135deg,#fff7d6,#ffd2a1)}.model .product-tile{background:linear-gradient(135deg,#f4e8ff,#c8ecff)}.metric-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.metric-strip div{border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px;background:rgba(255,255,255,.04)}.metric-strip b{display:block;font-size:1.05rem;color:#fff}.metric-strip span{display:block;font-size:.72rem;color:var(--dim);margin-top:2px}@media(max-width:760px){.showcase-top{grid-template-columns:1fr}.output-grid{grid-template-columns:1fr 1fr}.output-card.featured{grid-column:span 2}.metric-strip{grid-template-columns:1fr 1fr}}@media(max-width:520px){.outcome-showcase{padding:20px}.output-grid,.metric-strip{grid-template-columns:1fr}.output-card.featured{grid-column:auto}}
+.features{list-style:none;padding:0}
+.features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
+.features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.22)}
+.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.metric{border:1px solid var(--border);border-radius:12px;padding:1rem;background:rgba(255,255,255,.03)}
+.metric strong{display:block;font-size:1.35rem;color:var(--text);line-height:1}
+.metric span{display:block;color:var(--dim);font-size:.78rem;margin-top:.45rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding:1rem 0;border-top:1px solid var(--border)}
+.nav a{color:var(--primary);text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav a:hover{color:var(--accent)}
+.footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
+.footer a{color:var(--primary);text-decoration:none}
+.note{font-size:.78rem;color:var(--dim);margin-top:.8rem}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}.metric-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -68,15 +50,37 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <div class="container">
-  <img class="demo-gif" src="demo_gifs/07_fintech_risk.gif" alt="金融风控AI助手 Demo" loading="lazy">
+  <!-- Project snapshot -->
+  <section class="outcome-showcase" aria-label="项目结果概览">
+    <div class="showcase-top">
+      <div class="showcase-copy">
+        <span class="eyebrow">PROJECT SNAPSHOT</span>
+        <h2>从客户资料到可解释风控建议</h2>
+        <p>项目页展示风控助手的产品结构：贷前准入、信用评分、风险预警、财报文本扫描和审批解释，避免和交互 Demo 重复。</p>
+        <a class="snapshot-cta" href="demo.html?p=07">打开在线Demo</a>
+      </div>
+      <div class="output-grid" aria-hidden="true">
+        <div class="output-card featured"><span class="output-label">贷前准入</span><div class="product-tile"></div><small>企业资料与核心指标录入</small></div>
+        <div class="output-card scene"><span class="output-label">信用评分</span><div class="product-tile"></div><small>指标权重与风险等级</small></div>
+        <div class="output-card detail"><span class="output-label">风险预警</span><div class="product-tile"></div><small>命中规则与风险标签</small></div>
+        <div class="output-card size"><span class="output-label">财报扫描</span><div class="product-tile"></div><small>亏损、逾期、现金流关键词</small></div>
+        <div class="output-card model"><span class="output-label">审批解释</span><div class="product-tile"></div><small>通过 / 复核 / 拒绝建议</small></div>
+      </div>
+    </div>
+    <div class="metric-strip" aria-label="关键产品指标">
+      <div><b>5类</b><span>核心指标</span></div>
+      <div><b>3档</b><span>审批建议</span></div>
+      <div><b>NLP</b><span>财报扫描</span></div>
+      <div><b>解释</b><span>风险来源说明</span></div>
+    </div>
+  </section>
 
-  <div class="card">
+<div class="card">
     <h2>📋 项目概述</h2>
     <p>面向银行、证券、消费金融等场景的 AI 风控辅助系统。系统围绕“贷前准入、授信建议、风险预警、财报文本扫描”四个流程，模拟风控人员从客户资料、财务指标和文本线索中识别风险，并输出可解释的审批建议。</p>
     <div class="meta">
-      <span>🎯 应用场景：信贷审核、风险识别与审批解释</span>
-      <span>🔗 <a href="demo.html?p=07" style="color:var(--primary)">在线Demo</a></span>
-      <span>📌 <a href="index.html#projects" style="color:var(--primary)">简历项目区入口</a></span>
+      <span>🎯 对标：金融科技风控中台 / 信贷智能审批助手</span>
+      <span>🔗 <a href="index.html#projects" style="color:var(--primary)">简历项目区入口</a></span>
     </div>
     <div class="note">注：本 demo 用于产品能力展示，不构成真实授信、投资或风控决策建议。</div>
   </div>

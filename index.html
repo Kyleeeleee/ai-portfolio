@@ -249,6 +249,13 @@ h2{
 }
 .project-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
 .project:hover img{transform:scale(1.035)}
+.risk-preview{height:100%;padding:18px;background:linear-gradient(135deg,#111827,#312e81);color:#fff;display:grid;align-content:center;gap:10px}
+.risk-preview .risk-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.68)}
+.risk-preview .risk-score{font-size:34px;line-height:1;font-weight:800}
+.risk-preview .risk-bars{display:grid;gap:7px}
+.risk-preview .risk-bars span{display:block;height:7px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}
+.risk-preview .risk-bars i{display:block;height:100%;border-radius:999px;background:#34d399}
+.risk-preview .risk-note{font-size:12px;color:rgba(255,255,255,.78)}
 .project-body{display:flex;flex:1;flex-direction:column;padding:20px}
 .project-index{color:var(--subtle);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .project h3{margin-top:8px;font-size:21px;line-height:1.18}
@@ -346,10 +353,10 @@ h2{
 <main>
   <section class="hero">
     <div class="hero-inner">
-      <div class="eyebrow"><span class="status-dot"></span>意向岗位：AI 产品经理</div>
+      <div class="eyebrow"><span class="status-dot"></span>开放 AI 产品经理机会 · 金融科技方向</div>
       <h1>李林豪</h1>
-      <p class="hero-subtitle">把日常想法做成可运行的 AI 产品。</p>
-      <p class="hero-copy">金融硕士背景，证券业务一线经验，个人喜欢搭建 Agent、RAG、AIGC 与自动化 Demo。擅长把复杂业务拆解为产品原型、流程系统和可交付的 MVP。</p>
+      <p class="hero-subtitle">把金融业务经验，做成可运行的 AI 产品。</p>
+      <p class="hero-copy">金融硕士背景，证券业务一线经验，长期搭建 Agent、RAG、AIGC 与自动化 Demo。擅长把复杂业务拆解为产品原型、流程系统和可交付的 MVP。</p>
       <div class="actions">
         <a class="button primary" href="#projects">查看 7 个 Demo</a>
         <a class="button secondary" href="projects.html">打开作品集</a>
@@ -374,8 +381,8 @@ h2{
       </div>
       <div class="about-grid">
         <div class="story">
-          <p>我关注各类业务场景中的 AI 产品机会，包括企业知识库问答、智能客服、内容生产、运营自动化、风控审核、数据分析和行业研究等方向。</p>
-          <p>相比只写“会使用 AI 工具”，我更倾向于把想法做成可点击、可演示、可解释的产品原型，让招聘方直接看到我的业务理解、产品判断和工程落地能力。</p>
+          <p>我关注金融场景中的 AI 产品机会：信贷风控、研究报告生成、客户服务、知识库问答、运营自动化和内容生产。</p>
+          <p>相比只写“会使用 AI 工具”，我更倾向于把想法做成可点击、可演示、可解释的产品原型，让招聘方直接看到业务理解、产品判断和工程落地能力。</p>
         </div>
         <div class="fact-grid">
           <div class="fact"><b>意向岗位</b><span>AI 产品经理</span></div>
@@ -468,7 +475,7 @@ h2{
       </div>
       <div class="project-grid">
         <a class="project" href="project_01.html">
-          <div class="project-media"><img src="demo_gifs/01_ai_product.gif" alt="跨境电商AI商品图生成器演示" loading="lazy"></div>
+          <div class="project-media"><img src="demo_gifs/01_ai_product.png" alt="跨境电商AI商品图生成器演示" loading="lazy"></div>
           <div class="project-body">
             <div class="project-index">MVP 01 · AIGC</div>
             <h3>跨境电商 AI 商品图生成器</h3>
@@ -478,7 +485,7 @@ h2{
           </div>
         </a>
         <a class="project" href="project_02.html">
-          <div class="project-media"><img src="demo_gifs/02_knowledge_qa.gif" alt="AI知识库问答助手演示" loading="lazy"></div>
+          <div class="project-media"><img src="demo_gifs/02_knowledge_qa.png" alt="AI知识库问答助手演示" loading="lazy"></div>
           <div class="project-body">
             <div class="project-index">MVP 02 · RAG</div>
             <h3>AI 知识库问答助手</h3>
@@ -488,7 +495,7 @@ h2{
           </div>
         </a>
         <a class="project" href="project_03.html">
-          <div class="project-media"><img src="demo_gifs/03_npc_dialogue.gif" alt="游戏NPC智能对话系统演示" loading="lazy"></div>
+          <div class="project-media"><img src="demo_gifs/03_npc_dialogue.png" alt="游戏NPC智能对话系统演示" loading="lazy"></div>
           <div class="project-body">
             <div class="project-index">MVP 03 · LLM NPC</div>
             <h3>游戏 NPC 智能对话系统</h3>
@@ -498,7 +505,7 @@ h2{
           </div>
         </a>
         <a class="project" href="project_04.html">
-          <div class="project-media"><img src="demo_gifs/04_inspection.gif" alt="AI自动巡检报告系统演示" loading="lazy"></div>
+          <div class="project-media"><img src="demo_gifs/04_inspection.png" alt="AI自动巡检报告系统演示" loading="lazy"></div>
           <div class="project-body">
             <div class="project-index">MVP 04 · Automation</div>
             <h3>AI 自动巡检报告系统</h3>
@@ -508,7 +515,7 @@ h2{
           </div>
         </a>
         <a class="project" href="project_05.html">
-          <div class="project-media"><img src="demo_gifs/05_customer_agent.gif" alt="智能客服Agent演示" loading="lazy"></div>
+          <div class="project-media"><img src="demo_gifs/05_customer_agent.png" alt="智能客服Agent演示" loading="lazy"></div>
           <div class="project-body">
             <div class="project-index">MVP 05 · Agent</div>
             <h3>智能客服 Agent</h3>
@@ -518,7 +525,7 @@ h2{
           </div>
         </a>
         <a class="project" href="project_06.html">
-          <div class="project-media"><img src="demo_gifs/06_prompt_test.gif" alt="Prompt测试对比平台演示" loading="lazy"></div>
+          <div class="project-media"><img src="demo_gifs/06_prompt_test.png" alt="Prompt测试对比平台演示" loading="lazy"></div>
           <div class="project-body">
             <div class="project-index">MVP 06 · Evaluation</div>
             <h3>Prompt 测试对比平台</h3>
@@ -528,7 +535,14 @@ h2{
           </div>
         </a>
         <a class="project" href="project_07.html">
-          <div class="project-media"><img src="demo_gifs/07_fintech_risk.gif" alt="金融风控AI助手演示" loading="lazy"></div>
+          <div class="project-media" aria-label="金融风控AI助手静态预览">
+            <div class="risk-preview">
+              <div class="risk-top"><span>Risk Radar</span><span>AI Review</span></div>
+              <div class="risk-score">A-</div>
+              <div class="risk-bars"><span><i style="width:82%"></i></span><span><i style="width:64%"></i></span><span><i style="width:91%"></i></span></div>
+              <div class="risk-note">贷前审核 · 指标监控 · 可解释建议</div>
+            </div>
+          </div>
           <div class="project-body">
             <div class="project-index">MVP 07 · FinTech</div>
             <h3>金融风控 AI 助手</h3>
