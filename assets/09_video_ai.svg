@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1530"/>
+      <stop offset="50%" stop-color="#1a1535"/>
+      <stop offset="100%" stop-color="#2d1b4e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c5cfc"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="400" cy="225" r="280" fill="url(#glow)"/>
+  <!-- Mock bounding boxes for video detection -->
+  <rect x="200" y="150" width="100" height="80" rx="4" fill="none" stroke="#7c5cfc" stroke-width="2" opacity="0.6"/>
+  <rect x="450" y="160" width="120" height="90" rx="4" fill="none" stroke="#00e5a0" stroke-width="2" opacity="0.6"/>
+  <rect x="40" y="40" width="720" height="370" rx="16" fill="none" stroke="url(#accent)" stroke-width="1.5" opacity="0.4"/>
+  <text x="400" y="265" text-anchor="middle" fill="#e0e0f0" font-size="56" font-family="-apple-system,sans-serif" font-weight="bold">🎥</text>
+  <text x="400" y="310" text-anchor="middle" fill="#e0e0f0" font-size="28" font-family="-apple-system,sans-serif" font-weight="700">智能视频分析</text>
+  <text x="400" y="345" text-anchor="middle" fill="#8888aa" font-size="14" font-family="-apple-system,sans-serif">YOLO + Qwen-VL · 多模态理解 · Port 8508</text>
+  <text x="400" y="395" text-anchor="middle" fill="#7c5cfc" font-size="12" font-family="-apple-system,sans-serif" opacity="0.7">MVP 09 · 浩鲸科技</text>
+</svg>

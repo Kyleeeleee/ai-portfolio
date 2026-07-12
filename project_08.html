@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎬 直播AI助手 · 李林豪</title>
+<style>
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#8b5cf6;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
+.header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
+.header .back:hover{color:var(--primary)}
+.header .emoji{font-size:3rem;margin-bottom:.5rem}
+.header h1{font-size:2.2rem;font-weight:800;margin-bottom:.3rem}
+.header .subtitle{color:var(--dim);font-size:1rem}
+.container{max-width:860px;margin:0 auto;padding:2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
+.card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.card p{font-size:.9rem;color:var(--dim);line-height:1.8}
+.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a;display:block}
+.features{list-style:none;padding:0}
+.features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
+.features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.22)}
+.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.metric{border:1px solid var(--border);border-radius:12px;padding:1rem;background:rgba(255,255,255,.03)}
+.metric strong{display:block;font-size:1.35rem;color:var(--text);line-height:1}
+.metric span{display:block;color:var(--dim);font-size:.78rem;margin-top:.45rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding:1rem 0;border-top:1px solid var(--border)}
+.nav a{color:var(--primary);text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav a:hover{color:var(--accent)}
+.footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
+.footer a{color:var(--primary);text-decoration:none}
+.note{font-size:.78rem;color:var(--dim);margin-top:.8rem}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}.metric-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="emoji">🎬</div>
+  <h1>直播AI助手</h1>
+  <div class="subtitle">AI实时弹幕分析 + 智能话术生成</div>
+</div>
+
+<div class="container">
+  <img class="demo-gif" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%237c5cfc'/><stop offset='100%' stop-color='%2300e5a0'/></linearGradient></defs><rect width='800' height='450' fill='%230a0a12'/><rect x='40' y='40' width='720' height='370' rx='16' fill='url(%23g)' opacity='0.25'/><text x='400' y='225' text-anchor='middle' fill='%23e0e0f0' font-size='32' font-family='sans-serif' font-weight='bold'>🎬 直播 AI 助手 Demo</text><text x='400' y='265' text-anchor='middle' fill='%238888aa' font-size='14' font-family='sans-serif'>实时弹幕 + 话术生成 · Port 8507</text></svg>" alt="直播AI助手 Demo" loading="lazy">
+
+  <div class="card">
+    <h2>📋 项目概述</h2>
+    <p>面向 MCN 直播带货场景的 AI 辅助系统。系统围绕"弹幕感知 → 话术建议 → 商品讲解 → 数据复盘"四个环节，帮助主播实时抓住弹幕热点、自动生成带货话术、生成完整直播脚本，并在直播结束后输出数据报告与优化建议。</p>
+    <div class="meta">
+      <span>🎯 对标：飞博共创 / 美腕 / 谦寻 MCN 数字化中台</span>
+      <span>🔗 <a href="index.html#projects" style="color:var(--primary)">简历项目区入口</a></span>
+    </div>
+    <div class="note">注：本 demo 用于产品能力展示，话术建议由模拟数据生成，不构成真实投放与营销承诺。</div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ 功能拆解</h2>
+    <ul class="features">
+      <li>实时弹幕分析引擎：自动分类弹幕（问答/情绪/刷屏），AI 优先级排序，把高价值弹幕推到主播面前</li>
+      <li>智能话术生成：根据弹幕 + 商品自动生成主播话术，支持多风格（逼单/答疑/氛围）切换</li>
+      <li>商品讲解 AI：输入商品信息 → 生成完整直播脚本（开场/痛点/亮点/背书/促销/收尾）</li>
+      <li>复盘分析：直播后自动生成数据报告 + 转化漏斗 + 优化建议（留存/转化/舆情）</li>
+      <li>数据看板：实时人数 / 互动率 / 转化率 / 弹幕热词 TOP8，ECharts 实时刷新</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🔧 技术架构</h2>
+    <p>前端 Flask 渲染实时弹幕滚动与数据看板，弹幕通过 WebSocket 模拟流式推送，话术与脚本由 LLM 风格的文本生成层按模板填充 + 上下文理解返回，TTS 模块可一键将话术转语音回放供主播跟读。</p>
+    <div class="tags">
+      <span class="tag">WebSocket</span>
+      <span class="tag">LLM 实时生成</span>
+      <span class="tag">TTS 语音合成</span>
+      <span class="tag">ECharts</span>
+      <span class="tag-green">Flask</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📈 核心指标设计</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>3000+</strong><span>单场弹幕处理量</span></div>
+      <div class="metric"><strong>+15-30%</strong><span>AI 话术转化提升</span></div>
+      <div class="metric"><strong>3 风格</strong><span>话术 / 模板切换</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>MCN 行业的下一个增长引擎是 AI 赋能直播。每场直播产出 3000+ 条弹幕，人工无法实时处理；AI 话术建议能让转化率提升 15-30%。飞博共创作为新三板 MCN 龙头，对内需要把每个主播都变成"AI 增强型主播"，对外需要向品牌方交付可量化的直播 ROI 报告——这就是直播 AI 助手的市场切口。</p>
+  </div>
+
+
+  <div class="nav">
+    <a href="project_07.html">← 上一个项目</a>
+    <a href="projects.html">📂 返回项目列表</a>
+|</div>
+
+</div>
+
+<footer class="footer">
+  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
+</footer>
+
+</body>
+</html>

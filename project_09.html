@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎥 智能视频分析平台 · 李林豪</title>
+<style>
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#8b5cf6;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
+.header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
+.header .back:hover{color:var(--primary)}
+.header .emoji{font-size:3rem;margin-bottom:.5rem}
+.header h1{font-size:2.2rem;font-weight:800;margin-bottom:.3rem}
+.header .subtitle{color:var(--dim);font-size:1rem}
+.container{max-width:860px;margin:0 auto;padding:2rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
+.card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.card p{font-size:.9rem;color:var(--dim);line-height:1.8}
+.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a;display:block}
+.features{list-style:none;padding:0}
+.features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
+.features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.22)}
+.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.metric{border:1px solid var(--border);border-radius:12px;padding:1rem;background:rgba(255,255,255,.03)}
+.metric strong{display:block;font-size:1.35rem;color:var(--text);line-height:1}
+.metric span{display:block;color:var(--dim);font-size:.78rem;margin-top:.45rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding:1rem 0;border-top:1px solid var(--border)}
+.nav a{color:var(--primary);text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav a:hover{color:var(--accent)}
+.footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
+.footer a{color:var(--primary);text-decoration:none}
+.note{font-size:.78rem;color:var(--dim);margin-top:.8rem}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}.metric-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="emoji">🎥</div>
+  <h1>智能视频分析平台</h1>
+  <div class="subtitle">AI 大模型驱动多模态视频理解</div>
+</div>
+
+<div class="container">
+  <img class="demo-gif" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%237c5cfc'/><stop offset='100%' stop-color='%236366f1'/></linearGradient></defs><rect width='800' height='450' fill='%230a0a12'/><rect x='40' y='40' width='720' height='370' rx='16' fill='url(%23g)' opacity='0.25'/><text x='400' y='225' text-anchor='middle' fill='%23e0e0f0' font-size='32' font-family='sans-serif' font-weight='bold'>🎥 智能视频分析 Demo</text><text x='400' y='265' text-anchor='middle' fill='%238888aa' font-size='14' font-family='sans-serif'>YOLO + Qwen-VL 多模态 · Port 8508</text></svg>" alt="智能视频分析平台 Demo" loading="lazy">
+
+  <div class="card">
+    <h2>📋 项目概述</h2>
+    <p>面向智慧城市、安防监控、零售客流等场景的多模态视频分析平台。系统结合传统视觉模型（YOLOv8 目标检测）与多模态大模型（Qwen2-VL 场景理解），把"看到什么"升级为"理解正在发生什么"，并对外提供开放 API，供第三方业务系统集成。</p>
+    <div class="meta">
+      <span>🎯 对标：浩鲸科技 WhaleVision / 海康威视 AI 开放平台</span>
+      <span>🔗 <a href="index.html#projects" style="color:var(--primary)">简历项目区入口</a></span>
+    </div>
+    <div class="note">注：本 demo 使用公开测试视频与模拟推理结果，用于产品能力展示，非真实业务数据。</div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ 功能拆解</h2>
+    <ul class="features">
+      <li>目标检测：YOLOv8 实时检测，支持人 / 车 / 物体多类别标注，bbox 与置信度实时渲染</li>
+      <li>场景理解：Qwen2-VL 多模态大模型输出环境 / 时段 / 密度 / 活动描述（如"傍晚商场入口人流中等"）</li>
+      <li>智能问答：基于视频内容的自然语言问答（"视频中有几个人？""发生了什么事？"）</li>
+      <li>分析报告：自动生成时间轴事件标记 + 人流趋势 + 类别分布图表（ECharts）</li>
+      <li>API 开放：Python / JS / cURL 多语言 SDK，支持第三方系统集成与二次开发</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🔧 技术架构</h2>
+    <p>前后端分离架构：Flask 提供 API 与控制台 UI，前端通过 AJAX 拉取分析结果并实时渲染；视频帧通过 OpenCV 解码后分别送入 YOLO 检测通道与 Qwen-VL 理解通道，结果汇总后写入时间轴事件流。</p>
+    <div class="tags">
+      <span class="tag">YOLOv8</span>
+      <span class="tag">Qwen-VL</span>
+      <span class="tag">GroundingDINO</span>
+      <span class="tag">OpenCV</span>
+      <span class="tag-green">Flask + ECharts</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📈 核心指标设计</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>多模态</strong><span>视觉 + 语言联合推理</span></div>
+      <div class="metric"><strong>实时</strong><span>目标检测 + 场景描述</span></div>
+      <div class="metric"><strong>开放</strong><span>多语言 API SDK</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>视频监控行业正从"人工查看"转向"AI 理解"。中国安防摄像头超 6 亿个，AI 视频分析是一个千亿级市场。浩鲸背靠阿里 + 中兴投资，在智慧城市赛道有天然的政企客户与云资源协同优势；做"看得懂"的视频是这条赛道从硬件 PK 升级为 AI 能力 PK 的关键转折。</p>
+  </div>
+
+
+  <div class="nav">
+    <a href="project_08.html">← 上一个项目</a>
+    <a href="projects.html">📂 返回项目列表</a>
+|</div>
+
+</div>
+
+<footer class="footer">
+  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
+</footer>
+
+</body>
+</html>
