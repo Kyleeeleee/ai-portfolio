@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🛡️ 金融风控AI助手 · 李林豪</title>
+<title>🏦 金融风控AI助手 · 李林豪</title>
 <style>
-:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#8b5cf6;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 .header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
@@ -18,11 +18,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
 .card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .card p{font-size:.9rem;color:var(--dim);line-height:1.8}
+.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a}
 .features{list-style:none;padding:0}
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.2)}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.22)}
 .tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
 .meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
 .metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
@@ -42,53 +43,65 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 
 <div class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
-  <div class="emoji">🛡️</div>
+  <div class="emoji">🏦</div>
   <h1>金融风控AI助手</h1>
-  <div class="subtitle">信贷审批模拟 · 风控指标看板 · 财报风险分析</div>
+  <div class="subtitle">信贷审批 · 风险指标监控 · 财报风险扫描</div>
 </div>
 
 <div class="container">
+  <img class="demo-gif" src="demo_gifs/07_fintech_risk.gif" alt="金融风控AI助手 Demo" loading="lazy">
 
   <div class="card">
     <h2>📋 项目概述</h2>
-    <p>面向银行、证券、消费金融等场景的AI风控辅助系统。覆盖贷前准入、授信建议、风险预警、财报文本扫描，输出可解释的审批建议。</p>
+    <p>面向银行、证券、消费金融等场景的 AI 风控辅助系统。系统围绕“贷前准入、授信建议、风险预警、财报文本扫描”四个流程，模拟风控人员从客户资料、财务指标和文本线索中识别风险，并输出可解释的审批建议。</p>
     <div class="meta">
-<span>🔗 <a href="live_07.html" style="color:var(--primary)">在线Demo</a></span>
+      <span>🎯 对标：金融科技风控中台 / 信贷智能审批助手</span>
+      <span>🔗 <a href="index.html#projects" style="color:var(--primary)">简历项目区入口</a></span>
+      <span>🔗 <a href="http://localhost:8506" target="_blank" style="color:var(--primary)">在线Demo</a></span>
     </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
+    <div class="note">注：本 demo 用于产品能力展示，不构成真实授信、投资或风控决策建议。</div>
   </div>
 
   <div class="card">
-    <h2>⚡ 功能拆解</h2>
+    <h2>⚡ 核心功能</h2>
     <ul class="features">
-      <li>贷前准入审核：自动解析客户资料（征信/收入/负债），输出综合评分与准入建议</li><li>授信额度建议：基于多维指标（DTI/收入/征信/抵押）计算合理授信区间</li><li>风险预警监控：实时追踪关键风控指标（不良率/拨备覆盖率/资本充足率）</li><li>财报风险扫描：NLP解析财报附注文本，自动标记潜在风险点（关联交易/担保/诉讼）</li>
+      <li>客户画像录入：企业营收、负债率、抵押覆盖、征信等级等核心指标结构化采集</li>
+      <li>AI 信用评分：按指标权重生成风险等级，并输出通过、复核、拒绝等审批建议</li>
+      <li>财报文本扫描：识别亏损扩大、现金流紧张、逾期、商誉减值等风险关键词</li>
+      <li>风控解释生成：用自然语言说明风险来源、触发规则和后续处理建议</li>
+      <li>风险看板展示：将评分、命中规则、风险标签汇总为可读的审批摘要</li>
     </ul>
   </div>
 
   <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>Gradio前端 + Python风控引擎。模拟银行风控决策树实现贷前评分卡，财报NLP基于DeepSeek API进行附注文本风险提取。风控规则可配置，支持不同场景的参数调整。</p>
+    <h2>🔧 技术实现</h2>
+    <p>前端使用 Gradio 搭建交互式 Demo，后端用 Python 封装评分规则、指标权重和文本风险扫描逻辑。审批建议由规则引擎先给出基础结论，再由 LLM 风格的解释层生成面向业务人员的可读说明。</p>
     <div class="tags">
-      <span class="tag">风控</span> <span class="tag">信贷审批</span> <span class="tag">NLP财报分析</span> <span class="tag-green">Gradio</span> <span class="tag-green">Python</span>
+      <span class="tag">风控评分</span>
+      <span class="tag">信贷审批</span>
+      <span class="tag">NLP扫描</span>
+      <span class="tag">Python</span>
+      <span class="tag-green">Gradio</span>
     </div>
   </div>
 
   <div class="card">
-    <h2>📈 核心指标</h2>
+    <h2>📈 Demo 指标设计</h2>
     <div class="metric-grid">
-      <div class="metric"><strong>4环节</strong><span>风控全流程</span></div><div class="metric"><strong>实时</strong><span>指标监控</span></div><div class="metric"><strong>可解释</strong><span>审批建议</span></div>
+      <div class="metric"><strong>5 类</strong><span>核心风险指标</span></div>
+      <div class="metric"><strong>3 档</strong><span>审批建议分层</span></div>
+      <div class="metric"><strong>NLP</strong><span>财报风险扫描</span></div>
     </div>
   </div>
 
   <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>金融风控面临两大挑战：一是审批效率（人工审核一笔贷款需30-60分钟），二是一致性（不同审批员标准不一）。AI风控助手将标准化规则自动化执行，把人工时间释放到真正需要判断的复杂案例上，同时保证审批标准一致性。</p>
+    <h2>💰 商业价值</h2>
+    <p>传统信贷初审依赖人工阅读材料和经验判断，效率低且解释口径不统一。该助手把风控规则、文本扫描和审批说明整合为一个可交互流程，适合用于风控中台原型、客户经理预审工具、金融产品 AI 化展示。</p>
   </div>
 
   <div class="nav">
     <a href="project_06.html">← 上一个项目</a>
     <a href="projects.html">📂 返回项目列表</a>
-    <a href="project_08.html">下一个项目 →</a>
   </div>
 </div>
 
