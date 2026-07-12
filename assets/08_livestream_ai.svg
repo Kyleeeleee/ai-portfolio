@@ -1,24 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Livestream AI assistant thumbnail">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1a1525"/>
-      <stop offset="50%" stop-color="#2d1b4e"/>
-      <stop offset="100%" stop-color="#3d1b5e"/>
+    <linearGradient id="bg08" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18122b"/>
+      <stop offset=".55" stop-color="#3b0764"/>
+      <stop offset="1" stop-color="#7f1d1d"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#7c5cfc"/>
-      <stop offset="100%" stop-color="#00e5a0"/>
+    <linearGradient id="hot08" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f472b6"/>
+      <stop offset="1" stop-color="#f97316"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#7c5cfc" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#7c5cfc" stop-opacity="0"/>
-    </radialGradient>
   </defs>
-  <rect width="800" height="450" fill="url(#bg)"/>
-  <circle cx="400" cy="225" r="280" fill="url(#glow)"/>
-  <rect x="40" y="40" width="720" height="370" rx="16" fill="none" stroke="url(#accent)" stroke-width="1.5" opacity="0.4"/>
-  <text x="400" y="200" text-anchor="middle" fill="#e0e0f0" font-size="56" font-family="-apple-system,sans-serif" font-weight="bold">🎬</text>
-  <text x="400" y="250" text-anchor="middle" fill="#e0e0f0" font-size="28" font-family="-apple-system,sans-serif" font-weight="700">直播AI助手</text>
-  <text x="400" y="285" text-anchor="middle" fill="#8888aa" font-size="14" font-family="-apple-system,sans-serif">实时弹幕 · AI话术 · 直播脚本 · Port 8507</text>
-  <text x="400" y="370" text-anchor="middle" fill="#7c5cfc" font-size="12" font-family="-apple-system,sans-serif" opacity="0.7">MVP 08 · 飞博共创</text>
+  <rect width="800" height="450" fill="url(#bg08)"/>
+  <circle cx="650" cy="86" r="180" fill="#f472b6" opacity=".12"/>
+  <circle cx="150" cy="395" r="180" fill="#22d3ee" opacity=".10"/>
+  <rect x="54" y="52" width="692" height="346" rx="26" fill="#100f23" opacity=".8" stroke="#f0abfc" stroke-opacity=".2"/>
+  <rect x="86" y="86" width="410" height="262" rx="20" fill="#18132f" stroke="#4c1d95"/>
+  <rect x="110" y="112" width="362" height="188" rx="16" fill="#0f172a"/>
+  <circle cx="292" cy="206" r="66" fill="url(#hot08)" opacity=".92"/>
+  <path d="M267 169l74 39-74 39z" fill="#fff7ed" opacity=".96"/>
+  <rect x="126" y="322" width="138" height="16" rx="8" fill="#fb7185"/>
+  <rect x="278" y="322" width="92" height="16" rx="8" fill="#a78bfa"/>
+  <rect x="384" y="322" width="68" height="16" rx="8" fill="#22d3ee"/>
+  <rect x="524" y="86" width="178" height="262" rx="20" fill="#18132f" stroke="#4c1d95"/>
+  <rect x="548" y="112" width="98" height="28" rx="14" fill="url(#hot08)"/>
+  <text x="568" y="132" fill="#fff7ed" font-family="Arial, sans-serif" font-size="14" font-weight="700">LIVE</text>
+  <rect x="548" y="164" width="118" height="16" rx="8" fill="#475569"/>
+  <rect x="548" y="194" width="82" height="16" rx="8" fill="#64748b"/>
+  <rect x="548" y="224" width="128" height="16" rx="8" fill="#475569"/>
+  <rect x="548" y="270" width="44" height="44" rx="12" fill="#f97316"/>
+  <rect x="604" y="270" width="44" height="44" rx="12" fill="#22d3ee"/>
+  <text x="86" y="420" fill="#c084fc" font-family="Arial, sans-serif" font-size="13" letter-spacing="3">MVP 08 · LIVE COMMERCE AI</text>
 </svg>
