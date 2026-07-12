@@ -6,20 +6,18 @@
 <title>李林豪 · AI产品经理个人主页</title>
 <style>
 :root{
-  --bg:#f5f5f7;
-  --surface:#ffffff;
-  --surface-soft:#fbfbfd;
-  --text:#1d1d1f;
-  --muted:#6e6e73;
-  --subtle:#86868b;
-  --line:#d2d2d7;
-  --blue:#0071e3;
-  --blue-deep:#0040dd;
-  --green:#248a3d;
-  --orange:#bf5b00;
-  --shadow:0 18px 42px rgba(0,0,0,.08);
-  --radius:8px;
-  --nav-h:52px;
+  --bg:#0a0a12;
+  --card:#0f0f1f;
+  --card-hover:#141428;
+  --border:rgba(255,255,255,0.06);
+  --text:#e0e0f0;
+  --muted:#8888aa;
+  --dim:#666688;
+  --primary:#7c5cfc;
+  --primary-glow:rgba(124,92,252,0.18);
+  --accent:#00e5a0;
+  --radius:16px;
+  --nav-h:56px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -33,289 +31,194 @@ body{
 }
 a{color:inherit;text-decoration:none}
 :target{scroll-margin-top:76px}
+
+/* Nav */
 .nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:50;
+  position:fixed;top:0;left:0;right:0;z-index:50;
   height:var(--nav-h);
-  background:rgba(251,251,253,.78);
-  border-bottom:1px solid rgba(0,0,0,.08);
+  background:rgba(10,10,18,.82);
+  border-bottom:1px solid var(--border);
   backdrop-filter:saturate(180%) blur(20px);
   -webkit-backdrop-filter:saturate(180%) blur(20px);
 }
 .nav-inner{
-  width:min(1120px,calc(100% - 32px));
-  height:100%;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
+  width:min(1120px,calc(100% - 32px));height:100%;
+  margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
-.brand{font-size:14px;font-weight:650;letter-spacing:0;color:#1d1d1f;white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:2px;overflow-x:auto}
+.brand{font-size:14px;font-weight:650;color:var(--text);white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:4px;overflow-x:auto}
 .nav-links a{
-  color:#424245;
-  font-size:12px;
-  line-height:1;
-  padding:10px 11px;
-  border-radius:999px;
-  white-space:nowrap;
+  color:var(--muted);font-size:12px;line-height:1;
+  padding:8px 12px;border-radius:999px;white-space:nowrap;
   transition:background .2s,color .2s;
 }
-.nav-links a:hover{background:rgba(0,0,0,.05);color:#000}
-.nav-links .nav-cta{background:var(--blue);color:#fff}
-.nav-links .nav-cta:hover{background:var(--blue-deep);color:#fff}
+.nav-links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+.nav-links .nav-cta{background:var(--primary);color:#fff}
+.nav-links .nav-cta:hover{background:#6a4de6;color:#fff}
+
+/* Hero */
 .hero{
   min-height:calc(100vh - var(--nav-h));
   padding:118px 24px 76px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  display:flex;align-items:center;justify-content:center;text-align:center;
 }
 .hero-inner{width:min(1040px,100%);margin:0 auto}
 .eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  min-height:30px;
-  padding:0 13px;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:999px;
-  background:rgba(255,255,255,.72);
-  color:#424245;
-  font-size:13px;
-  font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;
+  min-height:30px;padding:0 13px;
+  border:1px solid rgba(124,92,252,.25);border-radius:999px;
+  background:rgba(124,92,252,.1);color:var(--primary);
+  font-size:13px;font-weight:600;
 }
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
 h1{
-  margin:20px auto 0;
-  max-width:920px;
-  font-size:clamp(48px,8vw,104px);
-  line-height:.98;
-  letter-spacing:0;
-  font-weight:800;
+  margin:20px auto 0;max-width:920px;
+  font-size:clamp(48px,8vw,104px);line-height:.98;letter-spacing:-0.02em;font-weight:800;
 }
+h1 .gradient{background:linear-gradient(135deg,#c4b5fd,#7c5cfc,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-subtitle{
-  margin:24px auto 0;
-  max-width:760px;
-  color:#424245;
-  font-size:clamp(20px,2.45vw,32px);
-  line-height:1.18;
-  font-weight:650;
+  margin:24px auto 0;max-width:760px;
+  color:var(--text);font-size:clamp(20px,2.45vw,32px);line-height:1.18;font-weight:650;
 }
-.hero-copy{
-  margin:18px auto 0;
-  max-width:690px;
-  color:var(--muted);
-  font-size:17px;
-}
-.actions{
-  margin-top:34px;
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-}
+.hero-copy{margin:18px auto 0;max-width:690px;color:var(--muted);font-size:17px}
+.actions{margin-top:34px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
 .button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:42px;
-  padding:0 20px;
-  border-radius:999px;
-  font-size:16px;
-  font-weight:600;
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:42px;padding:0 20px;border-radius:999px;
+  font-size:16px;font-weight:600;
   transition:transform .2s,background .2s,box-shadow .2s;
 }
-.button.primary{background:var(--blue);color:#fff}
-.button.secondary{background:rgba(0,0,0,.06);color:#1d1d1f}
+.button.primary{background:var(--primary);color:#fff}
+.button.secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border)}
 .button:hover{transform:translateY(-1px)}
-.button.primary:hover{background:var(--blue-deep);box-shadow:0 10px 24px rgba(0,113,227,.22)}
-.stats{
-  width:min(900px,100%);
-  margin:52px auto 0;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  overflow:hidden;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:var(--radius);
-  background:rgba(0,0,0,.08);
+.button.primary:hover{background:#6a4de6;box-shadow:0 10px 24px var(--primary-glow)}
+
+/* Stats bar */
+.stats-bar{
+  width:min(900px,100%);margin:52px auto 0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
 }
-.stat{background:rgba(255,255,255,.84);padding:18px 16px;text-align:left}
-.stat strong{display:block;font-size:25px;line-height:1;font-weight:760;color:#1d1d1f}
-.stat span{display:block;margin-top:8px;color:var(--muted);font-size:13px}
-.section{
-  padding:78px 24px;
-  border-top:1px solid rgba(0,0,0,.06);
+.stat-item{
+  padding:18px 16px;text-align:left;
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:rgba(255,255,255,.02);
 }
-.section.white{background:#fff}
+.stat-item strong{display:block;font-size:26px;line-height:1;font-weight:760;color:var(--text)}
+.stat-item span{display:block;margin-top:8px;color:var(--muted);font-size:13px}
+
+/* Sections */
+.section{padding:78px 24px;border-top:1px solid var(--border)}
 .section-inner{width:min(1120px,100%);margin:0 auto}
-.section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:24px;
-  margin-bottom:28px;
-}
-.kicker{
-  color:var(--blue);
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:8px;
-}
-h2{
-  font-size:clamp(34px,5vw,64px);
-  line-height:1.04;
-  letter-spacing:0;
-  font-weight:790;
-}
-.section-note{
-  max-width:390px;
-  color:var(--muted);
-  font-size:16px;
-}
-.about-grid{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:18px;
-  align-items:stretch;
-}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:32px}
+.kicker{color:var(--primary);font-size:14px;font-weight:700;margin-bottom:8px}
+h2{font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-0.01em;font-weight:790}
+.section-note{max-width:390px;color:var(--muted);font-size:16px}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
 .story{
-  background:var(--surface);
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:var(--radius);
-  padding:32px;
-  box-shadow:var(--shadow);
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:32px;
 }
-.story p{color:#424245;font-size:20px;line-height:1.55}
+.story p{color:var(--text);font-size:20px;line-height:1.55}
 .story p+p{margin-top:18px}
 .fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .fact{
-  min-height:124px;
-  padding:20px;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:var(--radius);
-  background:var(--surface-soft);
+  min-height:124px;padding:20px;
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--card);
 }
 .fact b{display:block;font-size:14px;color:var(--muted);font-weight:600}
 .fact span{display:block;margin-top:10px;font-size:20px;font-weight:720;color:var(--text);line-height:1.2}
+
+/* Cards */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .card{
-  background:var(--surface);
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:var(--radius);
-  padding:24px;
-  box-shadow:0 10px 30px rgba(0,0,0,.04);
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;
+  transition:border-color .3s,transform .3s;
 }
+.card:hover{border-color:var(--primary);transform:translateY(-2px)}
 .card h3{font-size:22px;line-height:1.15;margin-bottom:10px}
 .card p{color:var(--muted);font-size:15px}
-.card .mini{margin-top:18px;color:var(--blue);font-size:13px;font-weight:700}
+.card .mini{margin-top:18px;color:var(--primary);font-size:13px;font-weight:700}
+
+/* Timeline */
 .timeline{display:grid;gap:12px}
 .job{
-  display:grid;
-  grid-template-columns:260px 1fr;
-  gap:20px;
-  padding:24px;
-  background:var(--surface);
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:var(--radius);
+  display:grid;grid-template-columns:260px 1fr;gap:20px;padding:24px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  transition:border-color .3s;
 }
-.job time{color:var(--subtle);font-size:14px;font-weight:650}
+.job:hover{border-color:var(--primary)}
+.job time{color:var(--dim);font-size:14px;font-weight:650}
 .job h3{font-size:20px;line-height:1.2}
 .job p{margin-top:8px;color:var(--muted);font-size:15px}
+
+/* Project cards */
 .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .project{
-  display:flex;
-  min-height:100%;
-  flex-direction:column;
-  overflow:hidden;
-  background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:var(--radius);
-  box-shadow:0 12px 32px rgba(0,0,0,.05);
-  transition:transform .22s,box-shadow .22s,border-color .22s;
+  display:flex;min-height:100%;flex-direction:column;overflow:hidden;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  transition:transform .22s,border-color .22s,box-shadow .22s;
 }
-.project:hover{transform:translateY(-4px);box-shadow:0 24px 44px rgba(0,0,0,.11);border-color:rgba(0,113,227,.28)}
+.project:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:0 20px 60px rgba(124,92,252,.12)}
 .project-body{display:flex;flex:1;flex-direction:column;padding:20px}
-.project-index{color:var(--subtle);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.project-index{color:var(--dim);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .project h3{margin-top:8px;font-size:21px;line-height:1.18}
 .project p{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.58;flex:1}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .tag{
-  display:inline-flex;
-  align-items:center;
-  min-height:24px;
-  padding:0 9px;
+  display:inline-flex;align-items:center;min-height:24px;padding:0 9px;
   border-radius:999px;
-  background:#f5f5f7;
-  color:#424245;
-  border:1px solid rgba(0,0,0,.08);
-  font-size:12px;
-  font-weight:650;
+  background:rgba(124,92,252,.1);color:var(--primary);
+  border:1px solid rgba(124,92,252,.15);
+  font-size:12px;font-weight:650;
 }
-.link{margin-top:18px;color:var(--blue);font-size:14px;font-weight:700}
-.link::after{content:" >";font-weight:700}
+.link{margin-top:18px;color:var(--primary);font-size:14px;font-weight:700}
+.link::after{content:" →";font-weight:700}
+
+/* Tech */
 .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .tech{
-  min-height:134px;
-  padding:22px;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:var(--radius);
-  background:#fff;
+  min-height:134px;padding:22px;
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--card);
 }
 .tech h3{font-size:18px}
 .tech p{margin-top:10px;color:var(--muted);font-size:14px}
+
+/* Contact */
 .contact-panel{
-  text-align:center;
-  padding:72px 24px;
-  background:#1d1d1f;
-  color:#f5f5f7;
+  text-align:center;padding:72px 24px;
+  background:linear-gradient(135deg,#12122a,#2d1b69);
+  color:var(--text);
 }
 .contact-panel h2{color:#fff}
-.contact-panel p{margin:16px auto 0;max-width:660px;color:#a1a1a6;font-size:17px}
-.contact-links{
-  margin-top:30px;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-}
+.contact-panel p{margin:16px auto 0;max-width:660px;color:var(--muted);font-size:17px}
+.contact-links{margin-top:30px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
 .contact-links a,.contact-links span{
-  display:inline-flex;
-  align-items:center;
-  min-height:40px;
-  padding:0 16px;
+  display:inline-flex;align-items:center;min-height:40px;padding:0 16px;
   border-radius:999px;
-  background:rgba(255,255,255,.1);
-  color:#fff;
-  font-size:14px;
-  font-weight:600;
+  background:rgba(255,255,255,.08);color:#fff;
+  font-size:14px;font-weight:600;
 }
-.footer{padding:22px 24px;text-align:center;background:#1d1d1f;color:#86868b;font-size:12px;border-top:1px solid rgba(255,255,255,.08)}
+.footer{padding:22px 24px;text-align:center;background:#0a0a12;color:var(--dim);font-size:12px;border-top:1px solid var(--border)}
+
 @media(max-width:920px){
-  .section-head{display:block}
-  .section-note{margin-top:12px}
+  .section-head{display:block}.section-note{margin-top:12px}
   .about-grid,.cards,.project-grid{grid-template-columns:1fr}
   .tech-grid{grid-template-columns:repeat(2,1fr)}
   .job{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  .nav-inner{width:calc(100% - 20px)}
-  .brand{font-size:13px}
+  .nav-inner{width:calc(100% - 20px)}.brand{font-size:13px}
   .nav-links a{padding:9px 9px}
-  .hero{padding:96px 18px 56px}
-  h1{font-size:46px}
-  .hero-subtitle{font-size:21px}
-  .hero-copy{font-size:15px}
-  .stats{grid-template-columns:repeat(2,1fr);margin-top:34px}
+  .hero{padding:96px 18px 56px}h1{font-size:46px}
+  .hero-subtitle{font-size:21px}.hero-copy{font-size:15px}
+  .stats-bar{grid-template-columns:repeat(2,1fr);margin-top:34px}
   .section{padding:58px 18px}
-  .story{padding:24px}
-  .story p{font-size:17px}
+  .story{padding:24px}.story p{font-size:17px}
   .fact-grid,.tech-grid{grid-template-columns:1fr}
   .project-body{padding:18px}
 }
@@ -339,27 +242,27 @@ h2{
   <section class="hero">
     <div class="hero-inner">
       <div class="eyebrow"><span class="status-dot"></span>开放 AI 产品经理机会 · 金融科技方向</div>
-      <h1>李林豪</h1>
+      <h1><span class="gradient">李林豪</span></h1>
       <p class="hero-subtitle">把金融业务经验，做成可运行的 AI 产品。</p>
       <p class="hero-copy">金融硕士背景，证券业务一线经验，长期搭建 Agent、RAG、AIGC 与自动化 Demo。擅长把复杂业务拆解为产品原型、流程系统和可交付的 MVP。</p>
       <div class="actions">
-        <a class="button primary" href="#projects">查看 7 个 Demo</a>
+        <a class="button primary" href="#projects">查看 Demo</a>
         <a class="button secondary" href="projects.html">打开作品集</a>
       </div>
-      <div class="stats" aria-label="核心亮点">
-        <div class="stat"><strong>7</strong><span>AI 产品 MVP</span></div>
-        <div class="stat"><strong>8</strong><span>Agent 协作系统</span></div>
-        <div class="stat"><strong>20+</strong><span>可复用技能模块</span></div>
-        <div class="stat"><strong>金融</strong><span>硕士与证券背景</span></div>
+      <div class="stats-bar">
+        <div class="stat-item"><strong>12</strong><span>AI 产品 MVP</span></div>
+        <div class="stat-item"><strong>8</strong><span>Agent 协作系统</span></div>
+        <div class="stat-item"><strong>20+</strong><span>可复用技能模块</span></div>
+        <div class="stat-item"><strong>金融</strong><span>硕士与证券背景</span></div>
       </div>
     </div>
   </section>
 
-  <section class="section white" id="about">
+  <section class="section" id="about">
     <div class="section-inner">
       <div class="section-head">
         <div>
-          <div class="kicker">Personal Site</div>
+          <div class="kicker">About</div>
           <h2>从简历到个人网页。</h2>
         </div>
         <p class="section-note">这不是静态 PDF，而是一个可以展示产品思考、项目结果和 Demo 能力的个人主页。</p>
@@ -367,7 +270,7 @@ h2{
       <div class="about-grid">
         <div class="story">
           <p>我关注金融场景中的 AI 产品机会：信贷风控、研究报告生成、客户服务、知识库问答、运营自动化和内容生产。</p>
-          <p>相比只写“会使用 AI 工具”，我更倾向于把想法做成可点击、可演示、可解释的产品原型，让招聘方直接看到业务理解、产品判断和工程落地能力。</p>
+          <p>相比只写"会使用 AI 工具"，我更倾向于把想法做成可点击、可演示、可解释的产品原型，让招聘方直接看到业务理解、产品判断和工程落地能力。</p>
         </div>
         <div class="fact-grid">
           <div class="fact"><b>意向岗位</b><span>AI 产品经理</span></div>
@@ -384,7 +287,7 @@ h2{
       <div class="section-head">
         <div>
           <div class="kicker">Capabilities</div>
-          <h2>产品、业务、技术三条线合在一起。</h2>
+          <h2>产品、业务、技术三条线。</h2>
         </div>
         <p class="section-note">面向 AI 产品经理岗位，重点展示从业务抽象到原型交付的完整链路。</p>
       </div>
@@ -408,42 +311,30 @@ h2{
     </div>
   </section>
 
-  <section class="section white" id="experience">
+  <section class="section" id="experience">
     <div class="section-inner">
       <div class="section-head">
         <div>
           <div class="kicker">Experience</div>
-          <h2>经历聚焦在 AI 与金融交叉点。</h2>
+          <h2>AI 与金融交叉点。</h2>
         </div>
       </div>
       <div class="timeline">
         <article class="job">
           <time>2025.03 - 至今</time>
-          <div>
-            <h3>AI Agent 系统搭建 · 自研项目</h3>
-            <p>基于 OpenClaw 框架搭建多 Agent 协作系统，设计并运维 8 个 AI Agent；沉淀 20+ 个可复用技能模块，覆盖公众号内容生产、金融数据分析、飞书日报自动化和行业研究报告生成。</p>
-          </div>
+          <div><h3>AI Agent 系统搭建 · 自研项目</h3><p>基于 OpenClaw 框架搭建多 Agent 协作系统，设计并运维 8 个 AI Agent；沉淀 20+ 个可复用技能模块，覆盖公众号内容生产、金融数据分析、飞书日报自动化和行业研究报告生成。</p></div>
         </article>
         <article class="job">
           <time>2025.11 - 至今</time>
-          <div>
-            <h3>投资顾问 · 华福证券厦门台东路证券营业部</h3>
-            <p>为高净值客户提供投资咨询与资产配置服务，跟踪市场动态并维护核心客户关系，积累金融客户需求理解与合规沟通经验。</p>
-          </div>
+          <div><h3>投资顾问 · 华福证券</h3><p>为高净值客户提供投资咨询与资产配置服务，跟踪市场动态并维护核心客户关系，积累金融客户需求理解与合规沟通经验。</p></div>
         </article>
         <article class="job">
           <time>2021.08 - 2025.10</time>
-          <div>
-            <h3>管培生经历 · 华福证券厦门分公司 / 分公司综合部</h3>
-            <p>支持机构客户拓展、零售业务咨询、运营分析报告与行政流程优化，形成从前台客户到后台运营的综合业务视角。</p>
-          </div>
+          <div><h3>管培生 · 华福证券厦门分公司</h3><p>支持机构客户拓展、零售业务咨询、运营分析报告与行政流程优化，形成从前台客户到后台运营的综合业务视角。</p></div>
         </article>
         <article class="job">
           <time>2020.02 - 2020.11</time>
-          <div>
-            <h3>金融服务代表 · Payoneer 派通支付纽约</h3>
-            <p>分析支付数据并支持商户关系管理，参与跨境支付场景下的合规、风控和客户服务工作。</p>
-          </div>
+          <div><h3>金融服务代表 · Payoneer 纽约</h3><p>分析支付数据并支持商户关系管理，参与跨境支付场景下的合规、风控和客户服务工作。</p></div>
         </article>
       </div>
     </div>
@@ -454,129 +345,33 @@ h2{
       <div class="section-head">
         <div>
           <div class="kicker">AI Demos</div>
-          <h2>7 个可点击的 AI 产品 Demo。</h2>
+          <h2>12 个可体验 Demo。</h2>
         </div>
-        <p class="section-note">每个 Demo 都对应一个明确业务场景，保留完整详情页，可从网页直接进入体验。</p>
+        <p class="section-note">每个 Demo 对应一个明确业务场景，保留完整详情页，可从网页直接进入体验。</p>
       </div>
       <div class="project-grid">
-        <a class="project" href="project_01.html">
-          <div class="project-body">
-            <div class="project-index">MVP 01 · AIGC</div>
-            <h3>跨境电商 AI 商品图生成器</h3>
-            <p>输入产品描述后生成白底图、场景图、细节图、尺寸图等电商素材，提升跨境电商上新效率。</p>
-            <div class="tags"><span class="tag">Flux Pro</span><span class="tag">Flask</span><span class="tag">fal.ai</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_02.html">
-          <div class="project-body">
-            <div class="project-index">MVP 02 · RAG</div>
-            <h3>AI 知识库问答助手</h3>
-            <p>上传文档后自动解析、切分、建立向量索引，支持自然语言问答与来源引用。</p>
-            <div class="tags"><span class="tag">RAG</span><span class="tag">DeepSeek</span><span class="tag">ChromaDB</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_03.html">
-          <div class="project-body">
-            <div class="project-index">MVP 03 · LLM NPC</div>
-            <h3>游戏 NPC 智能对话系统</h3>
-            <p>LLM 驱动 NPC 对话，支持角色设定、上下文记忆、情绪状态和 JSON API。</p>
-            <div class="tags"><span class="tag">LLM</span><span class="tag">Prompt</span><span class="tag">API</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_04.html">
-          <div class="project-body">
-            <div class="project-index">MVP 04 · Automation</div>
-            <h3>AI 自动巡检报告系统</h3>
-            <p>内置零售、餐饮、物业 SOP 模板，根据巡检数据自动评分并生成图文报告。</p>
-            <div class="tags"><span class="tag">SOP</span><span class="tag">Jinja2</span><span class="tag">Python</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_05.html">
-          <div class="project-body">
-            <div class="project-index">MVP 05 · Agent</div>
-            <h3>智能客服 Agent</h3>
-            <p>基于 LLM 与 Tool Calling 的客服机器人，覆盖意图识别、FAQ 检索、工单创建和转人工。</p>
-            <div class="tags"><span class="tag">Agent</span><span class="tag">ToolCall</span><span class="tag">Flask</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_06.html">
-          <div class="project-body">
-            <div class="project-index">MVP 06 · Evaluation</div>
-            <h3>Prompt 测试对比平台</h3>
-            <p>支持多模型并行评测，自动记录 token、耗时、成本并生成 Prompt 优化报告。</p>
-            <div class="tags"><span class="tag">Prompt</span><span class="tag">评测</span><span class="tag">多模型</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_07.html">
-          <div class="project-body">
-            <div class="project-index">MVP 07 · FinTech</div>
-            <h3>金融风控 AI 助手</h3>
-            <p>面向信贷审批与风险分析，覆盖贷前审核、风控指标监控、财报风险扫描和可解释审批建议。</p>
-            <div class="tags"><span class="tag">风控</span><span class="tag">信贷审批</span><span class="tag">NLP</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_08.html">
-          <div class="project-body">
-            <div class="project-index">MVP 08 · Live</div>
-            <h3>AI 直播带货助手</h3>
-            <p>实时智能讲解、弹幕互动应答、产品卖点自动提取，助力直播电商降本增效。</p>
-            <div class="tags"><span class="tag">直播</span><span class="tag">NLP</span><span class="tag">实时交互</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_09.html">
-          <div class="project-body">
-            <div class="project-index">MVP 09 · Video</div>
-            <h3>AI 视频内容分析</h3>
-            <p>视频自动标注、关键帧提取、内容摘要生成，面向短视频运营与内容审核场景。</p>
-            <div class="tags"><span class="tag">视频分析</span><span class="tag">多模态</span><span class="tag">CV</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_10.html">
-          <div class="project-body">
-            <div class="project-index">MVP 10 · IoT</div>
-            <h3>AIoT 物联网平台</h3>
-            <p>设备智能调度、异常检测告警、数字孪生可视化，面向智慧工厂与智慧园区。</p>
-            <div class="tags"><span class="tag">IoT</span><span class="tag">边缘AI</span><span class="tag">数字孪生</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_11.html">
-          <div class="project-body">
-            <div class="project-index">MVP 11 · Graph</div>
-            <h3>知识图谱平台</h3>
-            <p>实体关系抽取、图谱可视化、智能问答，面向企业知识管理与情报分析场景。</p>
-            <div class="tags"><span class="tag">知识图谱</span><span class="tag">NLP</span><span class="tag">可视化</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
-        <a class="project" href="project_12.html">
-          <div class="project-body">
-            <div class="project-index">MVP 12 · Agent</div>
-            <h3>AI Agent 编排平台</h3>
-            <p>多 Agent 协作框架、任务自动分发、工作流可视化编排，面向企业级 AI 自动化。</p>
-            <div class="tags"><span class="tag">Agent</span><span class="tag">编排</span><span class="tag">多Agent</span></div>
-            <span class="link">查看详情</span>
-          </div>
-        </a>
+        <a class="project" href="project_01.html"><div class="project-body"><div class="project-index">MVP 01 · AIGC</div><h3>跨境电商 AI 商品图</h3><p>输入产品描述后生成多场景电商素材图，Flux Pro 驱动，替代专业摄影降本增效。</p><div class="tags"><span class="tag">Flux Pro</span><span class="tag">Flask</span><span class="tag">fal.ai</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_02.html"><div class="project-body"><div class="project-index">MVP 02 · RAG</div><h3>AI 知识库问答助手</h3><p>上传文档自动解析、向量索引，支持自然语言问答与来源引用，B端+C端双模式。</p><div class="tags"><span class="tag">RAG</span><span class="tag">DeepSeek</span><span class="tag">ChromaDB</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_03.html"><div class="project-body"><div class="project-index">MVP 03 · LLM</div><h3>游戏 NPC 智能对话</h3><p>LLM 驱动 3 个 NPC 角色，上下文记忆+情感系统+JSON API，即插即用。</p><div class="tags"><span class="tag">LLM</span><span class="tag">Prompt</span><span class="tag">API</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_04.html"><div class="project-body"><div class="project-index">MVP 04 · Automation</div><h3>AI 自动巡检报告</h3><p>零售/餐饮/物业 SOP 模板，AI 自动评分+图文报告，替代 80% 人工。</p><div class="tags"><span class="tag">SOP</span><span class="tag">Jinja2</span><span class="tag">Python</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_05.html"><div class="project-body"><div class="project-index">MVP 05 · Agent</div><h3>智能客服 Agent</h3><p>意图识别→FAQ检索→工单创建→转人工+情感分析，完整客服工作流。</p><div class="tags"><span class="tag">Agent</span><span class="tag">ToolCall</span><span class="tag">Flask</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_06.html"><div class="project-body"><div class="project-index">MVP 06 · Evaluation</div><h3>Prompt 测试对比</h3><p>6 模板+多模型评测，自动记录 token、耗时、成本，生成优化报告。</p><div class="tags"><span class="tag">Prompt</span><span class="tag">评测</span><span class="tag">多模型</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_07.html"><div class="project-body"><div class="project-index">MVP 07 · FinTech</div><h3>金融风控 AI 助手</h3><p>贷前审核、风控指标监控、财报扫描、可解释审批建议，信贷全流程覆盖。</p><div class="tags"><span class="tag">风控</span><span class="tag">信贷</span><span class="tag">NLP</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_08.html"><div class="project-body"><div class="project-index">MVP 08 · Live</div><h3>直播 AI 助手</h3><p>实时弹幕分析+智能话术生成+商品讲解脚本+数据看板，赋能 MCN 直播。</p><div class="tags"><span class="tag">直播</span><span class="tag">NLP</span><span class="tag">实时</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_09.html"><div class="project-body"><div class="project-index">MVP 09 · Video</div><h3>智能视频分析</h3><p>YOLOv8 + Qwen-VL 多模态分析，视频标注、关键帧提取、内容问答。</p><div class="tags"><span class="tag">多模态</span><span class="tag">CV</span><span class="tag">Qwen-VL</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_10.html"><div class="project-body"><div class="project-index">MVP 10 · IoT</div><h3>AIoT 智能家居</h3><p>全屋设备管理+3D可视化+AI场景联动+能耗分析，米家生态链产品原型。</p><div class="tags"><span class="tag">IoT</span><span class="tag">MQTT</span><span class="tag">3D</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_11.html"><div class="project-body"><div class="project-index">MVP 11 · Graph</div><h3>知识图谱可视化</h3><p>Neo4j 实体关系挖掘+路径推理+自然语言问答，面向企业情报分析场景。</p><div class="tags"><span class="tag">Neo4j</span><span class="tag">图算法</span><span class="tag">ECharts</span></div><span class="link">查看详情</span></div></a>
+        <a class="project" href="project_12.html"><div class="project-body"><div class="project-index">MVP 12 · Agent</div><h3>GenAI Agent 平台</h3><p>Agent 可视化编排+工作流引擎+API Playground，企业级 AI 基础设施原型。</p><div class="tags"><span class="tag">LangGraph</span><span class="tag">CrewAI</span><span class="tag">编排</span></div><span class="link">查看详情</span></div></a>
       </div>
     </div>
   </section>
 
-  <section class="section white" id="tech">
+  <section class="section" id="tech">
     <div class="section-inner">
       <div class="section-head">
         <div>
           <div class="kicker">Toolbox</div>
-          <h2>我常用的产品与技术工具。</h2>
+          <h2>常用产品与技术工具。</h2>
         </div>
       </div>
       <div class="tech-grid">
