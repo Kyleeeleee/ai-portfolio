@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🤖 AI知识库问答助手 · 李林豪</title>
+<title>🧠 AI知识库问答助手 · 李林豪</title>
 <style>
-:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#00e5a0;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
-.header{background:linear-gradient(135deg,#1a2a1a,#0d3320);padding:3rem 2rem;text-align:center}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
 .header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
 .header .back:hover{color:var(--primary)}
 .header .emoji{font-size:3rem;margin-bottom:.5rem}
@@ -22,76 +22,74 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(124,92,252,0.12);color:var(--primary);border:1px solid rgba(124,92,252,0.2)}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.2)}
+.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.metric{border:1px solid var(--border);border-radius:12px;padding:1rem;background:rgba(255,255,255,.03)}
+.metric strong{display:block;font-size:1.35rem;color:var(--text);line-height:1}
+.metric span{display:block;color:var(--dim);font-size:.78rem;margin-top:.45rem}
 .nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding:1rem 0;border-top:1px solid var(--border)}
 .nav a{color:var(--primary);text-decoration:none;font-size:.9rem;transition:color .3s}
 .nav a:hover{color:var(--accent)}
 .footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
 .footer a{color:var(--primary);text-decoration:none}
-.btn{display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.85rem;transition:all .3s}
-.btn-primary{background:var(--primary);color:#fff} .btn-primary:hover{opacity:.9}
-.btn-outline{border:1.5px solid var(--border);color:var(--text);margin-left:.5rem} .btn-outline:hover{border-color:var(--primary)}
-.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
-@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}}
+.note{font-size:.78rem;color:var(--dim);margin-top:.8rem}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}.metric-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <div class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
-  <div class="emoji">🤖</div>
+  <div class="emoji">🧠</div>
   <h1>AI知识库问答助手</h1>
-  <div class="subtitle">RAG智能知识库系统</div>
+  <div class="subtitle">RAG检索增强生成 · ChromaDB向量检索</div>
 </div>
 
 <div class="container">
-  <!-- 项目概述 -->
+
   <div class="card">
     <h2>📋 项目概述</h2>
     <p>基于 LangChain + RAG 架构构建的智能知识库问答系统。用户上传文档后，系统自动解析并建立向量索引，支持自然语言问答并附带原文引用来源。</p>
     <div class="meta">
-      <span>🔗 <a href="live_02.html" style="color:var(--primary)">在线Demo</a></span>
+<span>🔗 <a href="live_02.html" style="color:var(--primary)">在线Demo</a></span>
     </div>
+    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
   </div>
 
-  <!-- 核心功能 -->
   <div class="card">
-    <h2>⚡ 核心功能</h2>
+    <h2>⚡ 功能拆解</h2>
     <ul class="features">
-        <li>支持 PDF/Word/TXT/Markdown 多格式</li>
-        <li>自然语言问答 + 来源段落精准引用</li>
-        <li>B端企业管理后台 + C端问答界面</li>
-        <li>向量检索 + 关键词混合搜索</li>
-        <li>对话历史记忆 + 多轮追问</li>
+      <li>文档接入：支持 PDF / Word / TXT / Markdown 统一解析与向量化</li><li>智能检索：ChromaDB 向量检索 + 关键词召回组合定位精确段落</li><li>引用回答：每次回答附带原文来源链接，支持人工复核验证</li><li>追问上下文：保留多轮对话历史，支持连续追问与深入探索</li>
     </ul>
   </div>
 
-  <!-- 技术实现 -->
   <div class="card">
-    <h2>🔧 技术实现</h2>
-    <p>LangChain 构建 RAG Pipeline：文档解析 → 文本分割 → Embedding → ChromaDB 向量存储 → DeepSeek 生成回答。前后端分离，RESTful API。</p>
+    <h2>🔧 技术架构</h2>
+    <p>ChromaDB 持久化向量存储 + ONNX MiniLM-L6-v2 本地 Embedding（384维）。langchain-text-splitters 实现智能分块，DeepSeek API 提供LLM推理。全程本地化Embedding，数据不出域。</p>
     <div class="tags">
-          <span class="tag">RAG</span>
-          <span class="tag">LangChain</span>
-          <span class="tag">DeepSeek</span>
-          <span class="tag">Flask</span>
-          <span class="tag">ChromaDB</span>
-          <span class="tag">Python</span>
+      <span class="tag">RAG</span> <span class="tag">ChromaDB</span> <span class="tag">LangChain</span> <span class="tag-green">DeepSeek</span> <span class="tag-green">Flask</span>
     </div>
   </div>
 
-  <!-- 商业价值 -->
   <div class="card">
-    <h2>💰 商业价值</h2>
-    <p>企业知识管理痛点：文档散落、查找低效。本系统实现'问即所得'，将知识检索时间从平均15分钟降至30秒。</p>
+    <h2>📈 核心指标</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>384维</strong><span>向量维度</span></div><div class="metric"><strong>500字</strong><span>分块大小</span></div><div class="metric"><strong><2秒</strong><span>检索延迟</span></div>
+    </div>
   </div>
 
-  <!-- 导航 -->
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>企业知识管理的核心痛点不是'没有文档'，而是'找不到答案'。RAG方案让AI直接在已有文档中检索答案而非凭空生成，解决了大模型'幻觉'问题。深言未来正是看中了这条赛道——用AI把沉睡的企业文档变成可对话的知识资产。</p>
+  </div>
+
   <div class="nav">
-    <span></span>
+    <a href="project_01.html">← 上一个项目</a>
     <a href="projects.html">📂 返回项目列表</a>
+    <a href="project_03.html">下一个项目 →</a>
   </div>
-
 </div>
 
 <footer class="footer">

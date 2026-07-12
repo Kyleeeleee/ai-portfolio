@@ -8,7 +8,7 @@
 :root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
-.header{background:linear-gradient(135deg,#1a1a3a,#2d1b69);padding:3rem 2rem;text-align:center}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
 .header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
 .header .back:hover{color:var(--primary)}
 .header .emoji{font-size:3rem;margin-bottom:.5rem}
@@ -22,17 +22,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(124,92,252,0.12);color:var(--primary);border:1px solid rgba(124,92,252,0.2)}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.2)}
+.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.metric{border:1px solid var(--border);border-radius:12px;padding:1rem;background:rgba(255,255,255,.03)}
+.metric strong{display:block;font-size:1.35rem;color:var(--text);line-height:1}
+.metric span{display:block;color:var(--dim);font-size:.78rem;margin-top:.45rem}
 .nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding:1rem 0;border-top:1px solid var(--border)}
 .nav a{color:var(--primary);text-decoration:none;font-size:.9rem;transition:color .3s}
 .nav a:hover{color:var(--accent)}
 .footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
 .footer a{color:var(--primary);text-decoration:none}
-.btn{display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.85rem;transition:all .3s}
-.btn-primary{background:var(--primary);color:#fff} .btn-primary:hover{opacity:.9}
-.btn-outline{border:1.5px solid var(--border);color:var(--text);margin-left:.5rem} .btn-outline:hover{border-color:var(--primary)}
-.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
-@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}}
+.note{font-size:.78rem;color:var(--dim);margin-top:.8rem}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}.metric-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -41,57 +44,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
   <a href="projects.html" class="back">← 返回项目列表</a>
   <div class="emoji">🛍️</div>
   <h1>跨境电商AI商品图生成器</h1>
-  <div class="subtitle">AI生成电商场景展示图</div>
+  <div class="subtitle">AI生成电商场景展示图 · fal.ai Flux Pro</div>
 </div>
 
 <div class="container">
-  <!-- 项目概述 -->
+
   <div class="card">
     <h2>📋 项目概述</h2>
     <p>输入产品描述 → AI自动生成5大电商场景（白底图/场景图/细节图/尺寸图/模特图）展示图。基于 fal.ai Flux Pro 模型，单张成本仅 $0.025，替代传统摄影 ¥2000+ 成本。</p>
     <div class="meta">
-      <span>🔗 <a href="live_01.html" style="color:var(--primary)">在线Demo</a></span>
+<span>🔗 <a href="live_01.html" style="color:var(--primary)">在线Demo</a></span>
     </div>
+    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
   </div>
 
-  <!-- 核心功能 -->
   <div class="card">
-    <h2>⚡ 核心功能</h2>
+    <h2>⚡ 功能拆解</h2>
     <ul class="features">
-        <li>支持中文/英文产品描述输入</li>
-        <li>5种电商标准场景一键生成</li>
-        <li>Flux Pro + SDXL 双模型可选</li>
-        <li>批量生成，支持最多20张/次</li>
-        <li>实时预览 + 下载高清原图</li>
+      <li>支持中文/英文产品描述输入，智能提取卖点关键词</li><li>5种电商标准场景一键生成：白底图/场景图/细节图/尺寸图/模特图</li><li>Flux Pro 高端模型，出图质量媲美商业摄影</li><li>批量生成模式，支持最多20张/次，大幅提升效率</li><li>实时预览 + 一键下载高清原图（1024×1360px）</li>
     </ul>
   </div>
 
-  <!-- 技术实现 -->
   <div class="card">
-    <h2>🔧 技术实现</h2>
-    <p>后端 Flask + fal.ai API 调用 Flux Pro 模型，前端原生 JS 实现拖拽上传和实时预览。支持 Prompt 模板预设，针对不同商品类目自动优化生成参数。</p>
+    <h2>🔧 技术架构</h2>
+    <p>后端 Flask + fal.ai API 调用 Flux Pro v1.1 模型，前端原生 JS 实现拖拽上传和实时预览。支持 Prompt 模板预设，针对不同商品类目自动优化生成参数。</p>
     <div class="tags">
-          <span class="tag">Flux Pro</span>
-          <span class="tag">SDXL</span>
-          <span class="tag">fal.ai API</span>
-          <span class="tag">Flask</span>
-          <span class="tag">Python</span>
-          <span class="tag">HTML/CSS/JS</span>
+      <span class="tag">Flux Pro</span> <span class="tag">fal.ai API</span> <span class="tag">Flask</span> <span class="tag-green">Python</span> <span class="tag-green">AIGC</span>
     </div>
   </div>
 
-  <!-- 商业价值 -->
   <div class="card">
-    <h2>💰 商业价值</h2>
-    <p>传统电商商品图拍摄需 ¥2000-5000/款，AI方案成本降至 ¥0.18/张。支持24小时不间断生成，极大提升跨境电商上新效率。</p>
+    <h2>📈 核心指标</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>$0.025</strong><span>单张成本</span></div><div class="metric"><strong>5场景</strong><span>覆盖电商</span></div><div class="metric"><strong>1024×1360</strong><span>高清输出</span></div>
+    </div>
   </div>
 
-  <!-- 导航 -->
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>跨境电商每上新一款产品需要拍摄多张场景图，传统摄影成本 ¥2000-5000/款且周期3-5天。AI方案将成本降至几乎为零，生成速度缩短至秒级。对SKU数量大、上新频率高的跨境卖家而言，这是降本增效的刚需工具。</p>
+  </div>
+
   <div class="nav">
     <span></span>
     <a href="projects.html">📂 返回项目列表</a>
+    <a href="project_02.html">下一个项目 →</a>
   </div>
-
 </div>
 
 <footer class="footer">

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>📊 AI自动巡检报告系统 · 李林豪</title>
 <style>
-:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#54a0ff;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
-.header{background:linear-gradient(135deg,#1a1a2a,#162447);padding:3rem 2rem;text-align:center}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
 .header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
 .header .back:hover{color:var(--primary)}
 .header .emoji{font-size:3rem;margin-bottom:.5rem}
@@ -22,17 +22,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(124,92,252,0.12);color:var(--primary);border:1px solid rgba(124,92,252,0.2)}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.2)}
+.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.metric{border:1px solid var(--border);border-radius:12px;padding:1rem;background:rgba(255,255,255,.03)}
+.metric strong{display:block;font-size:1.35rem;color:var(--text);line-height:1}
+.metric span{display:block;color:var(--dim);font-size:.78rem;margin-top:.45rem}
 .nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding:1rem 0;border-top:1px solid var(--border)}
 .nav a{color:var(--primary);text-decoration:none;font-size:.9rem;transition:color .3s}
 .nav a:hover{color:var(--accent)}
 .footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
 .footer a{color:var(--primary);text-decoration:none}
-.btn{display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.85rem;transition:all .3s}
-.btn-primary{background:var(--primary);color:#fff} .btn-primary:hover{opacity:.9}
-.btn-outline{border:1.5px solid var(--border);color:var(--text);margin-left:.5rem} .btn-outline:hover{border-color:var(--primary)}
-.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
-@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}}
+.note{font-size:.78rem;color:var(--dim);margin-top:.8rem}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}.metric-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -41,57 +44,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
   <a href="projects.html" class="back">← 返回项目列表</a>
   <div class="emoji">📊</div>
   <h1>AI自动巡检报告系统</h1>
-  <div class="subtitle">智能巡检 + 评分报告生成</div>
+  <div class="subtitle">自动化巡检 · AI异常检测 · 报告生成</div>
 </div>
 
 <div class="container">
-  <!-- 项目概述 -->
+
   <div class="card">
     <h2>📋 项目概述</h2>
-    <p>内置3个行业SOP模板（零售/餐饮/物业），AI根据巡检数据自动评分并生成图文报告。可替代80%以上的人工巡检报告撰写工作。</p>
+    <p>面向园区/工厂/门店的AI自动巡检系统。定时采集巡检点数据，AI自动识别异常并生成结构化巡检报告，用大模型将数据转化为可读的巡检总结与整改建议。</p>
     <div class="meta">
-      <span>🔗 <a href="live_04.html" style="color:var(--primary)">在线Demo</a></span>
+<span>🔗 <a href="live_04.html" style="color:var(--primary)">在线Demo</a></span>
     </div>
+    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
   </div>
 
-  <!-- 核心功能 -->
   <div class="card">
-    <h2>⚡ 核心功能</h2>
+    <h2>⚡ 功能拆解</h2>
     <ul class="features">
-        <li>3大行业SOP模板（零售/餐饮/物业）</li>
-        <li>移动端友好，支持现场拍照上传</li>
-        <li>AI自动评分 + 问题分类汇总</li>
-        <li>PDF报告一键生成 + 邮件发送</li>
-        <li>历史数据对比 + 趋势分析</li>
+      <li>巡检点管理：自定义巡检点位、检查项、评分标准和巡检周期</li><li>AI异常检测：基于历史数据基线，自动识别温度/湿度/设备异常波动</li><li>自动报告生成：巡检完成后即时输出结构化报告（异常汇总+评分+图片证据）</li><li>LLM巡检总结：大模型将数据转化为人类可读的巡检结论与整改建议</li>
     </ul>
   </div>
 
-  <!-- 技术实现 -->
   <div class="card">
-    <h2>🔧 技术实现</h2>
-    <p>后端 Python + Jinja2 模板引擎生成报告，前端响应式设计适配移动端。评分算法基于加权扣分制，支持自定义扣分规则和阈值。</p>
+    <h2>🔧 技术架构</h2>
+    <p>Flask后端 + JSON数据存储。巡检模板引擎支持自定义评分规则，异常检测基于Z-score算法。DeepSeek API将结构化巡检数据转化为自然语言报告摘要。</p>
     <div class="tags">
-          <span class="tag">SOP引擎</span>
-          <span class="tag">Python</span>
-          <span class="tag">自动化</span>
-          <span class="tag">报告生成</span>
-          <span class="tag">PDF</span>
-          <span class="tag">Web</span>
+      <span class="tag">自动化</span> <span class="tag">异常检测</span> <span class="tag">LLM摘要</span> <span class="tag-green">Flask</span> <span class="tag-green">数据可视化</span>
     </div>
   </div>
 
-  <!-- 商业价值 -->
   <div class="card">
-    <h2>💰 商业价值</h2>
-    <p>连锁企业管理痛点：巡检标准不一、报告撰写耗时。本系统将单店巡检报告生成时间从2小时降至5分钟。</p>
+    <h2>📈 核心指标</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>30s</strong><span>报告生成</span></div><div class="metric"><strong>95%+</strong><span>异常识别</span></div><div class="metric"><strong>Z-score</strong><span>检测算法</span></div>
+    </div>
   </div>
 
-  <!-- 导航 -->
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>传统巡检依赖人工填表、拍照、写报告，一个巡检员每天最多覆盖20个点位，报告还要手工整理。AI巡检系统将这个过程全自动化——从数据采集到报告生成只需30秒，且AI能发现人眼容易忽略的微小异常趋势。</p>
+  </div>
+
   <div class="nav">
-    <span></span>
+    <a href="project_03.html">← 上一个项目</a>
     <a href="projects.html">📂 返回项目列表</a>
+    <a href="project_05.html">下一个项目 →</a>
   </div>
-
 </div>
 
 <footer class="footer">

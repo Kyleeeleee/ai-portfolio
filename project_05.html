@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>💬 智能客服Agent · 李林豪</title>
 <style>
-:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#e056a0;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
-.header{background:linear-gradient(135deg,#2a1a2a,#4a2040);padding:3rem 2rem;text-align:center}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
 .header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
 .header .back:hover{color:var(--primary)}
 .header .emoji{font-size:3rem;margin-bottom:.5rem}
@@ -22,17 +22,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(124,92,252,0.12);color:var(--primary);border:1px solid rgba(124,92,252,0.2)}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.2)}
+.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.metric{border:1px solid var(--border);border-radius:12px;padding:1rem;background:rgba(255,255,255,.03)}
+.metric strong{display:block;font-size:1.35rem;color:var(--text);line-height:1}
+.metric span{display:block;color:var(--dim);font-size:.78rem;margin-top:.45rem}
 .nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding:1rem 0;border-top:1px solid var(--border)}
 .nav a{color:var(--primary);text-decoration:none;font-size:.9rem;transition:color .3s}
 .nav a:hover{color:var(--accent)}
 .footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
 .footer a{color:var(--primary);text-decoration:none}
-.btn{display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.85rem;transition:all .3s}
-.btn-primary{background:var(--primary);color:#fff} .btn-primary:hover{opacity:.9}
-.btn-outline{border:1.5px solid var(--border);color:var(--text);margin-left:.5rem} .btn-outline:hover{border-color:var(--primary)}
-.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
-@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}}
+.note{font-size:.78rem;color:var(--dim);margin-top:.8rem}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}.metric-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -41,56 +44,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
   <a href="projects.html" class="back">← 返回项目列表</a>
   <div class="emoji">💬</div>
   <h1>智能客服Agent</h1>
-  <div class="subtitle">LLM + Tool Calling 客服机器人</div>
+  <div class="subtitle">LLM意图识别 · Tool Calling · FAQ检索 · 工单系统</div>
 </div>
 
 <div class="container">
-  <!-- 项目概述 -->
+
   <div class="card">
     <h2>📋 项目概述</h2>
-    <p>基于 LLM + Tool Calling 架构的智能客服系统。自动完成意图识别 → FAQ检索 → 工单创建 → 智能转人工，内置情感分析模块。</p>
+    <p>基于 LLM 与 Tool Calling 的智能客服Agent。覆盖意图识别、FAQ 检索、订单查询、工单创建和智能转人工，支持多轮会话上下文管理。</p>
     <div class="meta">
-      <span>🔗 <a href="live_05.html" style="color:var(--primary)">在线Demo</a></span>
+<span>🔗 <a href="live_05.html" style="color:var(--primary)">在线Demo</a></span>
     </div>
+    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
   </div>
 
-  <!-- 核心功能 -->
   <div class="card">
-    <h2>⚡ 核心功能</h2>
+    <h2>⚡ 功能拆解</h2>
     <ul class="features">
-        <li>意图识别 + 实体提取</li>
-        <li>FAQ知识库检索 + 相似度匹配</li>
-        <li>自动工单创建 + 分类</li>
-        <li>情感分析 + 负面情绪自动升级</li>
-        <li>智能转人工 + 对话摘要传递</li>
+      <li>LLM意图识别：自动分类用户消息（FAQ咨询/订单查询/投诉/转人工）</li><li>FAQ智能检索：Sentence-Transformers语义匹配 + TF-IDF关键词双路召回</li><li>工具调用：check_order / search_faq / create_ticket / transfer_human 四大工具</li><li>智能转人工：复杂问题自动升级，附带完整对话摘要移交人工客服</li>
     </ul>
   </div>
 
-  <!-- 技术实现 -->
   <div class="card">
-    <h2>🔧 技术实现</h2>
-    <p>Agent 架构：LLM 作为大脑，Tool Calling 调度知识库检索/工单系统/情感分析等工具。对话管理模块维护状态机，支持多轮交互。</p>
+    <h2>🔧 技术架构</h2>
+    <p>DeepSeek API 驱动意图分类与工具调用决策。Sentence-Transformers (paraphrase-multilingual-MiniLM-L12-v2) 实现FAQ语义检索，TF-IDF作为fallback。Session级别内存管理保证多轮对话连贯性。</p>
     <div class="tags">
-          <span class="tag">Agent</span>
-          <span class="tag">Tool Calling</span>
-          <span class="tag">DeepSeek</span>
-          <span class="tag">Flask</span>
-          <span class="tag">Python</span>
+      <span class="tag">Agent</span> <span class="tag">ToolCall</span> <span class="tag">Sentence-Transformers</span> <span class="tag-green">DeepSeek</span> <span class="tag-green">Flask</span>
     </div>
   </div>
 
-  <!-- 商业价值 -->
   <div class="card">
-    <h2>💰 商业价值</h2>
-    <p>智能客服可处理80%常见问题，将人工客服工作量降低至仅处理复杂升级case，ROI显著。</p>
+    <h2>📈 核心指标</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>4 Tools</strong><span>工具调用</span></div><div class="metric"><strong>92%+</strong><span>意图准确率</span></div><div class="metric"><strong><1s</strong><span>FAQ响应</span></div>
+    </div>
   </div>
 
-  <!-- 导航 -->
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>客服Agent的核心不是'能聊天'，而是'能办事'。Tool Calling让Agent不只是回答问题，还能真正执行查订单、建工单、转人工等操作。快商通作为企业客服SaaS厂商，Agent能力正是其产品从'在线客服'升级为'AI客服中台'的关键。</p>
+  </div>
+
   <div class="nav">
-    <span></span>
+    <a href="project_04.html">← 上一个项目</a>
     <a href="projects.html">📂 返回项目列表</a>
+    <a href="project_06.html">下一个项目 →</a>
   </div>
-
 </div>
 
 <footer class="footer">

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🎮 游戏NPC智能对话系统 · 李林豪</title>
 <style>
-:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#ff6b9d;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
-.header{background:linear-gradient(135deg,#2a1a1a,#4a1a2e);padding:3rem 2rem;text-align:center}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:3rem 2rem;text-align:center}
 .header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
 .header .back:hover{color:var(--primary)}
 .header .emoji{font-size:3rem;margin-bottom:.5rem}
@@ -22,17 +22,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(124,92,252,0.12);color:var(--primary);border:1px solid rgba(124,92,252,0.2)}
+.tag{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.2)}
+.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.metric{border:1px solid var(--border);border-radius:12px;padding:1rem;background:rgba(255,255,255,.03)}
+.metric strong{display:block;font-size:1.35rem;color:var(--text);line-height:1}
+.metric span{display:block;color:var(--dim);font-size:.78rem;margin-top:.45rem}
 .nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding:1rem 0;border-top:1px solid var(--border)}
 .nav a{color:var(--primary);text-decoration:none;font-size:.9rem;transition:color .3s}
 .nav a:hover{color:var(--accent)}
 .footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
 .footer a{color:var(--primary);text-decoration:none}
-.btn{display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.85rem;transition:all .3s}
-.btn-primary{background:var(--primary);color:#fff} .btn-primary:hover{opacity:.9}
-.btn-outline{border:1.5px solid var(--border);color:var(--text);margin-left:.5rem} .btn-outline:hover{border-color:var(--primary)}
-.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
-@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}}
+.note{font-size:.78rem;color:var(--dim);margin-top:.8rem}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card{padding:1.25rem}.metric-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -41,57 +44,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
   <a href="projects.html" class="back">← 返回项目列表</a>
   <div class="emoji">🎮</div>
   <h1>游戏NPC智能对话系统</h1>
-  <div class="subtitle">LLM驱动的NPC对话引擎</div>
+  <div class="subtitle">DeepSeek LLM · 角色扮演 · 上下文记忆 · 流式输出</div>
 </div>
 
 <div class="container">
-  <!-- 项目概述 -->
+
   <div class="card">
     <h2>📋 项目概述</h2>
-    <p>基于大语言模型的游戏NPC智能对话系统，预设3个角色（导师/跟班/商人），具备上下文记忆、情感状态追踪和结构化 JSON API 输出能力。</p>
+    <p>面向游戏场景的AI NPC对话系统。为每个NPC设定独立人设、背景故事和情感状态，支持多轮对话记忆、情绪变化和SSE流式输出，可直接接入游戏引擎。</p>
     <div class="meta">
-      <span>🔗 <a href="live_03.html" style="color:var(--primary)">在线Demo</a></span>
+<span>🔗 <a href="live_03.html" style="color:var(--primary)">在线Demo</a></span>
     </div>
+    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
   </div>
 
-  <!-- 核心功能 -->
   <div class="card">
-    <h2>⚡ 核心功能</h2>
+    <h2>⚡ 功能拆解</h2>
     <ul class="features">
-        <li>3种NPC角色模板（导师/跟班/商人）</li>
-        <li>上下文记忆 + 多轮对话连贯性</li>
-        <li>情感状态追踪（友好/中立/敌对）</li>
-        <li>JSON API 输出，便于游戏引擎集成</li>
-        <li>角色人设固化 + Prompt 模板管理</li>
+      <li>角色设定系统：导师/跟班/商人三种原型，各自拥有独立人设、口头禅、背景故事</li><li>上下文记忆：关键事实摘要 + 短期对话窗口，NPC能记住你说过的话</li><li>情绪状态引擎：友好/中立/敌对三种情绪影响回复策略，提升沉浸感</li><li>JSON结构化输出：对话内容 + 任务钩子 + 关系值，可被游戏引擎直接读取</li>
     </ul>
   </div>
 
-  <!-- 技术实现 -->
   <div class="card">
-    <h2>🔧 技术实现</h2>
-    <p>核心采用 Prompt 链式编排：角色设定 → 情感判断 → 记忆检索 → 对话生成。记忆模块基于滑动窗口 + 关键信息摘要，API 层提供标准化 JSON 输出。</p>
+    <h2>🔧 技术架构</h2>
+    <p>DeepSeek Chat API 驱动NPC推理，Character Prompting 技术塑造角色一致性。SSE（Server-Sent Events）实现打字机效果的流式回复。Session级别内存管理，支持多玩家并发对话。</p>
     <div class="tags">
-          <span class="tag">LLM</span>
-          <span class="tag">Prompt Engineering</span>
-          <span class="tag">记忆系统</span>
-          <span class="tag">API</span>
-          <span class="tag">Python</span>
-          <span class="tag">FastAPI</span>
+      <span class="tag">LLM</span> <span class="tag">SSE流式</span> <span class="tag">Character Prompting</span> <span class="tag-green">DeepSeek</span> <span class="tag-green">Flask</span>
     </div>
   </div>
 
-  <!-- 商业价值 -->
   <div class="card">
-    <h2>💰 商业价值</h2>
-    <p>传统游戏NPC对话需大量脚本编写，AI方案将对话内容制作效率提升10倍+，且对话质量更自然、更具沉浸感。</p>
+    <h2>📈 核心指标</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>3种</strong><span>角色原型</span></div><div class="metric"><strong>SSE</strong><span>流式输出</span></div><div class="metric"><strong><1.5s</strong><span>首次响应</span></div>
+    </div>
   </div>
 
-  <!-- 导航 -->
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>传统游戏NPC对话依赖预制文本树，几百句对白就成本高昂且重复感强。AI NPC能让每个角色拥有'灵魂'——动态生成符合人设的回答、记住玩家行为、甚至发展剧情分支。4399作为国内休闲游戏巨头，AI NPC是其降低制作成本、提升玩家留存的关键技术方向。</p>
+  </div>
+
   <div class="nav">
-    <span></span>
+    <a href="project_02.html">← 上一个项目</a>
     <a href="projects.html">📂 返回项目列表</a>
+    <a href="project_04.html">下一个项目 →</a>
   </div>
-
 </div>
 
 <footer class="footer">
