@@ -18,7 +18,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
 .card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .card p{font-size:.9rem;color:var(--dim);line-height:1.8}
-.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a;display:block}
 .features{list-style:none;padding:0}
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
@@ -49,54 +48,3 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <div class="container">
-  <img class="demo-gif" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%237c5cfc'/><stop offset='100%' stop-color='%2300e5a0'/></linearGradient></defs><rect width='800' height='450' fill='%230a0a12'/><rect x='40' y='40' width='720' height='370' rx='16' fill='url(%23g)' opacity='0.25'/><text x='400' y='225' text-anchor='middle' fill='%23e0e0f0' font-size='32' font-family='sans-serif' font-weight='bold'>🎮 游戏NPC智能对话系统</text><text x='400' y='265' text-anchor='middle' fill='%238888aa' font-size='14' font-family='sans-serif'>DeepSeek LLM · 角色扮演 · 上下文记忆 · 流式输出</text></svg>" alt="AI自动巡检报告系统 Demo" loading="lazy">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>面向园区/工厂/门店的AI自动巡检系统。定时采集巡检点数据，AI自动识别异常并生成结构化巡检报告，用大模型将数据转化为可读的巡检总结与整改建议。</p>
-    <div class="meta">
-<span>🔗 <a href="live_04.html" style="color:var(--primary)">在线Demo</a></span>
-    </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
-
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>巡检点管理：自定义巡检点位、检查项、评分标准和巡检周期</li><li>AI异常检测：基于历史数据基线，自动识别温度/湿度/设备异常波动</li><li>自动报告生成：巡检完成后即时输出结构化报告（异常汇总+评分+图片证据）</li><li>LLM巡检总结：大模型将数据转化为人类可读的巡检结论与整改建议</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>Flask后端 + JSON数据存储。巡检模板引擎支持自定义评分规则，异常检测基于Z-score算法。DeepSeek API将结构化巡检数据转化为自然语言报告摘要。</p>
-    <div class="tags">
-      <span class="tag">自动化</span> <span class="tag">异常检测</span> <span class="tag">LLM摘要</span> <span class="tag-green">Flask</span> <span class="tag-green">数据可视化</span>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>30s</strong><span>报告生成</span></div><div class="metric"><strong>95%+</strong><span>异常识别</span></div><div class="metric"><strong>Z-score</strong><span>检测算法</span></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>传统巡检依赖人工填表、拍照、写报告，一个巡检员每天最多覆盖20个点位，报告还要手工整理。AI巡检系统将这个过程全自动化——从数据采集到报告生成只需30秒，且AI能发现人眼容易忽略的微小异常趋势。</p>
-  </div>
-
-  <div class="nav">
-    <a href="project_03.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
-    <a href="project_05.html">下一个项目 →</a>
-  </div>
-</div>
-
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
-</body>
-</html>

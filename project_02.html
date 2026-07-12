@@ -18,7 +18,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
 .card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .card p{font-size:.9rem;color:var(--dim);line-height:1.8}
-.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a;display:block}
 .features{list-style:none;padding:0}
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
@@ -49,54 +48,3 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <div class="container">
-  <img class="demo-gif" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%237c5cfc'/><stop offset='100%' stop-color='%2300e5a0'/></linearGradient></defs><rect width='800' height='450' fill='%230a0a12'/><rect x='40' y='40' width='720' height='370' rx='16' fill='url(%23g)' opacity='0.25'/><text x='400' y='225' text-anchor='middle' fill='%23e0e0f0' font-size='32' font-family='sans-serif' font-weight='bold'>🧠 AI知识库问答助手</text><text x='400' y='265' text-anchor='middle' fill='%238888aa' font-size='14' font-family='sans-serif'>DeepSeek LLM · RAG · 向量检索 · 多格式文档</text></svg>" alt="AI知识库问答助手 Demo" loading="lazy">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>基于 LangChain + RAG 架构构建的智能知识库问答系统。用户上传文档后，系统自动解析并建立向量索引，支持自然语言问答并附带原文引用来源。</p>
-    <div class="meta">
-<span>🔗 <a href="live_02.html" style="color:var(--primary)">在线Demo</a></span>
-    </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
-
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>文档接入：支持 PDF / Word / TXT / Markdown 统一解析与向量化</li><li>智能检索：ChromaDB 向量检索 + 关键词召回组合定位精确段落</li><li>引用回答：每次回答附带原文来源链接，支持人工复核验证</li><li>追问上下文：保留多轮对话历史，支持连续追问与深入探索</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>ChromaDB 持久化向量存储 + ONNX MiniLM-L6-v2 本地 Embedding（384维）。langchain-text-splitters 实现智能分块，DeepSeek API 提供LLM推理。全程本地化Embedding，数据不出域。</p>
-    <div class="tags">
-      <span class="tag">RAG</span> <span class="tag">ChromaDB</span> <span class="tag">LangChain</span> <span class="tag-green">DeepSeek</span> <span class="tag-green">Flask</span>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>384维</strong><span>向量维度</span></div><div class="metric"><strong>500字</strong><span>分块大小</span></div><div class="metric"><strong><2秒</strong><span>检索延迟</span></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>企业知识管理的核心痛点不是'没有文档'，而是'找不到答案'。RAG方案让AI直接在已有文档中检索答案而非凭空生成，解决了大模型'幻觉'问题。深言未来正是看中了这条赛道——用AI把沉睡的企业文档变成可对话的知识资产。</p>
-  </div>
-
-  <div class="nav">
-    <a href="project_01.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
-    <a href="project_03.html">下一个项目 →</a>
-  </div>
-</div>
-
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
-</body>
-</html>

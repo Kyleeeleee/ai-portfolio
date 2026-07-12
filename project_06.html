@@ -18,7 +18,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
 .card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .card p{font-size:.9rem;color:var(--dim);line-height:1.8}
-.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a;display:block}
 .features{list-style:none;padding:0}
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
@@ -49,54 +48,3 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <div class="container">
-  <img class="demo-gif" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%237c5cfc'/><stop offset='100%' stop-color='%2300e5a0'/></linearGradient></defs><rect width='800' height='450' fill='%230a0a12'/><rect x='40' y='40' width='720' height='370' rx='16' fill='url(%23g)' opacity='0.25'/><text x='400' y='225' text-anchor='middle' fill='%23e0e0f0' font-size='32' font-family='sans-serif' font-weight='bold'>🔬 Prompt测试对比平台</text><text x='400' y='265' text-anchor='middle' fill='%238888aa' font-size='14' font-family='sans-serif'>多模型对比 · Prompt版本管理 · 自动评分 · 可视化</text></svg>" alt="Prompt测试对比平台 Demo" loading="lazy">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>支持多模型并行评测的Prompt测试平台。同时向多个LLM发送同一Prompt，自动记录token消耗、响应时延和成本，生成对比报告与Prompt优化建议。</p>
-    <div class="meta">
-<span>🔗 <a href="live_06.html" style="color:var(--primary)">在线Demo</a></span>
-    </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
-
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>多模型并行测试：一键向DeepSeek/GPT/Claude等多个模型发送同一Prompt</li><li>自动指标采集：Token消耗、响应时延、成本估算自动记录与对比</li><li>历史记录管理：所有测试结果持久化存储，支持回溯与趋势分析</li><li>Prompt优化建议：基于结果差异自动生成Prompt改进方向（清晰度/长度/示例）</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>Flask后端 + ThreadPoolExecutor实现多模型并行调用。OpenAI兼容API客户端统一调用DeepSeek/GPT/Claude。JSON文件持久化存储测试历史，支持按模型/日期筛选。</p>
-    <div class="tags">
-      <span class="tag">Prompt Engineering</span> <span class="tag">多模型评测</span> <span class="tag">成本分析</span> <span class="tag-green">Flask</span> <span class="tag-green">并发</span>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>3+模型</strong><span>并行评测</span></div><div class="metric"><strong>实时</strong><span>Token统计</span></div><div class="metric"><strong>自动</strong><span>优化建议</span></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>Prompt Engineering是AI产品经理的核心技能。但好的Prompt不是一次写成的——需要反复测试、对比、迭代。这个平台把'手工测试→Excel记录→人工对比'的流程自动化，让PM把时间花在优化上而非操作上。</p>
-  </div>
-
-  <div class="nav">
-    <a href="project_05.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
-    <a href="project_07.html">下一个项目 →</a>
-  </div>
-</div>
-
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
-</body>
-</html>
