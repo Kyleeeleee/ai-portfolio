@@ -81,6 +81,7 @@ h1{
   font-size:clamp(48px,8vw,104px);line-height:.98;letter-spacing:-0.02em;font-weight:800;
 }
 h1 .gradient{background:linear-gradient(135deg,#c4b5fd,#7c5cfc,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1 .gradient .char{background:inherit;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 /* 标题逐字浮现 */
 h1 .char{display:inline-block;opacity:0;animation:charIn .6s ease forwards}
 @keyframes charIn{0%{opacity:0;transform:translateY(20px) scale(.9)}100%{opacity:1;transform:translateY(0) scale(1)}}
