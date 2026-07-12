@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI Agent编排平台 · 在线Demo</title>
+<style>
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--primary:#6366f1;--accent:#22d3ee;--text:#e2e8f0;--dim:#64748b;--success:#10b981;--warn:#f59e0b;--radius:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:linear-gradient(135deg,#0a0e17,#1e1b4b);padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
+.header h1{font-size:1.3rem;font-weight:700}
+.layout{display:grid;grid-template-columns:240px 1fr 280px;gap:1rem;padding:1rem;max-width:1500px;margin:0 auto;height:calc(100vh - 80px)}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;overflow-y:auto}
+.agent-node{background:rgba(99,102,241,.08);border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px;cursor:grab;transition:all .2s;font-size:.82rem}
+.agent-node:hover{border-color:var(--primary)}
+.agent-node .agent-icon{font-size:1.2rem;margin-right:6px}
+.agent-node .agent-type{font-size:.65rem;color:var(--primary);display:block;margin-top:2px}
+.canvas{background:rgba(255,255,255,.02);border:1px dashed var(--border);border-radius:var(--radius);position:relative;min-height:400px}
+.workflow-block{position:absolute;background:var(--card);border:2px solid var(--primary);border-radius:10px;padding:10px 16px;font-size:.82rem;min-width:120px;text-align:center;cursor:pointer;transition:all .2s}
+.workflow-block:hover{box-shadow:0 0 16px rgba(99,102,241,.2)}
+.workflow-block .step-num{font-size:.65rem;color:var(--primary)}
+.wf-arrow{position:absolute;color:var(--accent);font-size:1.2rem}
+.log-item{padding:8px 10px;border-radius:8px;font-size:.75rem;margin-bottom:4px;border-left:3px solid var(--primary);background:rgba(255,255,255,.02)}
+.log-item.success{border-color:var(--success)}
+.log-item .time{color:var(--dim);font-size:.68rem}
+.log-item .agent{color:var(--accent);font-weight:600}
+.btn{display:inline-block;padding:8px 18px;border-radius:20px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-accent{background:var(--accent);color:#0a0e17}
+.btn:hover{opacity:.85}
+.metric-row{display:flex;gap:8px;margin-bottom:10px}
+.metric{flex:1;background:rgba(255,255,255,.03);border-radius:10px;padding:10px;text-align:center}
+.metric .val{font-size:1.2rem;font-weight:700;color:var(--accent)}
+.metric .lbl{font-size:.68rem;color:var(--dim);margin-top:2px}
+@media(max-width:1024px){.layout{grid-template-columns:1fr;height:auto}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🤖 AI Agent编排平台</h1>
+  <div>
+    <button class="btn btn-accent" onclick="runWorkflow()">▶ 运行工作流</button>
+  </div>
+</div>
+<div class="layout">
+  <div class="panel">
+    <h3 style="font-size:.85rem;margin-bottom:10px">🧩 Agent组件</h3>
+    <div class="agent-node"><span class="agent-icon">📥</span>数据采集Agent<span class="agent-type">input</span></div>
+    <div class="agent-node"><span class="agent-icon">🧠</span>分析推理Agent<span class="agent-type">reasoning</span></div>
+    <div class="agent-node"><span class="agent-icon">🔧</span>工具调用Agent<span class="agent-type">tool</span></div>
+    <div class="agent-node"><span class="agent-icon">📝</span>报告生成Agent<span class="agent-type">output</span></div>
+    <div class="agent-node"><span class="agent-icon">✅</span>质量审核Agent<span class="agent-type">review</span></div>
+    <div class="agent-node"><span class="agent-icon">🌐</span>Web搜索Agent<span class="agent-type">search</span></div>
+    <div class="agent-node"><span class="agent-icon">📊</span>数据分析Agent<span class="agent-type">analysis</span></div>
+    <div class="agent-node"><span class="agent-icon">🔀</span>条件路由Agent<span class="agent-type">logic</span></div>
+  </div>
+  <div class="canvas" id="canvas">
+    <div class="workflow-block" style="top:20px;left:30px;"><span class="step-num">STEP 1</span><br>📥 数据采集<br><span style="color:var(--dim);font-size:.7rem">多源API聚合</span></div>
+    <div class="workflow-block" style="top:120px;left:30px;"><span class="step-num">STEP 2</span><br>🧠 分析推理<br><span style="color:var(--dim);font-size:.7rem">LLM深度分析</span></div>
+    <div class="workflow-block" style="top:220px;left:30px;"><span class="step-num">STEP 3</span><br>🔧 工具调用<br><span style="color:var(--dim);font-size:.7rem">外部API触发</span></div>
+    <div class="workflow-block" style="top:320px;left:30px;"><span class="step-num">STEP 4</span><br>📝 报告生成<br><span style="color:var(--dim);font-size:.7rem">格式化输出</span></div>
+    <div class="workflow-block" style="top:120px;left:220px;"><span class="step-num">并行</span><br>🌐 Web搜索<br><span style="color:var(--dim);font-size:.7rem">实时信息补全</span></div>
+    <div class="workflow-block" style="top:320px;left:220px;"><span class="step-num">并行</span><br>✅ 质量审核<br><span style="color:var(--dim);font-size:.7rem">幻觉检测</span></div>
+    <!-- 箭头 -->
+    <div style="position:absolute;top:72px;left:152px;color:var(--accent);font-size:1.5rem">↓</div>
+    <div style="position:absolute;top:172px;left:152px;color:var(--accent);font-size:1.5rem">↓</div>
+    <div style="position:absolute;top:272px;left:152px;color:var(--accent);font-size:1.5rem">↓</div>
+    <div style="position:absolute;top:132px;left:150px;color:var(--accent);font-size:1.2rem">→</div>
+    <div style="position:absolute;top:332px;left:150px;color:var(--accent);font-size:1.2rem">→</div>
+  </div>
+  <div class="panel">
+    <h3 style="font-size:.85rem;margin-bottom:8px">📊 运行指标</h3>
+    <div class="metric-row">
+      <div class="metric"><div class="val">8</div><div class="lbl">可用Agent</div></div>
+      <div class="metric"><div class="val">4</div><div class="lbl">活跃工作流</div></div>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="val" id="tokens">12.4K</div><div class="lbl">今日Token</div></div>
+      <div class="metric"><div class="val" id="cost">$0.18</div><div class="lbl">今日成本</div></div>
+    </div>
+    <h3 style="font-size:.85rem;margin:12px 0 8px">📋 执行日志</h3>
+    <div id="logPanel">
+      <div class="log-item"><span class="time">09:30:12</span> <span class="agent">数据采集Agent</span> → 完成API数据拉取</div>
+      <div class="log-item success"><span class="time">09:30:15</span> <span class="agent">分析推理Agent</span> → 输出关键洞察</div>
+      <div class="log-item"><span class="time">09:30:18</span> <span class="agent">Web搜索Agent</span> → 补充实时数据</div>
+    </div>
+  </div>
+</div>
+<script>
+let runCount=0;
+function runWorkflow(){
+  runCount++;
+  const log=document.getElementById("logPanel");
+  const steps=[
+    {time:"09:3"+runCount+":0"+((runCount*3)%10),agent:"数据采集Agent",msg:"拉取3个数据源完成",cls:""},
+    {time:"09:3"+runCount+":0"+((runCount*3+2)%10),agent:"分析推理Agent",msg:"LLM推理完成 · 置信度92%",cls:"success"},
+    {time:"09:3"+runCount+":0"+((runCount*3+4)%10),agent:"Web搜索Agent",msg:"补充2条实时信息",cls:""},
+    {time:"09:3"+runCount+":0"+((runCount*3+6)%10),agent:"工具调用Agent",msg:"触发3个外部API",cls:""},
+    {time:"09:3"+runCount+":0"+((runCount*3+8)%10),agent:"质量审核Agent",msg:"通过审核 · 未检测到幻觉",cls:"success"},
+    {time:"09:3"+runCount+":1"+((runCount)%10),agent:"报告生成Agent",msg:"生成分析报告完成",cls:"success"},
+  ];
+  steps.forEach((s,i)=>{
+    setTimeout(()=>{
+      log.insertAdjacentHTML("afterbegin",`<div class="log-item ${s.cls}"><span class="time">${s.time}</span> <span class="agent">${s.agent}</span> → ${s.msg}</div>`);
+      if(i===steps.length-1){
+        const tokens=(12.4+Math.random()*3).toFixed(1)+"K";
+        const cost="$"+(0.18+Math.random()*0.1).toFixed(2);
+        document.getElementById("tokens").textContent=tokens;
+        document.getElementById("cost").textContent=cost;
+      }
+    },i*500);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎬 直播AI助手 · 在线Demo</title>
+<style>
+:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#8b5cf6;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--danger:#ff4757;--warn:#ffa502;--radius:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:linear-gradient(135deg,#1a1525,#2d1b4e);padding:1.2rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+.header h1{font-size:1.3rem;font-weight:700}
+.header .sub{font-size:.82rem;color:var(--dim);margin-top:4px}
+.layout{display:grid;grid-template-columns:1fr 340px;gap:1rem;padding:1rem;max-width:1400px;margin:0 auto;height:calc(100vh - 110px)}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;overflow-y:auto}
+.danmaku-list{display:flex;flex-direction:column;gap:6px;max-height:400px;overflow-y:auto}
+.dm-item{padding:8px 12px;border-radius:8px;font-size:.85rem;background:rgba(255,255,255,.04);border-left:3px solid var(--primary);animation:fadeIn .3s}
+.dm-item .user{color:var(--primary);font-weight:600;font-size:.78rem}
+.dm-item .text{margin-top:3px;color:var(--text)}
+.dm-item .tag{display:inline-block;font-size:.7rem;padding:1px 8px;border-radius:10px;margin-left:6px}
+.tag-q{background:rgba(0,229,160,.15);color:var(--accent)}
+.tag-e{background:rgba(255,71,87,.15);color:var(--danger)}
+.tag-h{background:rgba(255,165,2,.15);color:var(--warn)}
+.script-box{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:10px;min-height:120px;font-size:.9rem;line-height:1.7}
+.script-box .phase{color:var(--accent);font-weight:700;margin-top:8px}
+.btn{display:inline-block;padding:8px 18px;border-radius:20px;border:none;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;margin:4px}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-accent{background:var(--accent);color:#0a0a12}
+.btn:hover{opacity:.85;transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.stat{background:rgba(255,255,255,.04);border-radius:10px;padding:12px;text-align:center}
+.stat .val{font-size:1.4rem;font-weight:700;color:var(--accent)}
+.stat .lbl{font-size:.72rem;color:var(--dim);margin-top:4px}
+.hot-words{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.hot-word{padding:3px 10px;border-radius:12px;font-size:.75rem;background:rgba(139,92,246,.12);color:var(--primary)}
+.input-row{display:flex;gap:8px;margin-top:10px}
+.input-row input{flex:1;padding:8px 14px;border-radius:20px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--text);font-size:.85rem;outline:none}
+.input-row input:focus{border-color:var(--primary)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@media(max-width:900px){.layout{grid-template-columns:1fr;height:auto}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🎬 直播AI助手 <span class="status-dot"></span> <span style="font-size:.75rem;color:var(--accent)">直播中</span></h1>
+  <div class="sub">实时弹幕分析 · 智能话术生成 · 商品讲解AI</div>
+</div>
+<div class="layout">
+  <div class="panel" id="mainPanel">
+    <div class="stats">
+      <div class="stat"><div class="val" id="viewers">12,847</div><div class="lbl">👥 观看人数</div></div>
+      <div class="stat"><div class="val" id="interact">8.3%</div><div class="lbl">💬 互动率</div></div>
+      <div class="stat"><div class="val" id="convert">4.2%</div><div class="lbl">🛒 转化率</div></div>
+    </div>
+    <div style="margin-top:12px"><strong style="font-size:.9rem">🔥 弹幕热词</strong></div>
+    <div class="hot-words" id="hotWords">
+      <span class="hot-word">多少钱</span><span class="hot-word">包邮吗</span><span class="hot-word">效果怎样</span>
+      <span class="hot-word">优惠券</span><span class="hot-word">尺码</span><span class="hot-word">下单了</span>
+    </div>
+    <div style="margin-top:14px"><strong style="font-size:.9rem">💬 实时弹幕</strong></div>
+    <div class="danmaku-list" id="danmaku"></div>
+    <div class="input-row">
+      <input type="text" id="dmInput" placeholder="输入模拟弹幕..." onkeydown="if(event.key==='Enter')sendDanmaku()">
+      <button class="btn btn-primary" onclick="sendDanmaku()">发送</button>
+      <button class="btn btn-accent" onclick="simulateDanmaku()">模拟弹幕</button>
+    </div>
+  </div>
+  <div class="panel" id="sidePanel">
+    <strong style="font-size:.9rem">🤖 AI话术建议</strong>
+    <div class="script-box" id="scriptBox">
+      <span style="color:var(--dim)">等待弹幕触发话术建议...</span>
+    </div>
+    <div style="margin-top:12px">
+      <button class="btn btn-primary" onclick="genScript('逼单')">🔥 逼单话术</button>
+      <button class="btn btn-accent" onclick="genScript('答疑')">💡 答疑话术</button>
+      <button class="btn btn-primary" onclick="genScript('氛围')">🎉 氛围话术</button>
+    </div>
+    <div style="margin-top:16px;padding:12px;background:rgba(255,165,2,.08);border-radius:10px;font-size:.8rem;color:var(--warn)">
+      <strong>⚠️ 弹幕预警：</strong><br>
+      <span id="alertMsg">暂无异常</span>
+    </div>
+  </div>
+</div>
+<script>
+const products=["夏季冰丝凉席三件套","无线蓝牙降噪耳机","智能体脂秤"];
+const dmTemplates=[
+  {u:"小明",t:"这个凉席会不会起球啊？",tag:"q"},{u:"小红",t:"已经下单了期待！",tag:""},
+  {u:"老张",t:"太贵了便宜点行不行",tag:"e"},{u:"花花",t:"什么时候发货？",tag:"q"},
+  {u:"阿强",t:"6666主播讲得好！",tag:""},{u:"莉莉",t:"能不能展示一下细节",tag:"q"},
+  {u:"大伟",t:"垃圾质量别买",tag:"e"},{u:"小美",t:"已拍！姐妹们冲",tag:""},
+];
+
+function sendDanmaku(){
+  const inp=document.getElementById("dmInput");
+  const text=inp.value.trim();
+  if(!text)return;
+  addDanmaku("我",text,"");
+  inp.value="";
+  checkAlert(text);
+}
+function addDanmaku(user,text,tagCls){
+  const div=document.createElement("div");
+  div.className="dm-item";
+  div.innerHTML=`<span class="user">${user}</span>${tagCls?`<span class="tag tag-${tagCls}">${tagCls==='q'?'提问':tagCls==='e'?'负面':'灌水'}</span>`:''}<div class="text">${text}</div>`;
+  document.getElementById("danmaku").prepend(div);
+  if(text.includes("？")||text.includes("吗")){
+    updateScript("答疑",text);
+  }
+}
+function simulateDanmaku(){
+  const t=dmTemplates[Math.floor(Math.random()*dmTemplates.length)];
+  const tag=t.tag||(Math.random()>.5?(Math.random()>.5?'q':'h'):'');
+  addDanmaku(t.u,t.t,tag||"");
+  checkAlert(t.t);
+}
+function checkAlert(text){
+  if(text.includes("垃圾")||text.includes("骗人")||text.includes("质量差")){
+    document.getElementById("alertMsg").innerHTML=`⚠️ 检测到负面弹幕：${text}<br>建议立即回应或转移话题`;
+  }
+}
+
+const scripts={
+  "逼单":{p:"限时福利只剩最后50单！错过今天再等一个月，拍了就是赚到！",f:"库存告急！现在下单还送价值99元赠品，仅限前100名！"},
+  "答疑":{p:"亲们放心，我们支持7天无理由退换，质量问题包运费！",f:"尺寸表已经放评论区了，大家参考一下，拿不准的可以问客服~"},
+  "氛围":{p:"欢迎新进来的宝宝们！左上角点个关注不迷路，每天都有好货分享~",f:"感谢家人们的支持！主播每天下午2点准时开播，不见不散！"}
+};
+function genScript(style){
+  const s=scripts[style];
+  const box=document.getElementById("scriptBox");
+  box.innerHTML=`
+    <div class="phase">📋 ${style}话术 · ${products[Math.floor(Math.random()*products.length)]}</div>
+    <p style="margin-top:6px">${s.p}</p>
+    <div class="phase" style="margin-top:10px">📌 跟进话术</div>
+    <p style="margin-top:4px">${s.f}</p>
+    <div style="margin-top:10px;font-size:.75rem;color:var(--dim)">AI生成 · ${new Date().toLocaleTimeString()}</div>
+  `;
+}
+function updateScript(style,trigger){
+  const s=scripts[style]||scripts["答疑"];
+  document.getElementById("scriptBox").innerHTML=`
+    <div style="font-size:.75rem;color:var(--dim)">触发：${trigger}</div>
+    <div class="phase">📋 AI话术建议</div>
+    <p style="margin-top:6px">${s.p}</p>
+  `;
+}
+// 初始化模拟几条弹幕
+setTimeout(()=>{addDanmaku("路人甲","这个耳机续航多久？","q");addDanmaku("主播铁粉","已下单支持！","")},500);
+// 自动模拟弹幕
+setInterval(()=>{if(document.querySelectorAll(".dm-item").length<20)simulateDanmaku()},8000);
+// 数据波动
+setInterval(()=>{
+  document.getElementById("viewers").textContent=(12847+Math.floor(Math.random()*500-250)).toLocaleString();
+  document.getElementById("interact").textContent=(8.3+Math.random()*1-.5).toFixed(1)+"%";
+  document.getElementById("convert").textContent=(4.2+Math.random()*.8-.4).toFixed(1)+"%";
+},5000);
+</script>
+</body>
+</html>

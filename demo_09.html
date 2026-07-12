@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎥 AI视频内容分析 · 在线Demo</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--primary:#58a6ff;--accent:#3fb950;--text:#e6edf3;--dim:#8b949e;--warn:#d29922;--danger:#f85149;--radius:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:linear-gradient(135deg,#0d1117,#161b22);padding:1.2rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+.header h1{font-size:1.3rem;font-weight:700}
+.header .sub{font-size:.82rem;color:var(--dim);margin-top:4px}
+.container{max-width:1100px;margin:0 auto;padding:1rem}
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:3rem 2rem;text-align:center;cursor:pointer;transition:all .3s;background:var(--card)}
+.upload-zone:hover{border-color:var(--primary);background:rgba(88,166,255,.04)}
+.upload-zone .icon{font-size:3rem;margin-bottom:.8rem}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem}
+.card h3{font-size:.9rem;color:var(--primary);margin-bottom:.8rem}
+.tag-row{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.tag{padding:3px 10px;border-radius:12px;font-size:.72rem;background:rgba(88,166,255,.12);color:var(--primary);border:1px solid rgba(88,166,255,.2)}
+.tag-green{background:rgba(63,185,80,.12);color:var(--accent);border-color:rgba(63,185,80,.2)}
+.tag-yellow{background:rgba(210,153,34,.12);color:var(--warn);border-color:rgba(210,153,34,.2)}
+.tag-red{background:rgba(248,81,73,.12);color:var(--danger);border-color:rgba(248,81,73,.2)}
+.summary{font-size:.88rem;line-height:1.8;color:var(--dim)}
+.timeline{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
+.tl-item{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;padding:8px;border-radius:8px;background:rgba(255,255,255,.03)}
+.tl-item .time{color:var(--accent);font-weight:700;white-space:nowrap;min-width:50px}
+.tl-item .desc{color:var(--text);flex:1}
+.tl-item .conf{color:var(--dim);font-size:.75rem}
+.btn{display:inline-block;padding:8px 20px;border-radius:20px;border:none;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;margin:4px}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-accent{background:var(--accent);color:#0d1117}
+.btn:hover{opacity:.85}
+.progress-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;transition:width 1s}
+.fill-green{background:var(--accent)}
+.fill-blue{background:var(--primary)}
+.fill-yellow{background:var(--warn)}
+.fill-red{background:var(--danger)}
+@media(max-width:768px){.result-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🎥 AI视频内容分析平台</h1>
+  <div class="sub">视频理解 · 关键帧提取 · 智能标签 · 自动摘要</div>
+</div>
+<div class="container">
+  <div class="upload-zone" onclick="analyzeVideo()">
+    <div class="icon">📹</div>
+    <h3>点击或拖拽上传视频文件</h3>
+    <p style="color:var(--dim);font-size:.82rem;margin-top:6px">支持 MP4 / MOV / AVI · 最大 500MB</p>
+  </div>
+
+  <div id="results" style="display:none;margin-top:1rem">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+      <span style="font-weight:700">📊 分析结果</span>
+      <span style="font-size:.75rem;color:var(--dim)">视频时长: 5:32 · 分辨率: 1920×1080 · 帧率: 30fps</span>
+    </div>
+
+    <div class="result-grid">
+      <div class="card">
+        <h3>🏷️ 智能标签</h3>
+        <div class="tag-row">
+          <span class="tag">产品测评</span><span class="tag">科技数码</span><span class="tag">耳机</span>
+          <span class="tag-green">高质量</span><span class="tag">开箱</span><span class="tag-yellow">商业推广</span>
+        </div>
+        <div style="margin-top:12px;font-size:.78rem">
+          <div>内容分类：<span style="color:var(--accent)">数码产品测评</span></div>
+          <div>情感倾向：<span style="color:var(--accent)">正面 · 92%</span></div>
+          <div>风险标记：<span style="color:var(--accent)">无违规</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>📝 AI内容摘要</h3>
+        <div class="summary">
+          这是一段无线降噪耳机的开箱测评视频。博主从包装开始展示，详细介绍了耳机外观设计、佩戴舒适度、降噪效果对比测试，以及续航实测。整体评价偏正面，推荐作为千元级降噪耳机的性价比之选。
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🎯 关键帧时间轴</h3>
+        <div class="timeline">
+          <div class="tl-item"><span class="time">00:15</span><span class="desc">产品包装展示</span><span class="conf">置信度 98%</span></div>
+          <div class="tl-item"><span class="time">00:48</span><span class="desc">耳机外观特写</span><span class="conf">置信度 95%</span></div>
+          <div class="tl-item"><span class="time">01:32</span><span class="desc">佩戴效果展示</span><span class="conf">置信度 91%</span></div>
+          <div class="tl-item"><span class="time">02:15</span><span class="desc">降噪对比测试</span><span class="conf">置信度 96%</span></div>
+          <div class="tl-item"><span class="time">03:40</span><span class="desc">音质主观评价</span><span class="conf">置信度 88%</span></div>
+          <div class="tl-item"><span class="time">04:55</span><span class="desc">续航与总结</span><span class="conf">置信度 93%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1rem">
+      <h3>📈 内容质量评分</h3>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px">
+        <div>
+          <div style="font-size:.78rem;display:flex;justify-content:space-between"><span>画面质量</span><span style="color:var(--accent)">92%</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-green" style="width:92%"></div></div>
+        </div>
+        <div>
+          <div style="font-size:.78rem;display:flex;justify-content:space-between"><span>内容完整</span><span style="color:var(--accent)">88%</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-blue" style="width:88%"></div></div>
+        </div>
+        <div>
+          <div style="font-size:.78rem;display:flex;justify-content:space-between"><span>商业价值</span><span style="color:var(--warn)">75%</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:75%"></div></div>
+        </div>
+        <div>
+          <div style="font-size:.78rem;display:flex;justify-content:space-between"><span>违规风险</span><span style="color:var(--danger)">3%</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-red" style="width:3%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function analyzeVideo(){
+  const results=document.getElementById("results");
+  const btn=document.querySelector(".upload-zone");
+  btn.innerHTML='<div class="icon">⏳</div><h3>正在分析视频...</h3><p style="color:var(--dim);font-size:.82rem">提取关键帧 · 识别内容 · 生成摘要</p>';
+  btn.style.borderColor="var(--primary)";
+  setTimeout(()=>{
+    results.style.display="block";
+    results.scrollIntoView({behavior:"smooth"});
+    btn.innerHTML='<div class="icon">✅</div><h3>分析完成！</h3><p style="color:var(--accent);font-size:.82rem">点击重新上传视频</p>';
+  },2000);
+}
+</script>
+</body>
+</html>
