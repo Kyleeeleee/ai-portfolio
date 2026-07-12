@@ -18,6 +18,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
 .card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .card p{font-size:.9rem;color:var(--dim);line-height:1.8}
+.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a;display:block}
 .features{list-style:none;padding:0}
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
@@ -48,3 +49,54 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <div class="container">
+  <img class="demo-gif" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%237c5cfc'/><stop offset='100%' stop-color='%2300e5a0'/></linearGradient></defs><rect width='800' height='450' fill='%230a0a12'/><rect x='40' y='40' width='720' height='370' rx='16' fill='url(%23g)' opacity='0.25'/><text x='400' y='225' text-anchor='middle' fill='%23e0e0f0' font-size='32' font-family='sans-serif' font-weight='bold'>📊 AI自动巡检报告系统</text><text x='400' y='265' text-anchor='middle' fill='%238888aa' font-size='14' font-family='sans-serif'>LLM自动巡检 · 报告生成 · 模板引擎 · 图文分析</text></svg>" alt="智能客服Agent Demo" loading="lazy">
+
+  <div class="card">
+    <h2>📋 项目概述</h2>
+    <p>基于 LLM 与 Tool Calling 的智能客服Agent。覆盖意图识别、FAQ 检索、订单查询、工单创建和智能转人工，支持多轮会话上下文管理。</p>
+    <div class="meta">
+<span>🔗 <a href="live_05.html" style="color:var(--primary)">在线Demo</a></span>
+    </div>
+    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ 功能拆解</h2>
+    <ul class="features">
+      <li>LLM意图识别：自动分类用户消息（FAQ咨询/订单查询/投诉/转人工）</li><li>FAQ智能检索：Sentence-Transformers语义匹配 + TF-IDF关键词双路召回</li><li>工具调用：check_order / search_faq / create_ticket / transfer_human 四大工具</li><li>智能转人工：复杂问题自动升级，附带完整对话摘要移交人工客服</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🔧 技术架构</h2>
+    <p>DeepSeek API 驱动意图分类与工具调用决策。Sentence-Transformers (paraphrase-multilingual-MiniLM-L12-v2) 实现FAQ语义检索，TF-IDF作为fallback。Session级别内存管理保证多轮对话连贯性。</p>
+    <div class="tags">
+      <span class="tag">Agent</span> <span class="tag">ToolCall</span> <span class="tag">Sentence-Transformers</span> <span class="tag-green">DeepSeek</span> <span class="tag-green">Flask</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📈 核心指标</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>4 Tools</strong><span>工具调用</span></div><div class="metric"><strong>92%+</strong><span>意图准确率</span></div><div class="metric"><strong><1s</strong><span>FAQ响应</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>客服Agent的核心不是'能聊天'，而是'能办事'。Tool Calling让Agent不只是回答问题，还能真正执行查订单、建工单、转人工等操作。快商通作为企业客服SaaS厂商，Agent能力正是其产品从'在线客服'升级为'AI客服中台'的关键。</p>
+  </div>
+
+  <div class="nav">
+    <a href="project_04.html">← 上一个项目</a>
+    <a href="projects.html">📂 返回项目列表</a>
+    <a href="project_06.html">下一个项目 →</a>
+  </div>
+</div>
+
+<footer class="footer">
+  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
+</footer>
+
+</body>
+</html>

@@ -18,6 +18,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
 .card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .card p{font-size:.9rem;color:var(--dim);line-height:1.8}
+.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a;display:block}
 .features{list-style:none;padding:0}
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
@@ -48,3 +49,65 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <div class="container">
+  <img class="demo-gif" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2300e5a0'/><stop offset='100%' stop-color='%237c5cfc'/></linearGradient></defs><rect width='800' height='450' fill='%230a0a12'/><rect x='40' y='40' width='720' height='370' rx='16' fill='url(%23g)' opacity='0.25'/><text x='400' y='225' text-anchor='middle' fill='%23e0e0f0' font-size='32' font-family='sans-serif' font-weight='bold'>🏠 AIoT智能家居</text><text x='400' y='265' text-anchor='middle' fill='%238888aa' font-size='14' font-family='sans-serif'>设备管理 · AI控制 · 场景联动 · 能耗优化</text></svg>" alt="AIoT 智能家居 Demo" loading="lazy">
+
+  <div class="card">
+    <h2>📋 项目概述</h2>
+    <p>面向小米生态链 / 米家用户与智能家居集成商的 AIoT 控制台。系统把分散在不同房间、不同协议的 IoT 设备统一汇聚到一个控制台，提供"3D 户型可视化 + AI 场景联动 + 能耗分析 + 语音控制"四件套，让用户能在一个界面里看到、理解和自动化管理整个家。</p>
+    <div class="meta">
+<span>🔗 <a href="live_10.html" style="color:var(--primary)">在线Demo</a></span>
+    </div>
+    <div class="note">注：本 demo 设备状态由模拟数据驱动，用于产品能力展示。</div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ 功能拆解</h2>
+    <ul class="features">
+      <li>全屋设备管理：10 类设备统一控制（灯 / 空调 / 门锁 / 摄像头 / 窗帘 / 扫地机 等）</li>
+      <li>3D 房间可视化：SVG 绘制 9 区域户型图，设备位置实时标注 + 点击设备查看详情</li>
+      <li>AI 场景联动：5 个预设场景（回家/离家/观影/睡眠/起床）+ 3 条 AI 规则引擎（PM2.5 / 温度 / 用电高峰自动触发）</li>
+      <li>能耗分析：日 / 周 / 月用电趋势 + 能效占比 + AI 节能建议（基于历史模式）</li>
+      <li>语音控制：自然语言指令识别，模拟 320ms ASR 延迟，提升交互真实感</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🔧 技术架构</h2>
+    <p>设备层用 MQTT 协议与米家 SDK 通信，事件进入规则引擎后判断是否触发预设场景；前端用 Flask + SVG 渲染 3D 户型，ECharts 绘制能耗趋势；语音模块模拟 320ms ASR 延迟以体现真实产品体验。</p>
+    <div class="tags">
+      <span class="tag">MQTT</span>
+      <span class="tag">米家 SDK</span>
+      <span class="tag">规则引擎</span>
+      <span class="tag">ECharts</span>
+      <span class="tag-green">Flask + SVG</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📈 核心指标设计</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>10 类</strong><span>设备统一控制</span></div>
+      <div class="metric"><strong>9 区域</strong><span>3D 户型可视化</span></div>
+      <div class="metric"><strong>5+3</strong><span>场景 + AI 规则</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>全球智能家居市场 2030 年将达 $500B。小米 IoT 设备连接数超 6 亿，AIoT 的核心不是硬件而是"场景联动"——让不同品牌的设备协同工作。大白作为小米生态链企业，场景定义能力是核心竞争力；做"会主动思考的家"是产品差异化的关键。</p>
+  </div>
+
+
+  <div class="nav">
+    <a href="project_09.html">← 上一个项目</a>
+    <a href="projects.html">📂 返回项目列表</a>
+|</div>
+
+</div>
+
+<footer class="footer">
+  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
+</footer>
+
+</body>
+</html>

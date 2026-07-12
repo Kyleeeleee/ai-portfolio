@@ -18,6 +18,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
 .card h2{font-size:1.15rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .card p{font-size:.9rem;color:var(--dim);line-height:1.8}
+.demo-gif{width:100%;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#05050a;display:block}
 .features{list-style:none;padding:0}
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
@@ -48,3 +49,65 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <div class="container">
+  <img class="demo-gif" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%237c5cfc'/><stop offset='100%' stop-color='%23ec4899'/></linearGradient></defs><rect width='800' height='450' fill='%230a0a12'/><rect x='40' y='40' width='720' height='370' rx='16' fill='url(%23g)' opacity='0.25'/><text x='400' y='225' text-anchor='middle' fill='%23e0e0f0' font-size='32' font-family='sans-serif' font-weight='bold'>🧠 知识图谱系统</text><text x='400' y='265' text-anchor='middle' fill='%238888aa' font-size='14' font-family='sans-serif'>实体识别 · 关系抽取 · 图谱可视化 · 智能问答</text></svg>" alt="知识图谱可视化 Demo" loading="lazy">
+
+  <div class="card">
+    <h2>📋 项目概述</h2>
+    <p>面向国防情报、企业关系、行业研究场景的知识图谱可视化平台。系统把结构化与非结构化数据中的"实体-关系-实体"抽取出来，构建可视化图谱，并基于图算法做路径推理与自然语言问答，让用户能像搜索网页一样"搜关系"。</p>
+    <div class="meta">
+<span>🔗 <a href="live_11.html" style="color:var(--primary)">在线Demo</a></span>
+    </div>
+    <div class="note">注：本 demo 图谱使用脱敏公开样例数据，用于产品能力展示，不涉密。</div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ 功能拆解</h2>
+    <ul class="features">
+      <li>力导向图：ECharts 实时渲染实体节点 + 关系连线，支持拖拽 / 缩放 / 点击展开</li>
+      <li>实体挖掘：输入名称搜索，展示属性 / 关系 / 所属知识域（国 / 企 / 装 / 人）</li>
+      <li>智能推理：Dijkstra 最短路径推理（A → B 通过哪些关系关联），可视化路径</li>
+      <li>自然语言问答："歼-20 和 055 型驱逐舰有什么关系？" → 图谱推理回答</li>
+      <li>多知识域：国防安全 / 企业关系 / 行业知识三大预设域，一键切换</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🔧 技术架构</h2>
+    <p>底层 Neo4j 存储实体与关系，前端通过 Flask + ECharts 力导向图渲染；LLM 风格的实体抽取层负责从文本中识别三元组，问答层把用户问题转为 Cypher 查询并返回可读结果。</p>
+    <div class="tags">
+      <span class="tag">Neo4j</span>
+      <span class="tag">LLM 实体抽取</span>
+      <span class="tag">Cypher</span>
+      <span class="tag">Dijkstra</span>
+      <span class="tag-green">ECharts + Flask</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📈 核心指标设计</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>千 + 级</strong><span>实体 / 关系节点</span></div>
+      <div class="metric"><strong>3 域</strong><span>国防 / 企 / 行业</span></div>
+      <div class="metric"><strong>NLP</strong><span>图谱推理问答</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 产品洞察</h2>
+    <p>Gartner 预测 2027 年 60% 的企业将使用知识图谱。从 Palantir 的国防情报到 Google 知识面板，图谱正在成为 AI 推理的下一个基础设施。渊亭在国防 AI 方向有独特的赛道壁垒——能把多源异构数据"连成关系网"的产品，是企业级 AI 决策的下一个分水岭。</p>
+  </div>
+
+
+  <div class="nav">
+    <a href="project_10.html">← 上一个项目</a>
+    <a href="projects.html">📂 返回项目列表</a>
+|</div>
+
+</div>
+
+<footer class="footer">
+  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
+</footer>
+
+</body>
+</html>
