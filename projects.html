@@ -5,190 +5,406 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>项目作品 · 李林豪</title>
 <style>
-:root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
-.header{background:linear-gradient(135deg,#1a1a3a,#2d1b69);padding:3rem 2rem;text-align:center}
-.header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
-.header .back:hover{color:var(--primary)}
-.header h1{font-size:2.2rem;font-weight:800}
-.header .gradient{background:linear-gradient(135deg,#c4b5fd,#7c5cfc,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.header p{color:var(--dim);margin-top:.5rem;font-size:.95rem}
-.container{max-width:1000px;margin:0 auto;padding:2rem}
-.project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.5rem;display:flex;transition:all .3s;cursor:pointer;text-decoration:none;color:var(--text)}
-.project-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,92,252,0.12)}
-.project-card .preview{width:280px;min-height:200px;flex-shrink:0;position:relative;overflow:hidden}
-.project-card .preview img{width:100%;height:100%;object-fit:cover}
-.project-card .body{padding:1.75rem;flex:1;display:flex;flex-direction:column;justify-content:center}
-.project-card .body h3{font-size:1.15rem;margin-bottom:.5rem}
-.project-card .body p{font-size:.88rem;color:var(--dim);line-height:1.7;margin-bottom:.8rem}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem}
-.tag{font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(124,92,252,0.15);color:var(--primary);border:1px solid rgba(124,92,252,0.25)}
-.tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border:1px solid rgba(0,229,160,0.2)}
-.tag-pink{background:rgba(255,107,157,0.1);color:#ff6b9d;border:1px solid rgba(255,107,157,0.2)}
-.tag-blue{background:rgba(84,160,255,0.1);color:#54a0ff;border:1px solid rgba(84,160,255,0.2)}
-.tag-orange{background:rgba(245,158,11,0.1);color:#f59e0b;border:1px solid rgba(245,158,11,0.2)}
-.benchmark{font-size:.75rem;color:var(--dim);margin-top:auto}
-.footer{text-align:center;padding:2rem;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
-.footer a{color:var(--primary);text-decoration:none}
-@media(max-width:768px){
-  .project-card{flex-direction:column}
-  .project-card .preview{width:100%;min-height:180px}
+:root {
+  --bg:#0a0a12; --card-bg:#0f0f1f; --border:rgba(255,255,255,0.06);
+  --text:#e0e0f0; --dim:#7777a0; --radius:20px;
+  --c1:#7c5cfc; --c2:#00e5a0; --c3:#ff6b9d; --c4:#54a0ff;
+  --c5:#f59e0b; --c6:#a78bfa; --c7:#34d399; --c8:#f472b6;
+  --c9:#60a5fa; --c10:#fbbf24; --c11:#818cf8; --c12:#2dd4bf;
 }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+.header{text-align:center;padding:4rem 2rem 2rem}
+.header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
+.header .back:hover{color:var(--c1)}
+.header h1{font-size:2.6rem;font-weight:800;letter-spacing:-0.02em}
+.header h1 span{background:linear-gradient(135deg,#c4b5fd,#7c5cfc,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header p{color:var(--dim);margin-top:.8rem;font-size:1.05rem;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* ── Bento Grid ── */
+.bento{max-width:1200px;margin:0 auto;padding:0 1.5rem 3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media(max-width:1024px){.bento{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.bento{grid-template-columns:1fr}}
+
+/* ── Card ── */
+.card{position:relative;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;text-decoration:none;color:var(--text);overflow:hidden;transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;min-height:240px}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.4);border-color:transparent}
+.card:hover .glow{opacity:1}
+.card:hover .arrow{transform:translateX(4px);opacity:1}
+
+/* 顶部渐变光晕 */
+.glow{position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;opacity:0;transition:opacity 0.35s;pointer-events:none;filter:blur(40px)}
+
+/* 图标区 */
+.icon-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.arrow{font-size:1rem;opacity:0;transition:all 0.3s;color:var(--dim)}
+
+/* 标题区 */
+.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.35rem;letter-spacing:-0.01em}
+.card .subtitle{font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:auto}
+
+/* 数据亮点 */
+.stats{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.stat{font-size:.75rem;padding:5px 12px;border-radius:20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:var(--dim);white-space:nowrap}
+.stat b{color:var(--text);font-weight:600}
+
+/* 底部标签 */
+.tags-row{margin-top:.75rem;display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{font-size:.68rem;padding:3px 10px;border-radius:16px;font-weight:500}
+
+/* ── 12张卡片的独立配色 ── */
+.card:nth-child(1) .glow{background:var(--c1)}
+.card:nth-child(1):hover{border-color:var(--c1);box-shadow:0 20px 60px rgba(124,92,252,0.15)}
+.card:nth-child(1) .icon{background:rgba(124,92,252,0.15);color:var(--c1)}
+.card:nth-child(1) .tag{background:rgba(124,92,252,0.12);color:var(--c1)}
+.card:nth-child(1) .stat b{color:var(--c1)}
+
+.card:nth-child(2) .glow{background:var(--c2)}
+.card:nth-child(2):hover{border-color:var(--c2);box-shadow:0 20px 60px rgba(0,229,160,0.12)}
+.card:nth-child(2) .icon{background:rgba(0,229,160,0.15);color:var(--c2)}
+.card:nth-child(2) .tag{background:rgba(0,229,160,0.1);color:var(--c2)}
+.card:nth-child(2) .stat b{color:var(--c2)}
+
+.card:nth-child(3) .glow{background:var(--c3)}
+.card:nth-child(3):hover{border-color:var(--c3);box-shadow:0 20px 60px rgba(255,107,157,0.12)}
+.card:nth-child(3) .icon{background:rgba(255,107,157,0.15);color:var(--c3)}
+.card:nth-child(3) .tag{background:rgba(255,107,157,0.1);color:var(--c3)}
+.card:nth-child(3) .stat b{color:var(--c3)}
+
+.card:nth-child(4) .glow{background:var(--c4)}
+.card:nth-child(4):hover{border-color:var(--c4);box-shadow:0 20px 60px rgba(84,160,255,0.12)}
+.card:nth-child(4) .icon{background:rgba(84,160,255,0.15);color:var(--c4)}
+.card:nth-child(4) .tag{background:rgba(84,160,255,0.1);color:var(--c4)}
+.card:nth-child(4) .stat b{color:var(--c4)}
+
+.card:nth-child(5) .glow{background:var(--c5)}
+.card:nth-child(5):hover{border-color:var(--c5);box-shadow:0 20px 60px rgba(245,158,11,0.12)}
+.card:nth-child(5) .icon{background:rgba(245,158,11,0.15);color:var(--c5)}
+.card:nth-child(5) .tag{background:rgba(245,158,11,0.1);color:var(--c5)}
+.card:nth-child(5) .stat b{color:var(--c5)}
+
+.card:nth-child(6) .glow{background:var(--c6)}
+.card:nth-child(6):hover{border-color:var(--c6);box-shadow:0 20px 60px rgba(167,139,250,0.12)}
+.card:nth-child(6) .icon{background:rgba(167,139,250,0.15);color:var(--c6)}
+.card:nth-child(6) .tag{background:rgba(167,139,250,0.1);color:var(--c6)}
+.card:nth-child(6) .stat b{color:var(--c6)}
+
+.card:nth-child(7) .glow{background:var(--c7)}
+.card:nth-child(7):hover{border-color:var(--c7);box-shadow:0 20px 60px rgba(52,211,153,0.12)}
+.card:nth-child(7) .icon{background:rgba(52,211,153,0.15);color:var(--c7)}
+.card:nth-child(7) .tag{background:rgba(52,211,153,0.1);color:var(--c7)}
+.card:nth-child(7) .stat b{color:var(--c7)}
+
+.card:nth-child(8) .glow{background:var(--c8)}
+.card:nth-child(8):hover{border-color:var(--c8);box-shadow:0 20px 60px rgba(244,114,182,0.12)}
+.card:nth-child(8) .icon{background:rgba(244,114,182,0.15);color:var(--c8)}
+.card:nth-child(8) .tag{background:rgba(244,114,182,0.1);color:var(--c8)}
+.card:nth-child(8) .stat b{color:var(--c8)}
+
+.card:nth-child(9) .glow{background:var(--c9)}
+.card:nth-child(9):hover{border-color:var(--c9);box-shadow:0 20px 60px rgba(96,165,250,0.12)}
+.card:nth-child(9) .icon{background:rgba(96,165,250,0.15);color:var(--c9)}
+.card:nth-child(9) .tag{background:rgba(96,165,250,0.1);color:var(--c9)}
+.card:nth-child(9) .stat b{color:var(--c9)}
+
+.card:nth-child(10) .glow{background:var(--c10)}
+.card:nth-child(10):hover{border-color:var(--c10);box-shadow:0 20px 60px rgba(251,191,36,0.12)}
+.card:nth-child(10) .icon{background:rgba(251,191,36,0.15);color:var(--c10)}
+.card:nth-child(10) .tag{background:rgba(251,191,36,0.1);color:var(--c10)}
+.card:nth-child(10) .stat b{color:var(--c10)}
+
+.card:nth-child(11) .glow{background:var(--c11)}
+.card:nth-child(11):hover{border-color:var(--c11);box-shadow:0 20px 60px rgba(129,140,248,0.12)}
+.card:nth-child(11) .icon{background:rgba(129,140,248,0.15);color:var(--c11)}
+.card:nth-child(11) .tag{background:rgba(129,140,248,0.1);color:var(--c11)}
+.card:nth-child(11) .stat b{color:var(--c11)}
+
+.card:nth-child(12) .glow{background:var(--c12)}
+.card:nth-child(12):hover{border-color:var(--c12);box-shadow:0 20px 60px rgba(45,212,191,0.12)}
+.card:nth-child(12) .icon{background:rgba(45,212,191,0.15);color:var(--c12)}
+.card:nth-child(12) .tag{background:rgba(45,212,191,0.1);color:var(--c12)}
+.card:nth-child(12) .stat b{color:var(--c12)}
+
+.footer{text-align:center;padding:3rem 2rem;color:var(--dim);font-size:.82rem;border-top:1px solid var(--border);margin-top:1rem}
+.footer a{color:var(--c1);text-decoration:none}
+
+/* ── 入场动画 ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.card{animation:fadeUp 0.6s ease backwards}
+.card:nth-child(1){animation-delay:0.05s}
+.card:nth-child(2){animation-delay:0.1s}
+.card:nth-child(3){animation-delay:0.15s}
+.card:nth-child(4){animation-delay:0.2s}
+.card:nth-child(5){animation-delay:0.25s}
+.card:nth-child(6){animation-delay:0.3s}
+.card:nth-child(7){animation-delay:0.1s}
+.card:nth-child(8){animation-delay:0.15s}
+.card:nth-child(9){animation-delay:0.2s}
+.card:nth-child(10){animation-delay:0.25s}
+.card:nth-child(11){animation-delay:0.3s}
+.card:nth-child(12){animation-delay:0.35s}
 </style>
 </head>
 <body>
 
 <div class="header">
   <a href="index.html" class="back">← 返回简历</a>
-  <h1><span class="gradient">项目作品</span></h1>
-  <p>12个AI产品MVP — 针对目标岗位设计，含完整产品文档+代码+Demo</p>
+  <h1><span>项目作品</span></h1>
+  <p>12个AI产品MVP · 对标厦门目标岗位设计 · 完整产品文档 + 在线Demo</p>
 </div>
 
-<div class="container">
+<div class="bento">
 
-  <a href="project_01.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#1a1a3a,#2d1b69)"><img src="assets/01_ai_product.png" style="width:100%;height:100%;object-fit:cover" alt="跨境电商AI商品图生成器" loading="lazy"></div>
-    <div class="body">
-      <h3>🛍️ 跨境电商AI商品图生成器</h3>
-      <p>输入产品描述 → AI生成5大电商场景展示图。fal.ai Flux Pro，单张$0.025替代¥2000摄影</p>
-      <div class="tags">
-        <span class="tag">Flux Pro</span><span class="tag">Flask</span><span class="tag-green">fal.ai</span><span class="tag">SDXL</span>
-      </div>
-      <div class="benchmark">对标：紫讯科技</div>
+  <!-- 01 -->
+  <a href="project_01.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🛍️</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>跨境电商AI商品图</h3>
+    <p class="subtitle">输入产品描述 → AI生成电商场景图，替代专业摄影</p>
+    <div class="stats">
+      <span class="stat">💰 单张<b>$0.025</b></span>
+      <span class="stat">🎬 <b>5</b>大场景</span>
+      <span class="stat">⚡ <b>~6s</b>出图</span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">Flux Pro</span>
+      <span class="tag">Flask</span>
+      <span class="tag">fal.ai</span>
     </div>
   </a>
 
-  <a href="project_02.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#1a2a1a,#0d3320)"><img src="assets/02_knowledge_qa.png" style="width:100%;height:100%;object-fit:cover" alt="AI知识库问答助手" loading="lazy"></div>
-    <div class="body">
-      <h3>🤖 AI知识库问答助手</h3>
-      <p>LangChain+RAG构建智能知识库。上传文档→自动解析→自然语言问答+来源引用。B端+C端双模式</p>
-      <div class="tags">
-        <span class="tag">RAG</span><span class="tag-blue">DeepSeek</span><span class="tag">Flask</span><span class="tag">检索</span>
-      </div>
-      <div class="benchmark">对标：深言未来</div>
+  <!-- 02 -->
+  <a href="project_02.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">📚</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>AI知识库问答</h3>
+    <p class="subtitle">上传文档 → 自动解析 → 自然语言问答 + 来源引用</p>
+    <div class="stats">
+      <span class="stat">🔍 <b>RAG</b>检索</span>
+      <span class="stat">📄 <b>多格式</b>支持</span>
+      <span class="stat">🧠 <b>DeepSeek</b>驱动</span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">LangChain</span>
+      <span class="tag">ChromaDB</span>
+      <span class="tag">B/C双端</span>
     </div>
   </a>
 
-  <a href="project_03.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#2a1a1a,#4a1a2e)"><img src="assets/03_npc_dialogue.png" style="width:100%;height:100%;object-fit:cover" alt="游戏NPC智能对话系统" loading="lazy"></div>
-    <div class="body">
-      <h3>🎮 游戏NPC智能对话系统</h3>
-      <p>LLM驱动的NPC对话引擎，3个角色（导师/跟班/商人），上下文记忆+情感+JSON API</p>
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag">Prompt</span><span class="tag-pink">记忆系统</span><span class="tag">API</span>
-      </div>
-      <div class="benchmark">对标：4399游戏</div>
+  <!-- 03 -->
+  <a href="project_03.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🎮</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>游戏NPC智能对话</h3>
+    <p class="subtitle">LLM驱动NPC对话引擎，上下文记忆+情感系统+JSON API</p>
+    <div class="stats">
+      <span class="stat">👤 <b>3</b>个角色</span>
+      <span class="stat">💬 <b>多轮</b>记忆</span>
+      <span class="stat">🎭 情感<b>追踪</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">LLM</span>
+      <span class="tag">Prompt Eng</span>
+      <span class="tag">REST API</span>
     </div>
   </a>
 
-  <a href="project_04.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#1a1a2a,#162447)"><img src="assets/04_inspection.png" style="width:100%;height:100%;object-fit:cover" alt="AI自动巡检报告系统" loading="lazy"></div>
-    <div class="body">
-      <h3>📊 AI自动巡检报告系统</h3>
-      <p>3个行业SOP模板(零售/餐饮/物业)→AI自动巡检→生成评分报告。替代80%人工</p>
-      <div class="tags">
-        <span class="tag">SOP</span><span class="tag-green">自动化</span><span class="tag">报告生成</span><span class="tag">Python</span>
-      </div>
-      <div class="benchmark">对标：同类聚合</div>
+  <!-- 04 -->
+  <a href="project_04.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">📊</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>AI自动巡检报告</h3>
+    <p class="subtitle">3行业SOP模板 → AI巡检 → 评分报告，替代80%人工</p>
+    <div class="stats">
+      <span class="stat">📋 <b>3</b>行业SOP</span>
+      <span class="stat">🤖 <b>80%</b>自动化</span>
+      <span class="stat">📈 评分<b>引擎</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">SOP引擎</span>
+      <span class="tag">自动化</span>
+      <span class="tag">报告生成</span>
     </div>
   </a>
 
-  <a href="project_05.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#2a1a2a,#4a2040)"><img src="assets/05_customer_agent.png" style="width:100%;height:100%;object-fit:cover" alt="智能客服Agent" loading="lazy"></div>
-    <div class="body">
-      <h3>💬 智能客服Agent</h3>
-      <p>LLM+Tool Calling客服机器人。意图识别→FAQ检索→工单创建→智能转人工+情感分析</p>
-      <div class="tags">
-        <span class="tag">Agent</span><span class="tag-orange">ToolCall</span><span class="tag-blue">DeepSeek</span><span class="tag">Flask</span>
-      </div>
-      <div class="benchmark">对标：快商通</div>
+  <!-- 05 -->
+  <a href="project_05.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">💬</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>智能客服Agent</h3>
+    <p class="subtitle">意图识别 → FAQ检索 → 工单创建 → 智能转人工+情感分析</p>
+    <div class="stats">
+      <span class="stat">🎯 <b>5</b>类意图</span>
+      <span class="stat">🔧 <b>ToolCall</b></span>
+      <span class="stat">😊 情感<b>感知</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">Agent</span>
+      <span class="tag">DeepSeek</span>
+      <span class="tag">Flask</span>
     </div>
   </a>
 
-  <a href="project_06.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#1a2a2a,#0d3328)"><img src="assets/06_prompt_test.png" style="width:100%;height:100%;object-fit:cover" alt="Prompt测试对比平台" loading="lazy"></div>
-    <div class="body">
-      <h3>🔬 Prompt测试对比平台</h3>
-      <p>6个Prompt模板+多模型对比评测（token/耗时/成本），自动生成评测报告</p>
-      <div class="tags">
-        <span class="tag">Prompt</span><span class="tag-green">评测</span><span class="tag-blue">多模型</span><span class="tag-blue">DeepSeek</span>
-      </div>
-      <div class="benchmark">对标：快商通 产品助理</div>
+  <!-- 06 -->
+  <a href="project_06.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🔬</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>Prompt测试对比</h3>
+    <p class="subtitle">6个Prompt模板 + 多模型对比评测，自动生成评测报告</p>
+    <div class="stats">
+      <span class="stat">📝 <b>6</b>模板</span>
+      <span class="stat">🤖 <b>多模型</b>对比</span>
+      <span class="stat">📊 评测<b>报告</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">Prompt Eng</span>
+      <span class="tag">A/B测试</span>
+      <span class="tag">评测平台</span>
     </div>
   </a>
 
-
-  <a href="project_07.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#111827,#172554)"><img src="assets/07_risk_ai.svg" style="width:100%;height:100%;object-fit:cover" alt="金融风控AI助手" loading="lazy"></div>
-    <div class="body">
-      <h3>🏦 金融风控AI助手</h3>
-      <p>AI驱动信贷审批与风险分析，覆盖贷前审核、风控指标监控、财报风险扫描和可解释审批建议</p>
-      <div class="tags">
-        <span class="tag">风控</span><span class="tag-orange">信贷审批</span><span class="tag-blue">NLP</span><span class="tag-green">Gradio</span>
-      </div>
-      <div class="benchmark">对标：金融科技风控中台</div>
+  <!-- 07 -->
+  <a href="project_07.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🏦</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>金融风控AI助手</h3>
+    <p class="subtitle">AI信贷审批 + 风控指标监控 + 财报扫描 + 可解释建议</p>
+    <div class="stats">
+      <span class="stat">📋 <b>贷前</b>审核</span>
+      <span class="stat">📈 <b>5</b>大指标</span>
+      <span class="stat">🔍 财报<b>扫描</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">风控中台</span>
+      <span class="tag">NLP</span>
+      <span class="tag">Gradio</span>
     </div>
   </a>
 
-  <a href="project_08.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#18122b,#7f1d1d)"><img src="assets/08_livestream_ai.svg" style="width:100%;height:100%;object-fit:cover" alt="直播AI助手" loading="lazy"></div>
-    <div class="body">
-      <h3>🎬 直播AI助手</h3>
-      <p>实时弹幕分析+AI话术生成+商品讲解脚本+直播数据看板，赋能MCN直播带货场景</p>
-      <div class="tags">
-        <span class="tag">LLM</span><span class="tag-pink">弹幕分析</span><span class="tag-blue">TTS</span><span class="tag-green">WebSocket</span>
-      </div>
-      <div class="benchmark">对标：飞博共创 / 美腕 直播AI中台</div>
+  <!-- 08 -->
+  <a href="project_08.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🎬</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>直播AI助手</h3>
+    <p class="subtitle">实时弹幕分析 + AI话术生成 + 商品讲解 + 直播数据看板</p>
+    <div class="stats">
+      <span class="stat">💬 弹幕<b>分析</b></span>
+      <span class="stat">🎙️ <b>TTS</b>话术</span>
+      <span class="stat">📊 实时<b>看板</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">WebSocket</span>
+      <span class="tag">LLM</span>
+      <span class="tag">MCN场景</span>
     </div>
   </a>
 
-  <a href="project_09.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#020617,#0f766e)"><img src="assets/09_video_ai.svg" style="width:100%;height:100%;object-fit:cover" alt="智能视频分析平台" loading="lazy"></div>
-    <div class="body">
-      <h3>🎥 智能视频分析平台</h3>
-      <p>YOLOv8目标检测+Qwen-VL场景理解+视频内容问答+自动分析报告，赋能智慧城市</p>
-      <div class="tags">
-        <span class="tag">YOLO</span><span class="tag-blue">Qwen-VL</span><span class="tag-orange">多模态</span><span class="tag-green">Flask</span>
-      </div>
-      <div class="benchmark">对标：浩鲸科技 / 海康威视 AI开放平台</div>
+  <!-- 09 -->
+  <a href="project_09.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🎥</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>智能视频分析</h3>
+    <p class="subtitle">YOLOv8目标检测 + Qwen-VL场景理解 + 自动分析报告</p>
+    <div class="stats">
+      <span class="stat">👁️ <b>YOLOv8</b></span>
+      <span class="stat">🧠 <b>Qwen-VL</b></span>
+      <span class="stat">📹 视频<b>问答</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">多模态</span>
+      <span class="tag">CV+NLP</span>
+      <span class="tag">智慧城市</span>
     </div>
   </a>
 
-  <a href="project_10.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#052e2b,#365314)"><img src="assets/10_aiot.svg" style="width:100%;height:100%;object-fit:cover" alt="AIoT智能家居控制台" loading="lazy"></div>
-    <div class="body">
-      <h3>🏠 AIoT智能家居控制台</h3>
-      <p>全屋设备统一管理+3D户型可视化+AI场景联动+能耗分析，面向小米生态链产品设计</p>
-      <div class="tags">
-        <span class="tag">MQTT</span><span class="tag-blue">米家SDK</span><span class="tag-orange">IoT</span><span class="tag-green">SVG</span>
-      </div>
-      <div class="benchmark">对标：大白科技 / 米家 / Aqara 全屋智能</div>
+  <!-- 10 -->
+  <a href="project_10.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🏠</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>AIoT智能家居</h3>
+    <p class="subtitle">全屋设备管理 + 3D户型可视化 + AI场景联动 + 能耗分析</p>
+    <div class="stats">
+      <span class="stat">🏗️ <b>3D</b>可视化</span>
+      <span class="stat">🔗 <b>MQTT</b>协议</span>
+      <span class="stat">⚡ 能耗<b>分析</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">米家SDK</span>
+      <span class="tag">IoT</span>
+      <span class="tag">SVG 3D</span>
     </div>
   </a>
 
-  <a href="project_11.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#111827,#064e3b)"><img src="assets/11_kg.svg" style="width:100%;height:100%;object-fit:cover" alt="知识图谱可视化平台" loading="lazy"></div>
-    <div class="body">
-      <h3>🧠 知识图谱可视化平台</h3>
-      <p>实体关系挖掘+最短路径推理+自然语言问答，面向国防/企业情报/行业知识场景</p>
-      <div class="tags">
-        <span class="tag">Neo4j</span><span class="tag-pink">图算法</span><span class="tag-blue">知识工程</span><span class="tag-green">ECharts</span>
-      </div>
-      <div class="benchmark">对标：渊亭科技 DataExa / Palantir</div>
+  <!-- 11 -->
+  <a href="project_11.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🧠</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>知识图谱可视化</h3>
+    <p class="subtitle">实体关系挖掘 + 最短路径推理 + 自然语言问答</p>
+    <div class="stats">
+      <span class="stat">🕸️ <b>Neo4j</b></span>
+      <span class="stat">🔗 路径<b>推理</b></span>
+      <span class="stat">💬 NL<b>问答</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">图算法</span>
+      <span class="tag">知识工程</span>
+      <span class="tag">ECharts</span>
     </div>
   </a>
 
-  <a href="project_12.html" class="project-card">
-    <div class="preview" style="background:linear-gradient(135deg,#1e1b4b,#064e3b)"><img src="assets/12_agent_platform.svg" style="width:100%;height:100%;object-fit:cover" alt="GenAI Agent对话平台" loading="lazy"></div>
-    <div class="body">
-      <h3>🤖 GenAI Agent对话平台</h3>
-      <p>Agent可视化编排+工作流引擎+API Playground+对话预览，企业级AI基础设施原型</p>
-      <div class="tags">
-        <span class="tag">LangGraph</span><span class="tag-pink">CrewAI</span><span class="tag-blue">RAG</span><span class="tag-green">Tool Calling</span>
-      </div>
-      <div class="benchmark">对标：RingCentral RingSense / Agentforce</div>
+  <!-- 12 -->
+  <a href="project_12.html" class="card">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">🤖</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>GenAI Agent平台</h3>
+    <p class="subtitle">Agent可视化编排 + 工作流引擎 + API Playground</p>
+    <div class="stats">
+      <span class="stat">🔀 <b>LangGraph</b></span>
+      <span class="stat">👥 <b>CrewAI</b></span>
+      <span class="stat">🧩 可视化<b>编排</b></span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">Agent框架</span>
+      <span class="tag">工作流</span>
+      <span class="tag">ToolCall</span>
     </div>
   </a>
 
