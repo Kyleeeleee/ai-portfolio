@@ -57,75 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 10 · AGENT FLOW</div>
   <div class="emoji">🤖</div>
   <h1>GenAI Agent 对话平台</h1>
-  <div class="subtitle">Agent 编排 · 工作流引擎 · API 开放平台</div>
-</div>
+  <div class="subtitle">自然语言生成 · 拖拽编排 · 可执行工作流</div>
+  <div class="hero-actions">
+    <a href="live_12.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">DeepSeek · Agent Flow · Tool Calling</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>面向 RingCentral / UCaaS + CCaaS 场景的企业级 AI Agent 平台。系统把"Agent 配置 / Workflow 编排 / API 开放 / 对话预览 / 平台统计"五大能力整合到一个控制台，让企业用户能像搭积木一样搭出自己业务专属的 AI 助手，并对外提供稳定的 API 与 SDK。</p>
-    <div class="meta">
-      <span>🔗 <a href="live_12.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-12">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-12">界面预览</h2></div>
+      <p>节点库、流程画布、属性面板和执行结果集中在一个编排界面，工作流可由自然语言生成并继续手动调整。</p>
     </div>
-    <div class="note">注：本 demo 数据使用模拟样例，用于产品能力展示。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-12-demo.png" alt="GenAI Agent 对话平台在线 Demo 界面" loading="eager">
+      <figcaption>Agent Flow 工作流编排画布<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>Agent Builder：可视化配置 Agent（名称 / 角色 / System Prompt / 工具 / 知识库 / 模型参数）</li>
-      <li>Workflow Designer：拖拽式工作流编排（Agent 节点 + 条件分支 + API 调用 + 循环）</li>
-      <li>API Playground：Python / JS / cURL SDK，请求 / 响应 JSON 预览，所见即所得</li>
-      <li>对话预览：实时测试 Agent，支持打字机效果 + 流式输出</li>
-      <li>平台统计：Agent 性能指标（响应时间 / token 消耗 / 成功率 / 满意度）</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>基于 LangGraph + CrewAI 的多 Agent 编排框架，工具调用 + RAG 提供长期记忆与外部数据接入；Flask 提供 REST API 与前端控制台，对话层使用流式输出以模拟真实生产体验。</p>
-    <div class="tags">
-      <span class="tag">LangGraph</span>
-      <span class="tag">CrewAI</span>
-      <span class="tag">多 Agent 编排</span>
-      <span class="tag">RAG</span>
-      <span class="tag-green">Tool Calling + Flask</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-12">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-12">用自然语言和拖拽编排，把业务意图转化为 Agent 工作流</h2>
+      <p>用户描述目标后生成可编辑的节点与连线，也可以从节点库拖入 Agent、条件、并行、工具和输出节点，完成配置、运行与导出。</p>
+      <a href="live_12.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标设计</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>多 Agent</strong><span>协作 + 角色分工</span></div>
-      <div class="metric"><strong>流式</strong><span>打字机输出 + 工具调用</span></div>
-      <div class="metric"><strong>SDK</strong><span>Python / JS / cURL</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>5 类</strong><span>节点组件</span></div>
+      <div class="metric-item"><strong>拖拽</strong><span>可视编辑</span></div>
+      <div class="metric-item"><strong>自然语言</strong><span>AI 生成</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>2026 年是 AI Agent 元年。企业不再满足于单一 ChatBot，而是需要多 Agent 协作解决复杂业务流程。RingCentral 的 RingSense AI 正在构建 UCaaS + Contact Center + AI 的三角飞轮——这个平台是下一代企业 AI 的基础设施，让每一家公司都能拥有自己的"数字员工团队"。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>根据自然语言描述生成初始工作流结构</li>
+        <li>从节点库拖入画布并持续调整位置与连接</li>
+        <li>支持 Agent、条件分支、并行执行、工具与输出节点</li>
+        <li>在属性面板编辑节点配置并查看 JSON 结构</li>
+        <li>运行流程、查看执行输出并导出工作流定义</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>生成层</strong><p>DeepSeek 识别业务意图并返回节点、连接和基础配置。</p></div>
+        <div class="architecture-item"><strong>画布层</strong><p>前端工作流引擎处理拖拽、连线、选择与属性编辑。</p></div>
+        <div class="architecture-item"><strong>服务层</strong><p>Flask 提供生成、运行、模板和导出相关接口。</p></div>
+      </div>
+      <div class="tags"><span class="tag">Agent Flow</span><span class="tag">DeepSeek</span><span class="tag">Workflow</span><span class="tag">Tool Calling</span><span class="tag">Flask</span></div>
+    </div>
+  </section>
 
+  <section class="insight-band" aria-labelledby="insight-title-12">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-12">产品洞察</h2></div>
+    <p>自然语言生成可以降低工作流搭建门槛，但生成结果必须可见、可编辑、可测试。真正可用的平台需要同时照顾首次生成效率和后续精细调整能力。</p>
+  </section>
+  <p class="case-note">本 Demo 使用模拟业务流程展示 Agent 编排能力，生产使用前需补充权限、审计与失败恢复机制。</p>
 
-  <div class="nav">
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_11.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
-  </div>
+    <a href="projects.html" class="all-projects">全部项目</a>
+    <a href="project_01.html">回到第一个项目 →</a>
+  </nav>
+</main>
 
-</div>
-
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>

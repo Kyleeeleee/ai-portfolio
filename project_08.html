@@ -57,75 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 07 · LIVE AI</div>
   <div class="emoji">🎬</div>
   <h1>直播AI助手</h1>
-  <div class="subtitle">AI实时弹幕分析 + 智能话术生成</div>
-</div>
+  <div class="subtitle">弹幕分析 · 智能话术 · 商品讲解 · 数据复盘</div>
+  <div class="hero-actions">
+    <a href="live_08.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">实时弹幕 · 话术生成 · 数据看板</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>面向 MCN 直播带货场景的 AI 辅助系统。系统围绕"弹幕感知 → 话术建议 → 商品讲解 → 数据复盘"四个环节，帮助主播实时抓住弹幕热点、自动生成带货话术、生成完整直播脚本，并在直播结束后输出数据报告与优化建议。</p>
-    <div class="meta">
-<span>🔗 <a href="live_08.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-08">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-08">界面预览</h2></div>
+      <p>直播弹幕、AI 建议与输入区在同一操作台中呈现，帮助主播快速识别高价值问题并生成回应。</p>
     </div>
-    <div class="note">注：本 demo 用于产品能力展示，话术建议由模拟数据生成，不构成真实投放与营销承诺。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-08-demo.png" alt="直播AI助手在线 Demo 界面" loading="eager">
+      <figcaption>直播弹幕与 AI 话术工作台<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>实时弹幕分析引擎：自动分类弹幕（问答/情绪/刷屏），AI 优先级排序，把高价值弹幕推到主播面前</li>
-      <li>智能话术生成：根据弹幕 + 商品自动生成主播话术，支持多风格（逼单/答疑/氛围）切换</li>
-      <li>商品讲解 AI：输入商品信息 → 生成完整直播脚本（开场/痛点/亮点/背书/促销/收尾）</li>
-      <li>复盘分析：直播后自动生成数据报告 + 转化漏斗 + 优化建议（留存/转化/舆情）</li>
-      <li>数据看板：实时人数 / 互动率 / 转化率 / 弹幕热词 TOP8，ECharts 实时刷新</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>前端 Flask 渲染实时弹幕滚动与数据看板，弹幕通过 WebSocket 模拟流式推送，话术与脚本由 LLM 风格的文本生成层按模板填充 + 上下文理解返回，TTS 模块可一键将话术转语音回放供主播跟读。</p>
-    <div class="tags">
-      <span class="tag">WebSocket</span>
-      <span class="tag">LLM 实时生成</span>
-      <span class="tag">TTS 语音合成</span>
-      <span class="tag">ECharts</span>
-      <span class="tag-green">Flask</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-08">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-08">把弹幕感知、话术建议和直播复盘连成一条链路</h2>
+      <p>围绕直播前脚本、直播中弹幕处理与直播后复盘三个阶段，为主播提供话术辅助、商品讲解和数据分析。</p>
+      <a href="live_08.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标设计</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>3000+</strong><span>单场弹幕处理量</span></div>
-      <div class="metric"><strong>+15-30%</strong><span>AI 话术转化提升</span></div>
-      <div class="metric"><strong>3 风格</strong><span>话术 / 模板切换</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>4 环节</strong><span>业务链路</span></div>
+      <div class="metric-item"><strong>3 风格</strong><span>话术模式</span></div>
+      <div class="metric-item"><strong>实时</strong><span>弹幕看板</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>MCN 行业的下一个增长引擎是 AI 赋能直播。每场直播产出 3000+ 条弹幕，人工无法实时处理；AI 话术建议能让转化率提升 15-30%。飞博共创作为新三板 MCN 龙头，对内需要把每个主播都变成"AI 增强型主播"，对外需要向品牌方交付可量化的直播 ROI 报告——这就是直播 AI 助手的市场切口。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>对弹幕进行问答、情绪与刷屏等类型识别</li>
+        <li>结合商品信息生成答疑、氛围和促单话术</li>
+        <li>按开场、痛点、卖点与收尾组织商品讲解脚本</li>
+        <li>展示互动、转化和弹幕热词等关键数据</li>
+        <li>直播结束后输出问题复盘与优化建议</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>数据层</strong><p>模拟流式弹幕进入分类、优先级与热词分析模块。</p></div>
+        <div class="architecture-item"><strong>生成层</strong><p>DeepSeek 结合商品上下文生成话术与讲解脚本。</p></div>
+        <div class="architecture-item"><strong>展示层</strong><p>Flask + ECharts 呈现弹幕、建议与复盘指标。</p></div>
+      </div>
+      <div class="tags"><span class="tag">DeepSeek</span><span class="tag">弹幕分析</span><span class="tag">话术生成</span><span class="tag">ECharts</span><span class="tag">Flask</span></div>
+    </div>
+  </section>
 
+  <section class="insight-band" aria-labelledby="insight-title-08">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-08">产品洞察</h2></div>
+    <p>直播 AI 更适合作为主播的实时副驾驶，而不是自动替代主播。建议必须短、及时、可选择，并与直播后的数据复盘形成反馈闭环。</p>
+  </section>
+  <p class="case-note">本 Demo 使用模拟弹幕和商品数据，话术仅用于能力展示，不构成真实营销承诺。</p>
 
-  <div class="nav">
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_07.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
-|</div>
+    <a href="projects.html" class="all-projects">全部项目</a>
+    <a href="project_10.html">下一个项目 →</a>
+  </nav>
+</main>
 
-</div>
-
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>

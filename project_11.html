@@ -57,75 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 09 · KNOWLEDGE GRAPH</div>
   <div class="emoji">🧠</div>
   <h1>知识图谱可视化平台</h1>
-  <div class="subtitle">实体关系挖掘与智能推理</div>
-</div>
+  <div class="subtitle">实体抽取 · 关系推理 · 画布交互</div>
+  <div class="hero-actions">
+    <a href="live_11.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">DeepSeek · 实体关系 · 可视化图谱</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>面向国防情报、企业关系、行业研究场景的知识图谱可视化平台。系统把结构化与非结构化数据中的"实体-关系-实体"抽取出来，构建可视化图谱，并基于图算法做路径推理与自然语言问答，让用户能像搜索网页一样"搜关系"。</p>
-    <div class="meta">
-<span>🔗 <a href="live_11.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-11">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-11">界面预览</h2></div>
+      <p>文本输入、实体关系图和画布控制并列呈现，支持缩放、平移、适配视图和关系标签查看。</p>
     </div>
-    <div class="note">注：本 demo 图谱使用脱敏公开样例数据，用于产品能力展示，不涉密。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-11-demo.png" alt="知识图谱可视化平台在线 Demo 界面" loading="eager">
+      <figcaption>文本抽取与知识图谱画布<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>力导向图：ECharts 实时渲染实体节点 + 关系连线，支持拖拽 / 缩放 / 点击展开</li>
-      <li>实体挖掘：输入名称搜索，展示属性 / 关系 / 所属知识域（国 / 企 / 装 / 人）</li>
-      <li>智能推理：Dijkstra 最短路径推理（A → B 通过哪些关系关联），可视化路径</li>
-      <li>自然语言问答："歼-20 和 055 型驱逐舰有什么关系？" → 图谱推理回答</li>
-      <li>多知识域：国防安全 / 企业关系 / 行业知识三大预设域，一键切换</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>底层 Neo4j 存储实体与关系，前端通过 Flask + ECharts 力导向图渲染；LLM 风格的实体抽取层负责从文本中识别三元组，问答层把用户问题转为 Cypher 查询并返回可读结果。</p>
-    <div class="tags">
-      <span class="tag">Neo4j</span>
-      <span class="tag">LLM 实体抽取</span>
-      <span class="tag">Cypher</span>
-      <span class="tag">Dijkstra</span>
-      <span class="tag-green">ECharts + Flask</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-11">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-11">把文本中的实体关系转化为可探索、可推理的图谱</h2>
+      <p>输入自然语言材料后提取实体与关系，生成可拖拽、缩放和适配视图的知识图谱，并通过关系路径帮助用户理解复杂信息。</p>
+      <a href="live_11.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标设计</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>千 + 级</strong><span>实体 / 关系节点</span></div>
-      <div class="metric"><strong>3 域</strong><span>国防 / 企 / 行业</span></div>
-      <div class="metric"><strong>NLP</strong><span>图谱推理问答</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>3 类</strong><span>知识域</span></div>
+      <div class="metric-item"><strong>可拖拽</strong><span>画布交互</span></div>
+      <div class="metric-item"><strong>路径</strong><span>关系推理</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>Gartner 预测 2027 年 60% 的企业将使用知识图谱。从 Palantir 的国防情报到 Google 知识面板，图谱正在成为 AI 推理的下一个基础设施。渊亭在国防 AI 方向有独特的赛道壁垒——能把多源异构数据"连成关系网"的产品，是企业级 AI 决策的下一个分水岭。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>从新输入文本中抽取实体、属性与关系三元组</li>
+        <li>在画布中呈现节点、方向和关系标签</li>
+        <li>支持平移、滚轮缩放、双击适配和节点拖拽</li>
+        <li>根据关系结构查找实体之间的关联路径</li>
+        <li>提供示例领域与自定义文本两种使用方式</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>抽取层</strong><p>DeepSeek 将自然语言材料转换为实体关系结构。</p></div>
+        <div class="architecture-item"><strong>图数据层</strong><p>统一节点、边、方向和来源信息，保持关系可追溯。</p></div>
+        <div class="architecture-item"><strong>可视化层</strong><p>前端图谱画布处理布局、缩放、拖拽和视图适配。</p></div>
+      </div>
+      <div class="tags"><span class="tag">知识图谱</span><span class="tag">DeepSeek</span><span class="tag">实体抽取</span><span class="tag">关系推理</span><span class="tag">可视化</span></div>
+    </div>
+  </section>
 
+  <section class="insight-band" aria-labelledby="insight-title-11">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-11">产品洞察</h2></div>
+    <p>知识图谱是否有价值，取决于关系质量、来源信息和交互可控性，而不是节点数量。图谱生成后必须允许用户校正、重新布局和追溯原文。</p>
+  </section>
+  <p class="case-note">本 Demo 使用公开示例文本与用户输入生成图谱，不涉及涉密或受限数据。</p>
 
-  <div class="nav">
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_10.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
-|</div>
+    <a href="projects.html" class="all-projects">全部项目</a>
+    <a href="project_12.html">下一个项目 →</a>
+  </nav>
+</main>
 
-</div>
-
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>

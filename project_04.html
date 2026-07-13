@@ -57,64 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 04 · AUTOMATION</div>
   <div class="emoji">📊</div>
   <h1>AI自动巡检报告系统</h1>
-  <div class="subtitle">自动化巡检 · AI异常检测 · 报告生成</div>
-</div>
+  <div class="subtitle">SOP 模板 · LLM 智能评估 · PDF 报告生成</div>
+  <div class="hero-actions">
+    <a href="live_04.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">DeepSeek · SOP 模板 · PDF 报告</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>面向园区/工厂/门店的AI自动巡检系统。定时采集巡检点数据，AI自动识别异常并生成结构化巡检报告，用大模型将数据转化为可读的巡检总结与整改建议。</p>
-    <div class="meta">
-<span>🔗 <a href="live_04.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-04">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-04">界面预览</h2></div>
+      <p>行业模板、巡检填报、智能评估与 PDF 输出形成完整流程，页面同时展示模型和报告服务状态。</p>
     </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-04-demo.png" alt="AI自动巡检报告系统在线 Demo 界面" loading="eager">
+      <figcaption>巡检模板与报告工作台<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>巡检点管理：自定义巡检点位、检查项、评分标准和巡检周期</li><li>AI异常检测：基于历史数据基线，自动识别温度/湿度/设备异常波动</li><li>自动报告生成：巡检完成后即时输出结构化报告（异常汇总+评分+图片证据）</li><li>LLM巡检总结：大模型将数据转化为人类可读的巡检结论与整改建议</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>Flask后端 + JSON数据存储。巡检模板引擎支持自定义评分规则，异常检测基于Z-score算法。DeepSeek API将结构化巡检数据转化为自然语言报告摘要。</p>
-    <div class="tags">
-      <span class="tag">自动化</span> <span class="tag">异常检测</span> <span class="tag">LLM摘要</span> <span class="tag-green">Flask</span> <span class="tag-green">数据可视化</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-04">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-04">把巡检记录、AI评估和PDF报告串成一条闭环</h2>
+      <p>围绕零售门店、餐饮卫生和物业安全场景配置检查项，巡检完成后生成评分、风险提示、整改建议和可下载的 PDF 报告。</p>
+      <a href="live_04.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>30s</strong><span>报告生成</span></div><div class="metric"><strong>95%+</strong><span>异常识别</span></div><div class="metric"><strong>Z-score</strong><span>检测算法</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>3 类</strong><span>行业模板</span></div>
+      <div class="metric-item"><strong>PDF</strong><span>报告导出</span></div>
+      <div class="metric-item"><strong>LLM</strong><span>智能评估</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>传统巡检依赖人工填表、拍照、写报告，一个巡检员每天最多覆盖20个点位，报告还要手工整理。AI巡检系统将这个过程全自动化——从数据采集到报告生成只需30秒，且AI能发现人眼容易忽略的微小异常趋势。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>按行业配置检查项、评分标准与巡检模板</li>
+        <li>提交巡检数据后生成综合评分和风险等级</li>
+        <li>大模型把结构化记录转化为诊断与整改建议</li>
+        <li>支持上传现场图片作为巡检证据</li>
+        <li>生成包含结果、建议和明细的 PDF 报告</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>模板层</strong><p>结构化 SOP 定义检查项、分值与风险规则。</p></div>
+        <div class="architecture-item"><strong>评估层</strong><p>DeepSeek 结合规则结果生成巡检总结与整改建议。</p></div>
+        <div class="architecture-item"><strong>报告层</strong><p>Flask + ReportLab 将巡检结果输出为可下载 PDF。</p></div>
+      </div>
+      <div class="tags"><span class="tag">SOP</span><span class="tag">DeepSeek</span><span class="tag">Flask</span><span class="tag">ReportLab</span><span class="tag">Pillow</span></div>
+    </div>
+  </section>
 
-  <div class="nav">
+  <section class="insight-band" aria-labelledby="insight-title-04">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-04">产品洞察</h2></div>
+    <p>自动巡检的价值不只是节省写报告时间，更在于统一标准、保留证据和跟踪整改。AI适合承担重复归纳与建议生成，最终责任仍应由现场人员确认。</p>
+  </section>
+  <p class="case-note">本 Demo 使用模拟巡检数据，AI评估与 PDF 报告用于流程展示，不替代正式合规检查。</p>
+
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_03.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
+    <a href="projects.html" class="all-projects">全部项目</a>
     <a href="project_05.html">下一个项目 →</a>
-  </div>
-</div>
+  </nav>
+</main>
 
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>

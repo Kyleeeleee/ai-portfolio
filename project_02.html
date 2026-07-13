@@ -57,64 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 02 · RAG</div>
   <div class="emoji">🧠</div>
   <h1>AI知识库问答助手</h1>
-  <div class="subtitle">RAG检索增强生成 · ChromaDB向量检索</div>
-</div>
+  <div class="subtitle">RAG 检索增强生成 · ChromaDB 向量检索</div>
+  <div class="hero-actions">
+    <a href="live_02.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">DeepSeek · ChromaDB · 引用回答</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>基于 LangChain + RAG 架构构建的智能知识库问答系统。用户上传文档后，系统自动解析并建立向量索引，支持自然语言问答并附带原文引用来源。</p>
-    <div class="meta">
-<span>🔗 <a href="live_02.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-02">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-02">界面预览</h2></div>
+      <p>上传、索引、问答和来源状态集中在同一工作界面，便于验证知识接入与回答溯源链路。</p>
     </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-02-demo.png" alt="AI知识库问答助手在线 Demo 界面" loading="eager">
+      <figcaption>知识库上传与问答工作台<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>文档接入：支持 PDF / Word / TXT / Markdown 统一解析与向量化</li><li>智能检索：ChromaDB 向量检索 + 关键词召回组合定位精确段落</li><li>引用回答：每次回答附带原文来源链接，支持人工复核验证</li><li>追问上下文：保留多轮对话历史，支持连续追问与深入探索</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>ChromaDB 持久化向量存储 + ONNX MiniLM-L6-v2 本地 Embedding（384维）。langchain-text-splitters 实现智能分块，DeepSeek API 提供LLM推理。全程本地化Embedding，数据不出域。</p>
-    <div class="tags">
-      <span class="tag">RAG</span> <span class="tag">ChromaDB</span> <span class="tag">LangChain</span> <span class="tag-green">DeepSeek</span> <span class="tag-green">Flask</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-02">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-02">把分散文档转化为可检索、可引用的问答资产</h2>
+      <p>用户上传文档后，系统完成解析、分块与向量索引，并基于检索片段生成答案。回答保留来源信息，支持人工复核与连续追问。</p>
+      <a href="live_02.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>384维</strong><span>向量维度</span></div><div class="metric"><strong>500字</strong><span>分块大小</span></div><div class="metric"><strong><2秒</strong><span>检索延迟</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>384 维</strong><span>本地向量</span></div>
+      <div class="metric-item"><strong>双路</strong><span>向量 + 关键词</span></div>
+      <div class="metric-item"><strong>可引用</strong><span>答案溯源</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>企业知识管理的核心痛点不是'没有文档'，而是'找不到答案'。RAG方案让AI直接在已有文档中检索答案而非凭空生成，解决了大模型'幻觉'问题。深言未来正是看中了这条赛道——用AI把沉睡的企业文档变成可对话的知识资产。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>统一接入 PDF、Word、TXT 与 Markdown 文档</li>
+        <li>向量检索与关键词召回组合定位相关段落</li>
+        <li>回答附带原文来源，便于验证与纠错</li>
+        <li>保留多轮会话上下文，支持连续追问</li>
+        <li>展示向量库、LLM 与文档索引运行状态</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>检索层</strong><p>ONNX MiniLM-L6-v2 生成本地向量，ChromaDB 持久化存储。</p></div>
+        <div class="architecture-item"><strong>生成层</strong><p>DeepSeek 基于召回片段组织答案并输出引用信息。</p></div>
+        <div class="architecture-item"><strong>应用层</strong><p>Flask 管理文档上传、分块、会话与检索状态。</p></div>
+      </div>
+      <div class="tags"><span class="tag">RAG</span><span class="tag">ChromaDB</span><span class="tag">LangChain</span><span class="tag">DeepSeek</span><span class="tag">Flask</span></div>
+    </div>
+  </section>
 
-  <div class="nav">
+  <section class="insight-band" aria-labelledby="insight-title-02">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-02">产品洞察</h2></div>
+    <p>企业知识问答的关键不是单纯接入大模型，而是建立可靠的检索、引用和纠错机制。分块策略、召回质量与答案评估共同决定系统是否真正可用。</p>
+  </section>
+  <p class="case-note">本 Demo 使用公开示例文档展示检索与问答能力，实际业务接入需配置权限与数据治理策略。</p>
+
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_01.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
+    <a href="projects.html" class="all-projects">全部项目</a>
     <a href="project_03.html">下一个项目 →</a>
-  </div>
-</div>
+  </nav>
+</main>
 
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>

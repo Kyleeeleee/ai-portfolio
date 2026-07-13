@@ -57,64 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 05 · AGENT</div>
   <div class="emoji">💬</div>
   <h1>智能客服Agent</h1>
-  <div class="subtitle">LLM意图识别 · Tool Calling · FAQ检索 · 工单系统</div>
-</div>
+  <div class="subtitle">意图识别 · FAQ 检索 · Tool Calling · 智能转人工</div>
+  <div class="hero-actions">
+    <a href="live_05.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">DeepSeek · Tool Calling · 双路 FAQ</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>基于 LLM 与 Tool Calling 的智能客服Agent。覆盖意图识别、FAQ 检索、订单查询、工单创建和智能转人工，支持多轮会话上下文管理。</p>
-    <div class="meta">
-<span>🔗 <a href="live_05.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-05">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-05">界面预览</h2></div>
+      <p>问答、订单查询、投诉工单与人工升级在同一会话中完成，界面同步展示可直接体验的业务场景。</p>
     </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-05-demo.png" alt="智能客服Agent在线 Demo 界面" loading="eager">
+      <figcaption>智能客服会话与工具工作台<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>LLM意图识别：自动分类用户消息（FAQ咨询/订单查询/投诉/转人工）</li><li>FAQ智能检索：Sentence-Transformers语义匹配 + TF-IDF关键词双路召回</li><li>工具调用：check_order / search_faq / create_ticket / transfer_human 四大工具</li><li>智能转人工：复杂问题自动升级，附带完整对话摘要移交人工客服</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>DeepSeek API 驱动意图分类与工具调用决策。Sentence-Transformers (paraphrase-multilingual-MiniLM-L12-v2) 实现FAQ语义检索，TF-IDF作为fallback。Session级别内存管理保证多轮对话连贯性。</p>
-    <div class="tags">
-      <span class="tag">Agent</span> <span class="tag">ToolCall</span> <span class="tag">Sentence-Transformers</span> <span class="tag-green">DeepSeek</span> <span class="tag-green">Flask</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-05">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-05">让客服不只回答问题，也能调用工具完成业务动作</h2>
+      <p>系统识别用户意图后选择 FAQ 检索、订单查询、工单创建或人工转接，并在多轮会话中保留必要上下文。</p>
+      <a href="live_05.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>4 Tools</strong><span>工具调用</span></div><div class="metric"><strong>92%+</strong><span>意图准确率</span></div><div class="metric"><strong><1s</strong><span>FAQ响应</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>4 Tools</strong><span>业务工具</span></div>
+      <div class="metric-item"><strong>双路</strong><span>FAQ 召回</span></div>
+      <div class="metric-item"><strong>可升级</strong><span>转人工</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>客服Agent的核心不是'能聊天'，而是'能办事'。Tool Calling让Agent不只是回答问题，还能真正执行查订单、建工单、转人工等操作。快商通作为企业客服SaaS厂商，Agent能力正是其产品从'在线客服'升级为'AI客服中台'的关键。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>识别 FAQ、订单、投诉与转人工等常见意图</li>
+        <li>语义匹配与关键词检索共同召回 FAQ</li>
+        <li>调用订单查询、知识检索、建单和转人工工具</li>
+        <li>复杂或高风险问题自动升级并保留会话摘要</li>
+        <li>Session 级上下文维持多轮对话连贯性</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>决策层</strong><p>DeepSeek 判断用户意图并选择需要调用的业务工具。</p></div>
+        <div class="architecture-item"><strong>检索层</strong><p>Sentence-Transformers 与 TF-IDF 组成双路 FAQ 召回。</p></div>
+        <div class="architecture-item"><strong>会话层</strong><p>Flask 管理上下文、工具结果、工单与人工升级状态。</p></div>
+      </div>
+      <div class="tags"><span class="tag">Agent</span><span class="tag">Tool Calling</span><span class="tag">DeepSeek</span><span class="tag">TF-IDF</span><span class="tag">Flask</span></div>
+    </div>
+  </section>
 
-  <div class="nav">
+  <section class="insight-band" aria-labelledby="insight-title-05">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-05">产品洞察</h2></div>
+    <p>客服 Agent 的价值不在于更像人聊天，而在于能安全执行查询、建单和升级等动作。工具权限、失败兜底和人工接管机制应与对话能力同时设计。</p>
+  </section>
+  <p class="case-note">本 Demo 使用模拟订单和工单数据展示业务流程，不处理真实客户信息。</p>
+
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_04.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
+    <a href="projects.html" class="all-projects">全部项目</a>
     <a href="project_07.html">下一个项目 →</a>
-  </div>
-</div>
+  </nav>
+</main>
 
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>

@@ -57,64 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 03 · LLM NPC</div>
   <div class="emoji">🎮</div>
   <h1>游戏NPC智能对话系统</h1>
-  <div class="subtitle">DeepSeek LLM · 角色扮演 · 上下文记忆 · 流式输出</div>
-</div>
+  <div class="subtitle">角色扮演 · 上下文记忆 · 情绪状态 · 流式输出</div>
+  <div class="hero-actions">
+    <a href="live_03.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">DeepSeek · 角色记忆 · SSE 流式输出</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>面向游戏场景的AI NPC对话系统。为每个NPC设定独立人设、背景故事和情感状态，支持多轮对话记忆、情绪变化和SSE流式输出，可直接接入游戏引擎。</p>
-    <div class="meta">
-<span>🔗 <a href="live_03.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-03">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-03">界面预览</h2></div>
+      <p>角色选择、情绪状态、记忆管理和实时对话集中呈现，便于测试不同人设下的回复一致性。</p>
     </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-03-demo.png" alt="游戏NPC智能对话系统在线 Demo 界面" loading="eager">
+      <figcaption>NPC 角色与对话工作台<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>角色设定系统：导师/跟班/商人三种原型，各自拥有独立人设、口头禅、背景故事</li><li>上下文记忆：关键事实摘要 + 短期对话窗口，NPC能记住你说过的话</li><li>情绪状态引擎：友好/中立/敌对三种情绪影响回复策略，提升沉浸感</li><li>JSON结构化输出：对话内容 + 任务钩子 + 关系值，可被游戏引擎直接读取</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>DeepSeek Chat API 驱动NPC推理，Character Prompting 技术塑造角色一致性。SSE（Server-Sent Events）实现打字机效果的流式回复。Session级别内存管理，支持多玩家并发对话。</p>
-    <div class="tags">
-      <span class="tag">LLM</span> <span class="tag">SSE流式</span> <span class="tag">Character Prompting</span> <span class="tag-green">DeepSeek</span> <span class="tag-green">Flask</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-03">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-03">让 NPC 从预制对白树走向具有人设与记忆的动态角色</h2>
+      <p>为不同 NPC 配置独立人设、背景和表达方式，通过多轮记忆与情绪状态生成符合角色设定的对话，并输出可供游戏逻辑读取的结构化结果。</p>
+      <a href="live_03.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>3种</strong><span>角色原型</span></div><div class="metric"><strong>SSE</strong><span>流式输出</span></div><div class="metric"><strong><1.5s</strong><span>首次响应</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>3 种</strong><span>角色原型</span></div>
+      <div class="metric-item"><strong>多轮</strong><span>上下文记忆</span></div>
+      <div class="metric-item"><strong>JSON</strong><span>结构化输出</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>传统游戏NPC对话依赖预制文本树，几百句对白就成本高昂且重复感强。AI NPC能让每个角色拥有'灵魂'——动态生成符合人设的回答、记住玩家行为、甚至发展剧情分支。4399作为国内休闲游戏巨头，AI NPC是其降低制作成本、提升玩家留存的关键技术方向。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>支持导师、伙伴与商人三类角色原型</li>
+        <li>关键事实摘要与短期对话窗口共同维护记忆</li>
+        <li>友好、中立与敌对状态影响回复策略</li>
+        <li>SSE 流式返回对话内容，缩短等待感</li>
+        <li>输出任务钩子与关系值，便于接入游戏逻辑</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>角色层</strong><p>Character Prompt 约束人设、背景故事与表达风格。</p></div>
+        <div class="architecture-item"><strong>推理层</strong><p>DeepSeek 结合角色状态和会话记忆生成回复。</p></div>
+        <div class="architecture-item"><strong>接口层</strong><p>Flask + SSE 提供流式响应与结构化 JSON 结果。</p></div>
+      </div>
+      <div class="tags"><span class="tag">LLM</span><span class="tag">Character Prompt</span><span class="tag">SSE</span><span class="tag">DeepSeek</span><span class="tag">Flask</span></div>
+    </div>
+  </section>
 
-  <div class="nav">
+  <section class="insight-band" aria-labelledby="insight-title-03">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-03">产品洞察</h2></div>
+    <p>AI NPC 更适合作为剧情系统的动态表达层，而不是完全替代剧情设计。稳定的人设边界、可控的状态机和内容安全规则，决定了生成式对话能否进入真实游戏。</p>
+  </section>
+  <p class="case-note">本 Demo 用于角色一致性与交互流程展示，生成内容需结合游戏世界观和安全规则审核。</p>
+
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_02.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
+    <a href="projects.html" class="all-projects">全部项目</a>
     <a href="project_04.html">下一个项目 →</a>
-  </div>
-</div>
+  </nav>
+</main>
 
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>

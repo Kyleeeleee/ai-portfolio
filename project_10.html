@@ -57,75 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 08 · AIoT</div>
   <div class="emoji">🏠</div>
   <h1>AIoT 智能家居控制台</h1>
-  <div class="subtitle">小米生态链 AIoT 设备统一管理平台</div>
-</div>
+  <div class="subtitle">设备状态 · 场景联动 · 能耗分析 · 自然语言控制</div>
+  <div class="hero-actions">
+    <a href="live_10.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">设备同步 · 场景规则 · 自然语言控制</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>面向小米生态链 / 米家用户与智能家居集成商的 AIoT 控制台。系统把分散在不同房间、不同协议的 IoT 设备统一汇聚到一个控制台，提供"3D 户型可视化 + AI 场景联动 + 能耗分析 + 语音控制"四件套，让用户能在一个界面里看到、理解和自动化管理整个家。</p>
-    <div class="meta">
-<span>🔗 <a href="live_10.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-10">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-10">界面预览</h2></div>
+      <p>全屋设备卡片与自然语言控制面板并列展示，用户可以直接观察指令执行后的设备状态变化。</p>
     </div>
-    <div class="note">注：本 demo 设备状态由模拟数据驱动，用于产品能力展示。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-10-demo.png" alt="AIoT 智能家居控制台在线 Demo 界面" loading="eager">
+      <figcaption>全屋设备与自然语言控制台<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>全屋设备管理：10 类设备统一控制（灯 / 空调 / 门锁 / 摄像头 / 窗帘 / 扫地机 等）</li>
-      <li>3D 房间可视化：SVG 绘制 9 区域户型图，设备位置实时标注 + 点击设备查看详情</li>
-      <li>AI 场景联动：5 个预设场景（回家/离家/观影/睡眠/起床）+ 3 条 AI 规则引擎（PM2.5 / 温度 / 用电高峰自动触发）</li>
-      <li>能耗分析：日 / 周 / 月用电趋势 + 能效占比 + AI 节能建议（基于历史模式）</li>
-      <li>语音控制：自然语言指令识别，模拟 320ms ASR 延迟，提升交互真实感</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>设备层用 MQTT 协议与米家 SDK 通信，事件进入规则引擎后判断是否触发预设场景；前端用 Flask + SVG 渲染 3D 户型，ECharts 绘制能耗趋势；语音模块模拟 320ms ASR 延迟以体现真实产品体验。</p>
-    <div class="tags">
-      <span class="tag">MQTT</span>
-      <span class="tag">米家 SDK</span>
-      <span class="tag">规则引擎</span>
-      <span class="tag">ECharts</span>
-      <span class="tag-green">Flask + SVG</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-10">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-10">让全屋设备状态与自然语言控制保持在同一界面</h2>
+      <p>把灯光、空调、窗帘、电视和清洁设备汇聚到统一控制台，并通过场景规则与自然语言指令完成批量控制和状态同步。</p>
+      <a href="live_10.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标设计</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>10 类</strong><span>设备统一控制</span></div>
-      <div class="metric"><strong>9 区域</strong><span>3D 户型可视化</span></div>
-      <div class="metric"><strong>5+3</strong><span>场景 + AI 规则</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>10 类</strong><span>设备控制</span></div>
+      <div class="metric-item"><strong>5 场景</strong><span>联动模式</span></div>
+      <div class="metric-item"><strong>9 区域</strong><span>全屋视图</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>全球智能家居市场 2030 年将达 $500B。小米 IoT 设备连接数超 6 亿，AIoT 的核心不是硬件而是"场景联动"——让不同品牌的设备协同工作。大白作为小米生态链企业，场景定义能力是核心竞争力；做"会主动思考的家"是产品差异化的关键。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>统一展示灯光、空调、门锁、窗帘与清洁设备状态</li>
+        <li>支持回家、离家、观影、睡眠与起床等预设场景</li>
+        <li>自然语言指令解析为明确的设备与目标状态</li>
+        <li>设备卡片与控制结果保持同步更新</li>
+        <li>结合历史使用模式提供能耗趋势与节能建议</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>设备层</strong><p>MQTT 风格的设备事件模型统一描述状态与控制指令。</p></div>
+        <div class="architecture-item"><strong>规则层</strong><p>场景规则把环境条件、时间和设备动作组合起来。</p></div>
+        <div class="architecture-item"><strong>交互层</strong><p>Flask 页面同步渲染设备状态、自然语言结果和能耗信息。</p></div>
+      </div>
+      <div class="tags"><span class="tag">AIoT</span><span class="tag">MQTT</span><span class="tag">规则引擎</span><span class="tag">状态同步</span><span class="tag">Flask</span></div>
+    </div>
+  </section>
 
+  <section class="insight-band" aria-labelledby="insight-title-10">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-10">产品洞察</h2></div>
+    <p>智能家居的核心价值不是设备数量，而是状态一致性和场景协同。自然语言控制必须转换为确定、可回滚的设备命令，界面也需要及时反馈执行结果。</p>
+  </section>
+  <p class="case-note">本 Demo 使用模拟设备和状态数据，不连接真实家庭设备。</p>
 
-  <div class="nav">
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_08.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
-|</div>
+    <a href="projects.html" class="all-projects">全部项目</a>
+    <a href="project_11.html">下一个项目 →</a>
+  </nav>
+</main>
 
-</div>
-
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>

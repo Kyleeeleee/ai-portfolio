@@ -57,64 +57,84 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
 </style>
+<link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
-
-<div class="header">
+<header class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 06 · FINTECH</div>
   <div class="emoji">🛡️</div>
   <h1>金融风控AI助手</h1>
-  <div class="subtitle">信贷审批模拟 · 风控指标看板 · 财报风险分析</div>
-</div>
+  <div class="subtitle">信贷审批模拟 · 风控指标 · 财报风险分析</div>
+  <div class="hero-actions">
+    <a href="live_07.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">Gradio · 风控规则 · DeepSeek</span>
+  </div>
+</header>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>面向银行、证券、消费金融等场景的AI风控辅助系统。覆盖贷前准入、授信建议、风险预警、财报文本扫描，输出可解释的审批建议。</p>
-    <div class="meta">
-<span>🔗 <a href="live_07.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="preview-title-07">
+    <div class="section-heading">
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-07">界面预览</h2></div>
+      <p>客户信息、核心风险变量与审批操作采用双栏布局，便于同时查看输入条件和风控判断依据。</p>
     </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
+    <figure class="interface-preview">
+      <img src="assets/generated/project-07-demo.png" alt="金融风控AI助手在线 Demo 界面" loading="eager">
+      <figcaption>信贷审批与风险分析工作台<span>当前在线 Demo 静态界面</span></figcaption>
+    </figure>
+  </section>
 
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>贷前准入审核：自动解析客户资料（征信/收入/负债），输出综合评分与准入建议</li><li>授信额度建议：基于多维指标（DTI/收入/征信/抵押）计算合理授信区间</li><li>风险预警监控：实时追踪关键风控指标（不良率/拨备覆盖率/资本充足率）</li><li>财报风险扫描：NLP解析财报附注文本，自动标记潜在风险点（关联交易/担保/诉讼）</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>Gradio前端 + Python风控引擎。模拟银行风控决策树实现贷前评分卡，财报NLP基于DeepSeek API进行附注文本风险提取。风控规则可配置，支持不同场景的参数调整。</p>
-    <div class="tags">
-      <span class="tag">风控</span> <span class="tag">信贷审批</span> <span class="tag">NLP财报分析</span> <span class="tag-green">Gradio</span> <span class="tag-green">Python</span>
+  <section class="case-section summary-panel" aria-labelledby="summary-title-07">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title-07">用标准化评分与大模型解释辅助信贷风险判断</h2>
+      <p>覆盖贷前准入、授信建议、指标监控和财报文本扫描，把结构化规则与自然语言解释结合起来，输出可复核的风险建议。</p>
+      <a href="live_07.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>4环节</strong><span>风控全流程</span></div><div class="metric"><strong>实时</strong><span>指标监控</span></div><div class="metric"><strong>可解释</strong><span>审批建议</span></div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>4 环节</strong><span>风控流程</span></div>
+      <div class="metric-item"><strong>实时</strong><span>指标查看</span></div>
+      <div class="metric-item"><strong>可解释</strong><span>审批建议</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>金融风控面临两大挑战：一是审批效率（人工审核一笔贷款需30-60分钟），二是一致性（不同审批员标准不一）。AI风控助手将标准化规则自动化执行，把人工时间释放到真正需要判断的复杂案例上，同时保证审批标准一致性。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>解析收入、负债、征信与抵押等贷前信息</li>
+        <li>根据 DTI、收入与信用条件形成授信区间建议</li>
+        <li>集中查看不良率、拨备和资本等风控指标</li>
+        <li>扫描财报附注中的担保、诉讼与关联交易风险</li>
+        <li>保留规则命中项与解释信息，支持人工复核</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>规则层</strong><p>Python 风控引擎执行可配置的评分卡与准入规则。</p></div>
+        <div class="architecture-item"><strong>分析层</strong><p>DeepSeek 提取财报风险点并生成解释性摘要。</p></div>
+        <div class="architecture-item"><strong>交互层</strong><p>Gradio 组织审批表单、指标看板和风险分析结果。</p></div>
+      </div>
+      <div class="tags"><span class="tag">风控规则</span><span class="tag">信贷审批</span><span class="tag">DeepSeek</span><span class="tag">Gradio</span><span class="tag">Python</span></div>
+    </div>
+  </section>
 
-  <div class="nav">
+  <section class="insight-band" aria-labelledby="insight-title-07">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-07">产品洞察</h2></div>
+    <p>金融风控需要效率，也需要可解释和可追责。AI适合承担材料归纳、规则执行与风险提示，最终审批仍应保留人工授权、审计记录和模型监控。</p>
+  </section>
+  <p class="case-note">本 Demo 为风控流程模拟，不构成授信、投资或其他金融决策建议。</p>
+
+  <nav class="project-nav" aria-label="项目切换">
     <a href="project_05.html">← 上一个项目</a>
-    <a href="projects.html">📂 返回项目列表</a>
+    <a href="projects.html" class="all-projects">全部项目</a>
     <a href="project_08.html">下一个项目 →</a>
-  </div>
-</div>
+  </nav>
+</main>
 
-<footer class="footer">
-  AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
-</footer>
-
+<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
 </body>
 </html>
