@@ -56,61 +56,171 @@ body{background:var(--bg);color:var(--text)}
 .footer{color:#86868b;border-top:1px solid rgba(0,0,0,.08)}
 @media(max-width:640px){.header{padding:3rem 1rem}.header::before{inset:14px;border-radius:18px}}
 
+/* Project 01 case study layout */
+.header{background:#ece9ff;padding:3.1rem 2rem 3.35rem}
+.header::before{inset:20px max(20px,calc((100% - 1100px)/2));background:rgba(255,255,255,.62);border-color:rgba(255,255,255,.88);border-radius:16px;box-shadow:inset 0 1px 0 #fff,0 18px 44px rgba(76,58,150,.1)}
+.header .back{color:#55515f;opacity:1;margin-bottom:.85rem}
+.header .emoji{font-size:2.55rem;margin-bottom:.35rem}
+.header h1{color:#1d1d1f;font-size:2.8rem;line-height:1.12;letter-spacing:0;margin-bottom:.55rem}
+.header .subtitle{color:#5e5b66;opacity:1;font-size:1.05rem}
+.hero-kicker{display:inline-flex;align-items:center;min-height:28px;padding:0 11px;margin-bottom:.75rem;border:1px solid rgba(var(--theme-rgb),.2);border-radius:999px;background:rgba(var(--theme-rgb),.08);color:#6546df;font-size:.76rem;font-weight:700}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap;margin-top:1.3rem}
+.demo-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--primary);color:#fff;font-size:.9rem;font-weight:650;text-decoration:none;box-shadow:0 10px 24px rgba(var(--theme-rgb),.2);transition:transform .2s,box-shadow .2s}
+.demo-button:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(var(--theme-rgb),.24)}
+.model-label{color:#6e6e73;font-size:.82rem}
+.case-container{width:min(1100px,calc(100% - 48px));margin:0 auto;padding:48px 0 0}
+.case-section{margin-bottom:54px}
+.section-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:18px}
+.section-heading h2,.summary-copy h2,.detail-panel h2,.insight-band h2{display:block;margin:0;color:#1d1d1f;font-weight:720;letter-spacing:0}
+.section-heading h2{font-size:1.55rem}
+.section-kicker{display:block;margin-bottom:5px;color:var(--primary);font-size:.74rem;font-weight:750;text-transform:uppercase}
+.section-heading p{max-width:470px;color:#6e6e73;font-size:.88rem;line-height:1.65;text-align:right}
+.showcase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.showcase-grid figure{margin:0;overflow:hidden;border:1px solid rgba(0,0,0,.08);border-radius:8px;background:#fff}
+.showcase-grid img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.showcase-grid figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;color:#424245;font-size:.82rem;font-weight:650}
+.showcase-grid figcaption span{color:#86868b;font-size:.74rem;font-weight:500}
+.summary-panel{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(340px,.65fr);gap:36px;align-items:center;padding:34px 36px;border:1px solid rgba(0,0,0,.08);border-radius:8px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.04)}
+.summary-copy h2{font-size:1.45rem;line-height:1.35;margin-bottom:10px}
+.summary-copy p{color:#5f5f64;font-size:.94rem;line-height:1.85}
+.summary-link{display:inline-flex;align-items:center;margin-top:15px;color:var(--primary);font-size:.88rem;font-weight:650;text-decoration:none}
+.summary-link:hover{opacity:.76}
+.metrics-inline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-left:1px solid rgba(0,0,0,.08)}
+.metrics-inline .metric-item{min-width:0;padding:10px 14px;text-align:center;border-right:1px solid rgba(0,0,0,.08)}
+.metrics-inline .metric-item:last-child{border-right:0}
+.metric-item strong{display:block;color:#1d1d1f;font-size:1.18rem;line-height:1.2;word-break:break-word}
+.metric-item span{display:block;margin-top:7px;color:#86868b;font-size:.72rem}
+.details-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-bottom:16px}
+.detail-panel{padding:30px;border:1px solid rgba(0,0,0,.08);border-radius:8px;background:#fff}
+.detail-panel h2{font-size:1.25rem;margin-bottom:18px}
+.detail-panel .features li{padding:.52rem 0 .52rem 1.3rem;font-size:.9rem;line-height:1.65}
+.architecture-list{display:grid;gap:15px}
+.architecture-item{padding-bottom:15px;border-bottom:1px solid rgba(0,0,0,.07)}
+.architecture-item:last-child{padding-bottom:0;border-bottom:0}
+.architecture-item strong{display:block;margin-bottom:4px;color:#1d1d1f;font-size:.88rem}
+.architecture-item p{color:#6e6e73;font-size:.83rem;line-height:1.65}
+.detail-panel .tags{margin-top:20px}
+.insight-band{display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:start;padding:30px 34px;border:1px solid rgba(var(--theme-rgb),.14);border-radius:8px;background:#f0edff}
+.insight-band h2{font-size:1.25rem}
+.insight-band p{color:#525058;font-size:.94rem;line-height:1.85}
+.case-note{margin:18px 0 0;color:#86868b;font-size:.76rem;text-align:center}
+.project-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin-top:56px;padding:24px 0;border-top:1px solid rgba(0,0,0,.09)}
+.project-nav a{color:#4f35bd;font-size:.88rem;font-weight:620;text-decoration:none}
+.project-nav a:last-child{text-align:right}
+.project-nav .all-projects{padding:9px 14px;border:1px solid rgba(var(--theme-rgb),.18);border-radius:999px;background:rgba(var(--theme-rgb),.07)}
+.footer{margin-top:0;background:#fff}
+@media(max-width:820px){
+  .summary-panel,.details-grid,.insight-band{grid-template-columns:1fr}
+  .metrics-inline{border-left:0;border-top:1px solid rgba(0,0,0,.08);padding-top:18px}
+  .insight-band{gap:10px}
+}
+@media(max-width:640px){
+  .header{padding:2.7rem 1rem 2.9rem}.header::before{inset:12px;border-radius:12px}.header h1{font-size:2rem}
+  .header .subtitle{font-size:.9rem}.model-label{width:100%}
+  .case-container{width:calc(100% - 32px);padding-top:34px}.case-section{margin-bottom:42px}
+  .section-heading{display:block}.section-heading p{margin-top:8px;text-align:left}
+  .showcase-grid{grid-template-columns:1fr}.summary-panel,.detail-panel,.insight-band{padding:24px 20px}
+  .summary-panel{gap:24px}.metrics-inline .metric-item{padding:10px 8px}.metric-item strong{font-size:1rem}
+  .project-nav{grid-template-columns:1fr 1fr}.project-nav .all-projects{grid-column:1/-1;grid-row:1;text-align:center}.project-nav a:last-child{text-align:right}
+}
+
 </style>
 </head>
 <body>
 
 <div class="header">
   <a href="projects.html" class="back">← 返回项目列表</a>
+  <div class="hero-kicker">MVP 01 · AIGC</div>
   <div class="emoji">🛍️</div>
   <h1>跨境电商AI商品图生成器</h1>
   <div class="subtitle">AI生成电商场景展示图 · fal.ai Flux Pro</div>
+  <div class="hero-actions">
+    <a href="live_01.html" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">Flux Pro v1.1 · 5 类标准素材</span>
+  </div>
 </div>
 
-<div class="container">
-
-  <div class="card">
-    <h2>📋 项目概述</h2>
-    <p>输入产品描述 → AI自动生成5大电商场景（白底图/场景图/细节图/尺寸图/模特图）展示图。基于 fal.ai Flux Pro 模型，单张成本仅 $0.025，替代传统摄影 ¥2000+ 成本。</p>
-    <div class="meta">
-<span>🔗 <a href="live_01.html" style="color:var(--primary)">在线Demo</a></span>
+<main class="case-container">
+  <section class="case-section" aria-labelledby="showcase-title">
+    <div class="section-heading">
+      <div>
+        <span class="section-kicker">Generated outputs</span>
+        <h2 id="showcase-title">生成效果预览</h2>
+      </div>
+      <p>同一类商品在不同营销语境中的静态输出，用于验证场景一致性、材质表达和商品主体稳定性。</p>
     </div>
-    <div class="note">注：本 demo 用于产品能力展示，不构成真实商业承诺。</div>
-  </div>
-
-  <div class="card">
-    <h2>⚡ 功能拆解</h2>
-    <ul class="features">
-      <li>支持中文/英文产品描述输入，智能提取卖点关键词</li><li>5种电商标准场景一键生成：白底图/场景图/细节图/尺寸图/模特图</li><li>Flux Pro 高端模型，出图质量媲美商业摄影</li><li>批量生成模式，支持最多20张/次，大幅提升效率</li><li>实时预览 + 一键下载高清原图（1024×1360px）</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>🔧 技术架构</h2>
-    <p>后端 Flask + fal.ai API 调用 Flux Pro v1.1 模型，前端原生 JS 实现拖拽上传和实时预览。支持 Prompt 模板预设，针对不同商品类目自动优化生成参数。</p>
-    <div class="tags">
-      <span class="tag">Flux Pro</span> <span class="tag">fal.ai API</span> <span class="tag">Flask</span> <span class="tag">Python</span> <span class="tag">AIGC</span>
+    <div class="showcase-grid">
+      <figure>
+        <img src="assets/generated/commerce-camping.jpg" alt="黑色保温杯户外露营场景生成图" loading="eager">
+        <figcaption>户外场景 <span>情境化展示</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/generated/commerce-detail.jpg" alt="黑色保温杯杯口与杯盖材质细节生成图" loading="lazy">
+        <figcaption>材质细节 <span>卖点特写</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/generated/commerce-office.jpg" alt="黑色保温杯办公桌场景生成图" loading="lazy">
+        <figcaption>办公场景 <span>使用情境</span></figcaption>
+      </figure>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>📈 核心指标</h2>
-    <div class="metric-grid">
-      <div class="metric"><strong>$0.025</strong><span>单张成本</span></div><div class="metric"><strong>5场景</strong><span>覆盖电商</span></div><div class="metric"><strong>1024×1360</strong><span>高清输出</span></div>
+  <section class="case-section summary-panel" aria-labelledby="summary-title">
+    <div class="summary-copy">
+      <span class="section-kicker">Project summary</span>
+      <h2 id="summary-title">让商品素材验证从拍摄排期推进到即时生成</h2>
+      <p>输入产品描述并选择场景，即可生成白底图、场景图、细节图、尺寸图与模特图，用更低的试错成本验证不同 SKU 的素材方向。</p>
+      <a href="live_01.html" class="summary-link">打开在线 Demo →</a>
     </div>
-  </div>
+    <div class="metrics-inline" aria-label="核心指标">
+      <div class="metric-item"><strong>$0.025</strong><span>单张成本</span></div>
+      <div class="metric-item"><strong>5 类</strong><span>标准素材</span></div>
+      <div class="metric-item"><strong>1024×1360</strong><span>高清输出</span></div>
+    </div>
+  </section>
 
-  <div class="card">
-    <h2>💡 产品洞察</h2>
-    <p>跨境电商每上新一款产品需要拍摄多张场景图，传统摄影成本 ¥2000-5000/款且周期3-5天。AI方案将成本降至几乎为零，生成速度缩短至秒级。对SKU数量大、上新频率高的跨境卖家而言，这是降本增效的刚需工具。</p>
-  </div>
+  <section class="details-grid" aria-label="项目能力与架构">
+    <div class="detail-panel">
+      <span class="section-kicker">Product capabilities</span>
+      <h2>功能拆解</h2>
+      <ul class="features">
+        <li>支持中文与英文产品描述输入，提取商品卖点关键词</li>
+        <li>覆盖白底、场景、细节、尺寸与模特五类电商素材</li>
+        <li>按商品类别匹配 Prompt 模板与生成参数</li>
+        <li>支持批量任务，单次最多生成 20 张图片</li>
+        <li>提供实时预览与高清原图下载</li>
+      </ul>
+    </div>
+    <div class="detail-panel">
+      <span class="section-kicker">Technical delivery</span>
+      <h2>技术架构</h2>
+      <div class="architecture-list">
+        <div class="architecture-item"><strong>模型服务</strong><p>通过 fal.ai API 调用 Flux Pro v1.1。</p></div>
+        <div class="architecture-item"><strong>应用服务</strong><p>Python + Flask 处理任务、参数与结果返回。</p></div>
+        <div class="architecture-item"><strong>交互层</strong><p>原生 JavaScript 完成场景选择、批量任务与预览。</p></div>
+      </div>
+      <div class="tags">
+        <span class="tag">Flux Pro</span><span class="tag">fal.ai API</span><span class="tag">Flask</span><span class="tag">Python</span><span class="tag">AIGC</span>
+      </div>
+    </div>
+  </section>
 
-  <div class="nav">
-    <span></span>
-    <a href="projects.html">📂 返回项目列表</a>
+  <section class="insight-band" aria-labelledby="insight-title">
+    <div>
+      <span class="section-kicker">Product insight</span>
+      <h2 id="insight-title">产品洞察</h2>
+    </div>
+    <p>跨境电商上新往往需要多组素材，而传统拍摄受制于成本、周期与返工。AI 商品图更适合承担上新前的快速验证和长尾 SKU 素材补充；高价值主图仍应保留人工审核与精修环节。</p>
+  </section>
+
+  <p class="case-note">本 Demo 用于产品能力展示，生成结果需经人工审核，不构成真实商业承诺。</p>
+
+  <nav class="project-nav" aria-label="项目切换">
+    <a href="index.html#projects">← 返回首页作品</a>
+    <a href="projects.html" class="all-projects">全部项目</a>
     <a href="project_02.html">下一个项目 →</a>
-  </div>
-</div>
+  </nav>
+</main>
 
 <footer class="footer">
   AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
