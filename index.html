@@ -304,6 +304,50 @@ h2{font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-0.01em;font-w
   .fact-grid,.tech-grid{grid-template-columns:1fr}
   .project-body{padding:18px}
 }
+
+
+/* Apple-inspired light theme override */
+:root{
+  --bg:#f5f5f7;
+  --card:#ffffff;
+  --card-hover:#ffffff;
+  --border:rgba(0,0,0,0.08);
+  --text:#1d1d1f;
+  --muted:#6e6e73;
+  --dim:#86868b;
+  --primary:#0071e3;
+  --primary-glow:rgba(0,113,227,0.16);
+  --accent:#0071e3;
+}
+body{background:var(--bg);color:var(--text)}
+.nav{background:rgba(251,251,253,.82);border-bottom:1px solid rgba(0,0,0,.08)}
+.nav-links .nav-cta{background:#0071e3;color:#fff}
+.nav-links .nav-cta:hover{background:#0077ed;color:#fff}
+.nav-links a:hover{background:rgba(0,0,0,.05);color:var(--text)}
+.particles{display:none}
+.eyebrow{background:rgba(0,113,227,.08);border-color:rgba(0,113,227,.18);color:#0071e3}
+h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.button.primary{background:#0071e3;color:#fff}
+.button.primary:hover{background:#0077ed;box-shadow:0 10px 24px rgba(0,113,227,.18)}
+.button.secondary{background:#fff;color:#1d1d1f;border:1px solid rgba(0,0,0,.12)}
+.stat-item,.story,.fact,.card,.job,.project,.tech{background:#fff;border-color:rgba(0,0,0,.08);box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.card::after{background:linear-gradient(90deg,#0071e3,#2997ff)}
+.card:hover,.job:hover,.tech:hover{border-color:rgba(0,113,227,.32);box-shadow:0 12px 32px rgba(0,0,0,.08);transform:none}
+.section{border-top:1px solid rgba(0,0,0,.08)}
+.section-head h2::after{background:#0071e3}
+.job-sub{color:#424245}
+.job time,.job p,.job ul li{color:#55555a}
+.job ul li::before{color:#0071e3}
+.project{--accent-color:#0071e3 !important;--accent-rgb:0,113,227 !important}
+.project::before{background:#0071e3 !important}
+.project:hover{border-color:rgba(var(--accent-rgb),.36) !important;box-shadow:0 12px 32px rgba(0,0,0,.08) !important;transform:none !important}
+.project p,.tech p,.card p,.section-note,.hero-copy{color:#6e6e73}
+.tag{background:rgba(var(--accent-rgb),.08);border-color:rgba(var(--accent-rgb),.16);color:var(--accent-color)}
+.contact-panel{background:#fff;color:#1d1d1f;border-top:1px solid rgba(0,0,0,.08)}
+.contact-panel h2{color:#1d1d1f}
+.contact-links a,.contact-links span{background:#f5f5f7;color:#1d1d1f;border:1px solid rgba(0,0,0,.08)}
+.footer{background:#f5f5f7;color:#86868b;border-top:1px solid rgba(0,0,0,.08)}
+
 </style>
 </head>
 <body>
@@ -561,8 +605,8 @@ const sections=[...document.querySelectorAll('section[id]')];
 window.addEventListener('scroll',()=>{
   const scrollY=window.scrollY;
   // 导航背景加深
-  if(scrollY>60)nav.style.background='rgba(10,10,18,.95)';
-  else nav.style.background='rgba(10,10,18,.82)';
+  if(scrollY>60)nav.style.background='rgba(251,251,253,.94)';
+  else nav.style.background='rgba(251,251,253,.82)';
   // 当前 section 高亮
   let current='';
   sections.forEach(sec=>{
@@ -571,7 +615,7 @@ window.addEventListener('scroll',()=>{
   navLinks.forEach(a=>{
     const isActive=a.dataset.section===current;
     a.style.color=isActive?'var(--text)':'var(--muted)';
-    a.style.background=isActive?'rgba(124,92,252,.12)':'transparent';
+    a.style.background=isActive?'rgba(0,113,227,.10)':'transparent';
   });
 });
 
