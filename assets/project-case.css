@@ -20,6 +20,7 @@ body{background:#f5f5f7;color:#1d1d1f}
 .section-heading p{max-width:470px;color:#6e6e73;font-size:.88rem;line-height:1.65;text-align:right}
 .interface-preview{margin:0;overflow:hidden;border:1px solid rgba(0,0,0,.08);border-radius:8px;background:#fff;box-shadow:0 12px 34px rgba(0,0,0,.05)}
 .interface-preview img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center}
+.interface-preview img.preview-crop-bottom{aspect-ratio:16/8.4}
 .interface-preview figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px;color:#424245;font-size:.84rem;font-weight:650}
 .interface-preview figcaption span{color:#86868b;font-size:.74rem;font-weight:500}
 .summary-panel{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(340px,.65fr);gap:36px;align-items:center;padding:34px 36px;border:1px solid rgba(0,0,0,.08);border-radius:8px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.04)}
