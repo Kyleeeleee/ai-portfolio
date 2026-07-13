@@ -153,7 +153,6 @@ h2{font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-0.01em;font-w
   background:var(--card);border:1px solid var(--border);
   border-radius:var(--radius);padding:24px;
   transition:border-color .3s,box-shadow .3s;
-  transform-style:preserve-3d;perspective:800px;
 }
 .card::after{
   content:'';position:absolute;inset:-1px;border-radius:var(--radius);
@@ -542,20 +541,6 @@ const revealObserver=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.section.reveal').forEach(s=>revealObserver.observe(s));
-
-// ── 5. 卡片 3D Tilt ──
-function tiltCard(card){
-  card.addEventListener('mousemove',e=>{
-    const rect=card.getBoundingClientRect();
-    const x=(e.clientX-rect.left)/rect.width-.5;
-    const y=(e.clientY-rect.top)/rect.height-.5;
-    card.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(10px)`;
-  });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transform='perspective(800px) rotateY(0) rotateX(0) translateZ(0)';
-  });
-}
-document.querySelectorAll('.card,.project,.tech,.job').forEach(tiltCard);
 
 // ── 6. 导航滚动变色 + 当前 section 高亮 ──
 const nav=document.getElementById('topNav');
