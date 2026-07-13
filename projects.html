@@ -54,77 +54,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
 .tag{font-size:.68rem;padding:3px 10px;border-radius:16px;font-weight:500}
 
 /* ── 项目卡片的独立配色 ── */
-.card:nth-child(1) .glow{background:var(--c1)}
-.card:nth-child(1):hover{border-color:var(--c1);box-shadow:0 20px 60px rgba(124,92,252,0.15)}
-.card:nth-child(1) .icon{background:rgba(124,92,252,0.15);color:var(--c1)}
-.card:nth-child(1) .tag{background:rgba(124,92,252,0.12);color:var(--c1)}
-.card:nth-child(1) .stat b{color:var(--c1)}
-
-.card:nth-child(2) .glow{background:var(--c2)}
-.card:nth-child(2):hover{border-color:var(--c2);box-shadow:0 20px 60px rgba(0,229,160,0.12)}
-.card:nth-child(2) .icon{background:rgba(0,229,160,0.15);color:var(--c2)}
-.card:nth-child(2) .tag{background:rgba(0,229,160,0.1);color:var(--c2)}
-.card:nth-child(2) .stat b{color:var(--c2)}
-
-.card:nth-child(3) .glow{background:var(--c3)}
-.card:nth-child(3):hover{border-color:var(--c3);box-shadow:0 20px 60px rgba(255,107,157,0.12)}
-.card:nth-child(3) .icon{background:rgba(255,107,157,0.15);color:var(--c3)}
-.card:nth-child(3) .tag{background:rgba(255,107,157,0.1);color:var(--c3)}
-.card:nth-child(3) .stat b{color:var(--c3)}
-
-.card:nth-child(4) .glow{background:var(--c4)}
-.card:nth-child(4):hover{border-color:var(--c4);box-shadow:0 20px 60px rgba(84,160,255,0.12)}
-.card:nth-child(4) .icon{background:rgba(84,160,255,0.15);color:var(--c4)}
-.card:nth-child(4) .tag{background:rgba(84,160,255,0.1);color:var(--c4)}
-.card:nth-child(4) .stat b{color:var(--c4)}
-
-.card:nth-child(5) .glow{background:var(--c5)}
-.card:nth-child(5):hover{border-color:var(--c5);box-shadow:0 20px 60px rgba(245,158,11,0.12)}
-.card:nth-child(5) .icon{background:rgba(245,158,11,0.15);color:var(--c5)}
-.card:nth-child(5) .tag{background:rgba(245,158,11,0.1);color:var(--c5)}
-.card:nth-child(5) .stat b{color:var(--c5)}
-
-.card:nth-child(6) .glow{background:var(--c6)}
-.card:nth-child(6):hover{border-color:var(--c6);box-shadow:0 20px 60px rgba(167,139,250,0.12)}
-.card:nth-child(6) .icon{background:rgba(167,139,250,0.15);color:var(--c6)}
-.card:nth-child(6) .tag{background:rgba(167,139,250,0.1);color:var(--c6)}
-.card:nth-child(6) .stat b{color:var(--c6)}
-
-.card:nth-child(7) .glow{background:var(--c7)}
-.card:nth-child(7):hover{border-color:var(--c7);box-shadow:0 20px 60px rgba(52,211,153,0.12)}
-.card:nth-child(7) .icon{background:rgba(52,211,153,0.15);color:var(--c7)}
-.card:nth-child(7) .tag{background:rgba(52,211,153,0.1);color:var(--c7)}
-.card:nth-child(7) .stat b{color:var(--c7)}
-
-.card:nth-child(8) .glow{background:var(--c8)}
-.card:nth-child(8):hover{border-color:var(--c8);box-shadow:0 20px 60px rgba(244,114,182,0.12)}
-.card:nth-child(8) .icon{background:rgba(244,114,182,0.15);color:var(--c8)}
-.card:nth-child(8) .tag{background:rgba(244,114,182,0.1);color:var(--c8)}
-.card:nth-child(8) .stat b{color:var(--c8)}
-
-.card:nth-child(9) .glow{background:var(--c9)}
-.card:nth-child(9):hover{border-color:var(--c9);box-shadow:0 20px 60px rgba(96,165,250,0.12)}
-.card:nth-child(9) .icon{background:rgba(96,165,250,0.15);color:var(--c9)}
-.card:nth-child(9) .tag{background:rgba(96,165,250,0.1);color:var(--c9)}
-.card:nth-child(9) .stat b{color:var(--c9)}
-
-.card:nth-child(10) .glow{background:var(--c10)}
-.card:nth-child(10):hover{border-color:var(--c10);box-shadow:0 20px 60px rgba(251,191,36,0.12)}
-.card:nth-child(10) .icon{background:rgba(251,191,36,0.15);color:var(--c10)}
-.card:nth-child(10) .tag{background:rgba(251,191,36,0.1);color:var(--c10)}
-.card:nth-child(10) .stat b{color:var(--c10)}
-
-.card:nth-child(11) .glow{background:var(--c11)}
-.card:nth-child(11):hover{border-color:var(--c11);box-shadow:0 20px 60px rgba(129,140,248,0.12)}
-.card:nth-child(11) .icon{background:rgba(129,140,248,0.15);color:var(--c11)}
-.card:nth-child(11) .tag{background:rgba(129,140,248,0.1);color:var(--c11)}
-.card:nth-child(11) .stat b{color:var(--c11)}
-
-.card:nth-child(12) .glow{background:var(--c12)}
-.card:nth-child(12):hover{border-color:var(--c12);box-shadow:0 20px 60px rgba(45,212,191,0.12)}
-.card:nth-child(12) .icon{background:rgba(45,212,191,0.15);color:var(--c12)}
-.card:nth-child(12) .tag{background:rgba(45,212,191,0.1);color:var(--c12)}
-.card:nth-child(12) .stat b{color:var(--c12)}
+.card{--accent:var(--c1);--accent-rgb:124,92,252}
+.card.p01{--accent:var(--c1);--accent-rgb:124,92,252}
+.card.p02{--accent:var(--c2);--accent-rgb:0,229,160}
+.card.p03{--accent:var(--c3);--accent-rgb:255,107,157}
+.card.p04{--accent:var(--c4);--accent-rgb:84,160,255}
+.card.p05{--accent:var(--c5);--accent-rgb:245,158,11}
+.card.p07{--accent:var(--c7);--accent-rgb:52,211,153}
+.card.p08{--accent:var(--c8);--accent-rgb:244,114,182}
+.card.p10{--accent:var(--c10);--accent-rgb:251,191,36}
+.card.p11{--accent:var(--c11);--accent-rgb:129,140,248}
+.card.p12{--accent:var(--c12);--accent-rgb:45,212,191}
+.card .glow{background:var(--accent)}
+.card:hover{border-color:var(--accent);box-shadow:0 20px 60px rgba(var(--accent-rgb),0.13)}
+.card .icon{background:rgba(var(--accent-rgb),0.15);color:var(--accent)}
+.card .tag{background:rgba(var(--accent-rgb),0.1);color:var(--accent)}
+.card .stat b{color:var(--accent)}
 
 .footer{text-align:center;padding:3rem 2rem;color:var(--dim);font-size:.82rem;border-top:1px solid var(--border);margin-top:1rem}
 .footer a{color:var(--c1);text-decoration:none}
@@ -142,8 +87,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
 .card:nth-child(8){animation-delay:0.15s}
 .card:nth-child(9){animation-delay:0.2s}
 .card:nth-child(10){animation-delay:0.25s}
-.card:nth-child(11){animation-delay:0.3s}
-.card:nth-child(12){animation-delay:0.35s}
 </style>
 </head>
 <body>
@@ -157,17 +100,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
 <div class="bento">
 
   <!-- 01 -->
-  <a href="project_01.html" class="card">
+  <a href="project_01.html" class="card p01">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">🛍️</div>
       <div class="arrow">→</div>
     </div>
     <h3>跨境电商AI商品图</h3>
-    <p class="subtitle">输入产品描述 → AI生成电商场景图，替代专业摄影</p>
+    <p class="subtitle">输入产品描述 → AI生成5类上架素材图，替代专业摄影</p>
     <div class="stats">
       <span class="stat">💰 单张<b>$0.025</b></span>
-      <span class="stat">🎬 <b>5</b>大场景</span>
+      <span class="stat">🎬 <b>5</b>类素材</span>
       <span class="stat">⚡ <b>~6s</b>出图</span>
     </div>
     <div class="tags-row">
@@ -178,7 +121,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 02 -->
-  <a href="project_02.html" class="card">
+  <a href="project_02.html" class="card p02">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">📚</div>
@@ -199,7 +142,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 03 -->
-  <a href="project_03.html" class="card">
+  <a href="project_03.html" class="card p03">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">🎮</div>
@@ -220,7 +163,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 04 -->
-  <a href="project_04.html" class="card">
+  <a href="project_04.html" class="card p04">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">📊</div>
@@ -241,7 +184,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 05 -->
-  <a href="project_05.html" class="card">
+  <a href="project_05.html" class="card p05">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">💬</div>
@@ -262,7 +205,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 07 -->
-  <a href="project_07.html" class="card">
+  <a href="project_07.html" class="card p07">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">🏦</div>
@@ -283,7 +226,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 08 -->
-  <a href="project_08.html" class="card">
+  <a href="project_08.html" class="card p08">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">🎬</div>
@@ -304,7 +247,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 10 -->
-  <a href="project_10.html" class="card">
+  <a href="project_10.html" class="card p10">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">🏠</div>
@@ -325,7 +268,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 11 -->
-  <a href="project_11.html" class="card">
+  <a href="project_11.html" class="card p11">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">🧠</div>
@@ -346,7 +289,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   </a>
 
   <!-- 12 -->
-  <a href="project_12.html" class="card">
+  <a href="project_12.html" class="card p12">
     <div class="glow"></div>
     <div class="icon-row">
       <div class="icon">🤖</div>
