@@ -85,7 +85,7 @@ body{background:var(--bg);color:var(--text)}
       <p>上传、索引、问答和来源状态集中在同一工作界面，便于验证知识接入与回答溯源链路。</p>
     </div>
     <figure class="interface-preview">
-      <img class="preview-crop-bottom" src="assets/generated/project-02-demo.png?v=20260714-theme-refresh" alt="AI知识库问答助手在线 Demo 界面" loading="eager">
+      <img class="preview-crop-bottom" src="assets/generated/project-02-demo.png?v=20260714-rag-fixed" alt="AI知识库问答助手在线 Demo 界面" loading="eager">
       <figcaption>知识库上传与问答工作台<span>当前在线 Demo 静态界面</span></figcaption>
     </figure>
   </section>
@@ -98,8 +98,8 @@ body{background:var(--bg);color:var(--text)}
       <a href="live_02.html" class="summary-link">打开在线 Demo →</a>
     </div>
     <div class="metrics-inline" aria-label="核心指标">
-      <div class="metric-item"><strong>384 维</strong><span>本地向量</span></div>
-      <div class="metric-item"><strong>双路</strong><span>向量 + 关键词</span></div>
+      <div class="metric-item"><strong>768 维</strong><span>本地向量</span></div>
+      <div class="metric-item"><strong>本地化</strong><span>无需下载模型</span></div>
       <div class="metric-item"><strong>可引用</strong><span>答案溯源</span></div>
     </div>
   </section>
@@ -109,10 +109,10 @@ body{background:var(--bg);color:var(--text)}
       <span class="section-kicker">Product capabilities</span>
       <h2>功能拆解</h2>
       <ul class="features">
-        <li>统一接入 PDF、Word、TXT 与 Markdown 文档</li>
-        <li>向量检索与关键词召回组合定位相关段落</li>
+        <li>统一接入 PDF、TXT 与 Markdown 文档</li>
+        <li>通过中文字符向量检索定位相关段落</li>
         <li>回答附带原文来源，便于验证与纠错</li>
-        <li>保留多轮会话上下文，支持连续追问</li>
+        <li>文档未覆盖的问题明确提示未找到信息</li>
         <li>展示向量库、LLM 与文档索引运行状态</li>
       </ul>
     </div>
@@ -120,7 +120,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="section-kicker">Technical delivery</span>
       <h2>技术架构</h2>
       <div class="architecture-list">
-        <div class="architecture-item"><strong>检索层</strong><p>ONNX MiniLM-L6-v2 生成本地向量，ChromaDB 持久化存储。</p></div>
+        <div class="architecture-item"><strong>检索层</strong><p>本地中文字符向量完成索引，ChromaDB 持久化存储。</p></div>
         <div class="architecture-item"><strong>生成层</strong><p>DeepSeek 基于召回片段组织答案并输出引用信息。</p></div>
         <div class="architecture-item"><strong>应用层</strong><p>Flask 管理文档上传、分块、会话与检索状态。</p></div>
       </div>
