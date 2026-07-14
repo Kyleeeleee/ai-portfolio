@@ -7,27 +7,40 @@
 <style>
 :root {
   --bg:#0a0a12; --card-bg:#0f0f1f; --border:rgba(255,255,255,0.06);
-  --text:#e0e0f0; --dim:#7777a0; --radius:20px;
+  --text:#e0e0f0; --dim:#7777a0; --radius:8px; --nav-h:56px;
   --c1:#7c5cfc; --c2:#00e5a0; --c3:#ff6b9d; --c4:#54a0ff;
   --c5:#f59e0b; --c6:#a78bfa; --c7:#34d399; --c8:#f472b6;
   --c9:#60a5fa; --c10:#fbbf24; --c11:#818cf8; --c12:#2dd4bf;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
-.header{text-align:center;padding:4rem 2rem 2rem}
-.header .back{display:inline-block;margin-bottom:1rem;color:var(--dim);text-decoration:none;font-size:.85rem;transition:color .3s}
-.header .back:hover{color:var(--c1)}
-.header h1{font-size:2.6rem;font-weight:800;letter-spacing:-0.02em}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI","PingFang SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-top:var(--nav-h);line-height:1.5;-webkit-font-smoothing:antialiased}
+.site-nav{position:fixed;z-index:100;top:0;right:0;left:0;height:var(--nav-h);border-bottom:1px solid rgba(0,0,0,.08);background:rgba(251,251,253,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px)}
+.site-nav-inner{display:flex;align-items:center;justify-content:space-between;width:min(1120px,calc(100% - 32px));height:100%;margin:0 auto;gap:16px}
+.site-brand{color:#1d1d1f;font-size:16px;font-weight:650;white-space:nowrap;text-decoration:none}
+.site-nav-links{display:flex;align-items:center;gap:4px;overflow-x:auto}
+.site-nav-links a{padding:9px 13px;border-radius:999px;color:#6e6e73;font-size:14px;font-weight:500;line-height:1;white-space:nowrap;text-decoration:none;transition:background .2s,color .2s}
+.site-nav-links a:hover,.site-nav-links .is-active{background:rgba(0,0,0,.05);color:#1d1d1f}
+.site-nav-links .site-nav-cta{background:#0071e3;color:#fff}
+.site-nav-links .site-nav-cta:hover{background:#0077ed;color:#fff}
+.header{width:min(1120px,calc(100% - 48px));margin:0 auto;padding:4.5rem 0 2rem;text-align:left}
+.header h1{font-size:3.25rem;font-weight:760;letter-spacing:0;line-height:1.05}
 .header h1 span{background:linear-gradient(135deg,#c4b5fd,#7c5cfc,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.header p{color:var(--dim);margin-top:.8rem;font-size:1.05rem;max-width:600px;margin-left:auto;margin-right:auto}
+.header p{max-width:620px;margin-top:1rem;color:var(--dim);font-size:1.05rem;line-height:1.7}
 
-/* ── Bento Grid ── */
-.bento{max-width:1200px;margin:0 auto;padding:0 1.5rem 3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-@media(max-width:1024px){.bento{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:640px){.bento{grid-template-columns:1fr}}
+/* ── Horizontal project carousel ── */
+.portfolio-carousel{padding-bottom:3rem}
+.carousel-viewport{overflow-x:auto;overflow-y:hidden;padding:8px max(24px,calc((100vw - 1120px)/2)) 30px;scroll-padding-inline:max(24px,calc((100vw - 1120px)/2));scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain;cursor:grab;touch-action:pan-x pan-y}
+.carousel-viewport::-webkit-scrollbar{display:none}
+.carousel-viewport.is-dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.project-track{display:flex;width:max-content;gap:18px}
+.carousel-controls{display:flex;align-items:center;justify-content:flex-end;gap:10px;width:min(1120px,calc(100% - 48px));margin:0 auto}
+.carousel-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:50%;background:#e8e8ed;color:#1d1d1f;font:600 1.75rem/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;cursor:pointer;transition:background .2s,color .2s,opacity .2s}
+.carousel-button:hover{background:#dcdce1}
+.carousel-button:disabled{cursor:default;opacity:.38}
+.carousel-button:focus-visible,.carousel-viewport:focus-visible{outline:3px solid rgba(0,113,227,.3);outline-offset:3px}
 
 /* ── Card ── */
-.card{position:relative;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;text-decoration:none;color:var(--text);overflow:hidden;transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;min-height:240px}
+.card{position:relative;display:flex;flex:0 0 380px;flex-direction:column;height:560px;overflow:hidden;padding:1.75rem 1.75rem 0;border:1px solid var(--border);border-radius:var(--radius);background:var(--card-bg);color:var(--text);text-decoration:none;scroll-snap-align:start;-webkit-user-drag:none;transition:border-color .3s,box-shadow .3s}
 .card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.4);border-color:transparent}
 .card:hover .glow{opacity:1}
 .card:hover .arrow{transform:translateX(4px);opacity:1}
@@ -38,11 +51,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
 /* 图标区 */
 .icon-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
 .icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
-.arrow{font-size:1rem;opacity:0;transition:all 0.3s;color:var(--dim)}
+.arrow{font-size:1.05rem;opacity:.45;transition:transform .3s,opacity .3s;color:var(--dim)}
 
 /* 标题区 */
-.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.35rem;letter-spacing:-0.01em}
-.card .subtitle{font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:auto}
+.card h3{font-size:1.35rem;font-weight:700;margin-bottom:.5rem;letter-spacing:0;line-height:1.25}
+.card .subtitle{display:-webkit-box;min-height:48px;overflow:hidden;color:var(--dim);font-size:.88rem;line-height:1.65;-webkit-box-orient:vertical;-webkit-line-clamp:2}
 
 /* 数据亮点 */
 .stats{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem}
@@ -52,6 +65,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
 /* 底部标签 */
 .tags-row{margin-top:.75rem;display:flex;flex-wrap:wrap;gap:.35rem}
 .tag{font-size:.68rem;padding:3px 10px;border-radius:16px;font-weight:500}
+.card-media{flex-shrink:0;height:225px;margin:auto -1.75rem 0;overflow:hidden;border-top:1px solid rgba(0,0,0,.06);background:#f5f5f7}
+.card-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;-webkit-user-drag:none;transition:transform .45s ease}
+.card:hover .card-media img{transform:scale(1.015)}
 
 /* ── 项目卡片的独立配色 ── */
 .card{--accent:var(--c1);--accent-rgb:124,92,252}
@@ -97,7 +113,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-
   --border:rgba(0,0,0,0.08);
   --text:#1d1d1f;
   --dim:#6e6e73;
-  --radius:20px;
+  --radius:8px;
   --c1:#7c5cfc; --c2:#00a878; --c3:#e8438a; --c4:#147ce5;
   --c5:#b65a4a; --c6:#7e57c2; --c7:#008c95; --c8:#a53aa1;
   --c9:#147ce5; --c10:#b87500; --c11:#4f6f7f; --c12:#667a4a;
@@ -110,17 +126,41 @@ body{background:var(--bg);color:var(--text)}
 .card .stat{background:rgba(var(--accent-rgb),0.08);border-color:rgba(var(--accent-rgb),0.16)}
 .footer{border-top:1px solid rgba(0,0,0,.08)}
 
+@media(max-width:640px){
+  .site-nav-inner{width:calc(100% - 20px)}.site-brand{font-size:14px}.site-nav-links a{padding:9px 8px;font-size:13px}
+  .header{width:calc(100% - 36px);padding:3.5rem 0 1.6rem}.header h1{font-size:2.35rem}.header p{font-size:.95rem}
+  .carousel-viewport{padding-right:18px;padding-left:18px;scroll-padding-inline:18px}.project-track{gap:12px}
+  .card{flex-basis:calc(100vw - 54px);height:530px;padding:1.4rem 1.4rem 0}.card h3{font-size:1.2rem}.card-media{height:210px;margin-right:-1.4rem;margin-left:-1.4rem}
+  .carousel-controls{width:calc(100% - 36px)}
+}
+
+@media(prefers-reduced-motion:reduce){.card{animation:none}.card,.card-media img,.arrow,.carousel-button{transition:none}.carousel-viewport{scroll-behavior:auto}}
+
 </style>
 </head>
 <body>
 
+<nav class="site-nav" aria-label="主导航">
+  <div class="site-nav-inner">
+    <a class="site-brand" href="index.html">个人主页</a>
+    <div class="site-nav-links">
+      <a href="index.html#about">简介</a>
+      <a href="index.html#capability">能力</a>
+      <a href="index.html#experience">经历</a>
+      <a href="index.html#projects" class="is-active" aria-current="page">作品</a>
+      <a href="index.html#contact" class="site-nav-cta">联系</a>
+    </div>
+  </div>
+</nav>
+
 <div class="header">
-  <a href="index.html" class="back">← 返回简历</a>
   <h1><span>项目作品</span></h1>
-  <p>10个AI产品MVP · 完整产品文档 + 在线Demo</p>
+  <p>10 个可体验 AI 产品 Demo，覆盖内容生成、知识服务、智能 Agent、业务自动化与数据分析。</p>
 </div>
 
-<div class="bento">
+<section class="portfolio-carousel" aria-label="项目作品横向浏览">
+<div class="carousel-viewport" id="projectCarousel" tabindex="0">
+<div class="project-track">
 
   <!-- 01 -->
   <a href="project_01.html" class="card p01">
@@ -141,6 +181,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">Flask</span>
       <span class="tag">fal.ai</span>
     </div>
+    <div class="card-media"><img src="assets/generated/commerce-camping.jpg" alt="跨境电商 AI 商品图生成效果" loading="eager"></div>
   </a>
 
   <!-- 02 -->
@@ -162,6 +203,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">ChromaDB</span>
       <span class="tag">B/C双端</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-02-demo.png" alt="AI 知识库问答助手界面" loading="lazy"></div>
   </a>
 
   <!-- 03 -->
@@ -183,6 +225,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">Prompt Eng</span>
       <span class="tag">REST API</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-03-demo.png" alt="游戏 NPC 智能对话界面" loading="lazy"></div>
   </a>
 
   <!-- 04 -->
@@ -204,6 +247,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">自动化</span>
       <span class="tag">报告生成</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-04-demo.png" alt="AI 自动巡检报告界面" loading="lazy"></div>
   </a>
 
   <!-- 05 -->
@@ -225,6 +269,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">DeepSeek</span>
       <span class="tag">Flask</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-05-demo.png?v=20260714-question-order" alt="智能客服 Agent 界面" loading="lazy"></div>
   </a>
 
   <!-- 07 -->
@@ -246,6 +291,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">NLP</span>
       <span class="tag">Gradio</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-07-demo.png" alt="金融风控 AI 助手界面" loading="lazy"></div>
   </a>
 
   <!-- 08 -->
@@ -267,6 +313,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">LLM</span>
       <span class="tag">直播运营</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-08-demo.png" alt="直播 AI 助手界面" loading="lazy"></div>
   </a>
 
   <!-- 10 -->
@@ -288,6 +335,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">IoT</span>
       <span class="tag">自然语言</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-10-demo.png" alt="AIoT 智能家居控制台界面" loading="lazy"></div>
   </a>
 
   <!-- 11 -->
@@ -309,6 +357,7 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">知识工程</span>
       <span class="tag">ECharts</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-11-demo.png" alt="知识图谱可视化平台界面" loading="lazy"></div>
   </a>
 
   <!-- 12 -->
@@ -330,13 +379,87 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">工作流</span>
       <span class="tag">ToolCall</span>
     </div>
+    <div class="card-media"><img src="assets/generated/project-12-demo.png" alt="GenAI Agent 工作流平台界面" loading="lazy"></div>
   </a>
 
 </div>
+</div>
+<div class="carousel-controls" aria-label="项目浏览控制">
+  <button class="carousel-button" id="carouselPrev" type="button" aria-label="上一个项目">‹</button>
+  <button class="carousel-button" id="carouselNext" type="button" aria-label="下一个项目">›</button>
+</div>
+</section>
 
 <footer class="footer">
   AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a>
 </footer>
+
+<script>
+const carousel=document.getElementById('projectCarousel');
+const projectCards=[...carousel.querySelectorAll('.card')];
+const prevButton=document.getElementById('carouselPrev');
+const nextButton=document.getElementById('carouselNext');
+let scrollFrame=0;
+let dragStartX=0;
+let dragStartScroll=0;
+let dragDistance=0;
+let pressedCard=null;
+
+function cardStep(){
+  if(projectCards.length<2)return projectCards[0]?.getBoundingClientRect().width||0;
+  return projectCards[1].offsetLeft-projectCards[0].offsetLeft;
+}
+
+function updateCarousel(){
+  prevButton.disabled=carousel.scrollLeft<=2;
+  nextButton.disabled=carousel.scrollLeft+carousel.clientWidth>=carousel.scrollWidth-2;
+}
+
+function moveCarousel(direction){
+  carousel.scrollBy({left:direction*cardStep(),behavior:'smooth'});
+}
+
+prevButton.addEventListener('click',()=>moveCarousel(-1));
+nextButton.addEventListener('click',()=>moveCarousel(1));
+carousel.addEventListener('keydown',event=>{
+  if(event.key==='ArrowLeft'){event.preventDefault();moveCarousel(-1);}
+  if(event.key==='ArrowRight'){event.preventDefault();moveCarousel(1);}
+});
+carousel.addEventListener('scroll',()=>{
+  cancelAnimationFrame(scrollFrame);
+  scrollFrame=requestAnimationFrame(updateCarousel);
+},{passive:true});
+carousel.addEventListener('pointerdown',event=>{
+  if(event.pointerType!=='mouse'||event.button!==0)return;
+  dragStartX=event.clientX;
+  dragStartScroll=carousel.scrollLeft;
+  dragDistance=0;
+  pressedCard=event.target.closest('.card');
+  carousel.classList.add('is-dragging');
+  carousel.setPointerCapture(event.pointerId);
+});
+carousel.addEventListener('dragstart',event=>event.preventDefault());
+carousel.addEventListener('pointermove',event=>{
+  if(!carousel.classList.contains('is-dragging'))return;
+  dragDistance=event.clientX-dragStartX;
+  carousel.scrollLeft=dragStartScroll-dragDistance;
+});
+function stopDragging(event){
+  if(!carousel.classList.contains('is-dragging'))return;
+  const shouldOpen=event.type==='pointerup'&&Math.abs(dragDistance)<=6&&pressedCard;
+  carousel.classList.remove('is-dragging');
+  if(carousel.hasPointerCapture(event.pointerId))carousel.releasePointerCapture(event.pointerId);
+  if(shouldOpen)pressedCard.click();
+  pressedCard=null;
+}
+carousel.addEventListener('pointerup',stopDragging);
+carousel.addEventListener('pointercancel',stopDragging);
+carousel.addEventListener('click',event=>{
+  if(Math.abs(dragDistance)>6){event.preventDefault();event.stopPropagation();dragDistance=0;}
+},true);
+window.addEventListener('resize',updateCarousel);
+updateCarousel();
+</script>
 
 </body>
 </html>
