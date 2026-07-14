@@ -72,7 +72,7 @@ body{background:var(--bg);color:var(--text)}
 <header class="header">
   <div class="emoji">🛡️</div>
   <h1>金融风控 AI 助手</h1>
-  <div class="subtitle">信贷审批模拟 · 风控指标 · 财报风险分析</div>
+  <div class="subtitle">五维规则评分 · DeepSeek 风险解释 · 财报风险扫描</div>
   <div class="hero-actions">
     <a href="live_07.html" class="demo-button">在线体验 ↗</a>
     <span class="model-label">Gradio · 风控规则 · DeepSeek</span>
@@ -83,10 +83,10 @@ body{background:var(--bg);color:var(--text)}
   <section class="case-section" aria-labelledby="preview-title-07">
     <div class="section-heading">
       <div><span class="section-kicker">Product interface</span><h2 id="preview-title-07">界面预览</h2></div>
-      <p>客户信息、核心风险变量与审批操作采用双栏布局，便于同时查看输入条件和风控判断依据。</p>
+      <p>企业与融资信息、100 分制风险结果采用双栏布局，可同时查看输入条件、维度评分和模型解释。</p>
     </div>
     <figure class="interface-preview">
-      <img src="assets/generated/project-07-demo.png?v=20260714-copy-audit" alt="金融风控 AI 助手在线 Demo 界面" loading="eager">
+      <img src="assets/generated/project-07-demo.png?v=20260715-risk-v2" alt="金融风控 AI 助手在线 Demo 界面" loading="eager">
       <figcaption>信贷审批与风险分析工作台<span>最新在线 Demo 界面截图</span></figcaption>
     </figure>
   </section>
@@ -95,13 +95,13 @@ body{background:var(--bg);color:var(--text)}
     <div class="summary-copy">
       <span class="section-kicker">Project summary</span>
       <h2 id="summary-title-07">用标准化评分与大模型解释辅助信贷风险判断</h2>
-      <p>覆盖贷前准入、授信建议、指标监控和财报文本扫描，把结构化规则与自然语言解释结合起来，输出可复核的风险建议。</p>
+      <p>覆盖企业风险评估、模拟组合指标和财报文本扫描，把五维规则评分与大模型解释结合起来，输出可复核的风险建议。</p>
       <a href="live_07.html" class="summary-link">打开在线 Demo →</a>
     </div>
     <div class="metrics-inline" aria-label="核心指标">
-      <div class="metric-item"><strong>4 环节</strong><span>风控流程</span></div>
-      <div class="metric-item"><strong>实时</strong><span>指标查看</span></div>
-      <div class="metric-item"><strong>可解释</strong><span>审批建议</span></div>
+      <div class="metric-item"><strong>5 维</strong><span>100 分评分</span></div>
+      <div class="metric-item"><strong>3 场景</strong><span>一键体验</span></div>
+      <div class="metric-item"><strong>规则 + AI</strong><span>双层解释</span></div>
     </div>
   </section>
 
@@ -110,19 +110,19 @@ body{background:var(--bg);color:var(--text)}
       <span class="section-kicker">Product capabilities</span>
       <h2>功能拆解</h2>
       <ul class="features">
-        <li>解析收入、负债、征信与抵押等贷前信息</li>
-        <li>根据 DTI、收入与信用条件形成授信区间建议</li>
-        <li>集中查看不良率、拨备和资本等风控指标</li>
-        <li>扫描财报附注中的担保、诉讼与关联交易风险</li>
-        <li>保留规则命中项与解释信息，支持人工复核</li>
+        <li>采集营收、利润、现金流、偿债额、信用与抵押等信息</li>
+        <li>按盈利、偿债、稳定性、信用和担保五个维度形成 0–100 分评分</li>
+        <li>提供稳健、待复核与高风险三个虚构场景，一键填充体验</li>
+        <li>扫描财报中的风险信号，并展示触发判断的原文依据</li>
+        <li>由 DeepSeek 生成风险解释与补充材料建议，最终保留人工复核</li>
       </ul>
     </div>
     <div class="detail-panel">
       <span class="section-kicker">Technical delivery</span>
       <h2>技术架构</h2>
       <div class="architecture-list">
-        <div class="architecture-item"><strong>规则层</strong><p>Python 风控引擎执行可配置的评分卡与准入规则。</p></div>
-        <div class="architecture-item"><strong>分析层</strong><p>DeepSeek 提取财报风险点并生成解释性摘要。</p></div>
+        <div class="architecture-item"><strong>规则层</strong><p>Python 风控引擎执行五维评分、阈值判断与财报信号扫描。</p></div>
+        <div class="architecture-item"><strong>分析层</strong><p>DeepSeek 基于规则结果生成风险解释、核验材料与风控动作。</p></div>
         <div class="architecture-item"><strong>交互层</strong><p>Gradio 组织审批表单、指标看板和风险分析结果。</p></div>
       </div>
       <div class="tags"><span class="tag">风控规则</span><span class="tag">信贷审批</span><span class="tag">DeepSeek</span><span class="tag">Gradio</span><span class="tag">Python</span></div>
@@ -131,7 +131,7 @@ body{background:var(--bg);color:var(--text)}
 
   <section class="insight-band" aria-labelledby="insight-title-07">
     <div><span class="section-kicker">Product insight</span><h2 id="insight-title-07">产品洞察</h2></div>
-    <p>金融风控需要效率，也需要可解释和可追责。AI适合承担材料归纳、规则执行与风险提示，最终审批仍应保留人工授权、审计记录和模型监控。</p>
+    <p>金融风控需要效率，也需要可解释和可追责。AI 适合承担材料归纳、风险解释与提示，确定性评分由规则引擎执行，最终审批仍应保留人工授权、审计记录和模型监控。</p>
   </section>
   <p class="case-note">本 Demo 为风控流程模拟，不构成授信、投资或其他金融决策建议。</p>
 
