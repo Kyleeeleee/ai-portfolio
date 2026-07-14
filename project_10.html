@@ -60,9 +60,15 @@ body{background:var(--bg);color:var(--text)}
 <link rel="stylesheet" href="assets/project-case.css">
 </head>
 <body>
+<nav class="site-nav" aria-label="主导航">
+  <div class="site-nav-inner">
+    <a class="site-brand" href="index.html">个人主页</a>
+    <div class="site-nav-links">
+      <a href="index.html#about">简介</a><a href="index.html#capability">能力</a><a href="index.html#experience">经历</a><a href="index.html#projects" class="is-active" aria-current="page">作品</a><a href="index.html#contact" class="site-nav-cta">联系</a>
+    </div>
+  </div>
+</nav>
 <header class="header">
-  <a href="projects.html" class="back">← 返回项目列表</a>
-  <div class="hero-kicker">MVP 08 · AIoT</div>
   <div class="emoji">🏠</div>
   <h1>AIoT 智能家居控制台</h1>
   <div class="subtitle">设备状态 · 场景联动 · 能耗分析 · 自然语言控制</div>
