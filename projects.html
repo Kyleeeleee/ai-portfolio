@@ -34,7 +34,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .carousel-viewport.is-dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
 .project-track{display:flex;width:max-content;gap:18px}
 .carousel-controls{display:flex;align-items:center;justify-content:flex-end;gap:10px;width:min(1120px,calc(100% - 48px));margin:0 auto}
-.carousel-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:50%;background:#e8e8ed;color:#1d1d1f;font:600 1.75rem/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;cursor:pointer;transition:background .2s,color .2s,opacity .2s,transform .2s}
+.carousel-button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:#e8e8ed;color:#1d1d1f;font-size:0;cursor:pointer;transition:background .2s,color .2s,opacity .2s,transform .2s}
+.carousel-button::before{content:"";display:block;width:9px;height:9px;border-top:2px solid currentColor;border-right:2px solid currentColor}
+.carousel-button:first-child::before{transform:rotate(-135deg)}
+.carousel-button:last-child::before{transform:rotate(45deg)}
 .carousel-button:hover{background:#dcdce1}
 .carousel-button:disabled{cursor:default;opacity:.38}
 .carousel-button:focus-visible,.carousel-viewport:focus-visible{outline:3px solid rgba(0,113,227,.3);outline-offset:3px}
@@ -387,14 +390,14 @@ body{background:var(--bg);color:var(--text)}
       <span class="tag">工作流</span>
       <span class="tag">ToolCall</span>
     </div>
-    <div class="card-media"><img src="assets/generated/project-12-demo.png?v=20260714-theme-refresh" alt="GenAI Agent 工作流平台界面" loading="lazy"></div>
+    <div class="card-media"><img src="assets/generated/project-12-demo.png?v=20260714-node-aligned" alt="GenAI Agent 工作流平台界面" loading="lazy"></div>
   </a>
 
 </div>
 </div>
 <div class="carousel-controls" aria-label="项目浏览控制">
-  <button class="carousel-button" id="carouselPrev" type="button" aria-label="上一个项目">‹</button>
-  <button class="carousel-button" id="carouselNext" type="button" aria-label="下一个项目">›</button>
+  <button class="carousel-button" id="carouselPrev" type="button" aria-label="上一个项目"></button>
+  <button class="carousel-button" id="carouselNext" type="button" aria-label="下一个项目"></button>
 </div>
 </section>
 
