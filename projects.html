@@ -7,7 +7,7 @@
 <style>
 :root {
   --bg:#0a0a12; --card-bg:#0f0f1f; --border:rgba(255,255,255,0.06);
-  --text:#e0e0f0; --dim:#7777a0; --radius:8px; --nav-h:56px;
+  --text:#e0e0f0; --dim:#7777a0; --radius:22px; --nav-h:56px;
   --c1:#7c5cfc; --c2:#00e5a0; --c3:#ff6b9d; --c4:#54a0ff;
   --c5:#f59e0b; --c6:#a78bfa; --c7:#34d399; --c8:#f472b6;
   --c9:#60a5fa; --c10:#fbbf24; --c11:#818cf8; --c12:#2dd4bf;
@@ -29,19 +29,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 
 /* ── Horizontal project carousel ── */
 .portfolio-carousel{padding-bottom:3rem}
-.carousel-viewport{overflow-x:auto;overflow-y:hidden;padding:8px max(24px,calc((100vw - 1120px)/2)) 30px;scroll-padding-inline:max(24px,calc((100vw - 1120px)/2));scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain;cursor:grab;touch-action:pan-x pan-y}
+.carousel-viewport{overflow-x:auto;overflow-y:hidden;padding:18px max(24px,calc((100vw - 1120px)/2)) 34px;scroll-padding-inline:max(24px,calc((100vw - 1120px)/2));scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain;cursor:grab;touch-action:pan-x pan-y}
 .carousel-viewport::-webkit-scrollbar{display:none}
 .carousel-viewport.is-dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
 .project-track{display:flex;width:max-content;gap:18px}
 .carousel-controls{display:flex;align-items:center;justify-content:flex-end;gap:10px;width:min(1120px,calc(100% - 48px));margin:0 auto}
-.carousel-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:50%;background:#e8e8ed;color:#1d1d1f;font:600 1.75rem/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;cursor:pointer;transition:background .2s,color .2s,opacity .2s}
+.carousel-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:50%;background:#e8e8ed;color:#1d1d1f;font:600 1.75rem/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;cursor:pointer;transition:background .2s,color .2s,opacity .2s,transform .2s}
 .carousel-button:hover{background:#dcdce1}
 .carousel-button:disabled{cursor:default;opacity:.38}
 .carousel-button:focus-visible,.carousel-viewport:focus-visible{outline:3px solid rgba(0,113,227,.3);outline-offset:3px}
 
 /* ── Card ── */
-.card{position:relative;display:flex;flex:0 0 380px;flex-direction:column;height:560px;overflow:hidden;padding:1.75rem 1.75rem 0;border:1px solid var(--border);border-radius:var(--radius);background:var(--card-bg);color:var(--text);text-decoration:none;scroll-snap-align:start;-webkit-user-drag:none;transition:border-color .3s,box-shadow .3s}
-.card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.4);border-color:transparent}
+.card{position:relative;display:flex;flex:0 0 380px;flex-direction:column;height:560px;overflow:hidden;padding:1.75rem 1.75rem 0;border:1px solid var(--border);border-radius:var(--radius);background:var(--card-bg);color:var(--text);text-decoration:none;scroll-snap-align:start;-webkit-user-drag:none;transform:translateZ(0);transform-origin:center;backface-visibility:hidden;transition:transform .42s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.card:hover{border-color:transparent}
+.card:focus-visible{outline:3px solid rgba(var(--accent-rgb),.24);outline-offset:4px}
 .card:hover .glow{opacity:1}
 .card:hover .arrow{transform:translateX(4px);opacity:1}
 
@@ -67,7 +68,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .tag{font-size:.68rem;padding:3px 10px;border-radius:16px;font-weight:500}
 .card-media{flex-shrink:0;height:225px;margin:auto -1.75rem 0;overflow:hidden;border-top:1px solid rgba(0,0,0,.06);background:#f5f5f7}
 .card-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;-webkit-user-drag:none;transition:transform .45s ease}
-.card:hover .card-media img{transform:scale(1.015)}
 
 /* ── 项目卡片的独立配色 ── */
 .card{--accent:var(--c1);--accent-rgb:124,92,252}
@@ -113,7 +113,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   --border:rgba(0,0,0,0.08);
   --text:#1d1d1f;
   --dim:#6e6e73;
-  --radius:8px;
+  --radius:22px;
   --c1:#7c5cfc; --c2:#00a878; --c3:#e8438a; --c4:#147ce5;
   --c5:#b65a4a; --c6:#7e57c2; --c7:#008c95; --c8:#a53aa1;
   --c9:#147ce5; --c10:#b87500; --c11:#4f6f7f; --c12:#667a4a;
@@ -121,7 +121,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 body{background:var(--bg);color:var(--text)}
 .header h1 span{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .card{background:#fff;border-color:rgba(0,0,0,.08);box-shadow:0 1px 2px rgba(0,0,0,.03)}
-.card:hover{border-color:var(--accent) !important;box-shadow:0 18px 46px rgba(var(--accent-rgb),.13) !important;transform:none}
+.card:hover{border-color:var(--accent) !important;box-shadow:0 18px 46px rgba(var(--accent-rgb),.13) !important}
 .stat{background:#f5f5f7;border-color:rgba(0,0,0,.08)}
 .card .stat{background:rgba(var(--accent-rgb),0.08);border-color:rgba(var(--accent-rgb),0.16)}
 .footer{border-top:1px solid rgba(0,0,0,.08)}
@@ -132,6 +132,14 @@ body{background:var(--bg);color:var(--text)}
   .carousel-viewport{padding-right:18px;padding-left:18px;scroll-padding-inline:18px}.project-track{gap:12px}
   .card{flex-basis:calc(100vw - 54px);height:530px;padding:1.4rem 1.4rem 0}.card h3{font-size:1.2rem}.card-media{height:210px;margin-right:-1.4rem;margin-left:-1.4rem}
   .carousel-controls{width:calc(100% - 36px)}
+}
+
+@media(hover:hover) and (pointer:fine){
+  .card:hover{z-index:2;transform:translateY(-6px) scale(1.018) translateZ(0);box-shadow:0 24px 58px rgba(var(--accent-rgb),.17) !important}
+  .card:hover .card-media img{transform:scale(1.035)}
+  .carousel-viewport.is-dragging .card,.carousel-viewport.is-dragging .card-media img{transform:none !important}
+  .carousel-button:hover:not(:disabled){transform:scale(1.06)}
+  .carousel-button:active:not(:disabled){transform:scale(.96)}
 }
 
 @media(prefers-reduced-motion:reduce){.card{animation:none}.card,.card-media img,.arrow,.carousel-button{transition:none}.carousel-viewport{scroll-behavior:auto}}
