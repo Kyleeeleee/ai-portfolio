@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💬 智能客服Agent · 李林豪</title>
+<title>💬 智能客服 Agent · 李林豪</title>
 <style>
 :root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -58,6 +58,7 @@ body{background:var(--bg);color:var(--text)}
 
 </style>
 <link rel="stylesheet" href="assets/project-case.css">
+<link rel="stylesheet" href="assets/image-lightbox.css">
 </head>
 <body>
 <nav class="site-nav" aria-label="主导航">
@@ -70,7 +71,7 @@ body{background:var(--bg);color:var(--text)}
 </nav>
 <header class="header">
   <div class="emoji">💬</div>
-  <h1>智能客服Agent</h1>
+  <h1>智能客服 Agent</h1>
   <div class="subtitle">意图识别 · FAQ 检索 · Tool Calling · 智能转人工</div>
   <div class="hero-actions">
     <a href="live_05.html" class="demo-button">在线体验 ↗</a>
@@ -85,8 +86,8 @@ body{background:var(--bg);color:var(--text)}
       <p>问答、订单查询、投诉工单与人工升级在同一会话中完成，界面同步展示可直接体验的业务场景。</p>
     </div>
     <figure class="interface-preview">
-      <img src="assets/generated/project-05-demo.png?v=20260714-theme-refresh" alt="智能客服Agent在线 Demo 界面" loading="eager">
-      <figcaption>智能客服会话与工具工作台<span>当前在线 Demo 静态界面</span></figcaption>
+      <img src="assets/generated/project-05-demo.png?v=20260714-theme-refresh" alt="智能客服 Agent在线 Demo 界面" loading="eager">
+      <figcaption>智能客服会话与工具工作台<span>最新在线 Demo 界面截图</span></figcaption>
     </figure>
   </section>
 
@@ -99,7 +100,7 @@ body{background:var(--bg);color:var(--text)}
     </div>
     <div class="metrics-inline" aria-label="核心指标">
       <div class="metric-item"><strong>4 Tools</strong><span>业务工具</span></div>
-      <div class="metric-item"><strong>双路</strong><span>FAQ 召回</span></div>
+      <div class="metric-item"><strong>可检索</strong><span>FAQ 召回</span></div>
       <div class="metric-item"><strong>可升级</strong><span>转人工</span></div>
     </div>
   </section>
@@ -110,7 +111,7 @@ body{background:var(--bg);color:var(--text)}
       <h2>功能拆解</h2>
       <ul class="features">
         <li>识别 FAQ、订单、投诉与转人工等常见意图</li>
-        <li>语义匹配与关键词检索共同召回 FAQ</li>
+        <li>基于 TF-IDF 与规则关键词召回 FAQ</li>
         <li>调用订单查询、知识检索、建单和转人工工具</li>
         <li>复杂或高风险问题自动升级并保留会话摘要</li>
         <li>Session 级上下文维持多轮对话连贯性</li>
@@ -121,7 +122,7 @@ body{background:var(--bg);color:var(--text)}
       <h2>技术架构</h2>
       <div class="architecture-list">
         <div class="architecture-item"><strong>决策层</strong><p>DeepSeek 判断用户意图并选择需要调用的业务工具。</p></div>
-        <div class="architecture-item"><strong>检索层</strong><p>Sentence-Transformers 与 TF-IDF 组成双路 FAQ 召回。</p></div>
+        <div class="architecture-item"><strong>检索层</strong><p>TF-IDF 与规则关键词共同完成轻量 FAQ 召回。</p></div>
         <div class="architecture-item"><strong>会话层</strong><p>Flask 管理上下文、工具结果、工单与人工升级状态。</p></div>
       </div>
       <div class="tags"><span class="tag">Agent</span><span class="tag">Tool Calling</span><span class="tag">DeepSeek</span><span class="tag">TF-IDF</span><span class="tag">Flask</span></div>
@@ -141,6 +142,7 @@ body{background:var(--bg);color:var(--text)}
   </nav>
 </main>
 
-<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
+<footer class="footer">AI 产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
+<script src="assets/image-lightbox.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎬 直播AI助手 · 李林豪</title>
+<title>🎬 直播 AI 助手 · 李林豪</title>
 <style>
 :root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -58,6 +58,7 @@ body{background:var(--bg);color:var(--text)}
 
 </style>
 <link rel="stylesheet" href="assets/project-case.css">
+<link rel="stylesheet" href="assets/image-lightbox.css">
 </head>
 <body>
 <nav class="site-nav" aria-label="主导航">
@@ -70,11 +71,11 @@ body{background:var(--bg);color:var(--text)}
 </nav>
 <header class="header">
   <div class="emoji">🎬</div>
-  <h1>直播AI助手</h1>
-  <div class="subtitle">弹幕分析 · 智能话术 · 商品讲解 · 数据复盘</div>
+  <h1>直播 AI 助手</h1>
+  <div class="subtitle">商品事实配置 · 弹幕回复 · 直播脚本生成</div>
   <div class="hero-actions">
     <a href="live_08.html" class="demo-button">在线体验 ↗</a>
-    <span class="model-label">实时弹幕 · 话术生成 · 数据看板</span>
+    <span class="model-label">DeepSeek · 事实约束 · 安全回退</span>
   </div>
 </header>
 
@@ -82,25 +83,25 @@ body{background:var(--bg);color:var(--text)}
   <section class="case-section" aria-labelledby="preview-title-08">
     <div class="section-heading">
       <div><span class="section-kicker">Product interface</span><h2 id="preview-title-08">界面预览</h2></div>
-      <p>直播弹幕、AI 建议与输入区在同一操作台中呈现，帮助主播快速识别高价值问题并生成回应。</p>
+      <p>商品事实、模拟弹幕和 AI 回复集中在同一操作台中，帮助主播基于已确认信息生成回应与直播脚本。</p>
     </div>
     <figure class="interface-preview">
-      <img src="assets/generated/project-08-demo.png?v=20260714-theme-refresh" alt="直播AI助手在线 Demo 界面" loading="eager">
-      <figcaption>直播弹幕与 AI 话术工作台<span>当前在线 Demo 静态界面</span></figcaption>
+      <img src="assets/generated/project-08-demo.png?v=20260714-grounded" alt="直播 AI 助手在线 Demo 界面" loading="eager">
+      <figcaption>直播弹幕与 AI 话术工作台<span>最新在线 Demo 界面截图</span></figcaption>
     </figure>
   </section>
 
   <section class="case-section summary-panel" aria-labelledby="summary-title-08">
     <div class="summary-copy">
       <span class="section-kicker">Project summary</span>
-      <h2 id="summary-title-08">把弹幕感知、话术建议和直播复盘连成一条链路</h2>
-      <p>围绕直播前脚本、直播中弹幕处理与直播后复盘三个阶段，为主播提供话术辅助、商品讲解和数据分析。</p>
+      <h2 id="summary-title-08">让直播回复和脚本生成都基于可核验的商品事实</h2>
+      <p>主播先配置商品名称与已确认信息，系统再回答模拟弹幕或生成直播脚本；未配置的价格、功效、适用人群与服务承诺会触发明确提示或安全回退。</p>
       <a href="live_08.html" class="summary-link">打开在线 Demo →</a>
     </div>
     <div class="metrics-inline" aria-label="核心指标">
-      <div class="metric-item"><strong>4 环节</strong><span>业务链路</span></div>
-      <div class="metric-item"><strong>3 风格</strong><span>话术模式</span></div>
-      <div class="metric-item"><strong>实时</strong><span>弹幕看板</span></div>
+      <div class="metric-item"><strong>2 模式</strong><span>回复与脚本</span></div>
+      <div class="metric-item"><strong>事实约束</strong><span>商品上下文</span></div>
+      <div class="metric-item"><strong>可识别</strong><span>安全回退</span></div>
     </div>
   </section>
 
@@ -109,28 +110,28 @@ body{background:var(--bg);color:var(--text)}
       <span class="section-kicker">Product capabilities</span>
       <h2>功能拆解</h2>
       <ul class="features">
-        <li>对弹幕进行问答、情绪与刷屏等类型识别</li>
-        <li>结合商品信息生成答疑、氛围和促单话术</li>
-        <li>按开场、痛点、卖点与收尾组织商品讲解脚本</li>
-        <li>展示互动、转化和弹幕热词等关键数据</li>
-        <li>直播结束后输出问题复盘与优化建议</li>
+        <li>配置商品名称、平台与已确认事实</li>
+        <li>输入或模拟弹幕并生成简短回复</li>
+        <li>按开场、事实介绍、互动与收尾生成直播脚本</li>
+        <li>拦截未配置的价格、功效与适用人群承诺</li>
+        <li>在界面中区分 DeepSeek 回答与安全回退</li>
       </ul>
     </div>
     <div class="detail-panel">
       <span class="section-kicker">Technical delivery</span>
       <h2>技术架构</h2>
       <div class="architecture-list">
-        <div class="architecture-item"><strong>数据层</strong><p>模拟流式弹幕进入分类、优先级与热词分析模块。</p></div>
-        <div class="architecture-item"><strong>生成层</strong><p>DeepSeek 结合商品上下文生成话术与讲解脚本。</p></div>
-        <div class="architecture-item"><strong>展示层</strong><p>Flask + ECharts 呈现弹幕、建议与复盘指标。</p></div>
+        <div class="architecture-item"><strong>上下文层</strong><p>商品名称、平台和已确认事实组成可核验的生成上下文。</p></div>
+        <div class="architecture-item"><strong>生成层</strong><p>DeepSeek 在事实约束下生成弹幕回复与直播脚本。</p></div>
+        <div class="architecture-item"><strong>安全层</strong><p>规则拦截敏感承诺，并在异常或越界时返回可识别的安全结果。</p></div>
       </div>
-      <div class="tags"><span class="tag">DeepSeek</span><span class="tag">弹幕分析</span><span class="tag">话术生成</span><span class="tag">ECharts</span><span class="tag">Flask</span></div>
+      <div class="tags"><span class="tag">DeepSeek</span><span class="tag">商品事实</span><span class="tag">话术生成</span><span class="tag">安全回退</span><span class="tag">Flask</span></div>
     </div>
   </section>
 
   <section class="insight-band" aria-labelledby="insight-title-08">
     <div><span class="section-kicker">Product insight</span><h2 id="insight-title-08">产品洞察</h2></div>
-    <p>直播 AI 更适合作为主播的实时副驾驶，而不是自动替代主播。建议必须短、及时、可选择，并与直播后的数据复盘形成反馈闭环。</p>
+    <p>直播 AI 更适合作为主播的实时副驾驶，而不是自动替代主播。它首先需要尊重商品事实与营销边界，再追求回复速度和表达效果。</p>
   </section>
   <p class="case-note">本 Demo 使用模拟弹幕和商品数据，话术仅用于能力展示，不构成真实营销承诺。</p>
 
@@ -141,6 +142,7 @@ body{background:var(--bg);color:var(--text)}
   </nav>
 </main>
 
-<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
+<footer class="footer">AI 产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
+<script src="assets/image-lightbox.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧠 AI知识库问答助手 · 李林豪</title>
+<title>🧠 AI 知识库问答助手 · 李林豪</title>
 <style>
 :root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -58,6 +58,7 @@ body{background:var(--bg);color:var(--text)}
 
 </style>
 <link rel="stylesheet" href="assets/project-case.css">
+<link rel="stylesheet" href="assets/image-lightbox.css">
 </head>
 <body>
 <nav class="site-nav" aria-label="主导航">
@@ -70,7 +71,7 @@ body{background:var(--bg);color:var(--text)}
 </nav>
 <header class="header">
   <div class="emoji">🧠</div>
-  <h1>AI知识库问答助手</h1>
+  <h1>AI 知识库问答助手</h1>
   <div class="subtitle">RAG 检索增强生成 · ChromaDB 向量检索</div>
   <div class="hero-actions">
     <a href="live_02.html" class="demo-button">在线体验 ↗</a>
@@ -85,8 +86,8 @@ body{background:var(--bg);color:var(--text)}
       <p>上传、索引、问答和来源状态集中在同一工作界面，便于验证知识接入与回答溯源链路。</p>
     </div>
     <figure class="interface-preview">
-      <img class="preview-crop-bottom" src="assets/generated/project-02-demo.png?v=20260714-rag-fixed" alt="AI知识库问答助手在线 Demo 界面" loading="eager">
-      <figcaption>知识库上传与问答工作台<span>当前在线 Demo 静态界面</span></figcaption>
+      <img class="preview-crop-bottom" src="assets/generated/project-02-demo.png?v=20260714-kb-ui-fixed" alt="AI 知识库问答助手在线 Demo 界面" loading="eager">
+      <figcaption>知识库上传与问答工作台<span>最新在线 Demo 界面截图</span></figcaption>
     </figure>
   </section>
 
@@ -124,7 +125,7 @@ body{background:var(--bg);color:var(--text)}
         <div class="architecture-item"><strong>生成层</strong><p>DeepSeek 基于召回片段组织答案并输出引用信息。</p></div>
         <div class="architecture-item"><strong>应用层</strong><p>Flask 管理文档上传、分块、会话与检索状态。</p></div>
       </div>
-      <div class="tags"><span class="tag">RAG</span><span class="tag">ChromaDB</span><span class="tag">LangChain</span><span class="tag">DeepSeek</span><span class="tag">Flask</span></div>
+      <div class="tags"><span class="tag">RAG</span><span class="tag">ChromaDB</span><span class="tag">本地向量</span><span class="tag">DeepSeek</span><span class="tag">Flask</span></div>
     </div>
   </section>
 
@@ -132,7 +133,7 @@ body{background:var(--bg);color:var(--text)}
     <div><span class="section-kicker">Product insight</span><h2 id="insight-title-02">产品洞察</h2></div>
     <p>企业知识问答的关键不是单纯接入大模型，而是建立可靠的检索、引用和纠错机制。分块策略、召回质量与答案评估共同决定系统是否真正可用。</p>
   </section>
-  <p class="case-note">本 Demo 使用公开示例文档展示检索与问答能力，实际业务接入需配置权限与数据治理策略。</p>
+  <p class="case-note">本 Demo 使用明确标注的虚构产品手册展示检索与问答能力，实际业务接入需配置权限与数据治理策略。</p>
 
   <nav class="project-nav" aria-label="项目切换">
     <a href="project_01.html">← 上一个项目</a>
@@ -141,6 +142,7 @@ body{background:var(--bg);color:var(--text)}
   </nav>
 </main>
 
-<footer class="footer">AI产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
+<footer class="footer">AI 产品经理作品集 · 李林豪 · 2026年7月 · <a href="index.html">返回简历</a></footer>
+<script src="assets/image-lightbox.js"></script>
 </body>
 </html>
