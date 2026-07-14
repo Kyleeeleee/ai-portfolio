@@ -128,6 +128,10 @@ h1 .char{display:inline-block;opacity:0;animation:charIn .6s ease forwards}
 .kicker{color:var(--primary);font-size:14px;font-weight:700;margin-bottom:8px}
 h2{font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-0.01em;font-weight:790}
 .section-note{max-width:390px;color:var(--muted);font-size:16px;margin-top:4px}
+.section-summary{max-width:430px}
+.section-summary .section-note{max-width:none}
+.section-cta{display:inline-flex;margin-top:12px;color:#0071e3;font-size:15px;font-weight:700}
+.section-cta::after{content:' →'}
 
 /* About */
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
@@ -212,37 +216,19 @@ h2{font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-0.01em;font-w
 .link{margin-top:16px;color:var(--accent-color);font-size:14px;font-weight:700}
 .link::after{content:" →";font-weight:700}
 
-/* project card glow colors */
-.project:nth-child(1){--accent-color:#7c5cfc;--accent-rgb:124,92,252}
-.project:nth-child(1)::before{background:#7c5cfc}
-.project:nth-child(1):hover{border-color:#7c5cfc;box-shadow:0 20px 60px rgba(124,92,252,.15)}
-.project:nth-child(2){--accent-color:#00a878;--accent-rgb:0,168,120}
-.project:nth-child(2)::before{background:#00a878}
-.project:nth-child(2):hover{border-color:#00a878;box-shadow:0 20px 60px rgba(0,168,120,.12)}
-.project:nth-child(3){--accent-color:#e8438a;--accent-rgb:232,67,138}
-.project:nth-child(3)::before{background:#e8438a}
-.project:nth-child(3):hover{border-color:#e8438a;box-shadow:0 20px 60px rgba(232,67,138,.12)}
-.project:nth-child(4){--accent-color:#147ce5;--accent-rgb:20,124,229}
-.project:nth-child(4)::before{background:#147ce5}
-.project:nth-child(4):hover{border-color:#147ce5;box-shadow:0 20px 60px rgba(20,124,229,.12)}
-.project:nth-child(5){--accent-color:#b65a4a;--accent-rgb:182,90,74}
-.project:nth-child(5)::before{background:#b65a4a}
-.project:nth-child(5):hover{border-color:#b65a4a;box-shadow:0 20px 60px rgba(182,90,74,.12)}
-.project:nth-child(6){--accent-color:#008c95;--accent-rgb:0,140,149}
-.project:nth-child(6)::before{background:#008c95}
-.project:nth-child(6):hover{border-color:#008c95;box-shadow:0 20px 60px rgba(0,140,149,.12)}
-.project:nth-child(7){--accent-color:#a53aa1;--accent-rgb:165,58,161}
-.project:nth-child(7)::before{background:#a53aa1}
-.project:nth-child(7):hover{border-color:#a53aa1;box-shadow:0 20px 60px rgba(165,58,161,.12)}
-.project:nth-child(8){--accent-color:#b87500;--accent-rgb:184,117,0}
-.project:nth-child(8)::before{background:#b87500}
-.project:nth-child(8):hover{border-color:#b87500;box-shadow:0 20px 60px rgba(184,117,0,.12)}
-.project:nth-child(9){--accent-color:#4f6f7f;--accent-rgb:79,111,127}
-.project:nth-child(9)::before{background:#4f6f7f}
-.project:nth-child(9):hover{border-color:#4f6f7f;box-shadow:0 20px 60px rgba(79,111,127,.12)}
-.project:nth-child(10){--accent-color:#667a4a;--accent-rgb:102,122,74}
-.project:nth-child(10)::before{background:#667a4a}
-.project:nth-child(10):hover{border-color:#667a4a;box-shadow:0 20px 60px rgba(102,122,74,.12)}
+/* Selected project colors stay tied to each project when cards are reordered. */
+.project.p07{--accent-color:#008c95;--accent-rgb:0,140,149}
+.project.p07::before{background:#008c95}
+.project.p07:hover{border-color:#008c95;box-shadow:0 20px 60px rgba(0,140,149,.12)}
+.project.p11{--accent-color:#4f6f7f;--accent-rgb:79,111,127}
+.project.p11::before{background:#4f6f7f}
+.project.p11:hover{border-color:#4f6f7f;box-shadow:0 20px 60px rgba(79,111,127,.12)}
+.project.p01{--accent-color:#7c5cfc;--accent-rgb:124,92,252}
+.project.p01::before{background:#7c5cfc}
+.project.p01:hover{border-color:#7c5cfc;box-shadow:0 20px 60px rgba(124,92,252,.15)}
+.project.p12{--accent-color:#667a4a;--accent-rgb:102,122,74}
+.project.p12::before{background:#667a4a}
+.project.p12:hover{border-color:#667a4a;box-shadow:0 20px 60px rgba(102,122,74,.12)}
 
 /* Fade-in animation */
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -373,7 +359,7 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
       <p class="hero-copy">从金融到 AI，一直在跨界探索。<br>持续用 AI 将业务想法转化为可体验、可验证的产品原型——<br>从 Agent 到 RAG，从 AIGC 到自动化，不断探索技术落地的边界。</p>
       <div class="actions">
         <a class="button primary" href="#projects">查看 Demo</a>
-        <a class="button secondary" href="projects.html">打开作品集</a>
+        <a class="button secondary" href="projects.html">查看完整作品集</a>
       </div>
       <div class="stats-bar">
         <div class="stat-item"><strong>10</strong><span>AI 产品 MVP</span></div>
@@ -478,22 +464,19 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
     <div class="section-inner">
       <div class="section-head">
         <div>
-          <div class="kicker">AI Demos</div>
-          <h2>10 个可体验 Demo</h2>
+          <div class="kicker">Selected Work</div>
+          <h2>精选项目</h2>
         </div>
-        <p class="section-note">每个 Demo 对应一个明确业务场景，保留完整详情页，可从网页直接进入体验。</p>
+        <div class="section-summary">
+          <p class="section-note">4 个代表项目，呈现金融业务理解、知识结构化、AI 视觉生成与 Agent 工作流设计。</p>
+          <a class="section-cta" href="projects.html">查看完整作品集（10 个项目）</a>
+        </div>
       </div>
       <div class="project-grid">
-        <a class="project" href="project_01.html"><div class="project-body"><div class="project-index">01 · AIGC</div><h3>跨境电商 AI 商品图</h3><p>输入产品描述后生成5类电商上架素材图，用于快速验证不同 SKU 的素材方向。</p><div class="tags"><span class="tag">Flux Pro</span><span class="tag">Flask</span><span class="tag">fal.ai</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_02.html"><div class="project-body"><div class="project-index">02 · RAG</div><h3>AI 知识库问答助手</h3><p>上传文档自动解析、向量索引，支持自然语言问答与来源引用，B端+C端双模式。</p><div class="tags"><span class="tag">RAG</span><span class="tag">DeepSeek</span><span class="tag">ChromaDB</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_03.html"><div class="project-body"><div class="project-index">03 · LLM</div><h3>游戏 NPC 智能对话</h3><p>LLM 驱动 3 个 NPC 角色，上下文记忆+情感系统+JSON API，即插即用。</p><div class="tags"><span class="tag">LLM</span><span class="tag">Prompt</span><span class="tag">API</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_04.html"><div class="project-body"><div class="project-index">04 · Automation</div><h3>AI 自动巡检报告</h3><p>零售、餐饮与物业 SOP 模板，支持 AI 评分、整改建议和 PDF 报告。</p><div class="tags"><span class="tag">SOP</span><span class="tag">ReportLab</span><span class="tag">Python</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_05.html"><div class="project-body"><div class="project-index">05 · Agent</div><h3>智能客服 Agent</h3><p>意图识别→FAQ检索→工单创建→转人工+情感分析，完整客服工作流。</p><div class="tags"><span class="tag">Agent</span><span class="tag">ToolCall</span><span class="tag">Flask</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_07.html"><div class="project-body"><div class="project-index">06 · FinTech</div><h3>金融风控 AI 助手</h3><p>整合贷前审核、指标查看与财报扫描，输出可解释、可复核的风险建议。</p><div class="tags"><span class="tag">风控</span><span class="tag">信贷</span><span class="tag">NLP</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_08.html"><div class="project-body"><div class="project-index">07 · Live</div><h3>直播 AI 助手</h3><p>整合实时弹幕分析、话术建议、商品讲解和数据复盘，覆盖直播运营关键环节。</p><div class="tags"><span class="tag">直播</span><span class="tag">NLP</span><span class="tag">实时</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_10.html"><div class="project-body"><div class="project-index">08 · IoT</div><h3>AIoT 智能家居</h3><p>统一管理全屋设备状态，支持场景联动、能耗分析与自然语言控制。</p><div class="tags"><span class="tag">IoT</span><span class="tag">MQTT</span><span class="tag">状态同步</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_11.html"><div class="project-body"><div class="project-index">09 · Graph</div><h3>知识图谱可视化</h3><p>从文本抽取实体关系，支持图谱交互、关系查看与路径推理。</p><div class="tags"><span class="tag">知识图谱</span><span class="tag">关系推理</span><span class="tag">可视化</span></div><span class="link">查看详情</span></div></a>
-        <a class="project" href="project_12.html"><div class="project-body"><div class="project-index">10 · Agent</div><h3>GenAI Agent 平台</h3><p>通过自然语言生成可编辑工作流，支持拖拽编排、运行与导出。</p><div class="tags"><span class="tag">Agent Flow</span><span class="tag">Workflow</span><span class="tag">Tool Calling</span></div><span class="link">查看详情</span></div></a>
+        <a class="project p07" href="project_07.html"><div class="project-body"><div class="project-index">FinTech · 风险决策</div><h3>金融风控 AI 助手</h3><p>整合贷前审核、指标查看与财报扫描，输出可解释、可复核的风险建议。</p><div class="tags"><span class="tag">风控</span><span class="tag">信贷</span><span class="tag">NLP</span></div><span class="link">查看详情</span></div></a>
+        <a class="project p11" href="project_11.html"><div class="project-body"><div class="project-index">Knowledge Graph · 知识结构化</div><h3>知识图谱可视化</h3><p>从文本抽取实体关系，支持图谱交互、关系查看与路径推理。</p><div class="tags"><span class="tag">知识图谱</span><span class="tag">关系推理</span><span class="tag">可视化</span></div><span class="link">查看详情</span></div></a>
+        <a class="project p01" href="project_01.html"><div class="project-body"><div class="project-index">AIGC · 视觉生成</div><h3>跨境电商 AI 商品图生成器</h3><p>输入产品描述后生成 5 类电商上架素材图，用于快速验证不同 SKU 的素材方向。</p><div class="tags"><span class="tag">Flux Pro</span><span class="tag">Flask</span><span class="tag">fal.ai</span></div><span class="link">查看详情</span></div></a>
+        <a class="project p12" href="project_12.html"><div class="project-body"><div class="project-index">Agent · 工作流编排</div><h3>GenAI Agent 平台</h3><p>通过自然语言生成可编辑工作流，支持拖拽编排、运行与导出。</p><div class="tags"><span class="tag">Agent Flow</span><span class="tag">Workflow</span><span class="tag">Tool Calling</span></div><span class="link">查看详情</span></div></a>
       </div>
     </div>
   </section>
