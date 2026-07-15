@@ -157,10 +157,10 @@ body{background:var(--bg);color:var(--text)}
 <div class="header">
   <div class="emoji">🛍️</div>
   <h1>跨境电商 AI 商品图生成器</h1>
-  <div class="subtitle">AI 生成电商场景展示图 · fal.ai Flux Pro</div>
+  <div class="subtitle">参考图驱动的商品视觉生成 · fal.ai FLUX.1 Kontext</div>
   <div class="hero-actions">
     <a href="live_01.html" class="demo-button">在线体验 ↗</a>
-    <span class="model-label">Flux Pro v1.1 · 5 类标准素材</span>
+    <span class="model-label">Kontext + Flux Pro · 5 类标准素材</span>
   </div>
 </div>
 
@@ -171,11 +171,11 @@ body{background:var(--bg);color:var(--text)}
         <span class="section-kicker">Product interface</span>
         <h2 id="interface-title-01">界面预览</h2>
       </div>
-      <p>商品描述、素材类型与场景选择集中在同一操作界面，支持单张生成与批量任务。</p>
+      <p>参考图、商品属性与素材类型集中在同一工作台，支持单张生成、批量进度和结果下载。</p>
     </div>
     <figure class="interface-preview">
-      <img src="assets/generated/project-01-demo.png?v=20260714-theme-refresh" alt="跨境电商 AI 商品图生成器在线 Demo 界面" loading="eager">
-      <figcaption>当前在线 Demo <span>商品描述 · 场景选择 · 批量生成</span></figcaption>
+      <img src="assets/generated/project-01-demo.png?v=20260715-reference-v2" alt="跨境电商 AI 商品图生成器在线 Demo 界面" loading="eager">
+      <figcaption>当前在线 Demo <span>参考图上传 · 属性约束 · 五类素材</span></figcaption>
     </figure>
   </section>
 
@@ -207,13 +207,13 @@ body{background:var(--bg);color:var(--text)}
     <div class="summary-copy">
       <span class="section-kicker">Project summary</span>
       <h2 id="summary-title">让商品素材验证从拍摄排期推进到即时生成</h2>
-      <p>输入产品描述并选择场景，即可生成白底图、场景图、细节图、尺寸图与模特图，用更低的试错成本验证不同 SKU 的素材方向。</p>
+      <p>上传商品参考图并补充颜色、材质、尺寸与保留特征，生成白底主图、场景图、细节图、尺寸图与使用情境，用于快速验证不同 SKU 的视觉方向。</p>
       <a href="live_01.html" class="summary-link">打开在线 Demo →</a>
     </div>
     <div class="metrics-inline" aria-label="核心指标">
       <div class="metric-item"><strong>按量计费</strong><span>API 调用</span></div>
       <div class="metric-item"><strong>5 类</strong><span>标准素材</span></div>
-      <div class="metric-item"><strong>1024×1360</strong><span>高清输出</span></div>
+      <div class="metric-item"><strong>4:5</strong><span>电商比例</span></div>
     </div>
   </section>
 
@@ -222,23 +222,23 @@ body{background:var(--bg);color:var(--text)}
       <span class="section-kicker">Product capabilities</span>
       <h2>功能拆解</h2>
       <ul class="features">
-        <li>支持中文与英文产品描述输入，提取商品卖点关键词</li>
-        <li>覆盖白底、场景、细节、尺寸与模特五类电商素材</li>
-        <li>按商品类别匹配 Prompt 模板与生成参数</li>
-        <li>支持批量任务，单次最多生成 20 张图片</li>
-        <li>提供实时预览与高清原图下载</li>
+        <li>支持上传商品参考图，优先保留颜色、材质、造型与标识位置</li>
+        <li>通过商品类别、真实尺寸、卖点与保留特征约束生成结果</li>
+        <li>覆盖白底、场景、细节、尺寸与使用情境五类电商素材</li>
+        <li>尺寸图由程序读取真实参数并绘制标线，避免 AI 生成错误数字</li>
+        <li>批量任务提供逐项进度、单图重试、单图下载与打包下载</li>
       </ul>
     </div>
     <div class="detail-panel">
       <span class="section-kicker">Technical delivery</span>
       <h2>技术架构</h2>
       <div class="architecture-list">
-        <div class="architecture-item"><strong>模型服务</strong><p>通过 fal.ai API 调用 Flux Pro v1.1。</p></div>
-        <div class="architecture-item"><strong>应用服务</strong><p>Python + Flask 处理任务、参数与结果返回。</p></div>
-        <div class="architecture-item"><strong>交互层</strong><p>原生 JavaScript 完成场景选择、批量任务与预览。</p></div>
+        <div class="architecture-item"><strong>模型服务</strong><p>参考图模式调用 FLUX.1 Kontext，概念生成模式调用 Flux Pro。</p></div>
+        <div class="architecture-item"><strong>应用服务</strong><p>Python + Flask 处理图片校验、任务调度、尺寸渲染与结果归档。</p></div>
+        <div class="architecture-item"><strong>交互层</strong><p>原生 JavaScript 完成结构化输入、批量进度、重试、预览与下载。</p></div>
       </div>
       <div class="tags">
-        <span class="tag">Flux Pro</span><span class="tag">fal.ai API</span><span class="tag">Flask</span><span class="tag">Python</span><span class="tag">AIGC</span>
+        <span class="tag">FLUX.1 Kontext</span><span class="tag">fal.ai API</span><span class="tag">Flask</span><span class="tag">Pillow</span><span class="tag">AIGC</span>
       </div>
     </div>
   </section>
