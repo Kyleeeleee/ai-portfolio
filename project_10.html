@@ -72,10 +72,10 @@ body{background:var(--bg);color:var(--text)}
 <header class="header">
   <div class="emoji">🏠</div>
   <h1>AIoT 智能家居控制台</h1>
-  <div class="subtitle">设备状态 · 场景联动 · 能耗分析 · 自然语言控制</div>
+  <div class="subtitle">设备状态 · 参数控制 · 场景联动 · 自然语言执行</div>
   <div class="hero-actions">
     <a href="live_10.html" class="demo-button">在线体验 ↗</a>
-    <span class="model-label">设备同步 · 场景规则 · 自然语言控制</span>
+    <span class="model-label">DeepSeek · 状态引擎 · 场景规则</span>
   </div>
 </header>
 
@@ -86,7 +86,7 @@ body{background:var(--bg);color:var(--text)}
       <p>全屋设备卡片与自然语言控制面板并列展示，用户可以直接观察指令执行后的设备状态变化。</p>
     </div>
     <figure class="interface-preview">
-      <img src="assets/generated/project-10-demo.png?v=20260714-theme-refresh" alt="AIoT 智能家居控制台在线 Demo 界面" loading="eager">
+      <img src="assets/generated/project-10-demo.png?v=20260715-state-v2" alt="AIoT 智能家居控制台在线 Demo 界面" loading="eager">
       <figcaption>全屋设备与自然语言控制台<span>最新在线 Demo 界面截图</span></figcaption>
     </figure>
   </section>
@@ -95,13 +95,13 @@ body{background:var(--bg);color:var(--text)}
     <div class="summary-copy">
       <span class="section-kicker">Project summary</span>
       <h2 id="summary-title-10">让全屋设备状态与自然语言控制保持在同一界面</h2>
-      <p>把灯光、空调、窗帘、电视和清洁设备汇聚到统一控制台，并通过场景规则与自然语言指令完成批量控制和状态同步。</p>
+      <p>把灯光、空调、窗帘、电视和清洁设备汇聚到统一控制台，通过手动控制、场景规则与自然语言指令共享同一份设备状态。</p>
       <a href="live_10.html" class="summary-link">打开在线 Demo →</a>
     </div>
     <div class="metrics-inline" aria-label="核心指标">
-      <div class="metric-item"><strong>10 类</strong><span>设备控制</span></div>
-      <div class="metric-item"><strong>5 场景</strong><span>联动模式</span></div>
-      <div class="metric-item"><strong>9 区域</strong><span>全屋视图</span></div>
+      <div class="metric-item"><strong>9 台</strong><span>模拟设备</span></div>
+      <div class="metric-item"><strong>4 场景</strong><span>联动模式</span></div>
+      <div class="metric-item"><strong>3 入口</strong><span>统一状态</span></div>
     </div>
   </section>
 
@@ -110,22 +110,22 @@ body{background:var(--bg);color:var(--text)}
       <span class="section-kicker">Product capabilities</span>
       <h2>功能拆解</h2>
       <ul class="features">
-        <li>统一展示灯光、空调、门锁、窗帘与清洁设备状态</li>
-        <li>支持回家、离家、观影、睡眠与起床等预设场景</li>
-        <li>自然语言指令解析为明确的设备与目标状态</li>
-        <li>设备卡片与控制结果保持同步更新</li>
-        <li>结合历史使用模式提供能耗趋势与节能建议</li>
+        <li>统一展示灯光、空调、窗帘、影音与清洁设备状态</li>
+        <li>支持回家、离家、观影与睡眠四类预设场景</li>
+        <li>通过开关与滑杆直接调整设备状态、亮度和温度</li>
+        <li>DeepSeek 把自然语言解析为明确、可校验的设备动作</li>
+        <li>手动控制、场景执行和自然语言共用同一状态引擎</li>
       </ul>
     </div>
     <div class="detail-panel">
       <span class="section-kicker">Technical delivery</span>
       <h2>技术架构</h2>
       <div class="architecture-list">
-        <div class="architecture-item"><strong>设备层</strong><p>统一设备事件模型描述模拟状态与控制指令。</p></div>
-        <div class="architecture-item"><strong>规则层</strong><p>场景规则把环境条件、时间和设备动作组合起来。</p></div>
-        <div class="architecture-item"><strong>交互层</strong><p>Flask 页面同步渲染设备状态、自然语言结果和能耗信息。</p></div>
+        <div class="architecture-item"><strong>设备层</strong><p>统一状态模型描述开关、亮度、温度、开合与运行状态。</p></div>
+        <div class="architecture-item"><strong>解析层</strong><p>高频指令由规则快速处理，复杂表达交给 DeepSeek 结构化解析。</p></div>
+        <div class="architecture-item"><strong>同步层</strong><p>Flask 状态引擎执行动作并向设备卡片返回同一份最新状态。</p></div>
       </div>
-      <div class="tags"><span class="tag">AIoT</span><span class="tag">设备事件</span><span class="tag">规则引擎</span><span class="tag">状态同步</span><span class="tag">Flask</span></div>
+      <div class="tags"><span class="tag">DeepSeek</span><span class="tag">AIoT</span><span class="tag">状态引擎</span><span class="tag">场景规则</span><span class="tag">Flask</span></div>
     </div>
   </section>
 
