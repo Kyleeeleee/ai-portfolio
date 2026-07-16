@@ -606,9 +606,16 @@
   function updateInternalLinks(lang) {
     document.querySelectorAll("a[href]").forEach((anchor) => {
       const raw = anchor.getAttribute("href");
-      if (!raw || /^(mailto:|tel:|javascript:|http:\/\/159\.75\.118\.205)/.test(raw)) return;
+      if (!raw || /^(mailto:|tel:|javascript:)/.test(raw)) return;
       try {
         const url = new URL(raw, window.location.href);
+        const isLiveDemo = url.hostname === "159.75.118.205";
+        if (isLiveDemo) {
+          if (lang === "en") url.searchParams.set("lang", "en");
+          else url.searchParams.delete("lang");
+          anchor.setAttribute("href", url.toString());
+          return;
+        }
         if (!url.pathname.endsWith(".html") && !raw.startsWith("#")) return;
         if (lang === "en") url.searchParams.set("lang", "en");
         else url.searchParams.delete("lang");
