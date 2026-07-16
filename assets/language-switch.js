@@ -562,6 +562,7 @@
   );
   const textNodes = [];
   const attributeNodes = [];
+  const previewImages = [];
   let originalTitle = document.title;
 
   function rememberContent() {
@@ -585,6 +586,12 @@
           attributeNodes.push({ element, name, zh: element.getAttribute(name) });
         }
       });
+    });
+    document.querySelectorAll("img[src]").forEach((image) => {
+      const src = image.getAttribute("src");
+      if (/assets\/generated\/project-(01|02|03|04|05|07|08|10|11|12)-demo\.png(?:\?|$)/.test(src)) {
+        previewImages.push({ image, zh: src, en: src.replace("-demo.png", "-demo-en.png") });
+      }
     });
   }
 
@@ -617,6 +624,9 @@
     });
     attributeNodes.forEach(({ element, name, zh }) => {
       element.setAttribute(name, lang === "en" ? translatedValue(zh, "en") : zh);
+    });
+    previewImages.forEach(({ image, zh, en }) => {
+      image.setAttribute("src", lang === "en" ? en : zh);
     });
     document.title = lang === "en" ? translatedValue(originalTitle, "en") : originalTitle;
     const heroName = document.querySelector("h1 .gradient");
