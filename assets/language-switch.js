@@ -599,7 +599,7 @@
     });
     document.querySelectorAll("img[src]").forEach((image) => {
       const src = image.getAttribute("src");
-      if (/assets\/generated\/project-(01|02|03|04|05|07|08|10|11|12)-demo\.png(?:\?|$)/.test(src)) {
+      if (/assets\/generated\/project-(01|02|03|04|05|07|08|10|11|12|13)-demo\.png(?:\?|$)/.test(src)) {
         previewImages.push({ image, zh: src, en: src.replace("-demo.png", "-demo-en.png") });
       }
     });
