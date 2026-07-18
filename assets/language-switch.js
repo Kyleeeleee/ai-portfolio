@@ -141,6 +141,7 @@
     "在线 Demo": "Live demos",
     "重点方向": "Focus areas",
     "AI 产品原型": "AI product prototypes",
+    "产品原型": "product prototypes",
     "横向作品浏览说明": "Horizontal portfolio guide",
     "拖动浏览 Demo": "Drag to browse demos",
     "左右拖动卡片，或使用右侧按钮逐个查看。": "Drag the cards left or right, or use the buttons to move through them.",
@@ -167,6 +168,8 @@
     "文档解析": "Document parsing",
     "向量检索": "Vector retrieval",
     "引用回答": "Cited answer",
+    "引用": "Citation",
+    "回答": "answer",
     "游戏 AI": "Game AI",
     "角色状态": "Character state",
     "对话记忆": "Dialogue memory",
@@ -221,6 +224,7 @@
     "AI 自动巡检报告": "AI Inspection Report System",
     "3 类行业 SOP 模板 → AI 评估 → 整改建议与 PDF 报告": "Three industry SOPs → AI evaluation → remediation plan and PDF report",
     "行业SOP": " industry SOPs",
+    "行业 SOP": "industry SOPs",
     "评估": " evaluation",
     "报告": " report",
     "SOP引擎": "SOP engine",
@@ -232,6 +236,7 @@
     "转": "Human",
     "人工": " handoff",
     "五维规则评分 + DeepSeek 风险解释 + 财报原文扫描": "Five-dimension scoring + DeepSeek explanations + source-text risk scan",
+    "五维规则评分 + 大模型风险解释 + 财报原文扫描": "Five-dimension rule scoring + LLM risk explanation + source-text scanning",
     "5维": "5D",
     "评分": " scoring",
     "场景": " scenarios",
@@ -280,6 +285,8 @@
     "界面预览": "Interface preview",
     "当前在线 Demo": "Current live demo",
     "最新在线 Demo 界面截图": "Latest live demo screenshot",
+    "界面截图放大预览": "Enlarged interface screenshot preview",
+    "关闭预览": "Close preview",
     "生成效果预览": "Generated output preview",
     "项目概览": "Project overview",
     "打开在线 Demo →": "Open live demo →",
@@ -594,14 +601,29 @@
     ,"知识图谱可视化平台 · 在线 Demo": "Knowledge Graph Platform · Live Demo"
     ,"GenAI Agent 工作流平台 · 在线 Demo": "GenAI Agent Workflow Platform · Live Demo"
     ,"AI 前台增长与机会追回系统 · 在线 Demo": "AI Receptionist Growth & Recovery System · Live Demo"
+    ,"AI 前台增长与机会追回系统 · 李林豪": "AI Receptionist Growth & Recovery System · Linhao Li"
+    ,"AI 前台增长与机会追回系统 Demo 界面": "AI Receptionist Growth & Recovery System demo interface"
     ,"已接入后端大模型代理": "Backend LLM proxy connected"
     ,"Demo 已部署在云端服务器，包含通话分析、机会追回、能力路线图和真实大模型增强模块。为避免浏览器安全策略拦截 HTTP 接口，请在新窗口打开体验。": "The demo is deployed on a cloud server and includes call analysis, opportunity recovery, a capability roadmap, and a live LLM enhancement module. Open it in a new window to avoid browser security restrictions around HTTP APIs."
     ,"AI 前台场景 · 产品分析 Demo": "AI receptionist scenario · Product analysis demo"
+    ,"通话意图到业务结果 · 机会追回队列 · 安全试运行 · 云通信平台适配": "Call intent to business outcomes · Recovery queue · Safe rollout · Cloud-communications fit"
+    ,"围绕 AI 前台的未接通、未解决、低转化等业务问题，把通话分析、机会追回和安全试运行放进一个产品闭环。": "The concept turns missed calls, unresolved issues, and low-conversion moments into one product loop across call analytics, opportunity recovery, and safe rollout."
+    ,"AI 前台增长与追回工作台": "AI Receptionist Growth & Recovery Workspace"
+    ,"在线 Demo 界面截图": "Live demo interface screenshot"
     ,"从“统计接待表现”推进到“修复业务损失”": "From measuring reception performance to recovering business loss"
     ,"Demo 假设 AI 前台产品已有通话量、resolved/unresolved、FAQ gap 等基础分析，进一步把 unanswered intent、CRM 价值、回拨优先级和 skill roadmap 串起来，帮助 SMB 客户找回线索与预约。": "The demo assumes an AI receptionist product already has basic analytics such as call volume, resolved/unresolved status, and FAQ gaps. It then connects unanswered intent, CRM value, callback priority, and a skill roadmap to help SMBs recover leads and bookings."
     ,"把 AI 前台的意图识别结果映射到 booked、callback、handoff、lost lead 等业务结果": "Map AI receptionist intent recognition to business outcomes such as booked, callback, handoff, and lost lead."
+    ,"产品工作流": "Product workflow"
+    ,"结果评估": "Outcome evaluation"
+    ,"基于潜在收入、紧急程度、失败原因生成 opportunity recovery queue": "Generate an opportunity recovery queue from potential revenue, urgency, and failure reason."
+    ,"将 unanswered intent 聚合为 AI skill backlog，辅助确定 roadmap 优先级": "Aggregate unanswered intents into an AI skill backlog to support roadmap prioritization."
     ,"新增大模型增强模块：通过后端代理调用大模型，将通话转写转成结构化追回建议": "Adds an LLM enhancement module: a backend proxy converts call transcripts into structured recovery recommendations."
+    ,"提供安全试运行视图，先在低风险流量中验证新 skill 的准确率和升级策略": "Provide a safe-rollout view to test new skill accuracy and escalation policies on low-risk traffic first."
+    ,"展示企业通信、客服流程、CRM 与 AI 前台的平台协同价值": "Show the platform value created by connecting enterprise communications, service workflows, CRM, and AI receptionist capabilities."
     ,"为什么适合企业通信平台": "Why it fits enterprise communications platforms"
+    ,"不重复基础分析": "Beyond basic analytics"
+    ,"贴合平台业务": "Aligned with platform workflows"
+    ,"面向 SMB 增长": "Built for SMB growth"
     ,"行业里的 AI 前台产品已能展示通话趋势、 unresolved 问题和 FAQ gap，本方案重点补上业务影响和修复动作。": "AI receptionist products in the market can already show call trends, unresolved issues, and FAQ gaps. This concept adds business impact and remediation actions."
     ,"方案不是做人力接线服务，而是让 AI 前台与电话、短信、CRM、Contact Center 形成更强闭环。": "The concept is not a human answering service; it connects the AI receptionist with calls, messaging, CRM, and contact-center workflows."
     ,"把漏接、错答和未跟进转化成可追回列表，让客户更容易看到 AI 前台的 ROI。": "Turn missed calls, wrong answers, and missing follow-up into a recovery queue so customers can see AI receptionist ROI more clearly."
@@ -680,7 +702,19 @@
     const trimmed = value.trim();
     const table = lang === "en" ? translations : reverseTranslations;
     const translated = table[trimmed];
-    if (!translated) return value;
+    if (!translated) {
+      if (lang === "en" && trimmed.endsWith("，点击放大")) {
+        const base = trimmed.replace(/，点击放大$/, "");
+        const baseTranslation = translations[base] || base;
+        return value.replace(trimmed, `${baseTranslation}, click to enlarge`);
+      }
+      if (lang === "zh" && trimmed.endsWith(", click to enlarge")) {
+        const base = trimmed.replace(/, click to enlarge$/, "");
+        const baseTranslation = reverseTranslations[base] || base;
+        return value.replace(trimmed, `${baseTranslation}，点击放大`);
+      }
+      return value;
+    }
     return value.replace(trimmed, translated);
   }
 
@@ -724,6 +758,8 @@
       button.classList.toggle("is-active", active);
       button.setAttribute("aria-pressed", String(active));
     });
+    const toggle = document.querySelector(".language-toggle");
+    if (toggle) toggle.setAttribute("aria-label", lang === "en" ? "Language switcher" : "语言切换");
     updateInternalLinks(lang);
   }
 
@@ -741,8 +777,8 @@
     const wrapper = document.createElement("div");
     wrapper.className = "language-toggle";
     wrapper.setAttribute("role", "group");
-    wrapper.setAttribute("aria-label", "语言 / Language");
-    [["zh", "中"], ["en", "EN"]].forEach(([lang, label]) => {
+    wrapper.setAttribute("aria-label", "语言切换");
+    [["zh", "ZH"], ["en", "EN"]].forEach(([lang, label]) => {
       const button = document.createElement("button");
       button.type = "button";
       button.dataset.lang = lang;
