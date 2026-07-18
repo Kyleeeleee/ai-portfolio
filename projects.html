@@ -10,7 +10,7 @@
   --text:#e0e0f0; --dim:#7777a0; --radius:22px; --nav-h:56px;
   --c1:#7c5cfc; --c2:#00e5a0; --c3:#ff6b9d; --c4:#54a0ff;
   --c5:#f59e0b; --c6:#a78bfa; --c7:#34d399; --c8:#f472b6;
-  --c9:#60a5fa; --c10:#fbbf24; --c11:#818cf8; --c12:#2dd4bf;
+  --c9:#60a5fa; --c10:#fbbf24; --c11:#818cf8; --c12:#2dd4bf; --c13:#2563eb;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI","PingFang SC",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-top:var(--nav-h);line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -84,6 +84,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .card.p10{--accent:var(--c10);--accent-rgb:184,117,0}
 .card.p11{--accent:var(--c11);--accent-rgb:79,111,127}
 .card.p12{--accent:var(--c12);--accent-rgb:102,122,74}
+.card.p13{--accent:var(--c13);--accent-rgb:37,99,235}
 .card .glow{background:var(--accent)}
 .card:hover{border-color:var(--accent);box-shadow:0 20px 60px rgba(var(--accent-rgb),0.13)}
 .card .icon{background:rgba(var(--accent-rgb),0.15);color:var(--accent)}
@@ -107,6 +108,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .card:nth-child(8){animation-delay:0.15s}
 .card:nth-child(9){animation-delay:0.2s}
 .card:nth-child(10){animation-delay:0.25s}
+.card:nth-child(11){animation-delay:0.3s}
 
 
 /* Apple-inspired light theme override */
@@ -119,7 +121,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   --radius:22px;
   --c1:#7c5cfc; --c2:#00a878; --c3:#e8438a; --c4:#147ce5;
   --c5:#b65a4a; --c6:#7e57c2; --c7:#008c95; --c8:#a53aa1;
-  --c9:#147ce5; --c10:#b87500; --c11:#4f6f7f; --c12:#667a4a;
+  --c9:#147ce5; --c10:#b87500; --c11:#4f6f7f; --c12:#667a4a; --c13:#2563eb;
 }
 body{background:var(--bg);color:var(--text)}
 .header h1 span{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -166,12 +168,34 @@ body{background:var(--bg);color:var(--text)}
 
 <div class="header">
   <h1><span>完整作品集</span></h1>
-  <p>10 个可体验 AI 产品 Demo，覆盖内容生成、知识服务、智能 Agent、业务自动化与数据分析。</p>
+  <p>11 个可体验 AI 产品 Demo，覆盖内容生成、知识服务、智能 Agent、业务自动化、数据分析与 AI 前台产品方案。</p>
 </div>
 
 <section class="portfolio-carousel" aria-label="项目作品横向浏览">
 <div class="carousel-viewport" id="projectCarousel" tabindex="0">
 <div class="project-track">
+
+  <!-- 13 -->
+  <a href="project_13.html" class="card p13">
+    <div class="glow"></div>
+    <div class="icon-row">
+      <div class="icon">AIR</div>
+      <div class="arrow">→</div>
+    </div>
+    <h3>AI 前台增长与机会追回系统</h3>
+    <p class="subtitle">通话分析 → 业务结果评估 → 机会追回 → 安全试运行</p>
+    <div class="stats">
+      <span class="stat"><b>结果</b>评估</span>
+      <span class="stat"><b>机会</b>队列</span>
+      <span class="stat"><b>能力</b>路线图</span>
+    </div>
+    <div class="tags-row">
+      <span class="tag">AI 前台</span>
+      <span class="tag">云通信</span>
+      <span class="tag">CRM</span>
+    </div>
+    <div class="card-media"><img src="assets/generated/project-13-demo.png?v=20260718-cn-name" alt="AI 前台增长与机会追回系统 Demo 界面" loading="eager"></div>
+  </a>
 
   <!-- 01 -->
   <a href="project_01.html" class="card p01">

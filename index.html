@@ -89,6 +89,9 @@ h1 .char{display:inline-block;opacity:0;animation:charIn .6s ease forwards}
   margin:24px auto 0;max-width:760px;
   color:var(--text);font-size:clamp(20px,2.45vw,32px);line-height:1.18;font-weight:650;
 }
+@media(min-width:1100px){
+  html[lang="zh-CN"] .hero-subtitle{max-width:1040px;white-space:nowrap}
+}
 .hero-copy{margin:18px auto 0;max-width:720px;color:var(--muted);font-size:17px;line-height:2}
 .actions{margin-top:34px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
 .button{
@@ -222,6 +225,12 @@ h2{font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-0.01em;font-w
 .project.p07{--accent-color:#008c95;--accent-rgb:0,140,149}
 .project.p07::before{background:#008c95}
 .project.p07:hover{border-color:#008c95;box-shadow:0 20px 60px rgba(0,140,149,.12)}
+.project.p13{--accent-color:#2563eb;--accent-rgb:37,99,235}
+.project.p13::before{background:#2563eb}
+.project.p13:hover{border-color:#2563eb;box-shadow:0 20px 60px rgba(37,99,235,.13)}
+.project.p05{--accent-color:#b65a4a;--accent-rgb:182,90,74}
+.project.p05::before{background:#b65a4a}
+.project.p05:hover{border-color:#b65a4a;box-shadow:0 20px 60px rgba(182,90,74,.12)}
 .project.p11{--accent-color:#4f6f7f;--accent-rgb:79,111,127}
 .project.p11::before{background:#4f6f7f}
 .project.p11:hover{border-color:#4f6f7f;box-shadow:0 20px 60px rgba(79,111,127,.12)}
@@ -358,14 +367,14 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
       <div class="eyebrow"><span class="status-dot"></span>意向岗位：AI 产品经理</div>
       <h1><span class="gradient">李林豪</span></h1>
       <p class="hero-subtitle">把值得验证的业务想法，推进为可体验、可验证的产品。</p>
-      <p class="hero-copy">从金融到 AI，一直在跨界探索。<br>持续用 AI 将业务想法转化为可体验、可验证的产品原型——<br>从 Agent 到 RAG，从 AIGC 到自动化，不断探索技术落地的边界。</p>
+      <p class="hero-copy">借助 Codex、OpenClaw 等 AI Coding 与 Agent 工具，从业务问题出发，完成 AI 应用场景拆解、产品方案设计、原型搭建、工作流验证与迭代优化。</p>
       <div class="actions">
         <a class="button primary" href="#projects">查看 Demo</a>
         <a class="button secondary" href="projects.html">查看完整作品集</a>
       </div>
       <div class="stats-bar">
         <div class="stat-item"><strong>10</strong><span>AI 产品 MVP</span></div>
-        <div class="stat-item"><strong>8</strong><span>Agent 原型</span></div>
+        <div class="stat-item"><strong>8</strong><span>Agent 角色设计</span></div>
         <div class="stat-item"><strong>20+</strong><span>可复用技能模块</span></div>
         <div class="stat-item"><strong>跨界</strong><span>金融 × AI 探索</span></div>
       </div>
@@ -384,7 +393,7 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
       <div class="about-grid">
         <div class="story">
           <p>我会先理解用户需求、业务目标与风险边界，再判断哪些问题真正适合通过 AI 产品解决。</p>
-          <p>确定方向后，我习惯将想法推进为可点击、可演示、可验证的产品原型，通过真实交互呈现业务理解、产品判断与落地路径。</p>
+          <p>确定方向后，我习惯将想法推进为可点击、可演示、可验证的产品原型，通过真实交互呈现业务理解、产品判断与验证路径。</p>
         </div>
         <div class="fact-grid">
           <div class="fact"><b>意向岗位</b><span>AI 产品经理</span></div>
@@ -408,8 +417,8 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
       <div class="cards">
         <article class="card">
           <h3>AI 产品设计</h3>
-          <p>围绕 RAG、Agent、Prompt、AIGC 工作流设计产品形态，明确用户场景、功能边界、评估指标和迭代路径。</p>
-          <div class="mini">RAG / Agent / Prompt / AIGC</div>
+          <p>理解 RAG、Agent、Prompt Engineering、工具调用与 AI Skills 在业务场景中的应用方式，并将其用于产品功能、工作流与评估方案设计。</p>
+          <div class="mini">RAG / Agent / Prompt / Tool Calling</div>
         </article>
         <article class="card">
           <h3>金融业务理解</h3>
@@ -417,8 +426,8 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
           <div class="mini">证券业务 / 风险识别 / 客户运营</div>
         </article>
         <article class="card">
-          <h3>原型与交付</h3>
-          <p>擅长借助 AI Coding 与轻量技术栈，快速搭建可体验 MVP，让需求验证从文档推进到真实 Demo。</p>
+          <h3>原型与验证</h3>
+          <p>借助 Codex、OpenClaw 等 AI Coding 与 Agent 工具搭建可体验 MVP，用真实交互验证产品方案与工作流的可行性。</p>
           <div class="mini">AI Coding / Flask / Gradio / API</div>
         </article>
       </div>
@@ -437,7 +446,7 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
         <div class="timeline-label">AI 产品实践</div>
         <article class="job">
           <time>2025.03 - 至今</time>
-          <div><h3>AI Agent 系统搭建</h3><p class="job-sub">自研项目</p><ul><li>基于 OpenClaw 与 AI Coding 搭建多 Agent 协作原型，完成 8 个 Agent 的角色定义、提示词设计与流程配置</li><li>围绕金融资讯、投资分析、公众号内容采编、办公秘书等场景，拆解任务链路与人机协作边界</li><li>设计跨 Agent 协作流程，验证从信息抓取、分析整理到内容生成的自动化闭环</li><li>搭建飞书日报、行业研究简报、公众号选题与初稿生成等自动化工作流，提升内容生产效率</li><li>沉淀 20+ 个可复用技能模块，覆盖搜索、图表、文档、飞书集成等高频场景</li></ul></div>
+          <div><h3>AI Agent 工作系统原型</h3><p class="job-sub">自研项目</p><ul><li>借助 Codex、OpenClaw 等 AI Coding 与 Agent 工具搭建个人 AI Agent 工作系统原型，设计 8 个 Agent 的角色分工与协作思路</li><li>围绕金融资讯、投资分析、公众号内容采编、办公秘书等场景，拆解任务链路与人机协作边界</li><li>设计跨 Agent 协作方案，验证从信息抓取、分析整理到内容生成的工作流</li><li>以飞书日报、行业研究简报、公众号选题与初稿生成作为原型验证场景，持续检查工作流输出与可用性</li><li>沉淀 20+ 个可复用技能模块，覆盖搜索、图表、文档、飞书集成等高频场景</li></ul></div>
         </article>
         <div class="timeline-label">职业经历</div>
         <article class="job">
@@ -472,15 +481,15 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
           <h2>精选项目</h2>
         </div>
         <div class="section-summary">
-          <p class="section-note">精选 4 个可体验 Demo，覆盖金融风控、知识图谱、AI 商品图生成与 Agent 工作流编排，展示不同业务场景下的 AI 产品落地实践。</p>
-          <a class="section-cta" href="projects.html">查看完整作品集（10 个项目）</a>
+          <p class="section-note">精选 4 个可体验 Demo，突出 AI 前台增长、智能客服 Agent、AI 商品图生成与金融风控，展示不同业务场景下的 AI 产品原型验证实践。</p>
+          <a class="section-cta" href="projects.html">查看完整作品集（11 个项目）</a>
         </div>
       </div>
       <div class="project-grid">
-        <a class="project p07" href="project_07.html"><div class="project-body"><div class="project-index">FinTech · 风险决策</div><h3>金融风控 AI 助手</h3><p>以五维规则形成 100 分风险评分，再由 DeepSeek 输出可复核的风险解释与材料建议。</p><div class="tags"><span class="tag">规则评分</span><span class="tag">DeepSeek</span><span class="tag">人工复核</span></div><span class="link">查看详情</span></div></a>
-        <a class="project p11" href="project_11.html"><div class="project-body"><div class="project-index">Knowledge Graph · 知识结构化</div><h3>知识图谱可视化</h3><p>从文本抽取实体关系，支持图谱交互、关系查看与路径推理。</p><div class="tags"><span class="tag">知识图谱</span><span class="tag">关系推理</span><span class="tag">可视化</span></div><span class="link">查看详情</span></div></a>
+        <a class="project p13" href="project_13.html"><div class="project-body"><div class="project-index">AI 前台 · 增长追回</div><h3>AI 前台增长与机会追回系统</h3><p>基于 AI 前台通话分析设计机会追回、业务结果评估与安全试运行闭环，面向普通 AI 产品经理岗位。</p><div class="tags"><span class="tag">通话分析</span><span class="tag">机会追回</span><span class="tag">能力路线图</span></div><span class="link">查看详情</span></div></a>
+        <a class="project p05" href="project_05.html"><div class="project-body"><div class="project-index">Agent · 客服场景</div><h3>智能客服 Agent</h3><p>识别 FAQ、订单、投诉与转人工意图，并通过工具调用完成查询、建单和升级。</p><div class="tags"><span class="tag">Agent</span><span class="tag">Tool Calling</span><span class="tag">DeepSeek</span></div><span class="link">查看详情</span></div></a>
         <a class="project p01" href="project_01.html"><div class="project-body"><div class="project-index">AIGC · 视觉生成</div><h3>跨境电商 AI 商品图生成器</h3><p>基于商品参考图与结构化属性生成 5 类电商视觉素材，并用真实参数绘制尺寸图。</p><div class="tags"><span class="tag">Kontext</span><span class="tag">Flask</span><span class="tag">Pillow</span></div><span class="link">查看详情</span></div></a>
-        <a class="project p12" href="project_12.html"><div class="project-body"><div class="project-index">Agent · 工作流编排</div><h3>GenAI Agent 平台</h3><p>通过自然语言生成可编辑工作流，支持拖拽编排、运行与导出。</p><div class="tags"><span class="tag">Agent Flow</span><span class="tag">Workflow</span><span class="tag">Tool Calling</span></div><span class="link">查看详情</span></div></a>
+        <a class="project p07" href="project_07.html"><div class="project-body"><div class="project-index">FinTech · 风险决策</div><h3>金融风控 AI 助手</h3><p>以五维规则形成 100 分风险评分，再由 DeepSeek 输出可复核的风险解释与材料建议。</p><div class="tags"><span class="tag">规则评分</span><span class="tag">DeepSeek</span><span class="tag">人工复核</span></div><span class="link">查看详情</span></div></a>
       </div>
     </div>
   </section>
@@ -490,7 +499,7 @@ h1 .gradient{background:linear-gradient(135deg,#1d1d1f,#434344);-webkit-backgrou
       <div class="section-head">
         <div>
           <div class="kicker">Toolbox</div>
-          <h2>AI 产品落地工具箱</h2>
+          <h2>AI 产品原型验证工具箱</h2>
         </div>
       </div>
       <div class="tech-grid">

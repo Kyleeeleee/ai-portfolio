@@ -1,0 +1,1252 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 前台增长与机会追回系统 Demo</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #677187;
+      --line: #dfe5ee;
+      --soft: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #2563eb;
+      --teal: #0f9f8f;
+      --amber: #d97706;
+      --red: #d14343;
+      --green: #16865b;
+      --violet: #6d5bd0;
+      --shadow: 0 14px 36px rgba(20, 31, 52, 0.08);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #eef2f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      background: #172033;
+      color: #f8fafc;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .brand {
+      display: grid;
+      gap: 6px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .brand small {
+      color: #a8b4c8;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .brand strong {
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav button {
+      border: 0;
+      width: 100%;
+      text-align: left;
+      color: #dce5f4;
+      background: transparent;
+      border-radius: 6px;
+      padding: 11px 12px;
+      cursor: pointer;
+    }
+
+    .nav button:hover,
+    .nav button.active {
+      color: #fff;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .sidebar-note {
+      margin-top: auto;
+      color: #a8b4c8;
+      font-size: 12px;
+      line-height: 1.7;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 16px;
+    }
+
+    .main {
+      min-width: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .topbar {
+      background: rgba(255,255,255,0.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 26px;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .topbar h1 {
+      font-size: 22px;
+      margin: 0 0 4px;
+      line-height: 1.25;
+    }
+
+    .topbar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .select,
+    .ghost-button,
+    .primary-button {
+      height: 36px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 0 12px;
+      white-space: nowrap;
+    }
+
+    .primary-button {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .ghost-button {
+      cursor: pointer;
+    }
+
+    .content {
+      padding: 24px 26px 34px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .view {
+      display: none;
+      gap: 18px;
+    }
+
+    .view.active {
+      display: grid;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(140px, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 15px;
+      min-height: 112px;
+      box-shadow: var(--shadow);
+      display: grid;
+      align-content: space-between;
+      gap: 12px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .metric strong {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .metric em {
+      font-style: normal;
+      font-size: 12px;
+      color: var(--green);
+    }
+
+    .metric.warn em { color: var(--amber); }
+    .metric.bad em { color: var(--red); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 15px 17px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .panel-header h2,
+    .panel-header h3 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .panel-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .panel-body {
+      padding: 16px 17px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .table th {
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      white-space: nowrap;
+    }
+
+    .table td {
+      border-bottom: 1px solid #edf1f6;
+      padding: 12px 8px;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      border-radius: 999px;
+      padding: 0 9px;
+      font-size: 12px;
+      background: #eef4ff;
+      color: #2452b8;
+      border: 1px solid #dbe7ff;
+      white-space: nowrap;
+    }
+
+    .tag.red {
+      background: #fff1f1;
+      color: #b4232b;
+      border-color: #ffd5d8;
+    }
+
+    .tag.amber {
+      background: #fff6e8;
+      color: #a65700;
+      border-color: #ffe2b5;
+    }
+
+    .tag.green {
+      background: #eaf8f1;
+      color: #14744c;
+      border-color: #ccebdd;
+    }
+
+    .tag.violet {
+      background: #f2efff;
+      color: #5948b8;
+      border-color: #ded8ff;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .bar-row {
+      display: grid;
+      gap: 7px;
+    }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .bar-track {
+      height: 10px;
+      background: #edf1f6;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--blue);
+    }
+
+    .bar-fill.teal { background: var(--teal); }
+    .bar-fill.amber { background: var(--amber); }
+    .bar-fill.red { background: var(--red); }
+    .bar-fill.violet { background: var(--violet); }
+
+    .insight-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .insight {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 13px;
+      display: grid;
+      gap: 7px;
+      background: #fbfcfe;
+    }
+
+    .insight strong {
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .insight p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 18px;
+    }
+
+    .list-buttons {
+      display: grid;
+      gap: 10px;
+    }
+
+    .gap-button {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 7px;
+      padding: 13px;
+      text-align: left;
+      cursor: pointer;
+      display: grid;
+      gap: 8px;
+    }
+
+    .gap-button.active {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .gap-button strong {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .gap-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .detail {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 12px;
+      min-height: 86px;
+      background: #fbfcfe;
+    }
+
+    .detail span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .detail strong {
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .detail.full {
+      grid-column: 1 / -1;
+    }
+
+    .action-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 12px;
+      background: #fbfcfe;
+      margin-bottom: 10px;
+    }
+
+    .action-row h3 {
+      margin: 0 0 5px;
+      font-size: 14px;
+    }
+
+    .action-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .stepper {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #eaf0ff;
+      color: #214bb2;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .call-card {
+      display: grid;
+      gap: 13px;
+    }
+
+    .transcript {
+      background: #111827;
+      color: #e5e7eb;
+      border-radius: 7px;
+      padding: 14px;
+      font-size: 12px;
+      line-height: 1.65;
+      min-height: 190px;
+    }
+
+    .transcript b {
+      color: #93c5fd;
+    }
+
+    .experiment-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .compare-box {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 13px;
+      background: #fbfcfe;
+    }
+
+    .compare-box h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+
+    .compare-box .number {
+      display: block;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .compare-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 8px 2px 0;
+    }
+
+    @media (max-width: 1180px) {
+      .kpi-grid {
+        grid-template-columns: repeat(3, minmax(160px, 1fr));
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        padding: 14px;
+      }
+      .brand,
+      .sidebar-note {
+        display: none;
+      }
+      .nav {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+      .nav button {
+        width: auto;
+        flex: 0 0 auto;
+      }
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px;
+      }
+      .content {
+        padding: 16px;
+      }
+      .kpi-grid,
+      .grid-2,
+      .split,
+      .experiment-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .kpi-grid,
+      .detail-grid,
+      .compare {
+        grid-template-columns: 1fr;
+      }
+      .action-row {
+        grid-template-columns: 1fr;
+      }
+      .table {
+        min-width: 680px;
+      }
+      .table-wrap {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <strong>AI 前台增长追回</strong>
+        <small>AI 前台的能力缺口发现、机会追回与安全试运行原型</small>
+      </div>
+      <nav class="nav" aria-label="Demo navigation">
+        <button class="active" data-view="overview">总览</button>
+        <button data-view="radar">AI能力缺口</button>
+        <button data-view="recovery">机会追回</button>
+        <button data-view="experiment">安全试运行</button>
+        <button data-view="handoff">平台协同</button>
+      </nav>
+      <div class="sidebar-note">
+        概念原型。基于公开资料、竞品观察和模拟通话数据构建，用于产品讨论和面试展示。
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">AI 前台增长与机会追回系统</h1>
+          <p id="pageSubtitle">基于 AI 前台已有通话分析，进一步发现能力缺口、追回未完成预约和销售线索，把分析结果转成产品路线图。</p>
+        </div>
+        <div class="topbar-actions">
+          <select class="select" id="industrySelect" aria-label="行业筛选">
+            <option>本地生活服务</option>
+            <option>医疗服务</option>
+            <option>法律服务</option>
+            <option>零售门店</option>
+          </select>
+          <select class="select" id="rangeSelect" aria-label="时间范围">
+            <option>过去 7 天</option>
+            <option>过去 30 天</option>
+            <option>本季度</option>
+          </select>
+          <button class="ghost-button" id="refreshBtn">刷新模拟数据</button>
+        </div>
+      </header>
+
+      <section class="content">
+        <section class="view active" id="overview">
+          <div class="kpi-grid">
+            <div class="metric"><span>总来电与短信</span><strong id="metricTotal">1,248</strong><em id="metricTotalDelta">+18% vs. 上周</em></div>
+            <div class="metric"><span>AIR 自动解决率</span><strong id="metricResolved">63%</strong><em id="metricResolvedDelta">+6.2 pts</em></div>
+            <div class="metric warn"><span>转人工率</span><strong id="metricTransfer">22%</strong><em id="metricTransferDelta">可优化 31%</em></div>
+            <div class="metric bad"><span>未追回机会</span><strong id="metricLost">84</strong><em id="metricLostDelta">预计 $18.6k</em></div>
+            <div class="metric"><span>发现能力缺口</span><strong id="metricGaps">12</strong><em id="metricGapsDelta">4 个 P0/P1</em></div>
+            <div class="metric"><span>推荐追回动作</span><strong id="metricRecovery">57</strong><em id="metricRecoveryDelta">完成率 41%</em></div>
+          </div>
+
+          <div class="grid-2">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>本周高价值缺口</h2>
+                  <p>按频次、收入影响、AI 可行性和复用范围排序。</p>
+                </div>
+                <span class="tag red">P0 优先</span>
+              </div>
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>候选 AI 能力</th>
+                      <th>问题信号</th>
+                      <th>频次</th>
+                      <th>收入影响</th>
+                      <th>建议动作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>预约改期 / 取消</strong></td>
+                      <td>转人工集中、用户重复追问</td>
+                      <td>118</td>
+                      <td><span class="tag amber">中高</span></td>
+                      <td>历史模拟后灰度上线</td>
+                    </tr>
+                    <tr>
+                      <td><strong>询价后自动跟进</strong></td>
+                      <td>高意向用户未留下完整信息</td>
+                      <td>84</td>
+                      <td><span class="tag red">高</span></td>
+                      <td>5 分钟短信追回</td>
+                    </tr>
+                    <tr>
+                      <td><strong>投诉强情绪接管</strong></td>
+                      <td>负面情绪上升、错误安抚</td>
+                      <td>39</td>
+                      <td><span class="tag amber">中</span></td>
+                      <td>强制转人工 + 接管摘要</td>
+                    </tr>
+                    <tr>
+                      <td><strong>服务区域确认</strong></td>
+                      <td>报价前缺少地址信息</td>
+                      <td>76</td>
+                      <td><span class="tag amber">中高</span></td>
+                      <td>补采集地址字段</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>Outcome Breakdown</h2>
+                  <p>每通对话结束后的结果标签。</p>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="bar-list">
+                  <div class="bar-row">
+                    <div class="bar-label"><span>Resolved by AIR</span><strong>63%</strong></div>
+                    <div class="bar-track"><div class="bar-fill teal" style="width:63%"></div></div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label"><span>Human transfer</span><strong>22%</strong></div>
+                    <div class="bar-track"><div class="bar-fill amber" style="width:22%"></div></div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label"><span>Lost opportunity</span><strong>7%</strong></div>
+                    <div class="bar-track"><div class="bar-fill red" style="width:7%"></div></div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label"><span>Knowledge gap</span><strong>5%</strong></div>
+                    <div class="bar-track"><div class="bar-fill violet" style="width:5%"></div></div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-label"><span>Tool/API failure</span><strong>3%</strong></div>
+                    <div class="bar-track"><div class="bar-fill" style="width:3%"></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="grid-3">
+            <article class="panel">
+              <div class="panel-header"><h3>可取竞品点</h3></div>
+              <div class="panel-body insight-list">
+                <div class="insight">
+                  <strong>动作追踪值得吸收</strong>
+                  <p>竞品的 disposition / actions taken 能补足“通话之后做了什么”，适合转成 AI 前台的追回队列。</p>
+                </div>
+                <div class="insight">
+                  <strong>Intent 到 Outcome 值得吸收</strong>
+                  <p>竞品的 caller behavior / outcome 思路可以帮助 AI 前台从“未回答问题”进一步看业务结果。</p>
+                </div>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-header"><h3>基于现有评估的机会</h3></div>
+              <div class="panel-body insight-list">
+                <div class="insight">
+                  <strong>不是重新做基础通话分析</strong>
+                  <p>假设平台已有通话量、解决率、未回答问题、会话洞察等基础指标，这里是在此基础上补业务影响和追回动作。</p>
+                </div>
+                <div class="insight">
+                  <strong>Roadmap 应由真实通话驱动</strong>
+                  <p>从 transcripts、support patterns、churn signals 中找到下一批 P0/P1 AI 能力。</p>
+                </div>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-header"><h3>本周建议</h3></div>
+              <div class="panel-body insight-list">
+                <div class="insight">
+                  <strong>先做询价后短信追回</strong>
+                  <p>低风险、高收入影响，且能和短信、CRM 任务自然衔接。</p>
+                </div>
+                <div class="insight">
+                  <strong>预约改期先做历史模拟</strong>
+                  <p>涉及身份确认和日历变更，需要先做安全试运行。</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="radar">
+          <div class="split">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>AI 能力缺口雷达</h2>
+                  <p>选择一个能力缺口，查看业务影响和产品建议。</p>
+                </div>
+              </div>
+              <div class="panel-body list-buttons" id="gapList"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2 id="gapTitle">预约改期 / 取消</h2>
+                  <p id="gapSubtitle">P0 · 高复用 · 适合灰度上线</p>
+                </div>
+                <span id="gapPriority" class="tag red">P0</span>
+              </div>
+              <div class="panel-body">
+                <div class="detail-grid">
+                  <div class="detail"><span>本周频次</span><strong id="gapVolume">118 通</strong></div>
+                  <div class="detail"><span>预计影响</span><strong id="gapImpact">$7.4k 机会</strong></div>
+                  <div class="detail"><span>AI 可行性</span><strong id="gapFeasibility">高</strong></div>
+                  <div class="detail"><span>主要原因</span><strong id="gapCause">当前 AIR 能力无法修改已有预约</strong></div>
+                  <div class="detail full"><span>推荐方案</span><strong id="gapPlan">用历史通话模拟“预约改期 / 取消”能力，通过身份确认和日历校验后小流量启用。</strong></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="recovery">
+          <div class="grid-2">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>流失机会追回队列</h2>
+                  <p>把未完成预约、询价挂断、转人工失败转成追回动作。</p>
+                </div>
+                <span class="tag amber">57 待处理</span>
+              </div>
+              <div class="panel-body" id="recoveryList"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>追回动作模板</h2>
+                  <p>面向 SMB 的低风险自动跟进。</p>
+                </div>
+              </div>
+              <div class="panel-body stepper">
+                <div class="step">
+                  <div class="step-number">1</div>
+                  <div><strong>识别机会类型</strong><p>询价、预约失败、未留联系方式、转人工等待失败。</p></div>
+                </div>
+                <div class="step">
+                  <div class="step-number">2</div>
+                  <div><strong>选择跟进动作</strong><p>短信、回拨任务、CRM 记录、人工提醒或预约链接。</p></div>
+                </div>
+                <div class="step">
+                  <div class="step-number">3</div>
+                  <div><strong>设置 SLA</strong><p>高意向机会 5 分钟内触发，普通咨询 30 分钟内触发。</p></div>
+                </div>
+                <div class="step">
+                  <div class="step-number">4</div>
+                  <div><strong>回流到 Radar</strong><p>把失败原因沉淀为能力缺口，用于后续产品 roadmap。</p></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="experiment">
+          <div class="experiment-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>安全能力试运行</h2>
+                  <p>新 AI 前台能力上线前先历史模拟、小流量灰度、可回滚。</p>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="stepper">
+                  <div class="step">
+                    <div class="step-number">A</div>
+                    <div><strong>历史模拟</strong><p>用 240 通历史通话测试“预约改期 / 取消”能力，评估覆盖和误判。</p></div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">B</div>
+                    <div><strong>小流量灰度</strong><p>仅对低风险改期场景启用 10% 流量。</p></div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">C</div>
+                    <div><strong>安全护栏</strong><p>身份无法确认、付款争议、强情绪投诉时强制转人工。</p></div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">D</div>
+                    <div><strong>回滚条件</strong><p>错误处理率超过 3% 或投诉信号上升即自动回滚。</p></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>前后对比报告</h2>
+                  <p>灰度前后的业务指标对比。</p>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="compare">
+                  <div class="compare-box">
+                    <h3>上线前</h3>
+                    <span class="number">31%</span>
+                    <p>预约改期相关电话转人工率</p>
+                  </div>
+                  <div class="compare-box">
+                    <h3>上线后</h3>
+                    <span class="number">18%</span>
+                    <p>预计转人工率，低风险场景优先</p>
+                  </div>
+                  <div class="compare-box">
+                    <h3>风险</h3>
+                    <span class="number">2.1%</span>
+                    <p>历史模拟中的潜在误判率</p>
+                  </div>
+                  <div class="compare-box">
+                    <h3>护栏</h3>
+                    <span class="number">96%</span>
+                    <p>高风险对话正确转人工</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="handoff">
+          <div class="grid-2">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>云通信平台适配</h2>
+                  <p>让 AI 前台的分析结果回流到短信、客服、CRM 和 AI 产品矩阵，而不是孤立存在。</p>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="detail-grid">
+                  <div class="detail"><span>企业通信</span><strong>把未完成机会转成短信跟进、回拨提醒和企业通信记录。</strong></div>
+                  <div class="detail"><span>客服流程</span><strong>复杂投诉、强情绪和高风险问题仍然交给人工服务流程。</strong></div>
+                  <div class="detail"><span>CRM / Integrations</span><strong>把 Lead、预约失败、回拨任务写入客户系统，减少业务断点。</strong></div>
+                  <div class="detail"><span>AI 产品矩阵</span><strong>AI 前台做会话前接待，人工辅助和事后洞察由其它模块承接。</strong></div>
+                  <div class="detail full"><span>产品边界</span><strong>本 demo 不做完整联络中心质检，也不做真人外包接听；只保留最适合 AI 前台的结果标签、机会追回、能力优先级和安全试运行。</strong></div>
+                </div>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>取舍原则</h2>
+                  <p>竞品能力只有服务云通信平台目标时才吸收。</p>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="insight-list">
+                  <div class="insight">
+                    <strong>保留：通话结果与后续动作</strong>
+                    <p>能让 AI 前台从“通话已解决/未解决”升级为“产生了什么业务动作”。</p>
+                  </div>
+                  <div class="insight">
+                    <strong>保留：意图到业务结果分析</strong>
+                    <p>把客户意图和预约、Lead、转人工、挂断等结果关联起来。</p>
+                  </div>
+                  <div class="insight">
+                    <strong>谨慎：转人工质量</strong>
+                    <p>只保留 AI 前台转人工摘要和下一步动作，不扩展成完整人工辅导系统。</p>
+                  </div>
+                  <div class="insight">
+                    <strong>不做：真人接听外包 / 完整 Journey 平台</strong>
+                    <p>这些会偏离 AI 云通信平台的产品定位。</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <p class="footer-note">
+          <span id="contextNote">数据均为模拟。当前视图：本地生活服务 · 过去 7 天。</span>
+          这个 demo 用于展示 AI 产品经理对 AI 前台下一阶段能力的判断：从现有通话分析到能力路线图，从机会追回到安全试运行，再到云通信、客服和 CRM 的平台协同。
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const views = {
+      overview: {
+        title: "AI 前台增长与机会追回系统",
+        subtitle: "基于 AI 前台已有通话分析，进一步发现能力缺口、追回未完成预约和销售线索，把分析结果转成产品路线图。"
+      },
+      radar: {
+        title: "AI 能力缺口雷达",
+        subtitle: "用通话记录、未回答问题、转人工原因和业务影响排序下一批 AI 前台能力。"
+      },
+      recovery: {
+        title: "流失机会追回闭环",
+        subtitle: "把询价挂断、预约失败、未捕获 Lead 变成自动短信、回拨任务和 CRM 跟进。"
+      },
+      experiment: {
+        title: "安全能力试运行",
+        subtitle: "新 AI 前台能力不直接全量上线，先历史模拟、小范围灰度、设置安全护栏和回滚条件。"
+      },
+      handoff: {
+        title: "云通信平台适配",
+        subtitle: "只吸收能增强云通信平台价值的竞品做法，避免把 AI 前台 demo 做偏。"
+      }
+    };
+
+    const gaps = [
+      {
+        title: "预约改期 / 取消",
+        priority: "P0",
+        tone: "red",
+        meta: ["118 通", "$7.4k 机会", "高可行性"],
+        subtitle: "P0 · 高复用 · 适合灰度上线",
+        volume: "118 通",
+        impact: "$7.4k 机会",
+        feasibility: "高",
+        cause: "当前 AIR 能力无法修改已有预约",
+        plan: "用历史通话模拟“预约改期 / 取消”能力，通过身份确认和日历校验后小流量启用。"
+      },
+      {
+        title: "询价后自动跟进",
+        priority: "P0",
+        tone: "red",
+        meta: ["84 通", "$18.6k 机会", "低风险"],
+        subtitle: "P0 · 高收入影响 · 可先短信追回",
+        volume: "84 通",
+        impact: "$18.6k 机会",
+        feasibility: "高",
+        cause: "用户询价后挂断，未留下完整联系方式或下一步动作",
+        plan: "在 5 分钟内发送报价链接或预约入口，并创建销售回拨任务。"
+      },
+      {
+        title: "投诉强情绪接管",
+        priority: "P1",
+        tone: "amber",
+        meta: ["39 通", "客诉风险", "中可行性"],
+        subtitle: "P1 · 服务质量风险 · 需要人工护栏",
+        volume: "39 通",
+        impact: "客诉风险上升",
+        feasibility: "中",
+        cause: "AI 在强情绪场景继续解释，导致用户重复表达不满",
+        plan: "识别负面情绪后强制转人工，同时生成摘要和推荐安抚话术。"
+      },
+      {
+        title: "服务区域确认",
+        priority: "P1",
+        tone: "violet",
+        meta: ["76 通", "Lead 完整率", "高可行性"],
+        subtitle: "P1 · 信息采集缺口 · 提升 Lead 质量",
+        volume: "76 通",
+        impact: "Lead 完整率 +12%",
+        feasibility: "高",
+        cause: "报价前未确认服务地址，导致销售后续重复沟通",
+        plan: "在询价能力中补采集 ZIP code / service area，并在不覆盖区域时提供替代路径。"
+      }
+    ];
+
+    const recoveryItems = [
+      {
+        title: "询价后挂断",
+        tag: "High intent",
+        body: "客户询问 HVAC 维修价格后挂断，未留下姓名。建议 5 分钟内发送短信并附预约链接。",
+        action: "发送短信"
+      },
+      {
+        title: "预约时间不匹配",
+        tag: "Booking failed",
+        body: "客户想要周六下午服务，日历无可用时段。建议创建人工回拨任务，推荐相邻时间。",
+        action: "创建回拨"
+      },
+      {
+        title: "转人工等待失败",
+        tag: "Abandoned",
+        body: "客户等待 42 秒后挂断，意图为紧急维修。建议推送到 CRM 并标记 5 分钟 SLA。",
+        action: "推送 CRM"
+      }
+    ];
+
+    const metricProfiles = {
+      "本地生活服务": { total: 1248, resolved: 63, transfer: 22, lost: 84, lostValue: 18.6, gaps: 12, pCritical: 4, recovery: 57, completion: 41 },
+      "医疗服务": { total: 932, resolved: 58, transfer: 28, lost: 46, lostValue: 22.4, gaps: 15, pCritical: 5, recovery: 31, completion: 36 },
+      "法律服务": { total: 684, resolved: 54, transfer: 34, lost: 39, lostValue: 31.2, gaps: 11, pCritical: 4, recovery: 27, completion: 33 },
+      "零售门店": { total: 1576, resolved: 69, transfer: 17, lost: 112, lostValue: 14.8, gaps: 14, pCritical: 6, recovery: 74, completion: 45 }
+    };
+
+    const rangeMultipliers = {
+      "过去 7 天": 1,
+      "过去 30 天": 4.1,
+      "本季度": 12.3
+    };
+
+    let refreshSeed = 0;
+
+    function formatNumber(value) {
+      return Math.round(value).toLocaleString("en-US");
+    }
+
+    function updateMetrics() {
+      const industry = document.getElementById("industrySelect").value;
+      const range = document.getElementById("rangeSelect").value;
+      const profile = metricProfiles[industry];
+      const multiplier = rangeMultipliers[range];
+      const drift = refreshSeed % 3;
+      const total = profile.total * multiplier + drift * 17;
+      const lost = profile.lost * multiplier + drift * 3;
+      const recovery = profile.recovery * multiplier + drift * 2;
+
+      document.getElementById("metricTotal").textContent = formatNumber(total);
+      document.getElementById("metricResolved").textContent = `${profile.resolved + drift}%`;
+      document.getElementById("metricTransfer").textContent = `${Math.max(9, profile.transfer - drift)}%`;
+      document.getElementById("metricLost").textContent = formatNumber(lost);
+      document.getElementById("metricGaps").textContent = formatNumber(profile.gaps + drift);
+      document.getElementById("metricRecovery").textContent = formatNumber(recovery);
+
+      document.getElementById("metricTotalDelta").textContent = range === "过去 7 天" ? "+18% vs. 上周" : "按周期汇总";
+      document.getElementById("metricResolvedDelta").textContent = `+${(4.8 + drift * 0.7).toFixed(1)} pts`;
+      document.getElementById("metricTransferDelta").textContent = `可优化 ${Math.max(18, 31 - drift * 4)}%`;
+      document.getElementById("metricLostDelta").textContent = `预计 $${(profile.lostValue * multiplier).toFixed(1)}k`;
+      document.getElementById("metricGapsDelta").textContent = `${profile.pCritical} 个 P0/P1`;
+      document.getElementById("metricRecoveryDelta").textContent = `完成率 ${profile.completion + drift}%`;
+      document.getElementById("contextNote").textContent = `数据均为模拟。当前视图：${industry} · ${range}。`;
+    }
+
+    function showView(id) {
+      document.querySelectorAll(".nav button").forEach(btn => btn.classList.toggle("active", btn.dataset.view === id));
+      document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === id));
+      document.getElementById("pageTitle").textContent = views[id].title;
+      document.getElementById("pageSubtitle").textContent = views[id].subtitle;
+    }
+
+    function renderGaps(activeIndex = 0) {
+      const list = document.getElementById("gapList");
+      list.innerHTML = gaps.map((gap, index) => `
+        <button class="gap-button ${index === activeIndex ? "active" : ""}" data-gap="${index}">
+          <strong>${gap.title}</strong>
+          <span class="gap-meta">
+            <span class="tag ${gap.tone}">${gap.priority}</span>
+            ${gap.meta.map(item => `<span class="tag">${item}</span>`).join("")}
+          </span>
+        </button>
+      `).join("");
+      list.querySelectorAll(".gap-button").forEach(button => {
+        button.addEventListener("click", () => updateGap(Number(button.dataset.gap)));
+      });
+      updateGap(activeIndex);
+    }
+
+    function updateGap(index) {
+      const gap = gaps[index];
+      document.querySelectorAll(".gap-button").forEach((btn, i) => btn.classList.toggle("active", i === index));
+      document.getElementById("gapTitle").textContent = gap.title;
+      document.getElementById("gapSubtitle").textContent = gap.subtitle;
+      const priority = document.getElementById("gapPriority");
+      priority.textContent = gap.priority;
+      priority.className = `tag ${gap.tone}`;
+      document.getElementById("gapVolume").textContent = gap.volume;
+      document.getElementById("gapImpact").textContent = gap.impact;
+      document.getElementById("gapFeasibility").textContent = gap.feasibility;
+      document.getElementById("gapCause").textContent = gap.cause;
+      document.getElementById("gapPlan").textContent = gap.plan;
+    }
+
+    function renderRecovery() {
+      const list = document.getElementById("recoveryList");
+      list.innerHTML = recoveryItems.map((item, index) => `
+        <div class="action-row">
+          <div>
+            <h3>${item.title} <span class="tag amber">${item.tag}</span></h3>
+            <p>${item.body}</p>
+          </div>
+          <button class="primary-button" data-action="${index}">${item.action}</button>
+        </div>
+      `).join("");
+      list.querySelectorAll("button").forEach(button => {
+        button.addEventListener("click", () => {
+          button.textContent = "已加入队列";
+          button.disabled = true;
+          button.style.opacity = "0.72";
+        });
+      });
+    }
+
+    document.querySelectorAll(".nav button").forEach(button => {
+      button.addEventListener("click", () => showView(button.dataset.view));
+    });
+
+    document.getElementById("refreshBtn").addEventListener("click", () => {
+      const btn = document.getElementById("refreshBtn");
+      refreshSeed += 1;
+      updateMetrics();
+      btn.textContent = "已刷新";
+      setTimeout(() => { btn.textContent = "刷新模拟数据"; }, 1200);
+    });
+
+    document.getElementById("industrySelect").addEventListener("change", updateMetrics);
+    document.getElementById("rangeSelect").addEventListener("change", updateMetrics);
+
+    renderGaps();
+    renderRecovery();
+    updateMetrics();
+  </script>
+</body>
+</html>
