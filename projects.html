@@ -59,24 +59,24 @@ button{font:inherit}
 .carousel-viewport::-webkit-scrollbar{display:none}
 .carousel-viewport.is-dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
 .project-track{display:flex;width:max-content;gap:18px}
-.card{--accent:#2563eb;--accent-rgb:37,99,235;position:relative;display:flex;flex:0 0 360px;flex-direction:column;min-height:544px;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:#fff;color:var(--ink);scroll-snap-align:start;box-shadow:0 1px 2px rgba(0,0,0,.03);-webkit-user-drag:none;transform:translateZ(0);transition:transform .32s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s}
-.card.featured{flex-basis:500px}
+.card{--accent:#2563eb;--accent-rgb:37,99,235;position:relative;display:flex;flex:0 0 372px;flex-direction:column;height:500px;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:#fff;color:var(--ink);scroll-snap-align:start;box-shadow:0 1px 2px rgba(0,0,0,.03);-webkit-user-drag:none;transform:translateZ(0);transition:transform .32s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s}
 .card::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--accent),rgba(var(--accent-rgb),.28));z-index:2}
 .card:hover{border-color:rgba(var(--accent-rgb),.34);box-shadow:0 22px 54px rgba(var(--accent-rgb),.16)}
 .card:focus-visible,.carousel-button:focus-visible,.carousel-viewport:focus-visible{outline:3px solid rgba(0,113,227,.28);outline-offset:3px}
-.media{position:relative;margin:18px 18px 0;overflow:hidden;border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);background:#eef1f5;aspect-ratio:16/10}
-.featured .media{aspect-ratio:16/9}
-.media img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;-webkit-user-drag:none;transition:transform .45s ease}
-.media::after{content:"";position:absolute;inset:auto 0 0;height:34%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.10));pointer-events:none}
+.card-visual{position:relative;display:grid;align-content:space-between;height:150px;margin:18px 18px 0;padding:16px;overflow:hidden;border:1px solid rgba(var(--accent-rgb),.16);border-radius:var(--radius);background:linear-gradient(135deg,rgba(var(--accent-rgb),.13),rgba(var(--accent-rgb),.04) 52%,#fff)}
+.card-visual::before{content:"";position:absolute;inset:18px 18px auto auto;width:96px;height:96px;border:1px solid rgba(var(--accent-rgb),.18);border-radius:50%;background:rgba(255,255,255,.48)}
+.card-visual::after{content:"";position:absolute;right:-24px;bottom:-30px;width:128px;height:128px;border-radius:50%;background:rgba(var(--accent-rgb),.12)}
+.mark{position:relative;z-index:1;display:grid;place-items:center;width:58px;height:58px;border-radius:var(--radius);background:var(--accent);color:#fff;font-size:18px;font-weight:780;letter-spacing:0;box-shadow:0 14px 28px rgba(var(--accent-rgb),.18)}
+.flow-line{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.flow-node{position:relative;min-height:38px;padding:8px 9px;border:1px solid rgba(var(--accent-rgb),.16);border-radius:var(--radius);background:rgba(255,255,255,.76);color:#303846;font-size:12px;font-weight:680;line-height:1.25;box-shadow:0 8px 18px rgba(0,0,0,.04)}
+.flow-node:not(:last-child)::after{content:"";position:absolute;top:50%;right:-10px;width:10px;height:1px;background:rgba(var(--accent-rgb),.42)}
 .card-body{display:flex;flex:1;flex-direction:column;padding:18px}
 .meta-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
 .index{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:12px;font-weight:760;letter-spacing:0}
 .index::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .domain{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:999px;background:rgba(var(--accent-rgb),.08);color:var(--accent);font-size:12px;font-weight:680;white-space:nowrap}
 .card h3{font-size:22px;font-weight:760;line-height:1.18;letter-spacing:0}
-.featured h3{font-size:28px}
 .subtitle{display:-webkit-box;min-height:50px;margin-top:9px;overflow:hidden;color:var(--muted);font-size:14px;line-height:1.65;-webkit-box-orient:vertical;-webkit-line-clamp:2}
-.featured .subtitle{font-size:15px}
 .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
 .metric{min-height:58px;padding:10px;border:1px solid rgba(var(--accent-rgb),.14);border-radius:var(--radius);background:rgba(var(--accent-rgb),.06)}
 .metric b{display:block;color:var(--accent);font-size:14px;line-height:1.2}
@@ -104,21 +104,22 @@ button{font:inherit}
 .p12{--accent:#667a4a;--accent-rgb:102,122,74}
 @media(hover:hover) and (pointer:fine){
   .card:hover{z-index:2;transform:translateY(-6px) translateZ(0)}
-  .card:hover .media img{transform:scale(1.035)}
+  .card:hover .card-visual{box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.08)}
   .card:hover .arrow{transform:translateX(3px)}
-  .carousel-viewport.is-dragging .card,.carousel-viewport.is-dragging .media img{transform:none!important}
+  .carousel-viewport.is-dragging .card{transform:none!important}
 }
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;padding-top:44px}.hero-panel{max-width:none}.showcase-head{align-items:flex-start;flex-direction:column}.carousel-controls{align-self:stretch;justify-content:flex-end}
-  .card.featured{flex-basis:420px}.card{flex-basis:340px}
+  .card{flex-basis:350px}
 }
 @media(max-width:640px){
   .site-nav-inner{width:calc(100% - 20px)}.site-brand{font-size:14px}.site-nav-links a{padding:9px 8px;font-size:13px}
   .page-shell{width:calc(100% - 36px)}.hero{padding:36px 0 22px}.hero h1{font-size:42px}.hero-copy{font-size:15px}.hero-stats{grid-template-columns:1fr}
   .carousel-viewport{margin-right:-18px;margin-left:-18px;padding-right:18px;padding-left:18px;scroll-padding-inline:18px}.project-track{gap:12px}
-  .card,.card.featured{flex-basis:calc(100vw - 52px);min-height:520px}.card h3,.featured h3{font-size:22px}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}
+  .card{flex-basis:calc(100vw - 52px);height:508px}.card h3{font-size:22px}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}
+  .card-visual{height:148px;padding:14px}.flow-line{gap:7px}.flow-node{font-size:11px;padding:8px 7px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.media img,.arrow,.carousel-button,.progress-bar{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.card-visual,.arrow,.carousel-button,.progress-bar{transition:none}}
 </style>
 </head>
 <body>
@@ -183,77 +184,91 @@ button{font:inherit}
 <script>
 const projects=[
   {
-    id:"13",className:"p13 featured",href:"project_13.html",domain:"AI 前台",title:"AI 前台增长与机会追回系统",
+    id:"13",className:"p13",href:"project_13.html",domain:"AI 前台",mark:"AI",title:"AI 前台增长与机会追回系统",
     subtitle:"通话分析 → 业务结果评估 → 机会追回 → 安全试运行",
+    flow:["通话理解","机会判断","追回闭环"],
     metrics:[["结果","评估"],["机会","队列"],["能力","路线图"]],
-    tags:["云通信","CRM","大模型增强"],image:"assets/generated/project-13-demo.png?v=20260718-cn-name",alt:"AI 前台增长与机会追回系统 Demo 界面"
+    tags:["云通信","CRM","大模型增强"]
   },
   {
-    id:"01",className:"p01",href:"project_01.html",domain:"AIGC 视觉",title:"跨境电商 AI 商品图",
+    id:"01",className:"p01",href:"project_01.html",domain:"AIGC 视觉",mark:"IMG",title:"跨境电商 AI 商品图",
     subtitle:"上传商品参考图 → 约束关键特征 → 生成 5 类电商视觉素材",
+    flow:["参考图","特征约束","素材生成"],
     metrics:[["5","类素材"],["真实","尺寸"],["特征","约束"]],
-    tags:["Kontext","Flask","fal.ai"],image:"assets/generated/project-01-demo.png?v=20260715-reference-v2",alt:"跨境电商 AI 商品图生成器 Demo 操作界面"
+    tags:["Kontext","Flask","fal.ai"]
   },
   {
-    id:"02",className:"p02",href:"project_02.html",domain:"知识服务",title:"AI 知识库问答",
+    id:"02",className:"p02",href:"project_02.html",domain:"知识服务",mark:"RAG",title:"AI 知识库问答",
     subtitle:"上传文档 → 自动解析 → 自然语言问答 + 来源引用",
+    flow:["文档解析","向量检索","引用回答"],
     metrics:[["RAG","检索"],["多格式","支持"],["引用","回答"]],
-    tags:["本地向量","ChromaDB","B/C 双端"],image:"assets/generated/project-02-demo.png?v=20260714-kb-ui-fixed",alt:"AI 知识库问答助手界面"
+    tags:["本地向量","ChromaDB","B/C 双端"]
   },
   {
-    id:"03",className:"p03",href:"project_03.html",domain:"游戏 AI",title:"游戏 NPC 智能对话",
+    id:"03",className:"p03",href:"project_03.html",domain:"游戏 AI",mark:"NPC",title:"游戏 NPC 智能对话",
     subtitle:"LLM 驱动 NPC 对话引擎，上下文记忆 + 情感状态 + JSON API",
+    flow:["角色状态","对话记忆","API 输出"],
     metrics:[["3","个角色"],["多轮","记忆"],["情感","追踪"]],
-    tags:["LLM","Prompt Eng","REST API"],image:"assets/generated/project-03-demo.png?v=20260714-theme-refresh",alt:"游戏 NPC 智能对话界面"
+    tags:["LLM","Prompt Eng","REST API"]
   },
   {
-    id:"04",className:"p04",href:"project_04.html",domain:"业务自动化",title:"AI 自动巡检报告",
+    id:"04",className:"p04",href:"project_04.html",domain:"业务自动化",mark:"SOP",title:"AI 自动巡检报告",
     subtitle:"3 类行业 SOP 模板 → AI 评估 → 整改建议与 PDF 报告",
+    flow:["SOP 填报","智能评估","报告输出"],
     metrics:[["3","行业 SOP"],["LLM","评估"],["PDF","报告"]],
-    tags:["SOP引擎","自动化","报告生成"],image:"assets/generated/project-04-demo.png?v=20260714-theme-refresh",alt:"AI 自动巡检报告界面"
+    tags:["SOP引擎","自动化","报告生成"]
   },
   {
-    id:"05",className:"p05",href:"project_05.html",domain:"客服 Agent",title:"智能客服 Agent",
+    id:"05",className:"p05",href:"project_05.html",domain:"客服 Agent",mark:"BOT",title:"智能客服 Agent",
     subtitle:"意图识别 → FAQ 检索 → 工单创建 → 转人工与会话升级",
+    flow:["意图识别","工具调用","会话升级"],
     metrics:[["4","类工具"],["Tool","Calling"],["转","人工"]],
-    tags:["Agent","业务工具","Flask"],image:"assets/generated/project-05-demo.png?v=20260714-theme-refresh",alt:"智能客服 Agent 界面"
+    tags:["Agent","业务工具","Flask"]
   },
   {
-    id:"07",className:"p07",href:"project_07.html",domain:"金融风控",title:"金融风控 AI 助手",
+    id:"07",className:"p07",href:"project_07.html",domain:"金融风控",mark:"RISK",title:"金融风控 AI 助手",
     subtitle:"五维规则评分 + 大模型风险解释 + 财报原文扫描",
+    flow:["规则评分","风险解释","材料建议"],
     metrics:[["5维","评分"],["3","场景"],["原文","依据"]],
-    tags:["规则引擎","风险解释","Gradio"],image:"assets/generated/project-07-demo.png?v=20260715-risk-v2",alt:"金融风控 AI 助手界面"
+    tags:["规则引擎","风险解释","Gradio"]
   },
   {
-    id:"08",className:"p08",href:"project_08.html",domain:"直播运营",title:"直播 AI 助手",
+    id:"08",className:"p08",href:"project_08.html",domain:"直播运营",mark:"LIVE",title:"直播 AI 助手",
     subtitle:"配置商品事实 → 回复模拟弹幕 → 生成合规直播脚本",
+    flow:["事实配置","弹幕理解","话术生成"],
     metrics:[["弹幕","回复"],["话术","生成"],["事实","约束"]],
-    tags:["事实约束","Flask API","安全回退"],image:"assets/generated/project-08-demo.png?v=20260714-grounded",alt:"直播 AI 助手界面"
+    tags:["事实约束","Flask API","安全回退"]
   },
   {
-    id:"10",className:"p10",href:"project_10.html",domain:"AIoT",title:"AIoT 智能家居",
+    id:"10",className:"p10",href:"project_10.html",domain:"AIoT",mark:"IOT",title:"AIoT 智能家居",
     subtitle:"自然语言指令 → 状态引擎执行 → 全屋设备实时同步",
+    flow:["语言指令","状态引擎","设备同步"],
     metrics:[["状态","同步"],["设备","事件"],["参数","控制"]],
-    tags:["状态引擎","场景规则","自然语言"],image:"assets/generated/project-10-demo.png?v=20260715-state-v2",alt:"AIoT 智能家居控制台界面"
+    tags:["状态引擎","场景规则","自然语言"]
   },
   {
-    id:"11",className:"p11",href:"project_11.html",domain:"知识工程",title:"知识图谱可视化",
+    id:"11",className:"p11",href:"project_11.html",domain:"知识工程",mark:"KG",title:"知识图谱可视化",
     subtitle:"文本实体关系抽取 + 最短路径推理 + 交互式图谱",
+    flow:["实体抽取","关系建模","路径推理"],
     metrics:[["实体","关系"],["路径","推理"],["文本","抽取"]],
-    tags:["图算法","知识工程","交互画布"],image:"assets/generated/project-11-demo.png?v=20260714-theme-refresh",alt:"知识图谱可视化平台界面"
+    tags:["图算法","知识工程","交互画布"]
   },
   {
-    id:"12",className:"p12",href:"project_12.html",domain:"Agent 工作流",title:"GenAI Agent 工作流平台",
+    id:"12",className:"p12",href:"project_12.html",domain:"Agent 工作流",mark:"FLOW",title:"GenAI Agent 工作流平台",
     subtitle:"自然语言生成 + 节点拖拽 + 工作流运行与导出",
+    flow:["自然语言","节点编排","运行导出"],
     metrics:[["AI","生成"],["节点","拖拽"],["可视化","编排"]],
-    tags:["Agent框架","工作流","Tool Calling"],image:"assets/generated/project-12-demo.png?v=20260714-palette-synced",alt:"GenAI Agent 工作流平台界面"
+    tags:["Agent框架","工作流","Tool Calling"]
   }
 ];
 
 const track=document.getElementById("projectTrack");
 track.innerHTML=projects.map((project,index)=>`
   <a href="${project.href}" class="card ${project.className}" data-index="${index}">
-    <div class="media"><img src="${project.image}" alt="${project.alt}" loading="${index<2?"eager":"lazy"}"></div>
+    <div class="card-visual" aria-hidden="true">
+      <div class="mark">${project.mark}</div>
+      <div class="flow-line">${project.flow.map(step=>`<span class="flow-node">${step}</span>`).join("")}</div>
+    </div>
     <div class="card-body">
       <div class="meta-row">
         <span class="index">${String(index+1).padStart(2,"0")}</span>
