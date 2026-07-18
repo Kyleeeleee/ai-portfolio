@@ -163,6 +163,12 @@
       cursor: pointer;
     }
 
+    .ghost-button:disabled,
+    .primary-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.68;
+    }
+
     .content {
       padding: 24px 26px 34px;
       display: grid;
@@ -520,6 +526,80 @@
       line-height: 1.55;
     }
 
+    .llm-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .field-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .text-input,
+    .textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--ink);
+      padding: 11px 12px;
+      outline: 0;
+    }
+
+    .textarea {
+      min-height: 190px;
+      resize: vertical;
+      line-height: 1.65;
+    }
+
+    .text-input:focus,
+    .textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .llm-output {
+      display: grid;
+      gap: 12px;
+    }
+
+    .result-card {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 13px;
+      background: #fbfcfe;
+      display: grid;
+      gap: 8px;
+    }
+
+    .result-card h3 {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .result-card p,
+    .result-card ul {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .result-card ul {
+      padding-left: 18px;
+    }
+
     .call-card {
       display: grid;
       gap: 13px;
@@ -627,7 +707,8 @@
       .kpi-grid,
       .grid-2,
       .split,
-      .experiment-grid {
+      .experiment-grid,
+      .llm-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -661,6 +742,7 @@
         <button class="active" data-view="overview">总览</button>
         <button data-view="radar">AI能力缺口</button>
         <button data-view="recovery">机会追回</button>
+        <button data-view="llm">大模型增强</button>
         <button data-view="experiment">安全试运行</button>
         <button data-view="handoff">平台协同</button>
       </nav>
@@ -695,7 +777,7 @@
         <section class="view active" id="overview">
           <div class="kpi-grid">
             <div class="metric"><span>总来电与短信</span><strong id="metricTotal">1,248</strong><em id="metricTotalDelta">+18% vs. 上周</em></div>
-            <div class="metric"><span>AIR 自动解决率</span><strong id="metricResolved">63%</strong><em id="metricResolvedDelta">+6.2 pts</em></div>
+            <div class="metric"><span>AI 前台自动解决率</span><strong id="metricResolved">63%</strong><em id="metricResolvedDelta">+6.2 pts</em></div>
             <div class="metric warn"><span>转人工率</span><strong id="metricTransfer">22%</strong><em id="metricTransferDelta">可优化 31%</em></div>
             <div class="metric bad"><span>未追回机会</span><strong id="metricLost">84</strong><em id="metricLostDelta">预计 $18.6k</em></div>
             <div class="metric"><span>发现能力缺口</span><strong id="metricGaps">12</strong><em id="metricGapsDelta">4 个 P0/P1</em></div>
@@ -759,30 +841,30 @@
             <article class="panel">
               <div class="panel-header">
                 <div>
-                  <h2>Outcome Breakdown</h2>
+                  <h2>业务结果拆解</h2>
                   <p>每通对话结束后的结果标签。</p>
                 </div>
               </div>
               <div class="panel-body">
                 <div class="bar-list">
                   <div class="bar-row">
-                    <div class="bar-label"><span>Resolved by AIR</span><strong>63%</strong></div>
+                    <div class="bar-label"><span>AI 前台自助解决</span><strong>63%</strong></div>
                     <div class="bar-track"><div class="bar-fill teal" style="width:63%"></div></div>
                   </div>
                   <div class="bar-row">
-                    <div class="bar-label"><span>Human transfer</span><strong>22%</strong></div>
+                    <div class="bar-label"><span>转人工</span><strong>22%</strong></div>
                     <div class="bar-track"><div class="bar-fill amber" style="width:22%"></div></div>
                   </div>
                   <div class="bar-row">
-                    <div class="bar-label"><span>Lost opportunity</span><strong>7%</strong></div>
+                    <div class="bar-label"><span>流失机会</span><strong>7%</strong></div>
                     <div class="bar-track"><div class="bar-fill red" style="width:7%"></div></div>
                   </div>
                   <div class="bar-row">
-                    <div class="bar-label"><span>Knowledge gap</span><strong>5%</strong></div>
+                    <div class="bar-label"><span>知识缺口</span><strong>5%</strong></div>
                     <div class="bar-track"><div class="bar-fill violet" style="width:5%"></div></div>
                   </div>
                   <div class="bar-row">
-                    <div class="bar-label"><span>Tool/API failure</span><strong>3%</strong></div>
+                    <div class="bar-label"><span>工具或接口失败</span><strong>3%</strong></div>
                     <div class="bar-track"><div class="bar-fill" style="width:3%"></div></div>
                   </div>
                 </div>
@@ -813,7 +895,7 @@
                 </div>
                 <div class="insight">
                   <strong>Roadmap 应由真实通话驱动</strong>
-                  <p>从 transcripts、support patterns、churn signals 中找到下一批 P0/P1 AI 能力。</p>
+                  <p>从通话转写、支持模式、流失信号中找到下一批 P0/P1 AI 能力。</p>
                 </div>
               </div>
             </article>
@@ -857,7 +939,7 @@
                   <div class="detail"><span>本周频次</span><strong id="gapVolume">118 通</strong></div>
                   <div class="detail"><span>预计影响</span><strong id="gapImpact">$7.4k 机会</strong></div>
                   <div class="detail"><span>AI 可行性</span><strong id="gapFeasibility">高</strong></div>
-                  <div class="detail"><span>主要原因</span><strong id="gapCause">当前 AIR 能力无法修改已有预约</strong></div>
+                  <div class="detail"><span>主要原因</span><strong id="gapCause">当前 AI 前台能力无法修改已有预约</strong></div>
                   <div class="detail full"><span>推荐方案</span><strong id="gapPlan">用历史通话模拟“预约改期 / 取消”能力，通过身份确认和日历校验后小流量启用。</strong></div>
                 </div>
               </div>
@@ -900,6 +982,51 @@
                 <div class="step">
                   <div class="step-number">4</div>
                   <div><strong>回流到 Radar</strong><p>把失败原因沉淀为能力缺口，用于后续产品 roadmap。</p></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="llm">
+          <div class="llm-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>大模型通话理解</h2>
+                  <p>用一段通话文本演示：意图识别、失败原因分类、追回动作生成。</p>
+                </div>
+                <span class="tag green" id="llmModeTag">模拟模式</span>
+              </div>
+              <div class="panel-body field-stack">
+                <div class="field">
+                  <label for="llmTranscript">通话转写样本</label>
+                  <textarea class="textarea" id="llmTranscript">客户：我想预约本周六下午做牙齿清洁，你们有空吗？
+AI 前台：本周六下午暂时没有可预约时间，周一上午可以。
+客户：我只有周六有空，那算了。
+AI 前台：好的，感谢来电。
+系统结果：客户挂断，未留下后续联系方式，预约未完成。</textarea>
+                </div>
+                <div class="field">
+                  <label for="llmProxyUrl">真实大模型后端代理 URL（可选，不填写则使用模拟分析）</label>
+                  <input class="text-input" id="llmProxyUrl" placeholder="例如：https://your-domain.com/api/ai-receptionist/analyze">
+                </div>
+                <button class="primary-button" id="llmAnalyzeBtn" type="button">分析通话并生成追回建议</button>
+                <p class="footer-note">公开网页不直接保存或暴露 API Key。真实接入时建议把 OpenAI / DeepSeek / 混元等模型放在后端代理中调用，再把结构化结果返回给前端。</p>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>结构化输出</h2>
+                  <p>面向产品决策，而不是只生成一段摘要。</p>
+                </div>
+              </div>
+              <div class="panel-body llm-output" id="llmOutput">
+                <div class="result-card">
+                  <h3>意图与结果</h3>
+                  <p>待分析。点击左侧按钮后生成 intent、outcome、risk 和下一步动作。</p>
                 </div>
               </div>
             </article>
@@ -1043,6 +1170,10 @@
         title: "流失机会追回闭环",
         subtitle: "把询价挂断、预约失败、未捕获 Lead 变成自动短信、回拨任务和 CRM 跟进。"
       },
+      llm: {
+        title: "大模型增强分析",
+        subtitle: "用大模型把通话转写转成意图、失败原因、风险等级和可执行的追回动作。"
+      },
       experiment: {
         title: "安全能力试运行",
         subtitle: "新 AI 前台能力不直接全量上线，先历史模拟、小范围灰度、设置安全护栏和回滚条件。"
@@ -1063,7 +1194,7 @@
         volume: "118 通",
         impact: "$7.4k 机会",
         feasibility: "高",
-        cause: "当前 AIR 能力无法修改已有预约",
+        cause: "当前 AI 前台能力无法修改已有预约",
         plan: "用历史通话模拟“预约改期 / 取消”能力，通过身份确认和日历校验后小流量启用。"
       },
       {
@@ -1229,6 +1360,145 @@
       });
     }
 
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function buildSimulatedLlmResult(transcript) {
+      const hasSaturday = /周六|Saturday/i.test(transcript);
+      const hasNoContact = /未留下|没有.*联系方式|no contact/i.test(transcript);
+      return {
+        intent: hasSaturday ? "预约时间匹配 / 改期请求" : "服务预约咨询",
+        outcome: "预约未完成，存在可追回机会",
+        failureReason: hasSaturday ? "客户可用时间与当前可预约时段不匹配，AI 前台没有给出候补、等待名单或回拨选项。" : "AI 前台完成了基础回答，但没有把对话转成明确下一步。",
+        risk: hasNoContact ? "中高：未捕获联系方式，线索可能永久流失。" : "中：需要补充下一步动作。",
+        recoveryActions: [
+          "在 5 分钟内发送短信，提供候补名单、下一个可预约时间和一键预约链接。",
+          "创建人工回拨任务，优先处理高意向但未完成预约的客户。",
+          "把“周末时段不足”写入能力缺口，用于后续预约改期 skill 的路线图排序。"
+        ],
+        score: 86,
+        mode: "模拟分析"
+      };
+    }
+
+    function normalizeLlmResult(payload) {
+      if (typeof payload === "string") {
+        return {
+          intent: "模型文本输出",
+          outcome: "已返回分析结果",
+          failureReason: payload,
+          risk: "请在后端代理中返回 JSON，以便前端稳定渲染。",
+          recoveryActions: ["将文本结果映射为 intent、outcome、risk、recoveryActions 等字段。"],
+          score: 70,
+          mode: "真实代理"
+        };
+      }
+      return {
+        intent: payload.intent || payload.intent_label || "未命名意图",
+        outcome: payload.outcome || "已返回业务结果判断",
+        failureReason: payload.failureReason || payload.failure_reason || payload.reason || "后端未返回失败原因字段。",
+        risk: payload.risk || payload.riskLevel || payload.risk_level || "后端未返回风险字段。",
+        recoveryActions: payload.recoveryActions || payload.recovery_actions || payload.actions || [],
+        score: payload.score || payload.confidence || 0,
+        mode: "真实代理"
+      };
+    }
+
+    function renderLlmOutput(result) {
+      const actions = Array.isArray(result.recoveryActions) && result.recoveryActions.length
+        ? result.recoveryActions
+        : ["生成短信或回拨任务", "写入 CRM 跟进", "沉淀为能力缺口"];
+      document.getElementById("llmModeTag").textContent = result.mode || "模拟模式";
+      document.getElementById("llmModeTag").className = result.mode === "真实代理" ? "tag violet" : "tag green";
+      document.getElementById("llmOutput").innerHTML = `
+        <div class="result-card">
+          <h3>意图与业务结果</h3>
+          <p><strong>${escapeHtml(result.intent)}</strong> · ${escapeHtml(result.outcome)}</p>
+        </div>
+        <div class="result-card">
+          <h3>失败原因与风险</h3>
+          <p>${escapeHtml(result.failureReason)}</p>
+          <p>${escapeHtml(result.risk)}</p>
+        </div>
+        <div class="result-card">
+          <h3>追回动作</h3>
+          <ul>${actions.map(action => `<li>${escapeHtml(action)}</li>`).join("")}</ul>
+        </div>
+        <div class="result-card">
+          <h3>可用于产品指标</h3>
+          <p>建议将置信度 / 机会分记录为 ${escapeHtml(result.score || "N/A")}，用于 Recovery Queue 排序和 Skill Roadmap 评审。</p>
+        </div>
+      `;
+    }
+
+    async function analyzeWithLlm() {
+      const button = document.getElementById("llmAnalyzeBtn");
+      const transcript = document.getElementById("llmTranscript").value.trim();
+      const proxyUrl = document.getElementById("llmProxyUrl").value.trim();
+      if (!transcript) {
+        renderLlmOutput({
+          intent: "缺少通话文本",
+          outcome: "无法分析",
+          failureReason: "请先输入一段通话转写。",
+          risk: "无",
+          recoveryActions: ["补充通话转写后重新分析。"],
+          score: 0,
+          mode: "模拟分析"
+        });
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = proxyUrl ? "正在调用代理..." : "正在模拟分析...";
+      try {
+        if (!proxyUrl) {
+          await new Promise(resolve => setTimeout(resolve, 420));
+          renderLlmOutput(buildSimulatedLlmResult(transcript));
+          return;
+        }
+        const response = await fetch(proxyUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            task: "ai_receptionist_call_analysis",
+            transcript,
+            expected_schema: {
+              intent: "string",
+              outcome: "string",
+              failureReason: "string",
+              risk: "string",
+              recoveryActions: ["string"],
+              score: "number"
+            }
+          })
+        });
+        const text = await response.text();
+        let payload;
+        try { payload = JSON.parse(text); } catch (_) { payload = text; }
+        if (!response.ok) throw new Error(typeof payload === "string" ? payload : (payload.error || "代理接口返回失败"));
+        renderLlmOutput(normalizeLlmResult(payload));
+      } catch (error) {
+        renderLlmOutput({
+          intent: "代理调用失败",
+          outcome: "已回退到本地模拟结果",
+          failureReason: error.message || "请检查后端代理 URL、CORS 和返回格式。",
+          risk: "公开网页不应直接填写模型 API Key；建议通过后端代理调用。",
+          recoveryActions: buildSimulatedLlmResult(transcript).recoveryActions,
+          score: 72,
+          mode: "模拟分析"
+        });
+      } finally {
+        button.disabled = false;
+        button.textContent = "分析通话并生成追回建议";
+      }
+    }
+
     document.querySelectorAll(".nav button").forEach(button => {
       button.addEventListener("click", () => showView(button.dataset.view));
     });
@@ -1243,9 +1513,11 @@
 
     document.getElementById("industrySelect").addEventListener("change", updateMetrics);
     document.getElementById("rangeSelect").addEventListener("change", updateMetrics);
+    document.getElementById("llmAnalyzeBtn").addEventListener("click", analyzeWithLlm);
 
     renderGaps();
     renderRecovery();
+    renderLlmOutput(buildSimulatedLlmResult(document.getElementById("llmTranscript").value));
     updateMetrics();
   </script>
 </body>
