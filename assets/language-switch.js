@@ -90,7 +90,7 @@
     "协助投资者提交财务材料，跟踪资金往来进度": "Assisted investors with financial documentation and tracked fund movements.",
     "编制数据报告，记录项目进展与财务数据变化": "Prepared data reports covering project progress and financial changes.",
     "精选项目": "Selected work",
-    "精选 4 个可体验 Demo，突出 AI 前台增长、智能客服 Agent、AI 商品图生成与金融风控，展示不同业务场景下的 AI 产品原型验证实践。": "Four highlighted demos featuring AI Receptionist growth, customer-service agents, AI product imagery, and financial risk control, demonstrating prototype validation across different business contexts.",
+    "精选 5 个可体验 Demo，突出 AI 前台、内容增长、企业 RAG、AIGC 与金融风控，展示不同业务场景下的 AI 产品原型验证实践。": "Five highlighted demos featuring AI receptionist growth, content growth, enterprise RAG, AIGC commerce visuals, and financial risk control across practical AI product scenarios.",
     "查看完整作品集（11 个项目）": "View all 11 projects",
     "AI 前台 · 增长追回": "AI Receptionist · Growth Recovery",
     "AI 前台增长与机会追回系统": "AI Receptionist Growth & Recovery System",
@@ -98,9 +98,6 @@
     "通话分析": "Call analytics",
     "机会追回": "Recovery Queue",
     "能力路线图": "Skill Roadmap",
-    "Agent · 客服场景": "Agent · Customer service",
-    "智能客服 Agent": "Customer Service Agent",
-    "识别 FAQ、订单、投诉与转人工意图，并通过工具调用完成查询、建单和升级。": "Recognizes FAQ, order, complaint, and human-handoff intents, then uses tool calling to complete lookup, ticketing, and escalation flows.",
     "FinTech · 风险决策": "FinTech · Risk decisioning",
     "金融风控 AI 助手": "Financial Risk AI Assistant",
     "以五维规则形成 100 分风险评分，再由 DeepSeek 输出可复核的风险解释与材料建议。": "A five-dimension rules engine produces a 100-point risk score, while DeepSeek generates reviewable explanations and document requests.",
@@ -178,7 +175,6 @@
     "SOP 填报": "SOP input",
     "智能评估": "AI evaluation",
     "报告输出": "Report output",
-    "客服 Agent": "Service agent",
     "意图识别": "Intent detection",
     "工具调用": "Tool calling",
     "会话升级": "Escalation",
@@ -230,7 +226,6 @@
     "SOP引擎": "SOP engine",
     "自动化": "Automation",
     "报告生成": "Report generation",
-    "智能客服 Agent": "Customer Service Agent",
     "意图识别 → FAQ 检索 → 工单创建 → 转人工与会话升级": "Intent detection → FAQ retrieval → ticket creation → human escalation",
     "类工具": " tools",
     "转": "Human",
@@ -435,22 +430,6 @@
     "自动巡检的价值不只是节省写报告时间，更在于统一标准、保留证据和跟踪整改。AI适合承担重复归纳与建议生成，最终责任仍应由现场人员确认。": "Automated inspection is valuable not only for faster reporting, but also for consistent standards, evidence retention, and remediation tracking. AI can summarize and recommend; accountable staff must confirm the result.",
     "本 Demo 使用模拟巡检数据，AI 评估与 PDF 报告用于流程展示，不替代正式合规检查。": "This demo uses simulated inspection data and does not replace a formal compliance inspection.",
 
-    "意图识别 · FAQ 检索 · Tool Calling · 智能转人工": "Intent detection · FAQ retrieval · Tool calling · Human escalation",
-    "DeepSeek · Tool Calling · 双路 FAQ": "DeepSeek · Tool calling · Hybrid FAQ",
-    "问答、订单查询、投诉工单与人工升级在同一会话中完成，界面同步展示可直接体验的业务场景。": "Q&A, order lookup, complaint tickets, and human escalation happen in one conversation with testable business scenarios.",
-    "智能客服会话与工具工作台": "Customer-service conversation and tools workspace",
-    "让客服不只回答问题，也能调用工具完成业务动作": "Let customer service answer questions and execute business actions",
-    "系统识别用户意图后选择 FAQ 检索、订单查询、工单创建或人工转接，并在多轮会话中保留必要上下文。": "The system identifies intent, selects FAQ retrieval, order lookup, ticket creation, or human handoff, and preserves relevant context across turns.",
-    "识别 FAQ、订单、投诉与转人工等常见意图": "Recognize FAQ, order, complaint, and handoff intents.",
-    "基于 TF-IDF 与规则关键词召回 FAQ": "Retrieve FAQs with TF-IDF and rule-based keywords.",
-    "调用订单查询、知识检索、建单和转人工工具": "Call order lookup, knowledge search, ticketing, and human-handoff tools.",
-    "复杂或高风险问题自动升级并保留会话摘要": "Escalate complex or high-risk issues with a conversation summary.",
-    "Session 级上下文维持多轮对话连贯性": "Maintain multi-turn continuity with session-level context.",
-    "DeepSeek 判断用户意图并选择需要调用的业务工具。": "DeepSeek identifies intent and selects the required business tool.",
-    "TF-IDF 与规则关键词共同完成轻量 FAQ 召回。": "TF-IDF and rule keywords provide lightweight FAQ retrieval.",
-    "Flask 管理上下文、工具结果、工单与人工升级状态。": "Flask manages context, tool results, tickets, and escalation state.",
-    "客服 Agent 的价值不在于更像人聊天，而在于能安全执行查询、建单和升级等动作。工具权限、失败兜底和人工接管机制应与对话能力同时设计。": "A service agent’s value is not human-like conversation but safe execution of lookup, ticketing, and escalation. Tool permissions, fallbacks, and human takeover must be designed alongside dialogue.",
-    "本 Demo 使用模拟订单和工单数据展示业务流程，不处理真实客户信息。": "This demo uses simulated orders and tickets and does not process real customer data.",
 
     "五维规则评分 · DeepSeek 风险解释 · 财报风险扫描": "Five-dimension scoring · DeepSeek explanations · Financial-report risk scan",
     "Gradio · 风控规则 · DeepSeek": "Gradio · Risk rules · DeepSeek",
@@ -562,7 +541,6 @@
     ,"🧠 AI 知识库问答助手 · 李林豪": "🧠 AI Knowledge Base Q&A · Linhao Li"
     ,"🎮 游戏 NPC 智能对话系统 · 李林豪": "🎮 AI NPC Dialogue System · Linhao Li"
     ,"📊 AI 自动巡检报告系统 · 李林豪": "📊 AI Inspection Report System · Linhao Li"
-    ,"💬 智能客服 Agent · 李林豪": "💬 Customer Service Agent · Linhao Li"
     ,"🛡️ 金融风控 AI 助手 · 李林豪": "🛡️ Financial Risk AI Assistant · Linhao Li"
     ,"🎬 直播 AI 助手 · 李林豪": "🎬 Live-commerce AI Assistant · Linhao Li"
     ,"🏠 AIoT 智能家居控制台 · 李林豪": "🏠 AIoT Smart Home Console · Linhao Li"
@@ -594,7 +572,6 @@
     ,"AI 知识库问答助手 · 在线 Demo": "AI Knowledge Base Q&A · Live Demo"
     ,"游戏 NPC 智能对话系统 · 在线 Demo": "AI NPC Dialogue System · Live Demo"
     ,"AI 自动巡检报告系统 · 在线 Demo": "AI Inspection Report System · Live Demo"
-    ,"智能客服 Agent · 在线 Demo": "Customer Service Agent · Live Demo"
     ,"金融风控 AI 助手 · 在线 Demo": "Financial Risk AI Assistant · Live Demo"
     ,"直播 AI 助手 · 在线 Demo": "Live-commerce AI Assistant · Live Demo"
     ,"AIoT 智能家居控制台 · 在线 Demo": "AIoT Smart Home Console · Live Demo"
@@ -639,7 +616,6 @@
     ,"AI 知识库问答助手界面": "AI knowledge-base Q&A interface"
     ,"游戏 NPC 智能对话界面": "AI NPC dialogue interface"
     ,"AI 自动巡检报告界面": "AI inspection-report interface"
-    ,"智能客服 Agent 界面": "Customer-service agent interface"
     ,"金融风控 AI 助手界面": "Financial risk AI assistant interface"
     ,"直播 AI 助手界面": "Live-commerce AI assistant interface"
     ,"AIoT 智能家居控制台界面": "AIoT smart-home console interface"
@@ -649,7 +625,6 @@
     ,"AI 知识库问答助手在线 Demo 界面": "AI knowledge-base Q&A live demo interface"
     ,"游戏 NPC 智能对话系统在线 Demo 界面": "AI NPC dialogue live demo interface"
     ,"AI 自动巡检报告系统在线 Demo 界面": "AI inspection-report live demo interface"
-    ,"智能客服 Agent在线 Demo 界面": "Customer-service agent live demo interface"
     ,"金融风控 AI 助手在线 Demo 界面": "Financial risk AI assistant live demo interface"
     ,"直播 AI 助手在线 Demo 界面": "Live-commerce AI assistant live demo interface"
     ,"AIoT 智能家居控制台在线 Demo 界面": "AIoT smart-home console live demo interface"
@@ -692,7 +667,7 @@
     });
     document.querySelectorAll("img[src]").forEach((image) => {
       const src = image.getAttribute("src");
-      if (/assets\/generated\/project-(01|02|03|04|05|07|08|10|11|12|13)-demo\.png(?:\?|$)/.test(src)) {
+      if (/assets\/generated\/project-(01|02|03|04|07|08|10|11|12|13)-demo\.png(?:\?|$)/.test(src)) {
         previewImages.push({ image, zh: src, en: src.replace("-demo.png", "-demo-en.png") });
       }
     });
