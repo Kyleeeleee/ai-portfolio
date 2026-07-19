@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>行业知识图谱决策 Agent · 李林豪</title>
+<title>AI 内容增长中台 · 李林豪</title>
 <style>
 :root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -22,7 +22,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .features li{position:relative;padding:.5rem 0 .5rem 1.5rem;font-size:.9rem;color:var(--text)}
 .features li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tag,.tag-green{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.22)}
+.tag,.tag-green{font-size:.75rem;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,0.12);color:var(--primary);border:1px solid rgba(139,92,246,0.2)}
 .tag-green{background:rgba(0,229,160,0.1);color:var(--accent);border-color:rgba(0,229,160,0.2)}
 .meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--dim);margin-top:.8rem}
 .metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
@@ -39,7 +39,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 
 
 /* Apple-inspired light theme override */
-:root{--bg:#f5f5f7;--card:#ffffff;--border:rgba(0,0,0,.08);--primary:#4f6f7f;--accent:#4f6f7f;--theme-rgb:79,111,127;--header-text:#ffffff;--glass-fill:rgba(0,0,0,.1);--text:#1d1d1f;--dim:#6e6e73;--radius:18px}
+:root{--bg:#f5f5f7;--card:#ffffff;--border:rgba(0,0,0,.08);--primary:#2563eb;--accent:#2563eb;--theme-rgb:37,99,235;--header-text:#ffffff;--glass-fill:rgba(255,255,255,.16);--text:#1d1d1f;--dim:#6e6e73;--radius:18px}
 body{background:var(--bg);color:var(--text)}
 .header{position:relative;isolation:isolate;overflow:hidden;background:var(--primary);border-bottom:0;padding:3.7rem 2rem}
 .header::before{content:"";position:absolute;z-index:0;inset:24px max(24px,calc((100% - 1040px)/2));background:var(--glass-fill);border:1px solid rgba(255,255,255,.32);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 18px 48px rgba(0,0,0,.1);backdrop-filter:blur(18px) saturate(1.12);-webkit-backdrop-filter:blur(18px) saturate(1.12);pointer-events:none}
@@ -70,38 +70,36 @@ body{background:var(--bg);color:var(--text)}
   </div>
 </nav>
 <header class="header">
-  <div class="emoji">🧠</div>
-  <h1>行业知识图谱决策 Agent</h1>
-  <div class="subtitle">NLP 抽取 · 图谱推理 · 风险研判 · 可追溯报告</div>
+  <div class="emoji">📈</div>
+  <h1>AI 内容增长中台</h1>
+  <div class="subtitle">热点机会 · 达人匹配 · 脚本生成 · 投放复盘</div>
   <div class="hero-actions">
-    <a href="industry-ai-demos.html#decision" class="demo-button">在线体验 ↗</a>
-    <span class="model-label">Knowledge Graph · Decision Agent · Evidence Chain</span>
+    <a href="industry-ai-demos.html#content" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">AIGC · Creator Matching · Campaign Analytics</span>
   </div>
 </header>
 
 <main class="case-container">
-  <section class="case-section" aria-labelledby="preview-title-11">
+  <section class="case-section" aria-labelledby="preview-title-14">
     <div class="section-heading">
-      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-11">界面预览</h2></div>
-      <p>从非结构化文本中抽取事件、主体和关系，再通过图谱推理、证据链和人工复核生成可解释的行业决策报告。</p>
+      <div><span class="section-kicker">Product interface</span><h2 id="preview-title-14">界面预览</h2></div>
+      <p>把品牌 brief、平台热点、达人画像、历史投放效果和评论反馈串成一个产品工作流，展示内容营销场景里的 AI 产品化能力。</p>
     </div>
     <figure class="interface-preview">
-      <img src="assets/generated/project-11-demo.png?v=20260719-decision-agent" alt="行业知识图谱决策 Agent Demo 界面" loading="eager">
-      <figcaption>行业智能决策工作台<span>事件图谱、风险研判与证据链</span></figcaption>
+      <img src="assets/generated/project-14-demo.png?v=20260719-content-growth" alt="AI 内容增长中台 Demo 界面" loading="eager">
+      <figcaption>内容营销增长工作台<span>从 brief 到投放复盘的闭环</span></figcaption>
     </figure>
   </section>
 
-  <section class="case-section summary-panel" aria-labelledby="summary-title-11">
+  <section class="case-section summary-panel" aria-labelledby="summary-title-14">
     <div class="summary-copy">
       <span class="section-kicker">Project summary</span>
-      <h2 id="summary-title-11">把知识图谱从“可视化”升级为可解释的决策 Agent</h2>
-      <p>旧版 demo 重点展示实体关系画布。新版案例把可视化能力放回业务闭环中，进一步覆盖事件抽取、关系推理、风险判断、证据引用、专家复核和持续监控，更适合 AI 产品经理岗位展示。</p>
-      <a href="industry-ai-demos.html#decision" class="summary-link">打开在线 Demo →</a>
+      <h2 id="summary-title-14">把内容运营从经验驱动升级为数据 + 生成 + 复盘闭环</h2>
+      <p>这个 demo 不把 AIGC 停留在写标题和写脚本，而是覆盖选题机会、达人组合、内容审核、预算调优和舆情响应，适合展示 AI 产品经理对增长业务的理解。</p>
+      <a href="industry-ai-demos.html#content" class="summary-link">打开在线 Demo →</a>
     </div>
     <div class="metrics-inline" aria-label="核心指标">
-      <div class="metric-item"><strong>91%</strong><span>实体抽取 F1</span></div>
-      <div class="metric-item"><strong>8min</strong><span>研判时效</span></div>
-      <div class="metric-item"><strong>100%</strong><span>报告引用覆盖</span></div>
+      <div class="metric-item"><strong>2.5h</strong><span>选题生产周期</span></div><div class="metric-item"><strong>82%</strong><span>达人匹配命中</span></div><div class="metric-item"><strong>12min</strong><span>负面评论响应</span></div>
     </div>
   </section>
 
@@ -110,35 +108,29 @@ body{background:var(--bg);color:var(--text)}
       <span class="section-kicker">Product capabilities</span>
       <h2>功能拆解</h2>
       <ul class="features">
-        <li>从公告、新闻、舆情、合同和业务文档中抽取主体、事件、时间、地点和关系</li>
-        <li>将事件与实体沉淀为知识图谱，并保留原文证据、来源时间和置信度</li>
-        <li>通过图谱关系识别异常关联、风险传导路径和关键节点</li>
-        <li>生成风险等级、核心证据、不确定点和下一步业务动作</li>
-        <li>高风险结论进入人工复核，避免把相关性直接包装成确定性因果</li>
+        <li>根据品牌 brief、预算、人群、禁用表达和活动周期生成内容策略</li><li>聚合热点趋势、竞品内容、达人画像和历史投放数据，排序选题机会</li><li>生成短视频脚本、标题、分镜和评论区回复，并标记合规与品牌调性风险</li><li>按互动成本、收藏率、转化和评论情绪回流下一轮内容推荐权重</li><li>为运营团队输出达人组合、排期建议、风险词和复盘看板</li>
       </ul>
     </div>
     <div class="detail-panel">
       <span class="section-kicker">Technical delivery</span>
       <h2>技术架构</h2>
       <div class="architecture-list">
-        <div class="architecture-item"><strong>NLP 抽取层</strong><p>把非结构化材料转成实体、关系、事件和属性，并保留原文证据。</p></div>
-        <div class="architecture-item"><strong>图谱推理层</strong><p>基于主体关系、时间线和事件链路识别风险传导、异常关联和关键节点。</p></div>
-        <div class="architecture-item"><strong>决策 Agent 层</strong><p>由风险识别、证据核验、反例搜索和报告生成多个子任务组成，输出可复核结论。</p></div>
+        <div class="architecture-item"><strong>策略输入层</strong><p>结构化品牌目标、预算、客群、平台渠道、合规限制和活动周期。</p></div><div class="architecture-item"><strong>AI 生成层</strong><p>热点识别、达人匹配、脚本生成、标题生成和评论回复建议统一进入候选池。</p></div><div class="architecture-item"><strong>增长反馈层</strong><p>互动、转化、成本、舆情和人工修改记录回流到下一轮策略评分。</p></div>
       </div>
-      <div class="tags"><span class="tag">知识图谱</span><span class="tag">NLP</span><span class="tag">决策 Agent</span><span class="tag">证据链</span><span class="tag">人工复核</span></div>
+      <div class="tags"><span class="tag">内容营销</span><span class="tag">AIGC</span><span class="tag">达人匹配</span><span class="tag">投放复盘</span><span class="tag">舆情分析</span></div>
     </div>
   </section>
 
-  <section class="insight-band" aria-labelledby="insight-title-11">
-    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-11">产品洞察</h2></div>
-    <p>知识图谱类 AI 产品如果只停留在画布展示，容易变成前端可视化作品。把它升级为决策 Agent 后，才能讲清楚 ToB 场景中更重要的可信、可追溯、可审计和人机协同。</p>
+  <section class="insight-band" aria-labelledby="insight-title-14">
+    <div><span class="section-kicker">Product insight</span><h2 id="insight-title-14">产品洞察</h2></div>
+    <p>内容增长类 AI 产品的关键不是生成更多内容，而是让团队知道为什么选这个题、为什么匹配这些达人、投放后如何调整策略。它能补足主页里原本偏客服、风控和工具类 demo 的空白。</p>
   </section>
-  <p class="case-note">本 Demo 使用模拟行业文本和风险事件展示产品流程，不包含真实企业敏感数据。</p>
+  <p class="case-note">本 Demo 使用模拟营销数据和虚构品牌 brief 展示产品流程，不包含真实投放数据。</p>
 
   <nav class="project-nav" aria-label="项目切换">
-    <a href="project_10.html">← 上一个项目</a>
+    <a href="project_13.html">← 上一个项目</a>
     <a href="projects.html" class="all-projects">全部项目</a>
-    <a href="project_12.html">下一个项目 →</a>
+    <a href="project_02.html">下一个项目 →</a>
   </nav>
 </main>
 

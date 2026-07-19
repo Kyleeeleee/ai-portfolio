@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧠 AI 知识库问答助手 · 李林豪</title>
+<title>企业 RAG 智能体运营台 · 李林豪</title>
 <style>
 :root{--bg:#0a0a12;--card:#12122a;--border:#1e1e44;--primary:#7c5cfc;--accent:#00e5a0;--text:#e0e0f0;--dim:#8888aa;--radius:16px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -71,11 +71,11 @@ body{background:var(--bg);color:var(--text)}
 </nav>
 <header class="header">
   <div class="emoji">🧠</div>
-  <h1>AI 知识库问答助手</h1>
-  <div class="subtitle">RAG 检索增强生成 · ChromaDB 向量检索</div>
+  <h1>企业 RAG 智能体运营台</h1>
+  <div class="subtitle">私有化知识库 · 答案溯源 · 召回评测 · 权限治理</div>
   <div class="hero-actions">
-    <a href="live_02.html" class="demo-button">在线体验 ↗</a>
-    <span class="model-label">DeepSeek · ChromaDB · 引用回答</span>
+    <a href="industry-ai-demos.html#rag" class="demo-button">在线体验 ↗</a>
+    <span class="model-label">RAG · Agent Ops · Permission Guardrails</span>
   </div>
 </header>
 
@@ -83,25 +83,23 @@ body{background:var(--bg);color:var(--text)}
   <section class="case-section" aria-labelledby="preview-title-02">
     <div class="section-heading">
       <div><span class="section-kicker">Product interface</span><h2 id="preview-title-02">界面预览</h2></div>
-      <p>上传、索引、问答和来源状态集中在同一工作界面，便于验证知识接入与回答溯源链路。</p>
+      <p>从单一问答框升级为企业级 RAG 运营界面，集中展示知识接入、召回质量、答案引用、权限拦截和低置信问题处理。</p>
     </div>
     <figure class="interface-preview">
-      <img class="preview-crop-bottom" src="assets/generated/project-02-demo.png?v=20260714-kb-ui-fixed" alt="AI 知识库问答助手在线 Demo 界面" loading="eager">
-      <figcaption>知识库上传与问答工作台<span>最新在线 Demo 界面截图</span></figcaption>
+      <img src="assets/generated/project-02-demo.png?v=20260719-rag-ops" alt="企业 RAG 智能体运营台 Demo 界面" loading="eager">
+      <figcaption>企业知识库与智能体运营台<span>RAG 评测、权限和溯源闭环</span></figcaption>
     </figure>
   </section>
 
   <section class="case-section summary-panel" aria-labelledby="summary-title-02">
     <div class="summary-copy">
       <span class="section-kicker">Project summary</span>
-      <h2 id="summary-title-02">把分散文档转化为可检索、可引用的问答资产</h2>
-      <p>用户上传文档后，系统完成解析、分块与向量索引，并基于检索片段生成答案。回答保留来源信息，支持人工复核与连续追问。</p>
-      <a href="live_02.html" class="summary-link">打开在线 Demo →</a>
+      <h2 id="summary-title-02">把企业知识问答升级为可交付、可评估、可运营的 RAG 产品</h2>
+      <p>旧版知识库问答只证明“能检索、能回答”。新版 demo 进一步模拟企业客户真正关心的交付闭环：资料如何治理、答案为什么可信、权限如何隔离、效果如何评估、上线后如何持续迭代。</p>
+      <a href="industry-ai-demos.html#rag" class="summary-link">打开在线 Demo →</a>
     </div>
     <div class="metrics-inline" aria-label="核心指标">
-      <div class="metric-item"><strong>768 维</strong><span>本地向量</span></div>
-      <div class="metric-item"><strong>本地化</strong><span>无需下载模型</span></div>
-      <div class="metric-item"><strong>可引用</strong><span>答案溯源</span></div>
+      <div class="metric-item"><strong>96%</strong><span>答案可溯源</span></div><div class="metric-item"><strong>1.8%</strong><span>高风险幻觉率</span></div><div class="metric-item"><strong>100%</strong><span>权限测试拦截</span></div>
     </div>
   </section>
 
@@ -110,30 +108,24 @@ body{background:var(--bg);color:var(--text)}
       <span class="section-kicker">Product capabilities</span>
       <h2>功能拆解</h2>
       <ul class="features">
-        <li>统一接入 PDF、TXT 与 Markdown 文档</li>
-        <li>通过中文字符向量检索定位相关段落</li>
-        <li>回答附带原文来源，便于验证与纠错</li>
-        <li>文档未覆盖的问题明确提示未找到信息</li>
-        <li>展示向量库、LLM 与文档索引运行状态</li>
+        <li>统一管理制度文档、项目资料、网页和业务系统字段，并保留版本、权限标签和失效时间</li><li>展示召回片段、引用来源、置信度、拒答原因和人工复核状态</li><li>把低置信问题、无答案问题和人工改写样本自动沉淀到 RAG 评测集</li><li>对敏感字段、越权知识和旧版制度执行拦截、脱敏和管理员提醒</li><li>支持从问答扩展到报告生成、工单草稿和业务系统工具调用</li>
       </ul>
     </div>
     <div class="detail-panel">
       <span class="section-kicker">Technical delivery</span>
       <h2>技术架构</h2>
       <div class="architecture-list">
-        <div class="architecture-item"><strong>检索层</strong><p>本地中文字符向量完成索引，ChromaDB 持久化存储。</p></div>
-        <div class="architecture-item"><strong>生成层</strong><p>DeepSeek 基于召回片段组织答案并输出引用信息。</p></div>
-        <div class="architecture-item"><strong>应用层</strong><p>Flask 管理文档上传、分块、会话与检索状态。</p></div>
+        <div class="architecture-item"><strong>知识治理层</strong><p>文档分块、元数据、版本、权限标签和业务域统一入库，避免知识失效和越权调用。</p></div><div class="architecture-item"><strong>RAG 评测层</strong><p>跟踪召回率、引用准确率、拒答合理性、幻觉率和用户反馈，形成可持续迭代指标。</p></div><div class="architecture-item"><strong>Agent 编排层</strong><p>根据意图判断是否需要检索、工具调用、人工确认或转交管理员，保留操作审计。</p></div>
       </div>
-      <div class="tags"><span class="tag">RAG</span><span class="tag">ChromaDB</span><span class="tag">本地向量</span><span class="tag">DeepSeek</span><span class="tag">Flask</span></div>
+      <div class="tags"><span class="tag">RAG</span><span class="tag">Agent Ops</span><span class="tag">权限控制</span><span class="tag">答案溯源</span><span class="tag">评测闭环</span></div>
     </div>
   </section>
 
   <section class="insight-band" aria-labelledby="insight-title-02">
     <div><span class="section-kicker">Product insight</span><h2 id="insight-title-02">产品洞察</h2></div>
-    <p>企业知识问答的关键不是单纯接入大模型，而是建立可靠的检索、引用和纠错机制。分块策略、召回质量与答案评估共同决定系统是否真正可用。</p>
+    <p>企业 RAG 的产品价值不在“像聊天一样回答”，而在把可信、权限、评测和运营做成闭环。这个版本比旧知识库问答更适合 AI 产品经理投递，因为它体现了从 MVP 到企业交付的产品判断。</p>
   </section>
-  <p class="case-note">本 Demo 使用明确标注的虚构产品手册展示检索与问答能力，实际业务接入需配置权限与数据治理策略。</p>
+  <p class="case-note">本 Demo 使用模拟企业资料和权限策略展示产品能力，不包含真实企业敏感数据。</p>
 
   <nav class="project-nav" aria-label="项目切换">
     <a href="project_01.html">← 上一个项目</a>

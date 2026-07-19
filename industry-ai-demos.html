@@ -1,0 +1,1375 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6 Industry AI Product Demo Pack</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Cpath d='M8 21h16v3H8zm1-13h14v3H9zm3 6h8v3h-8z' fill='white'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #182033;
+      --muted: #657086;
+      --line: #dfe5ee;
+      --soft: #f4f7fb;
+      --panel: #ffffff;
+      --nav: #151b29;
+      --blue: #2563eb;
+      --green: #14805e;
+      --amber: #c26b1d;
+      --red: #c33d3d;
+      --cyan: #0b8a94;
+      --violet: #6658c7;
+      --shadow: 0 16px 38px rgba(23, 32, 51, 0.08);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #eef2f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    button, select, textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      background: var(--nav);
+      color: #f8fafc;
+      padding: 22px 18px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .brand {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .brand strong {
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .brand span {
+      color: #aab6c9;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .demo-nav {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      overflow: auto;
+      padding-right: 2px;
+    }
+
+    .nav-button {
+      width: 100%;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      color: #dce5f4;
+      text-align: left;
+      padding: 11px 12px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .nav-button:hover,
+    .nav-button.active {
+      color: #fff;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .nav-button b {
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .nav-button span {
+      color: #aab6c9;
+      font-size: 11px;
+      line-height: 1.3;
+    }
+
+    .note {
+      border-top: 1px solid rgba(255,255,255,0.13);
+      padding-top: 15px;
+      color: #aab6c9;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .main {
+      min-width: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .topbar {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 28px;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+    }
+
+    .topbar h1 {
+      margin: 0 0 5px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .topbar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      max-width: 850px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .select,
+    .ghost-button,
+    .primary-button {
+      min-height: 36px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 0 12px;
+      white-space: nowrap;
+    }
+
+    .primary-button {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .content {
+      padding: 24px 28px 36px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      padding: 22px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    .hero h2 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .tag-row {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid #cfdaea;
+      background: #f8fafc;
+      color: #32415a;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .visual {
+      min-height: 260px;
+      border-radius: 7px;
+      background: #f7f9fc;
+      border: 1px solid #e2e8f0;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      align-content: stretch;
+    }
+
+    .visual-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #32415a;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 15px;
+      min-height: 106px;
+      display: grid;
+      align-content: space-between;
+      gap: 10px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .metric strong {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .metric em {
+      font-style: normal;
+      color: var(--green);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .metric.warn em { color: var(--amber); }
+    .metric.bad em { color: var(--red); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.78fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 15px 17px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .panel-header h3 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .panel-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .panel-body {
+      padding: 17px;
+    }
+
+    .scenario {
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .module-card {
+      border: 1px solid #e1e7f0;
+      border-radius: 7px;
+      padding: 14px;
+      background: #fbfcfe;
+      min-height: 142px;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+
+    .module-card b {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .module-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .workflow {
+      display: grid;
+      gap: 12px;
+    }
+
+    .workflow-step {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #eaf1ff;
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .step-copy b {
+      display: block;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .step-copy span {
+      color: var(--muted);
+      display: block;
+      margin-top: 3px;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .workbench {
+      display: grid;
+      gap: 14px;
+    }
+
+    .control-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .textarea {
+      width: 100%;
+      min-height: 118px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 12px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: #fbfcfe;
+    }
+
+    .output-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .output-card {
+      border: 1px solid #e1e7f0;
+      background: #fbfcfe;
+      border-radius: 7px;
+      padding: 13px;
+      min-height: 128px;
+    }
+
+    .output-card b {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .output-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #44546b;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+    }
+
+    th, td {
+      border-bottom: 1px solid #e7edf5;
+      text-align: left;
+      padding: 10px 8px;
+      font-size: 12px;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    th {
+      color: #536176;
+      font-weight: 700;
+      background: #f8fafc;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .bar-item {
+      display: grid;
+      gap: 6px;
+    }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #34435b;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    .bar-track {
+      height: 9px;
+      border-radius: 999px;
+      background: #e5ebf3;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--blue);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .mini-card {
+      border: 1px solid #e1e7f0;
+      border-radius: 7px;
+      background: #fff;
+      padding: 11px;
+      min-height: 78px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .mini-card b {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .graph {
+      position: relative;
+      min-height: 230px;
+      border: 1px solid #e1e7f0;
+      background: #fff;
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    .graph-line {
+      position: absolute;
+      height: 2px;
+      background: #bfd0ea;
+      transform-origin: left center;
+    }
+
+    .node {
+      position: absolute;
+      min-width: 88px;
+      max-width: 130px;
+      transform: translate(-50%, -50%);
+      border: 1px solid #cbd8eb;
+      border-radius: 999px;
+      background: #f8fbff;
+      padding: 8px 10px;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.35;
+      color: #2d3b52;
+      box-shadow: 0 8px 18px rgba(23, 32, 51, 0.07);
+    }
+
+    .mock-creative {
+      aspect-ratio: 4 / 3;
+      border-radius: 7px;
+      border: 1px solid #d8e2ef;
+      padding: 10px;
+      display: grid;
+      align-content: end;
+      background:
+        linear-gradient(135deg, rgba(37,99,235,0.18), rgba(20,128,94,0.15)),
+        linear-gradient(45deg, #f9fbff, #e8eef7);
+    }
+
+    .mock-creative:nth-child(2) {
+      background:
+        linear-gradient(135deg, rgba(194,107,29,0.18), rgba(102,88,199,0.16)),
+        linear-gradient(45deg, #fffaf5, #edf0fb);
+    }
+
+    .mock-creative:nth-child(3) {
+      background:
+        linear-gradient(135deg, rgba(11,138,148,0.18), rgba(37,99,235,0.14)),
+        linear-gradient(45deg, #f6fbfb, #edf3ff);
+    }
+
+    .mock-creative span {
+      display: inline-block;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 6px;
+      padding: 7px;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .route-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .route-node {
+      background: #fff;
+      border: 1px solid #dbe5f2;
+      border-radius: 7px;
+      padding: 12px;
+      display: grid;
+      gap: 7px;
+      min-height: 96px;
+    }
+
+    .route-node b {
+      font-size: 12px;
+    }
+
+    .route-node span {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    @media (max-width: 1180px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        height: auto;
+      }
+
+      .demo-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-inner,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .content {
+        padding: 16px;
+      }
+
+      .metric-grid,
+      .grid-3,
+      .output-grid,
+      .mini-grid,
+      .route-map,
+      .demo-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <strong>Industry AI Demo Pack</strong>
+        <span>6 个面向 AI 产品岗位的行业场景原型。独立文件，不修改个人主页。</span>
+      </div>
+      <nav class="demo-nav" id="demoNav" aria-label="Industry demo navigation"></nav>
+      <p class="note">定位：后续可接入个人主页，作为行业化投递作品集展示。</p>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">AI 产品经理行业 Demo 工作台</h1>
+          <p id="pageSubtitle">从真实业务流程出发，展示 RAG、Agent、AIGC、知识图谱、AI Infra 和工程行业 AI 工作流的产品化能力。</p>
+        </div>
+        <div class="topbar-actions">
+          <select class="select" id="companySelect" aria-label="切换 demo"></select>
+          <button class="ghost-button" id="resetBtn" type="button">重置输出</button>
+        </div>
+      </header>
+
+      <section class="content">
+        <section class="hero">
+          <div class="hero-inner">
+            <div>
+              <p class="eyebrow" id="sectorName"></p>
+              <h2 id="demoTitle"></h2>
+              <p id="demoSummary"></p>
+              <div class="tag-row" id="tagRow"></div>
+            </div>
+            <div class="visual" id="visualPanel"></div>
+          </div>
+        </section>
+
+        <section class="metric-grid" id="metricGrid"></section>
+
+        <section class="grid-2">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3>业务问题与 AI 增强点</h3>
+                <p>每个 demo 都先回答“业务为什么需要 AI”，再展示产品能力。</p>
+              </div>
+            </div>
+            <div class="panel-body">
+              <p class="scenario" id="scenarioText"></p>
+              <div class="grid-3" id="moduleGrid" style="margin-top: 15px;"></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3>核心工作流</h3>
+                <p>强调输入、AI 处理、人工复核和业务闭环。</p>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="workflow" id="workflowList"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Demo 操作台</h3>
+              <p>选择一个业务样例，运行模拟 AI 流程，查看产品输出和风险控制。</p>
+            </div>
+            <div class="control-row">
+              <select class="select" id="caseSelect" aria-label="选择业务样例"></select>
+              <button class="primary-button" id="runBtn" type="button">运行 AI 流程</button>
+            </div>
+          </div>
+          <div class="panel-body workbench">
+            <textarea class="textarea" id="caseInput" aria-label="业务输入"></textarea>
+            <div class="output-grid" id="outputGrid"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>产品指标与验收标准</h3>
+              <p>用产品经理能推进的指标定义 demo 成功，而不是只展示模型能力。</p>
+            </div>
+          </div>
+          <div class="panel-body table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>指标</th>
+                  <th>为什么重要</th>
+                  <th>验收口径</th>
+                  <th>风险控制</th>
+                </tr>
+              </thead>
+              <tbody id="metricTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const demos = [
+      {
+        id: "content",
+        sector: "内容营销行业场景",
+        title: "AI 内容增长中台",
+        summary: "面向 MCN、品牌营销和账号矩阵运营，把热点发现、内容生成、达人匹配、投放复盘和舆情反馈放进同一个增长闭环。",
+        tags: ["内容营销", "AIGC", "达人匹配", "投放复盘", "舆情分析"],
+        metrics: [
+          ["选题生产周期", "2.5h", "-68%", "good"],
+          ["达人匹配命中率", "82%", "+21 pts", "good"],
+          ["脚本过审率", "76%", "+18 pts", "good"],
+          ["负面评论响应", "12min", "SLA 内", "warn"]
+        ],
+        scenario: "内容营销业务真正的 AI 机会，不是单点写文案，而是把品牌 brief、平台热点、达人画像、历史投放效果和评论反馈串起来。产品目标是帮助运营团队更快找到可执行选题，更准匹配账号和达人，并能在投放后把结果沉淀为下一轮策略。",
+        modules: [
+          ["热点机会雷达", "抓取平台趋势、竞品内容和行业节点，按品牌相关度、时效、风险和预计互动排序。"],
+          ["达人与账号匹配", "基于受众画像、内容风格、历史转化和品牌安全度，推荐达人和矩阵账号组合。"],
+          ["内容生成与审核", "生成短视频脚本、标题、分镜和评论区回复，同时标记合规、舆情和品牌调性风险。"]
+        ],
+        workflow: [
+          ["输入品牌 brief", "品牌目标、预算、客群、禁用表达和活动周期进入策略层。"],
+          ["AI 生成增长机会", "聚合热点、账号数据和历史投放，输出选题池、达人组合和内容脚本。"],
+          ["运营复核并发布", "人工审核调性、风险和素材可执行性，确认排期和投放预算。"],
+          ["投放复盘回流", "互动率、转化、评论情绪和成本数据回流，更新下一轮推荐权重。"]
+        ],
+        cases: [
+          {
+            name: "美妆新品上市",
+            input: "品牌：国货护肤新品。目标：内容社区和短视频渠道种草。预算：20万。人群：25-35 岁轻熟肌。卖点：熬夜修护、温和、成分透明。限制：不能夸大功效，不能使用医疗化表达。",
+            signals: ["内容社区近期高热词：熬夜脸、早八急救、轻医美平替", "达人池中 34 位符合轻熟肌受众，12 位历史评论风险偏高", "竞品爆款多采用真实通勤场景，硬广转化偏弱"],
+            result: ["主推选题：7 天熬夜脸急救实测，搭配通勤妆前使用场景", "达人组合：2 位成分党 + 5 位通勤生活方式博主 + 12 个矩阵账号二创扩散", "脚本结构：痛点开场、成分解释、早晚对比、评论区答疑"],
+            actions: ["生成 18 条短视频脚本和 30 条标题备选", "建立评论情绪监控词：刺痛、过敏、假白、智商税", "投放后 24 小时按互动成本和收藏率自动调预算"],
+            safeguards: ["功效表达进入敏感词审核", "达人历史争议内容需人工复核", "评论区医学建议统一转客服或官方说明"]
+          },
+          {
+            name: "本地生活探店",
+            input: "客户：厦门新开烘焙集合店。目标：开业 14 天内提升到店。平台：短视频、本地生活、内容社区。预算：8万。重点：亲子、下午茶、拍照打卡。",
+            signals: ["厦门本地热搜：周末亲子、海边下午茶、可带宠物", "店铺半径 5 公里内同类内容完播率高但团购点击低", "亲子类达人转化稳定，纯拍照类达人收藏高到店低"],
+            result: ["主推选题：周末亲子烘焙半日计划，而不是单纯门店颜值展示", "达人组合：本地亲子达人 3 位 + 美食探店 6 位 + 到店体验素人 20 位", "转化设计：内容内嵌团购券、预约烘焙课和停车指引"],
+            actions: ["生成 3 条主片脚本、12 条切片脚本和达人拍摄清单", "给每位达人分配差异化卖点，避免同质内容刷屏", "实时监控团购点击、收藏到店比和评论问题"],
+            safeguards: ["儿童出镜授权提示", "食品安全和价格信息必须引用商家确认版本", "差评评论优先进入人工处理队列"]
+          }
+        ],
+        acceptance: [
+          ["选题命中率", "减少运营凭经验选题的波动", "推荐选题进入发布排期占比大于 35%", "热点风险词和竞品侵权检查必须通过"],
+          ["内容生产效率", "缩短 brief 到脚本的交付时间", "常规活动 2 小时内产出可审核脚本包", "所有脚本必须保留人工审核状态"],
+          ["投放复盘闭环", "证明 AI 不只生成内容，也驱动增长", "每轮投放形成下一轮权重调整记录", "异常评论和高风险达人不自动放量"]
+        ],
+        visual: "bars"
+      },
+      {
+        id: "rag",
+        sector: "企业知识库与智能体场景",
+        title: "企业 RAG 智能体运营台",
+        summary: "面向私有化大模型、企业智能体和行业知识库交付，展示从文档接入、召回评测、答案溯源、权限控制到运营迭代的完整产品闭环。",
+        tags: ["RAG", "企业智能体", "私有化部署", "知识库评测", "权限安全"],
+        metrics: [
+          ["答案可溯源率", "96%", "+14 pts", "good"],
+          ["高风险幻觉率", "1.8%", "-63%", "good"],
+          ["知识更新延迟", "18min", "近实时", "good"],
+          ["权限拦截命中", "47 次", "本周", "warn"]
+        ],
+        scenario: "企业智能体和 RAG 产品的重点会落在私有化交付、知识治理和持续运营。成熟的 demo 不能只做一个问答框，而要展示企业客户最关心的东西：资料如何进来、答案为什么可信、权限如何隔离、效果怎么评估、上线后如何持续运营。",
+        modules: [
+          ["知识接入与治理", "接入制度文档、PDF、网页和业务系统字段，做版本、标签、权限和失效时间管理。"],
+          ["RAG 评测中心", "对召回率、引用准确率、拒答率、幻觉率和业务满意度做持续评测。"],
+          ["Agent 工具编排", "把问答扩展到查单、生成报告、创建工单和调用业务系统，设置人工确认点。"]
+        ],
+        workflow: [
+          ["接入企业知识", "文档分块、元数据、权限标签、版本号和业务域同时入库。"],
+          ["用户发起任务", "智能体先判定意图、权限和是否需要工具调用。"],
+          ["检索与生成", "多路召回、重排、答案生成和引用溯源同时完成。"],
+          ["运营评测", "低置信、无答案、投诉和人工改写样本进入评测集。"]
+        ],
+        cases: [
+          {
+            name: "船舶海工知识问答",
+            input: "问题：某船舶项目在低温环境下进行焊接作业，需要遵守哪些工艺限制？用户角色：项目工程师。知识域：船舶海工施工规范、焊接工艺卡、项目质量制度。",
+            signals: ["召回 8 个文档片段，其中 3 个来自最新版工艺卡", "用户具备项目工程师权限，但无供应商报价表权限", "问题涉及安全规范，触发强制引用和保守回答策略"],
+            result: ["答案包含低温预热、焊材保存、环境湿度、质检记录四类要求", "引用 3 个来源：工艺卡 V4.2、质量制度 2026-03、项目交底记录", "无法确认的温度阈值被标记为需要查阅项目专属附件"],
+            actions: ["生成一页施工注意事项摘要", "创建质检确认任务给项目 QA", "将该问题加入高频问答评测集"],
+            safeguards: ["未召回到明确条款时必须拒绝给出精确阈值", "报价和供应商合同内容不进入回答", "安全类回答必须展示引用来源"]
+          },
+          {
+            name: "政企制度助手",
+            input: "问题：下属单位能否自行采购 GPU 服务器？用户角色：二级单位信息化负责人。知识域：采购制度、预算审批流程、信息安全规范。",
+            signals: ["采购制度与信息安全制度存在交叉约束", "用户可查看流程说明，但不可查看预算明细", "历史相似问题中 27% 因流程变更产生误答"],
+            result: ["结论：不能直接自行采购，需先走预算立项和信息化安全评审", "答案拆分为 4 个步骤：立项、预算、安评、采购流程", "列出需要人工确认的字段：预算额度、是否涉密、部署位置"],
+            actions: ["生成审批材料清单", "拉起流程工单草稿", "提示管理员更新 2025 旧版采购流程页面"],
+            safeguards: ["涉及金额阈值时只引用制度原文", "无权限字段以脱敏摘要展示", "制度冲突时转人工制度管理员"]
+          }
+        ],
+        acceptance: [
+          ["引用准确率", "企业客户需要知道答案来自哪里", "抽检样本中引用与答案一致率大于 95%", "无引用不得回答强结论"],
+          ["权限合规", "私有化知识库最怕越权泄露", "权限测试集拦截率 100%", "命中敏感字段只输出脱敏解释"],
+          ["评测闭环", "RAG 项目上线后必须能运营", "每周自动生成召回、拒答、幻觉和低分问题报表", "低置信问题进入人工审核队列"]
+        ],
+        visual: "rag"
+      },
+      {
+        id: "decision",
+        sector: "行业智能决策场景",
+        title: "行业知识图谱决策 Agent",
+        summary: "面向 ToB AI、NLP、大模型和知识图谱场景，把非结构化事件抽取为关系网络，再由大模型生成可解释、可追溯、可审计的决策报告。",
+        tags: ["知识图谱", "NLP", "多智能体", "辅助决策", "可解释AI"],
+        metrics: [
+          ["实体抽取 F1", "91%", "+9 pts", "good"],
+          ["风险研判时效", "8min", "-72%", "good"],
+          ["报告引用覆盖", "100%", "强制", "good"],
+          ["需人工复核", "18%", "高风险", "warn"]
+        ],
+        scenario: "ToB 智能决策类产品需要展示的不只是大模型问答，而是把文本、事件、主体、关系和风险组合起来做智能研判。核心价值在于可信决策：每个判断都能追溯到证据，每个高风险结论都有人工复核。",
+        modules: [
+          ["事件与实体抽取", "从公告、新闻、舆情、业务文档中抽取主体、事件、时间、地点和关系。"],
+          ["知识图谱推理", "把直接关系和间接关系串起来，识别异常关联、风险传导和关键节点。"],
+          ["决策报告生成", "输出研判结论、证据链、置信度、争议点和下一步动作。"]
+        ],
+        workflow: [
+          ["多源文本进入", "公告、舆情、合同和业务系统事件按时间线合并。"],
+          ["NLP 抽取结构", "实体、关系、事件和属性进入图谱，并保留原文证据。"],
+          ["Agent 协同研判", "风险识别、证据核验、反例搜索和报告生成分工执行。"],
+          ["人机共审发布", "高风险结论由专家确认，报告进入知识沉淀和案例库。"]
+        ],
+        cases: [
+          {
+            name: "供应链风险研判",
+            input: "文本：某核心供应商近期出现多起交付延迟，关联公司新增被执行信息，同时其上游原材料价格连续上涨。业务问题：是否会影响重点项目交付？",
+            signals: ["抽取主体 12 个、事件 18 个、关系 26 条", "发现供应商与两家上游企业存在共同担保关系", "交付延迟事件与原材料涨价存在 17 天滞后相关"],
+            result: ["风险等级：中高，主要风险来自资金压力和上游价格传导", "关键证据：被执行信息、历史交付延迟、上游价格指数、项目依赖关系", "不确定点：供应商库存水平未获取，需采购团队补充"],
+            actions: ["生成供应链风险简报", "建议启动备选供应商询价", "创建 7 天监控任务，跟踪交付和司法信息更新"],
+            safeguards: ["司法信息必须保留来源和日期", "相关性不直接表述为因果", "未确认库存信息不得生成确定性结论"]
+          },
+          {
+            name: "政务舆情事件分析",
+            input: "文本：某公共服务事件在多个平台发酵，涉及部门回应不一致，网民关注点集中在处理时效、责任主体和后续补偿。",
+            signals: ["抽取诉求类别 5 类，情绪强度连续 6 小时上升", "部门回应存在时间线冲突", "关键传播节点集中在本地社区账号和短视频平台"],
+            result: ["风险等级：高，核心矛盾是信息不一致和处理时效不透明", "建议口径：统一事件时间线、明确责任边界、公开后续处理节点", "需要人工确认：补偿政策、责任认定和现场处置记录"],
+            actions: ["生成舆情处置时间线", "输出多部门协同清单", "设置 2 小时热度和情绪复盘"],
+            safeguards: ["不自动生成责任定性", "涉及个人隐私做脱敏", "所有口径需经人工审批"]
+          }
+        ],
+        acceptance: [
+          ["证据链完整度", "ToB 决策必须可追溯", "每个结论至少绑定 2 条证据或明确说明证据不足", "来源日期和原文片段不可删除"],
+          ["图谱更新质量", "关系错误会放大研判偏差", "新增关系抽检准确率大于 90%", "低置信关系默认不参与强推理"],
+          ["人工复核命中", "高风险领域不能全自动", "高风险报告 100% 进入专家复核", "未复核报告只能标记为草稿"]
+        ],
+        visual: "graph"
+      },
+      {
+        id: "aigc",
+        sector: "AIGC 电商内容场景",
+        title: "AIGC 商品内容数据产品台",
+        summary: "面向 AIGC、AI 应用数据产品和电商内容生产场景，把商品图生成、AI 模特、品牌一致性、素材资产和转化数据打通。",
+        tags: ["AIGC", "AI商品图", "AI模特", "数据产品", "商业化"],
+        metrics: [
+          ["素材生产成本", "-54%", "按 SKU", "good"],
+          ["品牌一致性", "88分", "+16", "good"],
+          ["首轮可用率", "71%", "+24 pts", "good"],
+          ["违规素材拦截", "39张", "本周", "warn"]
+        ],
+        scenario: "AIGC 产品不是只要生成好看的图片，更需要把内容生产变成可运营的数据产品：哪些生成结果能过审、哪些风格能转化、哪些商品和人群适配哪些模板、团队如何沉淀资产和复用经验。",
+        modules: [
+          ["商品内容生成", "围绕 SKU、渠道、人群和营销节点，生成商品图、AI 模特图、短视频脚本和海报版本。"],
+          ["AIGC 质量评分", "评估清晰度、商品一致性、品牌调性、合规风险和平台适配度。"],
+          ["转化数据回流", "把点击、收藏、加购、投放成本和人工修改率回流到模板和提示词推荐。"]
+        ],
+        workflow: [
+          ["导入 SKU 与品牌规范", "商品图、卖点、禁用词、VI、平台尺寸和目标人群进入任务。"],
+          ["批量生成候选素材", "多模板、多模特、多场景并行生成，自动去重和质量筛选。"],
+          ["设计与运营复核", "人工处理品牌、合规和商品细节问题，确认可上线素材。"],
+          ["效果数据训练策略", "把转化、停留和人工修改数据回流到模板、Prompt 和模型选择。"]
+        ],
+        cases: [
+          {
+            name: "跨境电商女装图",
+            input: "SKU：夏季通勤连衣裙。目标市场：东南亚。渠道：跨境电商平台与短视频电商渠道。要求：真人试穿感、突出凉感和显瘦，不能改变衣服版型和颜色。",
+            signals: ["历史数据：浅色背景点击高，过度棚拍转化弱", "商品一致性风险：裙摆长度和腰线容易被模型改动", "目标渠道更偏好短视频封面和真人场景图组合"],
+            result: ["生成策略：3 组通勤场景 + 2 组轻度度假场景 + 1 组尺寸细节图", "AI 模特：东南亚肤色与体型多样性组合，避免单一审美", "评分：品牌一致性 88，商品还原 91，平台适配 86"],
+            actions: ["输出 12 张候选商品图和 4 条短视频封面建议", "标记 3 张裙摆疑似变形素材进入人工修图", "生成跨境电商标题和卖点描述"],
+            safeguards: ["商品结构变化超过阈值自动拦截", "人物肤色和身材标签只用于生成配置不对外展示", "跨境广告敏感词进入合规检查"]
+          },
+          {
+            name: "美妆品牌套图",
+            input: "SKU：精华液套装。目标：综合电商首发。要求：高端、成分科技感、统一品牌色。限制：不能出现医疗功效承诺。",
+            signals: ["竞品高转化图强调成分可视化和使用步骤", "品牌色偏冷，历史暖色模板转化低", "功效词风险：修复、抗炎、医美级需要替换"],
+            result: ["生成策略：主图突出瓶身质感，详情图解释成分路径，场景图呈现夜间护肤", "评分：品牌一致性 92，合规风险低，商品还原 94", "推荐模板：冷白实验室光线 + 透明质酸粒子视觉"],
+            actions: ["生成主图、成分页、使用步骤图三类素材", "输出敏感词替代表达", "建立首发 48 小时素材表现看板"],
+            safeguards: ["医疗化表达自动替换为温和护理表达", "成分说明必须引用品牌备案资料", "低还原素材不可进入投放包"]
+          }
+        ],
+        acceptance: [
+          ["商品还原度", "AIGC 不能改变商品事实", "关键 SKU 特征识别一致率大于 95%", "低于阈值素材自动下架到待修区"],
+          ["素材可用率", "决定生产效率和商业化价值", "首轮生成素材可上线比例大于 65%", "人工修改原因必须结构化记录"],
+          ["效果回流", "数据产品要证明生成策略有效", "素材级点击、转化和修改率进入模板评分", "样本不足时不做强推荐"]
+        ],
+        visual: "creative"
+      },
+      {
+        id: "infra",
+        sector: "AI 基础设施场景",
+        title: "AI 推理网关与边缘调度控制台",
+        summary: "面向 AI Infra、边缘云和安全产品线，展示模型路由、成本延迟监控、边缘推理调度、API 聚合和 AI 安全网关。",
+        tags: ["AI Infra", "模型路由", "边缘推理", "API网关", "AI安全"],
+        metrics: [
+          ["P95 延迟", "428ms", "-37%", "good"],
+          ["单次推理成本", "0.018元", "-29%", "good"],
+          ["安全拦截", "126次", "24h", "warn"],
+          ["节点可用率", "99.96%", "SLA", "good"]
+        ],
+        scenario: "AI 基础设施产品机会更偏工程化运营：当客户把大模型接进业务后，会遇到延迟高、成本不可控、模型服务不稳定、Prompt 注入和数据泄露等问题。产品要帮助客户把 AI 调用做成可路由、可观测、可治理的基础能力。",
+        modules: [
+          ["模型 API 聚合网关", "统一接入多模型供应商，按场景、成本、延迟、可用性和安全策略动态路由。"],
+          ["边缘推理调度", "把轻量模型、缓存和预处理下沉到边缘节点，降低跨区域延迟。"],
+          ["AI 安全与审计", "识别 Prompt 注入、敏感数据外发、越权调用和异常 Token 消耗。"]
+        ],
+        workflow: [
+          ["业务请求进入网关", "携带应用、地区、模型类型、数据敏感级和 SLA 标签。"],
+          ["策略引擎选择路径", "综合延迟、成本、上下文长度、安全等级和模型健康状态。"],
+          ["边缘或中心推理", "可缓存任务走边缘，复杂任务走中心大模型或私有模型。"],
+          ["观测与治理回流", "调用日志、质量、成本、安全事件进入运营看板和策略调优。"]
+        ],
+        cases: [
+          {
+            name: "跨境客服 AI 请求",
+            input: "应用：跨境电商客服。用户地区：东南亚。任务：订单状态解释和售后话术生成。SLA：P95 小于 800ms。敏感级：中，包含订单号和收货地址。",
+            signals: ["新加坡边缘节点延迟最低，但本地缓存命中率只有 42%", "请求包含地址信息，触发脱敏策略", "中心大模型质量高但当前排队延迟上升"],
+            result: ["路由决策：边缘节点完成脱敏和订单摘要，中心模型生成最终话术", "备用模型：若中心模型 P95 超过 900ms，切换到轻量模型模板化回复", "预计成本：0.018 元/次，P95 约 428ms"],
+            actions: ["启用地址脱敏规则", "写入客服场景缓存", "生成模型路由策略变更记录"],
+            safeguards: ["原始地址不进入第三方模型", "异常 Token 消耗自动限流", "售后赔付承诺需要人工确认"]
+          },
+          {
+            name: "企业知识库高峰流量",
+            input: "应用：内部制度问答。地区：华东。任务：员工集中查询报销制度。SLA：P95 小于 600ms。敏感级：低，知识库内容已授权。",
+            signals: ["80% 问题命中同一批制度文档", "边缘缓存可覆盖 FAQ 和短答案", "主模型队列压力较高，成本开始上升"],
+            result: ["路由决策：高频制度问答走边缘 RAG 缓存，复杂问题回源中心模型", "预计缓存命中：74%，成本降低 31%", "质量策略：低置信答案仍回源重排"],
+            actions: ["预热报销制度知识片段", "设置低置信回源阈值", "生成高峰期容量建议"],
+            safeguards: ["过期制度缓存自动失效", "未命中引用不得生成强结论", "异常地区流量进入安全分析"]
+          }
+        ],
+        acceptance: [
+          ["延迟与成本", "AI 应用规模化最先遇到的运营指标", "按应用展示 P50/P95、成本和模型可用性", "路由策略变更保留审计记录"],
+          ["安全拦截", "客户需要防注入、防泄漏和防越权", "敏感字段识别和脱敏命中率大于 98%", "高风险请求默认阻断或转人工审批"],
+          ["模型治理", "多模型接入需要可控", "每个应用有模型白名单、降级策略和预算上限", "异常 Token 消耗触发限流"]
+        ],
+        visual: "route"
+      },
+      {
+        id: "construction",
+        sector: "建筑工程行业场景",
+        title: "建筑工程 AI 工作流平台",
+        summary: "面向建筑科研、工程检测、BIM 和数字建筑场景，把工程资料 RAG、检测报告生成、BIM 审查和项目风险预警串成可审计工作流。",
+        tags: ["工程资料RAG", "Agent工作流", "检测报告", "BIM审查", "项目风险"],
+        metrics: [
+          ["报告初稿时间", "9min", "-81%", "good"],
+          ["规范引用准确率", "94%", "+17 pts", "good"],
+          ["BIM问题识别", "36项", "本项目", "warn"],
+          ["人工复核覆盖", "100%", "强制", "good"]
+        ],
+        scenario: "建筑工程行业很适合展示企业 AI 落地能力。核心不是做一个通用聊天助手，而是把规范、图纸、检测数据、BIM 模型和项目流程连接起来，让 AI 帮工程人员生成报告、检查风险、沉淀知识，同时保留人工签核和责任边界。",
+        modules: [
+          ["工程资料 RAG", "接入规范、图纸说明、检测记录、合同条款和项目会议纪要，回答必须引用来源。"],
+          ["检测报告生成", "根据检测数据、照片、规范条款和历史模板生成报告初稿和整改建议。"],
+          ["BIM 与项目风险 Agent", "识别碰撞、缺失信息、进度延误和质量风险，创建整改任务。"]
+        ],
+        workflow: [
+          ["项目资料入库", "规范、图纸、检测数据和 BIM 问题按项目、楼栋、构件和阶段打标签。"],
+          ["AI 生成报告初稿", "抽取检测结论、引用规范条款、生成问题清单和整改建议。"],
+          ["专家复核签发", "工程师检查结论、责任边界和关键数值，确认后进入正式报告。"],
+          ["整改闭环追踪", "问题分派到责任方，进度和复检结果回流到项目风险看板。"]
+        ],
+        cases: [
+          {
+            name: "混凝土检测报告",
+            input: "项目：厦门某商业综合体。资料：混凝土强度检测记录、现场照片、施工日志、相关规范。问题：生成本周检测报告初稿并识别需整改项。",
+            signals: ["检测点位 128 个，异常值 7 个", "召回规范条款 5 条，历史相似报告 3 份", "照片中 2 处构件标识不清，需要人工确认"],
+            result: ["报告初稿包含检测范围、数据摘要、异常点位、规范引用和整改建议", "风险判断：局部点位低于设计要求，需复检和施工记录核对", "不确定项：照片点位与检测记录匹配置信度 72%"],
+            actions: ["生成 Word 报告结构和整改清单", "创建 7 个异常点位复检任务", "提示工程师补充 2 张现场照片"],
+            safeguards: ["报告不能自动签发", "低置信照片匹配必须人工确认", "规范条款必须展示版本号和来源"]
+          },
+          {
+            name: "BIM审查与进度风险",
+            input: "项目：住宅楼机电安装阶段。资料：BIM 模型问题清单、周进度计划、材料到货记录、会议纪要。问题：识别下周影响施工的关键风险。",
+            signals: ["BIM 碰撞问题 36 项，其中 9 项阻塞下道工序", "材料到货延迟涉及消防管件和桥架", "会议纪要中多次出现设计变更未确认"],
+            result: ["风险等级：中高，关键路径集中在消防管线和桥架安装", "建议优先处理 9 项阻塞问题和 3 个设计确认事项", "下周可能影响 2 个楼层施工节奏"],
+            actions: ["生成项目风险日报", "创建责任方整改任务", "输出下周协调会问题清单"],
+            safeguards: ["进度预测只作为辅助，不替代项目经理判断", "设计变更必须引用会议纪要和审批状态", "责任分派需人工确认"]
+          }
+        ],
+        acceptance: [
+          ["规范引用准确率", "工程报告必须有依据", "抽检报告中规范引用准确率大于 94%", "无来源条款不得进入正式报告"],
+          ["报告提效", "体现 AI 落地价值", "常规检测报告初稿 10 分钟内生成", "正式签发前必须工程师确认"],
+          ["整改闭环", "AI 不能停在生成文本", "异常项 100% 生成责任、期限和复检状态", "责任方和期限需人工确认"]
+        ],
+        visual: "construction"
+      }
+    ];
+
+    let activeDemo = demos[0];
+    let activeCaseIndex = 0;
+
+    function esc(text) {
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function list(items) {
+      return `<ul>${items.map(item => `<li>${esc(item)}</li>`).join("")}</ul>`;
+    }
+
+    function renderBars() {
+      const rows = [
+        ["品牌相关度", 91],
+        ["热点时效", 84],
+        ["达人转化", 78],
+        ["舆情安全", 73]
+      ];
+      return `
+        <div class="visual-title"><span>增长机会评分</span><span>实时模拟</span></div>
+        <div class="bar-list">
+          ${rows.map(([label, value]) => `
+            <div class="bar-item">
+              <div class="bar-label"><span>${label}</span><b>${value}</b></div>
+              <div class="bar-track"><div class="bar-fill" style="width:${value}%"></div></div>
+            </div>
+          `).join("")}
+        </div>
+        <div class="mini-grid">
+          <div class="mini-card"><b>推荐内容包</b><span>18 条脚本、30 条标题、12 条评论回复</span></div>
+          <div class="mini-card"><b>复盘回流</b><span>互动成本、收藏率、评论情绪进入下一轮权重</span></div>
+        </div>
+      `;
+    }
+
+    function renderRag() {
+      return `
+        <div class="visual-title"><span>RAG 召回链路</span><span>权限已校验</span></div>
+        <div class="mini-grid">
+          <div class="mini-card"><b>制度文档 V4.2</b><span>匹配度 0.91，允许查看</span></div>
+          <div class="mini-card"><b>项目交底记录</b><span>匹配度 0.87，允许查看</span></div>
+          <div class="mini-card"><b>供应商报价表</b><span>命中敏感字段，已拦截</span></div>
+          <div class="mini-card"><b>旧版流程页面</b><span>疑似过期，进入维护队列</span></div>
+        </div>
+        <div class="bar-list">
+          <div class="bar-item"><div class="bar-label"><span>引用准确</span><b>96%</b></div><div class="bar-track"><div class="bar-fill" style="width:96%"></div></div></div>
+          <div class="bar-item"><div class="bar-label"><span>拒答合理</span><b>89%</b></div><div class="bar-track"><div class="bar-fill" style="width:89%"></div></div></div>
+        </div>
+      `;
+    }
+
+    function renderGraph() {
+      return `
+        <div class="visual-title"><span>事件知识图谱</span><span>证据链模式</span></div>
+        <div class="graph">
+          <div class="graph-line" style="left: 22%; top: 36%; width: 160px; transform: rotate(20deg);"></div>
+          <div class="graph-line" style="left: 42%; top: 45%; width: 150px; transform: rotate(-23deg);"></div>
+          <div class="graph-line" style="left: 42%; top: 55%; width: 180px; transform: rotate(24deg);"></div>
+          <div class="graph-line" style="left: 18%; top: 64%; width: 170px; transform: rotate(-16deg);"></div>
+          <div class="node" style="left: 20%; top: 34%;">核心供应商</div>
+          <div class="node" style="left: 50%; top: 48%;">交付延迟</div>
+          <div class="node" style="left: 76%; top: 31%;">司法风险</div>
+          <div class="node" style="left: 78%; top: 73%;">上游涨价</div>
+          <div class="node" style="left: 27%; top: 72%;">重点项目</div>
+        </div>
+      `;
+    }
+
+    function renderCreative() {
+      return `
+        <div class="visual-title"><span>AIGC 候选素材</span><span>质量评分</span></div>
+        <div class="grid-3">
+          <div class="mock-creative"><span>通勤场景图<br>还原 91 / 品牌 88</span></div>
+          <div class="mock-creative"><span>AI 模特图<br>还原 86 / 风险中</span></div>
+          <div class="mock-creative"><span>详情卖点图<br>还原 94 / 可上线</span></div>
+        </div>
+        <div class="bar-list">
+          <div class="bar-item"><div class="bar-label"><span>商品还原度</span><b>91</b></div><div class="bar-track"><div class="bar-fill" style="width:91%"></div></div></div>
+          <div class="bar-item"><div class="bar-label"><span>品牌一致性</span><b>88</b></div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+        </div>
+      `;
+    }
+
+    function renderRoute() {
+      return `
+        <div class="visual-title"><span>AI 请求路由</span><span>边缘 + 中心协同</span></div>
+        <div class="route-map">
+          <div class="route-node"><b>入口网关</b><span>鉴权、场景标签、敏感级识别</span></div>
+          <div class="route-node"><b>边缘节点</b><span>脱敏、缓存、轻量推理</span></div>
+          <div class="route-node"><b>中心模型</b><span>复杂生成、质量兜底、工具调用</span></div>
+          <div class="route-node"><b>安全策略</b><span>Prompt 注入和泄露检测</span></div>
+          <div class="route-node"><b>成本控制</b><span>预算上限、降级模型、缓存复用</span></div>
+          <div class="route-node"><b>观测看板</b><span>P95、Token、错误率、拦截量</span></div>
+        </div>
+      `;
+    }
+
+    function renderConstruction() {
+      return `
+        <div class="visual-title"><span>工程 AI 工作流</span><span>专家复核</span></div>
+        <div class="mini-grid">
+          <div class="mini-card"><b>资料入库</b><span>规范、图纸、检测记录、照片</span></div>
+          <div class="mini-card"><b>RAG 引用</b><span>条款版本和项目来源可追溯</span></div>
+          <div class="mini-card"><b>报告初稿</b><span>异常点位、结论、整改建议</span></div>
+          <div class="mini-card"><b>整改闭环</b><span>责任方、期限、复检状态</span></div>
+        </div>
+        <div class="bar-list">
+          <div class="bar-item"><div class="bar-label"><span>报告完成度</span><b>82%</b></div><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+          <div class="bar-item"><div class="bar-label"><span>复核覆盖</span><b>100%</b></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+        </div>
+      `;
+    }
+
+    function renderVisual(type) {
+      const map = {
+        bars: renderBars,
+        rag: renderRag,
+        graph: renderGraph,
+        creative: renderCreative,
+        route: renderRoute,
+        construction: renderConstruction
+      };
+      return map[type] ? map[type]() : "";
+    }
+
+    function setActive(id, updateHash = true) {
+      activeDemo = demos.find(demo => demo.id === id) || demos[0];
+      activeCaseIndex = 0;
+      render();
+      if (updateHash && window.location.hash.slice(1) !== activeDemo.id) {
+        history.replaceState(null, "", `#${activeDemo.id}`);
+      }
+    }
+
+    function render() {
+      document.getElementById("sectorName").textContent = activeDemo.sector;
+      document.getElementById("demoTitle").textContent = activeDemo.title;
+      document.getElementById("demoSummary").textContent = activeDemo.summary;
+      document.getElementById("scenarioText").textContent = activeDemo.scenario;
+      document.getElementById("visualPanel").innerHTML = renderVisual(activeDemo.visual);
+
+      document.getElementById("tagRow").innerHTML = activeDemo.tags.map(tag => `<span class="tag">${esc(tag)}</span>`).join("");
+      document.getElementById("metricGrid").innerHTML = activeDemo.metrics.map(([label, value, delta, tone]) => `
+        <div class="metric ${tone === "warn" ? "warn" : tone === "bad" ? "bad" : ""}">
+          <span>${esc(label)}</span>
+          <strong>${esc(value)}</strong>
+          <em>${esc(delta)}</em>
+        </div>
+      `).join("");
+
+      document.getElementById("moduleGrid").innerHTML = activeDemo.modules.map(([name, copy]) => `
+        <div class="module-card">
+          <b>${esc(name)}</b>
+          <p>${esc(copy)}</p>
+        </div>
+      `).join("");
+
+      document.getElementById("workflowList").innerHTML = activeDemo.workflow.map(([name, copy], index) => `
+        <div class="workflow-step">
+          <div class="step-number">${index + 1}</div>
+          <div class="step-copy">
+            <b>${esc(name)}</b>
+            <span>${esc(copy)}</span>
+          </div>
+        </div>
+      `).join("");
+
+      document.getElementById("caseSelect").innerHTML = activeDemo.cases.map((item, index) => `
+        <option value="${index}">${esc(item.name)}</option>
+      `).join("");
+      document.getElementById("caseSelect").value = String(activeCaseIndex);
+      document.getElementById("caseInput").value = activeDemo.cases[activeCaseIndex].input;
+
+      document.getElementById("metricTable").innerHTML = activeDemo.acceptance.map(row => `
+        <tr>${row.map(cell => `<td>${esc(cell)}</td>`).join("")}</tr>
+      `).join("");
+
+      document.querySelectorAll(".nav-button").forEach(button => {
+        button.classList.toggle("active", button.dataset.id === activeDemo.id);
+      });
+      document.getElementById("companySelect").value = activeDemo.id;
+      renderOutput(false);
+    }
+
+    function renderOutput(hasRun) {
+      const item = activeDemo.cases[activeCaseIndex];
+      const prefix = hasRun ? "" : "待运行：";
+      document.getElementById("outputGrid").innerHTML = `
+        <div class="output-card">
+          <b>${prefix}输入信号</b>
+          ${list(item.signals)}
+        </div>
+        <div class="output-card">
+          <b>${prefix}AI 产品输出</b>
+          ${list(item.result)}
+        </div>
+        <div class="output-card">
+          <b>${prefix}下一步业务动作</b>
+          ${list(item.actions)}
+        </div>
+        <div class="output-card">
+          <b>${prefix}风险控制</b>
+          ${list(item.safeguards)}
+        </div>
+      `;
+    }
+
+    function init() {
+      document.getElementById("demoNav").innerHTML = demos.map(demo => `
+        <button class="nav-button" type="button" data-id="${demo.id}">
+          <b>${esc(demo.title)}</b>
+          <span>${esc(demo.sector)}</span>
+        </button>
+      `).join("");
+
+      document.getElementById("companySelect").innerHTML = demos.map(demo => `
+        <option value="${demo.id}">${esc(demo.sector)}｜${esc(demo.title)}</option>
+      `).join("");
+
+      document.getElementById("demoNav").addEventListener("click", event => {
+        const button = event.target.closest(".nav-button");
+        if (button) setActive(button.dataset.id);
+      });
+
+      document.getElementById("companySelect").addEventListener("change", event => {
+        setActive(event.target.value);
+      });
+
+      document.getElementById("caseSelect").addEventListener("change", event => {
+        activeCaseIndex = Number(event.target.value);
+        document.getElementById("caseInput").value = activeDemo.cases[activeCaseIndex].input;
+        renderOutput(false);
+      });
+
+      document.getElementById("runBtn").addEventListener("click", () => {
+        const button = document.getElementById("runBtn");
+        button.textContent = "分析中...";
+        button.disabled = true;
+        setTimeout(() => {
+          renderOutput(true);
+          button.textContent = "运行 AI 流程";
+          button.disabled = false;
+        }, 420);
+      });
+
+      document.getElementById("resetBtn").addEventListener("click", () => {
+        document.getElementById("caseInput").value = activeDemo.cases[activeCaseIndex].input;
+        renderOutput(false);
+      });
+
+      const hashId = window.location.hash.slice(1);
+      if (demos.some(demo => demo.id === hashId)) {
+        activeDemo = demos.find(demo => demo.id === hashId);
+      }
+
+      window.addEventListener("hashchange", () => {
+        const nextId = window.location.hash.slice(1);
+        if (demos.some(demo => demo.id === nextId)) setActive(nextId, false);
+      });
+
+      render();
+    }
+
+    init();
+  </script>
+</body>
+</html>

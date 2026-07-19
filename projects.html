@@ -92,6 +92,7 @@ button{font:inherit}
 .footer{text-align:center;padding:38px 2rem 46px;color:var(--muted);font-size:13px;border-top:1px solid rgba(0,0,0,.08);margin-top:18px}
 .footer a{color:#2563eb}
 .p13{--accent:#2563eb;--accent-rgb:37,99,235}
+.p14{--accent:#2563eb;--accent-rgb:37,99,235}
 .p01{--accent:#7c5cfc;--accent-rgb:124,92,252}
 .p02{--accent:#00a878;--accent-rgb:0,168,120}
 .p03{--accent:#e8438a;--accent-rgb:232,67,138}
@@ -142,13 +143,13 @@ button{font:inherit}
     <div>
       <div class="kicker">AI Product Portfolio</div>
       <h1 id="portfolio-title">完整作品集</h1>
-      <p class="hero-copy">11 个可体验 AI 产品 Demo，覆盖内容生成、知识服务、智能 Agent、业务自动化、数据分析与 AI 前台产品方案。</p>
+      <p class="hero-copy">12 个可体验 AI 产品 Demo，覆盖内容生成、知识服务、智能 Agent、业务自动化、数据分析与 AI 前台产品方案。</p>
     </div>
     <aside class="hero-panel" aria-label="作品集概览">
       <strong>面向 AI 产品经理岗位的原型验证作品集</strong>
       <p>每个 Demo 都保留可点击详情页和在线体验入口，重点展示业务场景拆解、AI 能力边界、流程设计与可验证交互。</p>
       <div class="hero-stats">
-        <div class="hero-stat"><b>11</b><span>在线 Demo</span></div>
+        <div class="hero-stat"><b>12</b><span>在线 Demo</span></div>
         <div class="hero-stat"><b>4</b><span>重点方向</span></div>
         <div class="hero-stat"><b>AI</b><span>产品原型</span></div>
       </div>
@@ -162,7 +163,7 @@ button{font:inherit}
     </div>
     <div class="carousel-controls" aria-label="项目浏览控制">
       <button class="carousel-button" id="carouselPrev" type="button" aria-label="上一个项目"></button>
-      <span class="carousel-count" id="carouselCount">01 / 11</span>
+      <span class="carousel-count" id="carouselCount">01 / 12</span>
       <button class="carousel-button" id="carouselNext" type="button" aria-label="下一个项目"></button>
     </div>
   </section>
@@ -191,6 +192,13 @@ const projects=[
     tags:["云通信","CRM","大模型增强"]
   },
   {
+    id:"14",className:"p14",href:"project_14.html",domain:"内容增长",mark:"MKT",title:"AI 内容增长中台",
+    subtitle:"品牌 brief → 热点机会 → 达人匹配 → 脚本生成 → 投放复盘",
+    flow:["热点机会","达人匹配","复盘回流"],
+    metrics:[["2.5h","选题周期"],["82%","匹配命中"],["12min","舆情响应"]],
+    tags:["内容营销","AIGC","投放复盘"]
+  },
+  {
     id:"01",className:"p01",href:"project_01.html",domain:"AIGC 视觉",mark:"IMG",title:"跨境电商 AI 商品图",
     subtitle:"上传商品参考图 → 约束关键特征 → 生成 5 类电商视觉素材",
     flow:["参考图","特征约束","素材生成"],
@@ -198,11 +206,11 @@ const projects=[
     tags:["Kontext","Flask","fal.ai"]
   },
   {
-    id:"02",className:"p02",href:"project_02.html",domain:"知识服务",mark:"RAG",title:"AI 知识库问答",
-    subtitle:"上传文档 → 自动解析 → 自然语言问答 + 来源引用",
-    flow:["文档解析","向量检索","引用回答"],
-    metrics:[["RAG","检索"],["多格式","支持"],["引用","回答"]],
-    tags:["本地向量","ChromaDB","B/C 双端"]
+    id:"02",className:"p02",href:"project_02.html",domain:"企业 RAG",mark:"RAG",title:"企业 RAG 智能体运营台",
+    subtitle:"知识接入 → 答案溯源 → 召回评测 → 权限治理 → 运营迭代",
+    flow:["知识治理","评测运营","权限拦截"],
+    metrics:[["96%","可溯源"],["1.8%","幻觉率"],["100%","权限测试"]],
+    tags:["RAG","Agent Ops","答案溯源"]
   },
   {
     id:"03",className:"p03",href:"project_03.html",domain:"游戏 AI",mark:"NPC",title:"游戏 NPC 智能对话",
@@ -247,11 +255,11 @@ const projects=[
     tags:["状态引擎","场景规则","自然语言"]
   },
   {
-    id:"11",className:"p11",href:"project_11.html",domain:"知识工程",mark:"KG",title:"知识图谱可视化",
-    subtitle:"文本实体关系抽取 + 最短路径推理 + 交互式图谱",
-    flow:["实体抽取","关系建模","路径推理"],
-    metrics:[["实体","关系"],["路径","推理"],["文本","抽取"]],
-    tags:["图算法","知识工程","交互画布"]
+    id:"11",className:"p11",href:"project_11.html",domain:"决策智能",mark:"KG",title:"行业知识图谱决策 Agent",
+    subtitle:"文本事件抽取 → 图谱推理 → 风险研判 → 可追溯决策报告",
+    flow:["事件抽取","图谱推理","证据报告"],
+    metrics:[["91%","抽取 F1"],["8min","研判时效"],["100%","证据引用"]],
+    tags:["知识图谱","NLP","决策 Agent"]
   },
   {
     id:"12",className:"p12",href:"project_12.html",domain:"Agent 工作流",mark:"FLOW",title:"GenAI Agent 工作流平台",
