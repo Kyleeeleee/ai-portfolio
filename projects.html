@@ -55,7 +55,7 @@ button{font:inherit}
 .carousel-button:last-child::before{transform:rotate(45deg)}
 .carousel-button:hover:not(:disabled){background:#f5f5f7;transform:translateY(-1px)}
 .carousel-button:disabled{cursor:default;opacity:.34;box-shadow:none}
-.carousel-viewport{overflow-x:auto;overflow-y:hidden;margin:0 calc((100vw - min(1180px,calc(100vw - 48px)))/-2);padding:18px max(24px,calc((100vw - 1180px)/2)) 42px;scroll-padding-inline:max(24px,calc((100vw - 1180px)/2));scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain;cursor:grab;touch-action:pan-x pan-y}
+.carousel-viewport{overflow-x:auto;overflow-y:hidden;margin:0;padding:18px max(24px,calc((100vw - 1180px)/2)) 42px;scroll-padding-inline:max(24px,calc((100vw - 1180px)/2));scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain;cursor:grab;touch-action:pan-x pan-y}
 .carousel-viewport::-webkit-scrollbar{display:none}
 .carousel-viewport.is-dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
 .project-track{display:flex;width:max-content;gap:18px}
@@ -92,7 +92,7 @@ button{font:inherit}
 .footer{text-align:center;padding:38px 2rem 46px;color:var(--muted);font-size:13px;border-top:1px solid rgba(0,0,0,.08);margin-top:18px}
 .footer a{color:#2563eb}
 .p13{--accent:#2563eb;--accent-rgb:37,99,235}
-.p14{--accent:#2563eb;--accent-rgb:37,99,235}
+.p14{--accent:#d8642a;--accent-rgb:216,100,42}
 .p01{--accent:#7c5cfc;--accent-rgb:124,92,252}
 .p02{--accent:#00a878;--accent-rgb:0,168,120}
 .p03{--accent:#e8438a;--accent-rgb:232,67,138}
@@ -115,7 +115,7 @@ button{font:inherit}
 @media(max-width:640px){
   .site-nav-inner{width:calc(100% - 20px)}.site-brand{font-size:14px}.site-nav-links a{padding:9px 8px;font-size:13px}
   .page-shell{width:calc(100% - 36px)}.hero{padding:36px 0 22px}.hero h1{font-size:42px}.hero-copy{font-size:15px}.hero-stats{grid-template-columns:1fr}
-  .carousel-viewport{margin-right:-18px;margin-left:-18px;padding-right:18px;padding-left:18px;scroll-padding-inline:18px}.project-track{gap:12px}
+  .carousel-viewport{padding-right:18px;padding-left:18px;scroll-padding-inline:18px}.project-track{gap:12px}
   .card{flex-basis:calc(100vw - 52px);height:508px}.card h3{font-size:22px}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}
   .card-visual{height:148px;padding:14px}.flow-line{gap:7px}.flow-node{font-size:11px;padding:8px 7px}
 }
