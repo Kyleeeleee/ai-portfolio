@@ -778,7 +778,7 @@
     wrapper.className = "language-toggle";
     wrapper.setAttribute("role", "group");
     wrapper.setAttribute("aria-label", "语言切换");
-    [["zh", "ZH"], ["en", "EN"]].forEach(([lang, label]) => {
+    [["zh", "中文"], ["en", "English"]].forEach(([lang, label]) => {
       const button = document.createElement("button");
       button.type = "button";
       button.dataset.lang = lang;
@@ -798,15 +798,23 @@
     const style = document.createElement("style");
     style.textContent = `
       .language-toggle{display:inline-flex;align-items:center;flex:0 0 auto;padding:2px;border:1px solid rgba(0,0,0,.10);border-radius:999px;background:rgba(118,118,128,.08);gap:0}
-      .language-toggle button{width:34px;height:28px;padding:0;border:0;border-radius:999px;background:transparent;color:#6e6e73;font:600 12px/1 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;letter-spacing:0;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+      .language-toggle button{width:68px;height:30px;padding:0 8px;border:0;border-radius:999px;background:transparent;color:#6e6e73;font:650 12px/1 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;letter-spacing:0;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:clip;transition:background .2s,color .2s,box-shadow .2s}
       .language-toggle button:hover{color:#1d1d1f}.language-toggle button.is-active{background:#fff;color:#1d1d1f;box-shadow:0 1px 5px rgba(0,0,0,.12)}
       .language-toggle button:focus-visible{outline:2px solid #0071e3;outline-offset:2px}
       .language-toggle.is-floating{position:fixed;z-index:9999;top:16px;right:16px;background:rgba(245,245,247,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+      .header h1{max-width:min(100%,1120px);margin-left:auto;margin-right:auto;overflow-wrap:break-word;word-break:normal;text-wrap:balance}
+      .header .subtitle{max-width:min(100%,900px);margin-left:auto;margin-right:auto;overflow-wrap:break-word}
+      .model-label{max-width:min(100%,900px);overflow-wrap:break-word}
+      .hero-actions{max-width:min(100%,900px);margin-left:auto;margin-right:auto}
+      .summary-panel,.detail-panel,.insight-band,.card,.project,.hero-panel,.hero-stat,.metric,.metric-item,.tag,.domain,.flow-node{min-width:0}
+      .summary-panel h2,.detail-panel h2,.insight-band h2,.card h3,.project h3,.hero h1,.hero-copy,.subtitle,.section-heading p,.summary-copy p,.architecture-item p,.features li,.tag,.domain,.flow-node,.metric span,.metric b,.model-label{overflow-wrap:break-word}
       @media(max-width:700px){
-        .nav-inner,.site-nav-inner{position:relative}
-        .nav-links,.site-nav-links{padding-right:70px}
-        .nav-links>.language-toggle,.site-nav-links>.language-toggle{position:absolute;right:0;top:50%;z-index:4;transform:translateY(-50%);padding:1px;background:rgba(245,245,247,.96);box-shadow:-8px 0 14px rgba(245,245,247,.96)}
-        .language-toggle button{width:30px;height:26px;font-size:11px}
+        .nav-inner,.site-nav-inner{position:relative;gap:8px}
+        .nav-links,.site-nav-links{padding-right:0;gap:3px;overflow:visible}
+        .nav-links a:not(.is-active):not(.nav-cta),.site-nav-links a:not(.is-active):not(.site-nav-cta){display:none}
+        .nav-links>.language-toggle,.site-nav-links>.language-toggle{position:static;right:auto;top:auto;z-index:4;transform:none;margin-left:4px;padding:1px;background:rgba(245,245,247,.96);box-shadow:none}
+        .language-toggle button{width:66px;height:28px;padding:0 6px;font-size:11px}
+        .header h1{font-size:clamp(1.58rem,7vw,2.05rem);line-height:1.12}
       }
     `;
     document.head.appendChild(style);
