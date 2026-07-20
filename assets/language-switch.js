@@ -890,7 +890,7 @@
   function addStyles() {
     const style = document.createElement("style");
     style.textContent = `
-      .language-toggle{display:inline-flex;align-items:center;flex:0 0 auto;padding:2px;border:1px solid rgba(0,0,0,.10);border-radius:999px;background:rgba(118,118,128,.08);gap:0}
+      .language-toggle{display:inline-flex;align-items:center;flex:0 0 auto;margin-left:18px;padding:2px;border:1px solid rgba(0,0,0,.10);border-radius:999px;background:rgba(118,118,128,.08);gap:0}
       .language-toggle button{width:68px;height:30px;padding:0 8px;border:0;border-radius:999px;background:transparent;color:#6e6e73;font:650 12px/1 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;letter-spacing:0;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:clip;transition:background .2s,color .2s,box-shadow .2s}
       .language-toggle button:hover{color:#1d1d1f}.language-toggle button.is-active{background:#fff;color:#1d1d1f;box-shadow:0 1px 5px rgba(0,0,0,.12)}
       .language-toggle button:focus-visible{outline:2px solid #0071e3;outline-offset:2px}
@@ -905,7 +905,7 @@
         .nav-inner,.site-nav-inner{position:relative;gap:8px}
         .nav-links,.site-nav-links{padding-right:0;gap:3px;overflow:visible}
         .nav-links a:not(.is-active):not(.nav-cta),.site-nav-links a:not(.is-active):not(.site-nav-cta){display:none}
-        .nav-links>.language-toggle,.site-nav-links>.language-toggle{position:static;right:auto;top:auto;z-index:4;transform:none;margin-left:4px;padding:1px;background:rgba(245,245,247,.96);box-shadow:none}
+        .nav-links>.language-toggle,.site-nav-links>.language-toggle{position:static;right:auto;top:auto;z-index:4;transform:none;margin-left:10px;padding:1px;background:rgba(245,245,247,.96);box-shadow:none}
         .language-toggle button{width:66px;height:28px;padding:0 6px;font-size:11px}
         .header h1{font-size:clamp(1.58rem,7vw,2.05rem);line-height:1.12}
       }
