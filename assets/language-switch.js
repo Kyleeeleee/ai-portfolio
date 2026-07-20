@@ -90,7 +90,7 @@
     "协助投资者提交财务材料，跟踪资金往来进度": "Assisted investors with financial documentation and tracked fund movements.",
     "编制数据报告，记录项目进展与财务数据变化": "Prepared data reports covering project progress and financial changes.",
     "精选项目": "Selected work",
-    "精选 5 个可体验 Demo，突出 AI 前台、内容增长、企业 RAG、AIGC 与金融风控，展示不同业务场景下的 AI 产品原型验证实践。": "Five highlighted demos featuring AI receptionist growth, content growth, enterprise RAG, AIGC commerce visuals, and financial risk control across practical AI product scenarios.",
+    "精选 4 个可体验 Demo，突出 AI 前台、企业 RAG、AIGC 商品图与金融风控，展示不同业务场景下的 AI 产品原型验证实践。": "Four highlighted demos featuring AI receptionist growth, enterprise RAG, AIGC commerce visuals, and financial risk control across practical AI product scenarios.",
     "查看完整作品集（11 个项目）": "View all 11 projects",
     "AI 前台 · 增长追回": "AI Receptionist · Growth Recovery",
     "AI 前台增长与机会追回系统": "AI Receptionist Growth & Recovery System",
