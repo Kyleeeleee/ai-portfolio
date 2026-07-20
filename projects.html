@@ -48,7 +48,7 @@ button{font:inherit}
 .showcase-title h2{font-size:22px;line-height:1.2}
 .showcase-title p{margin-top:6px;color:var(--muted);font-size:14px}
 .carousel-controls{display:flex;align-items:center;gap:10px}
-.carousel-count{min-width:68px;color:var(--muted);font-size:13px;text-align:center}
+.carousel-count{min-width:92px;color:var(--muted);font-size:13px;text-align:center}
 .carousel-button{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:#1d1d1f;font-size:0;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.05);transition:background .2s,opacity .2s,transform .2s}
 .carousel-button::before{content:"";display:block;width:9px;height:9px;border-top:2px solid currentColor;border-right:2px solid currentColor}
 .carousel-button:first-child::before{transform:rotate(-135deg)}
@@ -162,7 +162,7 @@ button{font:inherit}
     </div>
     <div class="carousel-controls" aria-label="项目浏览控制">
       <button class="carousel-button" id="carouselPrev" type="button" aria-label="上一个项目"></button>
-      <span class="carousel-count" id="carouselCount">01 / 11</span>
+      <span class="carousel-count" id="carouselCount">01-04 / 11</span>
       <button class="carousel-button" id="carouselNext" type="button" aria-label="下一个项目"></button>
     </div>
   </section>
@@ -312,12 +312,28 @@ function activeIndex(){
   return bestIndex;
 }
 
+function visibleRange(){
+  const viewportRect=carousel.getBoundingClientRect();
+  const visibleIndexes=projectCards
+    .map((card,index)=>({index,rect:card.getBoundingClientRect()}))
+    .filter(({rect})=>rect.right>viewportRect.left+8&&rect.left<viewportRect.right-8)
+    .map(({index})=>index);
+  if(!visibleIndexes.length){
+    const index=activeIndex();
+    return {start:index,end:index};
+  }
+  return {start:visibleIndexes[0],end:visibleIndexes[visibleIndexes.length-1]};
+}
+
 function updateCarousel(){
   const maxScroll=Math.max(1,carousel.scrollWidth-carousel.clientWidth);
-  const index=activeIndex();
+  const range=visibleRange();
   prevButton.disabled=carousel.scrollLeft<=2;
   nextButton.disabled=carousel.scrollLeft>=maxScroll-2;
-  countLabel.textContent=`${String(index+1).padStart(2,"0")} / ${String(projectCards.length).padStart(2,"0")}`;
+  const total=String(projectCards.length).padStart(2,"0");
+  const start=String(range.start+1).padStart(2,"0");
+  const end=String(range.end+1).padStart(2,"0");
+  countLabel.textContent=range.start===range.end?`${start} / ${total}`:`${start}-${end} / ${total}`;
   progressBar.style.width=`${Math.min(100,Math.max(0,(carousel.scrollLeft/maxScroll)*100))}%`;
 }
 
